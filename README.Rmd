@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# pttrobo
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of pttrobo is to ...
+
+
+Install from github:
+
+```{r install, eval=FALSE}
+
+# install.packages("devtools")
+devtools::install_github("pttry/ggptt")
+
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(pttrobo)
+## basic example code
+```
+
+
