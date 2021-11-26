@@ -32,11 +32,13 @@ devtools::install_github("pttry/ggptt")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+
 
 ```{r example}
 library(pttrobo)
-## basic example code
+
+ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
+
 ```
 
 

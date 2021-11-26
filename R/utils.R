@@ -3,7 +3,9 @@
 #' @param excel_path Path to the excel file containing prediction data
 #' @return prediction data in tibble format
 #' @examples
+#' \dontrun{
 #' excel_to_tibble("ennustedata.xlsx")
+#' }
 #' @export
 excel_to_tibble <- function(excel_path) {
   # filling na rows
