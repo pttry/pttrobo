@@ -1,15 +1,14 @@
-lataa_ennustedatat <- function(path = getwd()) {
-  datat <- c("ntp_vuosisumma",
-             "ntp_tunnit",
-             "vtp_bkt",
-             "tyti_vuosikeskiarvot"
+#' @export
+ennustedatat_exceliin <- function(path = getwd()) {
+  datat <- c("data_ntp_vuosisumma",
+             "data_ntp_tunnit",
+             "data_vtp_bkt",
+             "data_tyti_vuosikeskiarvot"
              )
   for (i in datat) {
-    browser()
     filename <- file.path(path, paste0(i, ".xlsx"))
     writexl::write_xlsx(do.call(i, list()), filename)
   }
-
 }
 
 #' Neljännesvuositilinpito: Bruttokansantuote ja -tulo sekä tarjonta ja kysyntä
@@ -21,7 +20,9 @@ lataa_ennustedatat <- function(path = getwd()) {
 #' Tiedot:
 #' Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa
 #' Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa
-ntp_vuosisumma <- function() {
+#' @export
+#' @import dplyr tidyr robonomistClient
+data_ntp_vuosisumma <- function() {
   data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
     filter(
       Tiedot %in% c("Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
@@ -43,8 +44,9 @@ ntp_vuosisumma <- function() {
 #'
 #' Tiedot:
 #' Alkuperäinen sarja
-#'
-ntp_tunnit <- function() {
+#' @export
+#' @importFrom stringr str_detect
+data_ntp_tunnit <- function() {
   data_get("StatFin/kan/ntp/statfin_ntp_pxt_11tj.px", tidy_time = TRUE) %>%
     filter(
       Tiedot == "Alkuperäinen sarja"
@@ -66,7 +68,8 @@ ntp_tunnit <- function() {
 #' Tiedot:
 #' Käypiin hintoihin, miljoonaa euroa
 #' Edellisen vuoden hinnoin, miljoonaa euroa
-vtp_bkt <- function() {
+#' @export
+data_vtp_bkt <- function() {
   data_get("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") %>%
     filter(
       Tiedot %in% c("Käypiin hintoihin, miljoonaa euroa",
@@ -75,7 +78,20 @@ vtp_bkt <- function() {
     pivot_wider(names_from = Vuosi)
 }
 
-tyti_vuosikeskiarvot <- function() {
+#' Työvoimatutkimus
+#'
+#' https://pxnet2.stat.fi/PXWeb/pxweb/fi/StatFin/StatFin__tym__tyti__kk/statfin_tyti_pxt_135y.px/
+#'
+#' Muunnos: vuosikeskiarvo
+#'
+#' Sukupuoli:
+#' Yhteensä
+#'
+#' Ikäluokka:
+#' 15-74
+#' 15-64
+#' @export
+data_tyti_vuosikeskiarvot <- function() {
   data_get("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px", tidy_time = TRUE) %>%
     filter(
       Sukupuoli == "Yhteensä",
