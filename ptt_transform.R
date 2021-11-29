@@ -15,7 +15,7 @@ library(vroom)
 
 write_ptt_data <- function(df, tk_osoite, filetype) {
 
-  if (missing(filetype) || !filetype %in% c("csv","xlsx")) {
+  if (missing(filetype) || !filetype %in% c("csv", "xlsx")) {
     rlang::abort("Filetype must be provided from among the options: csv or xlsx.")
     }
   filename <- data(tk_osoite) %>% attributes() %>% .$title %>% .$fi %>% str_remove_all("muuttujina.{1,}$") %>%
@@ -43,41 +43,42 @@ write_ptt_data <- function(df, tk_osoite, filetype) {
 #
 # Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa
 #
-
-data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
-  filter(Tiedot %in% c("Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa", "Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa")) %>%
-  tidy_auto() %>%
+data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
+  filter(Tiedot %in% c("Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
+                       "Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa")
+         ) %>%
   mutate(Vuosi = year(time)) %>%
   group_by(Taloustoimi, Tiedot, Vuosi) %>%
+  add_tally() %>%
+  filter(n == 4L) %>%
   summarize(value = sum(value)) %>%
-  pivot_wider(names_from = Vuosi) %>%
+  pivot_wider(names_from = Vuosi)
+
+%>%
   write_ptt_data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", "xlsx")
 
 
-# https://pxnet2.stat.fi/PXWeb/pxweb/fi/StatFin/StatFin__kan__ntp/statfin_ntp_pxt_11tj.px/
-#
-#   Muunnos: vuosisumma (tunnit), vuosikeskiarvo (muut)
-#
-# Tiedot:
-#
-#   Alkuperäinen sarja
+https://pxnet2.stat.fi/PXWeb/pxweb/fi/StatFin/StatFin__kan__ntp/statfin_ntp_pxt_11tj.px/
+
+  Muunnos: vuosisumma (tunnit), vuosikeskiarvo (muut)
+
+Tiedot:
+
+  Alkuperäinen sarja
 #
 
-data("StatFin/kan/ntp/statfin_ntp_pxt_11tj.px") %>% filter(Tiedot == "Alkuperäinen sarja") %>%
-  tidy_auto() %>%
-  {
-    bind_rows(
-      filter(., str_detect(Taloustoimi,"tunnit")) %>%
-        mutate(Vuosi = year(time)) %>%
-        group_by(Taloustoimi, Toimiala, Vuosi) %>%
-        summarize(value = sum(value), .groups = "drop") %>%
-        pivot_wider(names_from = Vuosi),
-      filter(., !str_detect(Taloustoimi,"tunnit")) %>%
-        mutate(Vuosi = year(time)) %>%
-        group_by(Taloustoimi, Toimiala, Vuosi) %>%
-        summarize(value = mean(value), .groups = "drop") %>%
-        pivot_wider(names_from = Vuosi))
-  } %>%
+data("StatFin/kan/ntp/statfin_ntp_pxt_11tj.px", tidy_time = TRUE) %>%
+  filter(Tiedot == "Alkuperäinen sarja") %>%
+  group_by(Taloustoimi, Toimiala, Vuosi = lubridate::year(time)) %>%
+  add_tally() %>%
+  filter(n == 4L) %>%
+  summarize(
+    Muunnos = if_else(str_detect(Taloustoimi[1], "tunnit"), "Vuosisumma", "Vuosikeskiarvo"),
+    value = if (Muunnos == "Vuosisumma") sum(value) else mean(value),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(names_from = Vuosi)
+
   write_ptt_data("StatFin/kan/ntp/statfin_ntp_pxt_11tj.px","xlsx")
 
 # Vuositilinpito
@@ -92,10 +93,9 @@ data("StatFin/kan/ntp/statfin_ntp_pxt_11tj.px") %>% filter(Tiedot == "Alkuperäi
 #
 
 data("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") %>%
-  tidy_auto() %>%
-  filter(Tiedot %in% c("Käypiin hintoihin, miljoonaa euroa","Edellisen vuoden hinnoin, miljoonaa euroa")) %>%
-  mutate(Vuosi = year(time)) %>%
-  select(-time) %>%
+  filter(Tiedot %in% c("Käypiin hintoihin, miljoonaa euroa",
+                       "Edellisen vuoden hinnoin, miljoonaa euroa")
+         ) %>%
   pivot_wider(names_from = Vuosi) %>%
   write_ptt_data("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px", "xslx")
 
@@ -116,11 +116,15 @@ data("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") %>%
 # 15-64
 
 
-data("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") %>%
-  tidy_auto() %>%
-  filter(Sukupuoli == "Yhteensä", Ikäluokka %in% c("15 - 74","15 - 64")) %>%
+data("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px", tidy_time = TRUE) %>%
+  filter(
+    Sukupuoli == "Yhteensä",
+    Ikäluokka %in% c("15 - 74","15 - 64")
+  ) %>%
   mutate(Vuosi = year(time)) %>%
   group_by(Ikäluokka, Tiedot, Vuosi) %>%
+  add_tally() %>%
+  filter(n == 12L) %>%
   summarize(value = mean(value), .groups = "drop") %>%
   pivot_wider(names_from = Vuosi) %>%
   write_ptt_data("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px","xlsx")
