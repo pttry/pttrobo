@@ -37,7 +37,7 @@ devtools::install_github("pttry/ggptt")
 ```{r example}
 library(pttrobo)
 
-ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
+# ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
 
 ```
 

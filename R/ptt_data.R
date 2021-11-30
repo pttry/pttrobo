@@ -16,7 +16,8 @@
 ptt_data_robo <- function(..., labels = FALSE){
   robonomistClient::data_get(..., labels = labels, tidy_time = TRUE) |>
     statfitools::clean_names() |>
-    dplyr::mutate(dplyr::across(where(is.character), forcats::as_factor))
+    dplyr::mutate(dplyr::across(where(is.character), forcats::as_factor)) |>
+    droplevels()
 
 }
 
