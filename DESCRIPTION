@@ -8,17 +8,20 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
-Depends: 
+Imports: 
+    magrittr,
+    forcats,
+    stringr,
+    robonomistClient,
+    statfitools,
+    lubridate,
+    writexl,
+    readxl,
     dplyr,
     htmltools,
     plotly,
     readxl,
     tidyr
-Imports: 
-    magrittr,
-    forcats,
-    robonomistClient,
-    statfitools
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools

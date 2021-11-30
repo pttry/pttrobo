@@ -1,0 +1,23 @@
+---
+title: Esimerkki ennustedatan hakemisesta
+output: html_document
+---
+
+
+```{r, include = FALSE, message = FALSE}
+library(pttrobo)
+```
+
+Tallenetaan ennustedatat xlsx-tiedostoihin:
+```{r, message = FALSE}
+ennustedatat_exceliin()
+```
+
+Tulostetaan tallennetut taulukot:
+
+```{r, message = FALSE}
+data_ntp_vuosisumma()
+data_ntp_tunnit()
+data_vtp_bkt()
+data_tyti_vuosikeskiarvot()
+```
