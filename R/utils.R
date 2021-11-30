@@ -3,7 +3,9 @@
 #' @param excel_path Path to the excel file containing prediction data
 #' @return prediction data in tibble format
 #' @examples
+#' \dontrun{
 #' excel_to_tibble("ennustedata.xlsx")
+#' }
 #' @export
 excel_to_tibble <- function(excel_path) {
   # filling na rows
@@ -19,6 +21,7 @@ excel_to_tibble <- function(excel_path) {
 #' @param data_tibble data for plotting in tibble format
 #' @return plotly object
 #' @examples
+#' \dontrun{
 #' Filtering datatable that contains multiple different time series
 #' d <- excel_to_tibble("ptt_ennusteet_testi.xlsx") %>% filter(name == "bkt_private_consumption")
 #' Using plotting function with parameters
@@ -26,7 +29,9 @@ excel_to_tibble <- function(excel_path) {
 #'                 title = d$title,
 #'                 lahde = d$caption,
 #'                 yksikko = d$ylab)
+#' }
 #' @export
+#' @importFrom plotly layout
 ptt_plot <- function(){
   ptt_vihrea <- "#0B9D4A"
   ptt_sininen <- "#337ab7"

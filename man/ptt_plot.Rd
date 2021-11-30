@@ -15,7 +15,7 @@ plotly object
 \description{
 Plot PTT prediction data in plotly format
 }
-\examples{
+\dontrun{
 Filtering datatable that contains multiple different time series
 d <- excel_to_tibble("ptt_ennusteet_testi.xlsx") \%>\% filter(name == "bkt_private_consumption")
 Using plotting function with parameters

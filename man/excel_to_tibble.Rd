@@ -15,6 +15,6 @@ prediction data in tibble format
 \description{
 Parse PTT prediction data from excel to tibble format
 }
-\examples{
+\dontrun{
 excel_to_tibble("ennustedata.xlsx")
 }
