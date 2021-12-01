@@ -23,7 +23,8 @@ ennustedatat_exceliin <- function(path = getwd()) {
 #' @export
 #' @import dplyr tidyr robonomistClient
 data_ntp_vuosisumma <- function() {
-  data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
+  d <-
+    data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
     filter(
       Tiedot %in% c("Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
                     "Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa")
@@ -32,9 +33,28 @@ data_ntp_vuosisumma <- function() {
     group_by(Taloustoimi = forcats::fct_inorder(Taloustoimi), Tiedot, Vuosi) %>%
     add_tally() %>%
     filter(n == 4L) %>%
-    summarize(value = sum(value)) %>%
-    pivot_wider(names_from = Vuosi)
- }
+    summarize(value = sum(value), .groups = "drop") %>%
+    pivot_wider(names_from = Vuosi) %>%
+    unite("Aikasarja", Taloustoimi, Tiedot, sep = "; ")
+
+  ## dput(d$Aikasarja)
+
+  valitut_sarjat <- c(
+    "B1GMH Bruttokansantuote markkinahintaan; Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
+    "B1GMH Bruttokansantuote markkinahintaan; Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa",
+    "P7R Tavaroiden ja palvelujen tuonti, tulona; Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
+    "P7R Tavaroiden ja palvelujen tuonti, tulona; Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa",
+    "P6K Tavaroiden ja palvelujen vienti, menona; Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
+    "P6K Tavaroiden ja palvelujen vienti, menona; Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa",
+    "KADONNUT SARJA", ## TEST Jos tilastokeskus muuttaa sarjaa, tuloste rikkoutuu oikealla tavalla.
+    "P51CK Kiinteän pääoman kuluminen, tulona; Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
+    "P51CK Kiinteän pääoman kuluminen, tulona; Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa",
+    "D1K Palkansaajakorvaukset, menona; Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa",
+    "D1K Palkansaajakorvaukset, menona; Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa"
+  )
+
+  left_join(tibble(Aikasarja = valitut_sarjat), d, by = "Aikasarja")
+}
 
 #' Neljännesvuositilinpito: Työllisyys ja työtunnit
 #'
