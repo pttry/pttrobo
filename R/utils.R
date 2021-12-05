@@ -32,6 +32,7 @@ excel_to_tibble <- function(excel_path) {
 #' }
 #' @export
 #' @importFrom plotly layout
+#' @import plotly htmltools
 ptt_plot <- function(){
   ptt_vihrea <- "#0B9D4A"
   ptt_sininen <- "#337ab7"
