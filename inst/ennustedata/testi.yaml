@@ -1,0 +1,57 @@
+excel_1:
+  ntp:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+    muunnos: vuosisumma
+    tiedot:
+      Taloustoimi:
+        - B1GMH Bruttokansantuote markkinahintaan
+        - P7R Tavaroiden ja palvelujen tuonti, tulona
+      Tiedot:
+        - Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa
+        - Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Taloustoimi:
+        - E1 Työlliset, kotimaa (1000 henkeä)
+  tvt:
+  - id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Tiedot:
+        - Työlliset, 1000 henkilöä
+        - Työttömät, 1000 henkeä
+      Sukupuoli:
+        - Yhteensä
+      Ikäluokka:
+        - 15 - 74
+        - 15 - 64
+# Toinen Tiedosto
+excel_2:
+  ntp:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+    muunnos: vuosisumma
+    tiedot:
+      Taloustoimi:
+        - B1GMH Bruttokansantuote markkinahintaan
+        - P7R Tavaroiden ja palvelujen tuonti, tulona
+      Tiedot:
+        - Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa
+        - Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Taloustoimi:
+        - E1 Työlliset, kotimaa (1000 henkeä)
+  tvt:
+  - id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Tiedot:
+        - Työlliset, 1000 henkilöä
+        - Työttömät, 1000 henkeä
+      Sukupuoli:
+        - Yhteensä
+      Ikäluokka:
+        - 15 - 74
+        - 15 - 64
