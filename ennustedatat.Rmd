@@ -8,16 +8,9 @@ output: html_document
 library(pttrobo)
 ```
 
-Tallenetaan ennustedatat xlsx-tiedostoihin:
-```{r, message = FALSE}
-ennustedatat_exceliin()
-```
-
-Tulostetaan tallennetut taulukot:
+Luetaan datanmääritys-yaml ja tulostetaan tiedot xlsx-tiedostoihin:
 
 ```{r, message = FALSE}
-data_ntp_vuosisumma()
-data_ntp_tunnit()
-data_vtp_bkt()
-data_tyti_vuosikeskiarvot()
+esimerkkitiedosto <- system.file("ennustedata", "testi.yaml", package = "pttrobo")
+yaml_to_excel(esimerkkitiedosto)
 ```
