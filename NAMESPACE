@@ -3,6 +3,7 @@
 export("%>%")
 export(data_ntp_tunnit)
 export(data_ntp_vuosisumma)
+export(data_to_yaml)
 export(data_tyti_vuosikeskiarvot)
 export(data_vtp_bkt)
 export(ennustedatat_exceliin)

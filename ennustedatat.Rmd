@@ -6,6 +6,7 @@ output: html_document
 
 ```{r, include = FALSE, message = FALSE}
 library(pttrobo)
+library(dplyr)
 ```
 
 Luetaan datanmääritys-yaml ja tulostetaan tiedot xlsx-tiedostoihin:
@@ -13,4 +14,14 @@ Luetaan datanmääritys-yaml ja tulostetaan tiedot xlsx-tiedostoihin:
 ```{r, message = FALSE}
 esimerkkitiedosto <- system.file("ennustedata", "testi.yaml", package = "pttrobo")
 yaml_to_excel(esimerkkitiedosto)
+```
+
+Suodatetaan data R:ssä ja tallennetaan yaml-tiedostoon:
+
+```{r}
+data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter(Taloustoimi == "B1GMH Bruttokansantuote markkinahintaan",
+         str_detect(Tiedot, "euroa")) |>
+  data_to_yaml("output.yaml")
+
 ```

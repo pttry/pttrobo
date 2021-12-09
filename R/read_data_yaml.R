@@ -33,7 +33,7 @@ muodosta_sarjat <- function(x) {
     group_by(across(c(-time, -value))) |>
     add_tally() %>%
     filter(n == freq) %>%
-    summarize(value = fun(value), .groups = "drop")
+    summarize(value = fun(value), .groups = "drop") 
 
   ## Järjestä
   d <-
@@ -48,4 +48,17 @@ muodosta_sarjat <- function(x) {
     pivot_wider(names_from = Vuosi)
 }
 
-
+#' @export
+data_to_yaml <- function(d, file = stderr(), xlsx_tiedosto = "file1", välilehti = "sheet1", muunnos = c("vuosisumma", "vuosikeskiarvo")) {
+  setNames(list(
+    setNames(list(
+      list(
+        id = attr(d, "robonomist_id"),
+        muunnos = match.arg(muunnos),
+        tiedot = d |>
+          select(!any_of(c("time", "value", "Vuosi", "Vuosineljännes", "Kuukausi"))) |>
+          purrr::map(unique)
+      )
+    ), välilehti)
+  ), xlsx_tiedosto) |> yaml::write_yaml(file) #yaml::as.yaml() |> cat()
+}
