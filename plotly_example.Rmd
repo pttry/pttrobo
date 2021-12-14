@@ -20,7 +20,7 @@ df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
   robonomistServer::tidy_auto()
 
 # lines funktion avulla voi piirtää useamman sarjan "grouping_variable" hyödyntäen
-piirtaja$lines(df, grouping_variable = Tiedot, title = "BKT", lahde = "Tilastokeskus")
+piirtaja$lines(df, grouping_variable = Tiedot, title = "BKT", subtitle = "Vertailu kausitasoitettuun sarjaan", lahde = "Tilastokeskus", yksikko = "€")
 
 # yksittäinen sarja voidaan piirtää funktion "line" avulla
 piirtaja$line(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa"), title = "BKT", lahde = "Tilastokeskus")

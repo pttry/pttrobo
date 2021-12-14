@@ -13,16 +13,18 @@
 #' @importFrom plotly layout
 #' @import plotly htmltools
 ptt_plot <- function(){
-  ptt_vihrea <- "#0B9D4A"
-  ptt_sininen <- "#337ab7"
+  ptt_vihrea <- "#5B8233"
+  ptt_sininen <- "#2f7ab9"
+  ptt_ruskea <- "#C36B0D"
+  ptt_keltainen <- "#FFCC00"
   ptt_white <- "white"
 
-  ptt_dark_grey_custom <- "#8c8787"
+  ptt_dark_grey_custom <- "#696969"
 
   theme_ppt <- function() {
     theme_bw(base_size = 16,
              base_family = "sans-serif") +
-      theme(text = element_text(color = ptt_vihrea),
+      theme(text = element_text(color = ptt_dark_grey_custom),
             legend.position = "top",
             panel.border = element_blank(),
             panel.grid.minor = element_blank(),
@@ -34,11 +36,11 @@ ptt_plot <- function(){
             legend.background = element_rect(fill = ptt_white),
             legend.margin = margin(),
             legend.text = element_text(size = rel(0.9)),
-            axis.text = element_text(size = rel(0.9), color = ptt_vihrea),
+            axis.text = element_text(size = rel(0.9), color = ptt_dark_grey_custom),
             axis.ticks = element_blank(),
             axis.text.y = element_text(margin=unit(c(0.2, 0, 0, -0.5), "cm")),
             plot.title = element_text(hjust = 0, vjust = 1,
-                                      margin = margin(b = 11/2), colour = ptt_vihrea, family = "Finlandica Bold"),
+                                      margin = margin(b = 11/2), colour = ptt_dark_grey_custom, family = "Finlandica Bold"),
             plot.subtitle = element_text(margin = margin(b = 10), size = rel(0.9)),
             plot.caption = element_text(size = rel(0.9), margin=unit(c(0.0,0.0,0.0,0.0), "cm"), hjust = 0),
             plot.margin = margin(2, 5, 5, 2, "mm"),
@@ -50,7 +52,7 @@ ptt_plot <- function(){
   # PLOTLY GRAPH MÄÄRITTELYT
   plotly_korkeus <- 400
 
-  add_source <- function(p, text, alaviite, padding = 80, source_y_adjustment = -0.07, source_x_adjustment = 0) {
+  add_source <- function(p, text, alaviite, padding = 60, source_y_adjustment = -0.07, source_x_adjustment = 0) {
     if (alaviite != "") {
       text <- paste0(alaviite,"<br>", text)
     }
@@ -60,7 +62,7 @@ ptt_plot <- function(){
                              showarrow = F, xref = 'paper', yref = "paper",
                              xanchor='left', yanchor = 'top', xshift=0, yshift=0,
                              font = list(size = 12, family = "finlandicaregular, Open sans",
-                                         color = ptt_vihrea)))
+                                         color = ptt_dark_grey_custom)))
   }
 
   add_custom_source <- function(p, text, padding = 0, size = 10) {
@@ -69,7 +71,7 @@ ptt_plot <- function(){
            annotations = list(x = 0, y = -0.07, text = text, align = "left",
                               showarrow = F, xref = 'paper', yref = "paper",
                               xanchor='left', yanchor = 'top', xshift=0, yshift=0,
-                              font = list(size = size, family = "finlandicaregular, Open sans", color = ptt_vihrea)))
+                              font = list(size = size, family = "finlandicaregular, Open sans", color = ptt_dark_grey_custom)))
   }
 
   zoom_off <- function(p) {
@@ -98,8 +100,8 @@ ptt_plot <- function(){
   }
 
   add_title <- function(p, title, subtitle = "", x = "", y = "", top_margin = 75) {
-    t <- list(family = "sans-serif", color = ptt_vihrea, size = 16)
-    p <- layout(p, title = list(text = paste0("<b>", title, "</b>", "<br>", tags$sub(style=paste0("color: ", ptt_vihrea, "; fontFamily: finlandicaregular"), subtitle)),
+    t <- list(family = "sans-serif", color = ptt_dark_grey_custom, size = 16)
+    p <- layout(p, title = list(text = paste0("<b>", title, "</b>", "<br>", tags$sub(style=paste0("color: ", ptt_dark_grey_custom, "; fontFamily: finlandicaregular"), subtitle)),
                                 font = t,
                                 xanchor = "left", x = 0, xref = "container"),
                 margin = list(t = top_margin))
@@ -128,11 +130,9 @@ ptt_plot <- function(){
   }
 
   plot_lines <- function(d, grouping_variable, title = "", subtitle = "", alaviite = "", lahde = "",
-                         excel_path = NULL,
-                         serie_name = NULL,
-                         source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = 0.98,
-                         top_margin = 90, yksikko = "%", bottom_margin = 65,
-                         color_vector = c(ptt_vihrea, ptt_sininen),
+                         source_y_adjustment = -0.22, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.17,
+                         top_margin = 80, yksikko = "%", bottom_margin = 94,
+                         color_vector = c(ptt_vihrea, ptt_sininen, ptt_ruskea, ptt_keltainen),
                          rounding = 1
                          ){
 
@@ -140,27 +140,10 @@ ptt_plot <- function(){
       stop("Grouping variable for the data needed (without quotes)\nFor example: plot_lines(time_series_data, grouping_variable=Alue)")
     }
 
-    if(!is.null(excel_path) && !is.null(serie_name)){
-      excel_data <- readxl::read_excel(excel_path)
-      serie_data <- excel_data %>%
-        filter(serie == "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
-
-      if (nrow(serie_data) > 1){
-        stop("Filtering excel with serie name resulted in multiple rows")
-      }
-      title <- serie_data$title
-      subtitle <- serie_data$subtitle
-      if (is.null(subtitle) | is.na(subtitle)){
-        subtitle <- ""
-      }
-      lahde <- serie_data$caption
-      yksikko <- serie_data$ylab
-    }
-
     grouping_variable <- enquo(grouping_variable)
 
     plotly::plot_ly(d, x = d$time, y = d$value, color = grouping_variable, text = grouping_variable) %>%
-      add_lines(hovertemplate = paste0("%{text}<br>%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(width = 3),
+      add_lines(hovertemplate = paste0("%{text}<br>%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(width = 4),
                 colors = color_vector, mode ='lines') %>%
       layout(hovermode = "compare") %>%
       add_title(title, subtitle, top_margin = top_margin) %>%
@@ -172,9 +155,9 @@ ptt_plot <- function(){
       zoom_off() %>%
       change_ticks() %>%
       sizing(width = "100%", height = plotly_korkeus)  %>%
-      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "bottom"),
-             xaxis=list(tickfont=list(color=c(ptt_vihrea))),
-             yaxis=list(tickfont=list(color=c(ptt_vihrea)),
+      layout(legend = list(x= x_legend, y = y_legend, orientation = legend_orientation, xanchor = "left", yanchor = "bottom"),
+             xaxis=list(tickfont=list(color=c(ptt_dark_grey_custom))),
+             yaxis=list(tickfont=list(color=c(ptt_dark_grey_custom)),
                         tickformat = "digit" ),
              margin = list(l = 0),
              autosize = TRUE,
@@ -182,12 +165,12 @@ ptt_plot <- function(){
   }
 
   plot_line <- function(d, title = "", subtitle = "", alaviite = "", lahde = "",
-                        source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = 0.98,
-                        top_margin = 90, yksikko = "€", bottom_margin = 65,
+                        source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
+                        top_margin = 80, yksikko = "€", bottom_margin = 80,
                         color_vector = ptt_vihrea,
                         rounding = 1){
     plotly::plot_ly(d, x = d$time, y = d$value) %>%
-      add_lines(hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(color = color_vector, width = 3),
+      add_lines(hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(color = color_vector, width = 4),
                 mode ='lines') %>%
       layout(hovermode = "compare") %>%
       add_title(title, subtitle, top_margin = top_margin) %>%
@@ -199,7 +182,7 @@ ptt_plot <- function(){
       zoom_off() %>%
       change_ticks() %>%
       sizing(width = "100%", height = plotly_korkeus)  %>%
-      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "bottom"),
+      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "top"),
              xaxis=list(tickfont=list(color=c(ptt_vihrea))),
              yaxis=list(tickfont=list(color=c(ptt_vihrea)),
                         tickformat = "digit" ),
