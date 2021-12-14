@@ -19,28 +19,29 @@ ptt_plot <- function(){
   ptt_keltainen <- "#FFCC00"
   ptt_white <- "white"
 
-  ptt_dark_grey_custom <- "#696969"
+  ptt_dark_grey <- "#696969"
+  ptt_light_grey <- "#E8E8E8"
 
   theme_ppt <- function() {
     theme_bw(base_size = 16,
              base_family = "sans-serif") +
-      theme(text = element_text(color = ptt_dark_grey_custom),
+      theme(text = element_text(color = ptt_dark_grey),
             legend.position = "top",
             panel.border = element_blank(),
             panel.grid.minor = element_blank(),
             ## axis.line.x = element_line(lineend = "butt", color = bf_gray),
-            panel.grid.major.y = element_line(linetype = 1, color = ptt_dark_grey_custom, size = 0.5),
+            panel.grid.major.y = element_line(linetype = 1, color = ptt_light_grey, size = 1.5),
             panel.grid.minor.y = element_blank(),
-            panel.grid.major.x = element_line(linetype = 1, color = ptt_dark_grey_custom, size = 0.2),
+            panel.grid.major.x = element_line(linetype = 1, color = ptt_light_grey, size = 1.5),
             panel.grid.minor.x = element_blank(),
             legend.background = element_rect(fill = ptt_white),
             legend.margin = margin(),
             legend.text = element_text(size = rel(0.9)),
-            axis.text = element_text(size = rel(0.9), color = ptt_dark_grey_custom),
+            axis.text = element_text(size = rel(0.9), color = ptt_dark_grey),
             axis.ticks = element_blank(),
             axis.text.y = element_text(margin=unit(c(0.2, 0, 0, -0.5), "cm")),
             plot.title = element_text(hjust = 0, vjust = 1,
-                                      margin = margin(b = 11/2), colour = ptt_dark_grey_custom, family = "Finlandica Bold"),
+                                      margin = margin(b = 11/2), colour = ptt_dark_grey, family = "Finlandica Bold"),
             plot.subtitle = element_text(margin = margin(b = 10), size = rel(0.9)),
             plot.caption = element_text(size = rel(0.9), margin=unit(c(0.0,0.0,0.0,0.0), "cm"), hjust = 0),
             plot.margin = margin(2, 5, 5, 2, "mm"),
@@ -62,7 +63,7 @@ ptt_plot <- function(){
                              showarrow = F, xref = 'paper', yref = "paper",
                              xanchor='left', yanchor = 'top', xshift=0, yshift=0,
                              font = list(size = 12, family = "finlandicaregular, Open sans",
-                                         color = ptt_dark_grey_custom)))
+                                         color = ptt_dark_grey)))
   }
 
   add_custom_source <- function(p, text, padding = 0, size = 10) {
@@ -71,7 +72,7 @@ ptt_plot <- function(){
            annotations = list(x = 0, y = -0.07, text = text, align = "left",
                               showarrow = F, xref = 'paper', yref = "paper",
                               xanchor='left', yanchor = 'top', xshift=0, yshift=0,
-                              font = list(size = size, family = "finlandicaregular, Open sans", color = ptt_dark_grey_custom)))
+                              font = list(size = size, family = "finlandicaregular, Open sans", color = ptt_dark_grey)))
   }
 
   zoom_off <- function(p) {
@@ -100,8 +101,8 @@ ptt_plot <- function(){
   }
 
   add_title <- function(p, title, subtitle = "", x = "", y = "", top_margin = 75) {
-    t <- list(family = "sans-serif", color = ptt_dark_grey_custom, size = 16)
-    p <- layout(p, title = list(text = paste0("<b>", title, "</b>", "<br>", tags$sub(style=paste0("color: ", ptt_dark_grey_custom, "; fontFamily: finlandicaregular"), subtitle)),
+    t <- list(family = "sans-serif", color = ptt_dark_grey, size = 16)
+    p <- layout(p, title = list(text = paste0("<b>", title, "</b>", "<br>", tags$sub(style=paste0("color: ", ptt_dark_grey, "; fontFamily: finlandicaregular"), subtitle)),
                                 font = t,
                                 xanchor = "left", x = 0, xref = "container"),
                 margin = list(t = top_margin))
@@ -119,8 +120,8 @@ ptt_plot <- function(){
 
   set_grid <- function(p) {
     layout(p,
-           xaxis = list(showgrid = TRUE, gridcolor = ptt_dark_grey_custom),
-           yaxis = list(showgrid = TRUE, gridcolor = ptt_dark_grey_custom))
+           xaxis = list(showgrid = TRUE, gridcolor = ptt_light_grey, size = 1.5),
+           yaxis = list(showgrid = TRUE, gridcolor = ptt_light_grey, size = 1.5))
   }
 
   set_locale <- function(p) {
@@ -131,7 +132,7 @@ ptt_plot <- function(){
 
   plot_lines <- function(d, grouping_variable, title = "", subtitle = "", alaviite = "", lahde = "",
                          source_y_adjustment = -0.22, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.17,
-                         top_margin = 80, yksikko = "%", bottom_margin = 94,
+                         top_margin = 80, yksikko = "%", bottom_margin = 85,
                          color_vector = c(ptt_vihrea, ptt_sininen, ptt_ruskea, ptt_keltainen),
                          rounding = 1
                          ){
@@ -156,17 +157,23 @@ ptt_plot <- function(){
       change_ticks() %>%
       sizing(width = "100%", height = plotly_korkeus)  %>%
       layout(legend = list(x= x_legend, y = y_legend, orientation = legend_orientation, xanchor = "left", yanchor = "bottom"),
-             xaxis=list(tickfont=list(color=c(ptt_dark_grey_custom))),
-             yaxis=list(tickfont=list(color=c(ptt_dark_grey_custom)),
-                        tickformat = "digit" ),
+             xaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
+             yaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        tickformat = "digit",
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
              margin = list(l = 0),
              autosize = TRUE,
              dragmode = FALSE)
   }
 
   plot_line <- function(d, title = "", subtitle = "", alaviite = "", lahde = "",
-                        source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
-                        top_margin = 80, yksikko = "€", bottom_margin = 80,
+                        source_y_adjustment = -0.12, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
+                        top_margin = 80, yksikko = "€", bottom_margin = 60,
                         color_vector = ptt_vihrea,
                         rounding = 1){
     plotly::plot_ly(d, x = d$time, y = d$value) %>%
@@ -183,9 +190,15 @@ ptt_plot <- function(){
       change_ticks() %>%
       sizing(width = "100%", height = plotly_korkeus)  %>%
       layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "top"),
-             xaxis=list(tickfont=list(color=c(ptt_vihrea))),
-             yaxis=list(tickfont=list(color=c(ptt_vihrea)),
-                        tickformat = "digit" ),
+             xaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
+             yaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        tickformat = "digit",
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
              margin = list(l = 0),
              autosize = TRUE,
              dragmode = FALSE)
