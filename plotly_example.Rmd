@@ -1,44 +1,28 @@
 ---
-title: "Esimerkki kuvaajien piirtämisestä excel datan perusteella"
+title: "Esimerkki kuvaajien piirtämisestä"
 output: html_document
 ---
 
 ```{r, include = FALSE, message = FALSE}
 library(pttrobo)
+library(tidyverse)
 ```
 
-"bkt_private_consumption" - kuvion piirtäminen
 ```{r, message = FALSE}
-# syötetään parametreiksi datalähde-excelin polku sekä halutun sarjan nimi 
-pttrobo::ptt_plot_from("ptt_ennusteet_testi.xlsx", "bkt_private_consumption")
-```
-
-
-"export_import" - kuvion piirtäminen
-```{r, message = FALSE}
-# syötetään parametreiksi datalähde-excelin polku sekä halutun sarjan nimi 
-pttrobo::ptt_plot_from("ptt_ennusteet_testi.xlsx", "export_import")
-```
-
-Vaihtoehtoinen tapa piirtää kuvaajia, käyttäen datanhaku ja piirtofunktioita erikseen
-
-Esimerkiksi Excel datan muuttaminen tibble formaattiin
-```{r, message = FALSE}
-pttrobo::excel_to_tibble("ptt_ennusteet_testi.xlsx")
-```
-
-
-Piirretään excelin sisältämästä datasta plotly kuvioita
-```{r, message = FALSE}
-# poimitaan df muuttujaan Excelistä 'ptt_ennusteet_testi.xslx' sarja 'bkt_private_consumption'
-df <- pttrobo::excel_to_tibble("ptt_ennusteet_testi.xlsx") %>% 
-  filter(name == "bkt_private_consumption")
-
 # alustetaan piirtäjä
 piirtaja <- pttrobo::ptt_plot()
 
-# käytetään lines funktiota, joka piirtää viivakuvion kahdesta sarjasta. 
-# Syötetään parametriksi 'bkt_private_consumption' - data joka muodostettiin edellä
-piirtaja$lines(df)
+# piirrettävä data (esimerkin vuoksi, otettu sekä kausitasoitettu että trendisarja)
+df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
+  filter(str_detect(Taloustoimi, "B1GMH")) %>%
+  filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa",
+                       "Trendisarja, viitevuosi 2015, miljoonaa euroa")) %>%
+  robonomistServer::tidy_auto()
+
+# lines funktion avulla voi piirtää useamman sarjan "grouping_variable" hyödyntäen
+piirtaja$lines(df, grouping_variable = Tiedot, title = "BKT", lahde = "Tilastokeskus")
+
+# yksittäinen sarja voidaan piirtää funktion "line" avulla
+piirtaja$line(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa"), title = "BKT", lahde = "Tilastokeskus")
 
 ```

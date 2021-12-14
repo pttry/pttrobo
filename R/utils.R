@@ -1,34 +1,13 @@
-#' Parse PTT prediction data from excel to tibble format
-#'
-#' @param excel_path Path to the excel file containing prediction data
-#' @return prediction data in tibble format
-#' @examples
-#' \dontrun{
-#' excel_to_tibble("ennustedata.xlsx")
-#' }
-#' @export
-excel_to_tibble <- function(excel_path) {
-  # filling na rows
-  d <- readxl::read_excel(excel_path)  %>%
-    tidyr::fill(c(name, title, ylab, caption), .direction = "down")
-
-  d %>%
-    pivot_longer(!c(name, title, subtitle, ylab, caption, serie, serie_name, special), names_to = "time", values_to = "value")
-}
-
-#' Plot PTT prediction data in plotly format
+#' Plot data with plotly
 #'
 #' @param data_tibble data for plotting in tibble format
 #' @return plotly object
 #' @examples
 #' \dontrun{
-#' Filtering datatable that contains multiple different time series
-#' d <- excel_to_tibble("ptt_ennusteet_testi.xlsx") %>% filter(name == "bkt_private_consumption")
-#' Using plotting function with parameters
 #' ptt_plot()$lines(d,
-#'                 title = d$title,
-#'                 lahde = d$caption,
-#'                 yksikko = d$ylab)
+#'                 title = "otsikko",
+#'                 lahde = "lähde",
+#'                 yksikko = "yksikkö")
 #' }
 #' @export
 #' @importFrom plotly layout
@@ -70,36 +49,6 @@ ptt_plot <- function(){
 
   # PLOTLY GRAPH MÄÄRITTELYT
   plotly_korkeus <- 400
-
-  plot_lines <- function(d, title = d$title, subtitle = "", alaviite = "", lahde = d$caption,
-                         source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = 0.98,
-                         top_margin = 90, yksikko = d$ylab, bottom_margin = 65, # 75 lähtötilanne, nostettu to 85 from 75.  y_legend, nostettu 0.98 from 0.94
-                         color_vector = c(ptt_vihrea, ptt_sininen),
-                         rounding = 1,
-                         grouping_variable = serie_name){
-    grouping_variable <- enquo(grouping_variable)
-
-    plotly::plot_ly(d, x = d$time, y = d$value, color = grouping_variable, text = grouping_variable) %>%
-      add_lines(hovertemplate = paste0("%{text}<br>%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(width = 3),
-                colors = color_vector, mode ='lines') %>%
-      layout(hovermode = "compare") %>%
-      add_title(title, subtitle, top_margin = top_margin) %>%
-      add_source(lahde, alaviite, source_y_adjustment = source_y_adjustment, source_x_adjustment = source_x_adjustment, padding = bottom_margin) %>%
-      #add_fonts() %>%
-      set_grid() %>%
-      set_locale() %>%
-      minimal_modebar() %>%
-      zoom_off() %>%
-      change_ticks() %>%
-      sizing(width = "100%", height = plotly_korkeus)  %>%
-      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "bottom"),
-             xaxis=list(tickfont=list(color=c(ptt_vihrea))),
-             yaxis=list(tickfont=list(color=c(ptt_vihrea)),
-                        tickformat = "digit" ),
-             margin = list(l = 0),
-             autosize = TRUE,
-             dragmode = FALSE)
-  }
 
   add_source <- function(p, text, alaviite, padding = 80, source_y_adjustment = -0.07, source_x_adjustment = 0) {
     if (alaviite != "") {
@@ -178,23 +127,90 @@ ptt_plot <- function(){
 
   }
 
-  list("lines" = plot_lines)
-}
+  plot_lines <- function(d, grouping_variable, title = "", subtitle = "", alaviite = "", lahde = "",
+                         excel_path = NULL,
+                         serie_name = NULL,
+                         source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = 0.98,
+                         top_margin = 90, yksikko = "%", bottom_margin = 65,
+                         color_vector = c(ptt_vihrea, ptt_sininen),
+                         rounding = 1
+                         ){
 
-#' Plot PTT prediction data in plotly format from chosen file with specific time series
-#'
-#' @param excel_path Excel file's path that contains prediction data
-#' @param  time_series_name Name of time series to be plotted
-#' @return plotly object
-#' @examples
-#' ptt_plot_from("ptt_ennusteet_testi.xlsx", "bkt_private_consumption")
-#' @export
-ptt_plot_from <- function(excel_path, time_series_name){
-  d <- excel_to_tibble(excel_path) %>% filter(name == time_series_name)
+    if(missing(grouping_variable)){
+      stop("Grouping variable for the data needed (without quotes)\nFor example: plot_lines(time_series_data, grouping_variable=Alue)")
+    }
 
-  ptt_plot()$lines(d,
-                   title = d$title,
-                   lahde = d$caption,
-                   yksikko = d$ylab)
+    if(!is.null(excel_path) && !is.null(serie_name)){
+      excel_data <- readxl::read_excel(excel_path)
+      serie_data <- excel_data %>%
+        filter(serie == "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
+
+      if (nrow(serie_data) > 1){
+        stop("Filtering excel with serie name resulted in multiple rows")
+      }
+      title <- serie_data$title
+      subtitle <- serie_data$subtitle
+      if (is.null(subtitle) | is.na(subtitle)){
+        subtitle <- ""
+      }
+      lahde <- serie_data$caption
+      yksikko <- serie_data$ylab
+    }
+
+    grouping_variable <- enquo(grouping_variable)
+
+    plotly::plot_ly(d, x = d$time, y = d$value, color = grouping_variable, text = grouping_variable) %>%
+      add_lines(hovertemplate = paste0("%{text}<br>%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(width = 3),
+                colors = color_vector, mode ='lines') %>%
+      layout(hovermode = "compare") %>%
+      add_title(title, subtitle, top_margin = top_margin) %>%
+      add_source(lahde, alaviite, source_y_adjustment = source_y_adjustment, source_x_adjustment = source_x_adjustment, padding = bottom_margin) %>%
+      #add_fonts() %>%
+      set_grid() %>%
+      set_locale() %>%
+      minimal_modebar() %>%
+      zoom_off() %>%
+      change_ticks() %>%
+      sizing(width = "100%", height = plotly_korkeus)  %>%
+      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "bottom"),
+             xaxis=list(tickfont=list(color=c(ptt_vihrea))),
+             yaxis=list(tickfont=list(color=c(ptt_vihrea)),
+                        tickformat = "digit" ),
+             margin = list(l = 0),
+             autosize = TRUE,
+             dragmode = FALSE)
+  }
+
+  plot_line <- function(d, title = "", subtitle = "", alaviite = "", lahde = "",
+                        source_y_adjustment = -0.06, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = 0.98,
+                        top_margin = 90, yksikko = "€", bottom_margin = 65,
+                        color_vector = ptt_vihrea,
+                        rounding = 1){
+    plotly::plot_ly(d, x = d$time, y = d$value) %>%
+      add_lines(hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(color = color_vector, width = 3),
+                mode ='lines') %>%
+      layout(hovermode = "compare") %>%
+      add_title(title, subtitle, top_margin = top_margin) %>%
+      add_source(lahde, alaviite, source_y_adjustment = source_y_adjustment, source_x_adjustment = source_x_adjustment, padding = bottom_margin) %>%
+      #add_fonts() %>%
+      set_grid() %>%
+      set_locale() %>%
+      minimal_modebar() %>%
+      zoom_off() %>%
+      change_ticks() %>%
+      sizing(width = "100%", height = plotly_korkeus)  %>%
+      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "bottom"),
+             xaxis=list(tickfont=list(color=c(ptt_vihrea))),
+             yaxis=list(tickfont=list(color=c(ptt_vihrea)),
+                        tickformat = "digit" ),
+             margin = list(l = 0),
+             autosize = TRUE,
+             dragmode = FALSE)
+  }
+
+  list(
+    "line" = plot_line,
+    "lines" = plot_lines
+  )
 }
 
