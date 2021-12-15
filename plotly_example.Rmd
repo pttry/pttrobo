@@ -13,11 +13,10 @@ library(tidyverse)
 piirtaja <- pttrobo::ptt_plot()
 
 # piirrettävä data (esimerkin vuoksi, otettu sekä kausitasoitettu että trendisarja)
-df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
+df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time=TRUE) %>%
   filter(str_detect(Taloustoimi, "B1GMH")) %>%
   filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa",
-                       "Trendisarja, viitevuosi 2015, miljoonaa euroa")) %>%
-  robonomistServer::tidy_auto()
+                       "Trendisarja, viitevuosi 2015, miljoonaa euroa"))
 
 #https://www.ptt.fi/layout/img/ptt-logo.pn
 
@@ -27,4 +26,19 @@ piirtaja$lines(df, grouping_variable = Tiedot, title = "BKT", subtitle = "Vertai
 # yksittäinen sarja voidaan piirtää funktion "line" avulla
 piirtaja$line(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa"), title = "BKT", lahde = "Tilastokeskus")
 
+# example:
+df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
+    filter(str_detect(Taloustoimi, "B1GMH")) %>%
+    filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")) %>% 
+    robonomistServer::tidy_auto() %>%
+    mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
+    drop_na()
+
+piirtaja$line_with_preds(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
+                           filter(time > as.Date("2010-01-01")), 
+                         excel_path = "ptt_ennusteet_testi.xlsx",
+                         serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015", title = "BKT", lahde = "Tilastokeskus")
+
+
+  
 ```

@@ -11,7 +11,7 @@
 #' }
 #' @export
 #' @importFrom plotly layout
-#' @import plotly htmltools RCurl
+#' @import plotly htmltools RCurl lubridate
 ptt_plot <- function(){
   ptt_vihrea <- "#5B8233"
   ptt_sininen <- "#2f7ab9"
@@ -221,9 +221,94 @@ ptt_plot <- function(){
       add_logo()
   }
 
+  # example:
+  df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
+    filter(str_detect(Taloustoimi, "B1GMH")) %>%
+    filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")) %>%
+    robonomistServer::tidy_auto() %>%
+    mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
+    drop_na()
+
+  plot_line_with_preds <- function(d, excel_path, serie_name, title = "", subtitle = "", alaviite = "", lahde = "",
+                        source_y_adjustment = -0.12, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
+                        top_margin = 80, yksikko = "€", bottom_margin = 60,
+                        color_vector = ptt_vihrea,
+                        rounding = 1){
+
+    # ennusteiden lisääminen
+    prediction_data <- readxl::read_excel(excel_path) %>%
+      filter(str_detect(serie, !!serie_name))
+
+    last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
+
+    create_ennuste_trace <- function(time, value){
+      times <- c(as.Date(paste0(time, "-02-01")), as.Date(paste0(time, "-11-01")))
+      values <- c(value, value)
+      tibble(
+        time = times,
+        value = values
+      )
+    }
+
+    second_last_prediction <-
+      list(
+        time = names(last_two_preds) %>% first(),
+        value = last_two_preds %>% first()
+      )
+
+    last_prediction <-
+      list(
+        time = names(last_two_preds) %>% last(),
+        value = last_two_preds %>% last()
+      )
+
+    d_last_pred <- create_ennuste_trace(last_prediction$time, last_prediction$value)
+    d_second_last_pred <- create_ennuste_trace(second_last_prediction$time, second_last_prediction$value)
+
+    plotly::plot_ly(d, x = d$time, y = d$value) %>%
+      add_lines(hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(color = color_vector, width = 4),
+                mode ='lines') %>%
+      layout(hovermode = "compare") %>%
+      add_title(title, subtitle, top_margin = top_margin) %>%
+      add_source(lahde, alaviite, source_y_adjustment = source_y_adjustment, source_x_adjustment = source_x_adjustment, padding = bottom_margin) %>%
+      #add_fonts() %>%
+      set_grid() %>%
+      set_locale() %>%
+      minimal_modebar() %>%
+      zoom_off() %>%
+      change_ticks() %>%
+      sizing(width = "100%", height = plotly_korkeus)  %>%
+      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "top"),
+             xaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
+             yaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        tickformat = "digit",
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
+             margin = list(l = 0),
+             autosize = TRUE,
+             dragmode = FALSE) %>%
+      add_logo() %>%
+      add_trace(x = d_last_pred$time,
+                y = d_last_pred$value,
+                mode='lines',
+                hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", d_last_pred$time %>% lubridate::year() %>% first(),
+                " vuosiennuste", "<extra></extra>")) %>%
+      add_trace(x = d_second_last_pred$time,
+                y = d_second_last_pred$value,
+                mode='lines',
+                hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", d_second_last_pred$time %>% lubridate::year() %>% first(),
+                                       " vuosiennuste", "<extra></extra>"))
+
+  }
+
   list(
     "line" = plot_line,
-    "lines" = plot_lines
+    "lines" = plot_lines,
+    "line_with_preds" = plot_line_with_preds
   )
 }
 
