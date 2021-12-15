@@ -18,7 +18,6 @@ ptt_data_robo <- function(..., labels = FALSE){
     statfitools::clean_names() |>
     dplyr::mutate(dplyr::across(where(is.character), forcats::as_factor)) |>
     droplevels()
-
 }
 
 

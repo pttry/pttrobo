@@ -19,6 +19,8 @@ df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
                        "Trendisarja, viitevuosi 2015, miljoonaa euroa")) %>%
   robonomistServer::tidy_auto()
 
+#https://www.ptt.fi/layout/img/ptt-logo.pn
+
 # lines funktion avulla voi piirtää useamman sarjan "grouping_variable" hyödyntäen
 piirtaja$lines(df, grouping_variable = Tiedot, title = "BKT", subtitle = "Vertailu kausitasoitettuun sarjaan", lahde = "Tilastokeskus", yksikko = "€")
 

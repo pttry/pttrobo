@@ -11,7 +11,7 @@
 #' }
 #' @export
 #' @importFrom plotly layout
-#' @import plotly htmltools
+#' @import plotly htmltools RCurl
 ptt_plot <- function(){
   ptt_vihrea <- "#5B8233"
   ptt_sininen <- "#2f7ab9"
@@ -130,6 +130,21 @@ ptt_plot <- function(){
 
   }
 
+  add_logo <- function(p){
+    image_file <- paste0(getwd(), "/ptt-logo.png")
+    txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
+
+    plotly::layout(p,
+      images = list(
+        source = paste('data:image/png;base64', txt, sep=','),
+        xref= "paper", yref="paper",
+        x=1, y=-0.25,
+        sizex = 0.05, sizey = 0.05,
+        xanchor="right", yanchor = "bottom"
+      )
+    )
+  }
+
   plot_lines <- function(d, grouping_variable, title = "", subtitle = "", alaviite = "", lahde = "",
                          source_y_adjustment = -0.22, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.17,
                          top_margin = 80, yksikko = "%", bottom_margin = 85,
@@ -168,7 +183,8 @@ ptt_plot <- function(){
                         showline= TRUE),
              margin = list(l = 0),
              autosize = TRUE,
-             dragmode = FALSE)
+             dragmode = FALSE) %>%
+      add_logo()
   }
 
   plot_line <- function(d, title = "", subtitle = "", alaviite = "", lahde = "",
