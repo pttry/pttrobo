@@ -217,7 +217,8 @@ ptt_plot <- function(){
                         showline= TRUE),
              margin = list(l = 0),
              autosize = TRUE,
-             dragmode = FALSE)
+             dragmode = FALSE) %>%
+      add_logo()
   }
 
   list(
