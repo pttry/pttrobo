@@ -221,13 +221,6 @@ ptt_plot <- function(){
       add_logo()
   }
 
-  # example:
-  df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
-    filter(str_detect(Taloustoimi, "B1GMH")) %>%
-    filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")) %>%
-    robonomistServer::tidy_auto() %>%
-    mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
-    drop_na()
 
   plot_line_with_preds <- function(d, excel_path, serie_name, title = "", subtitle = "", alaviite = "", lahde = "",
                         source_y_adjustment = -0.12, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
@@ -302,7 +295,6 @@ ptt_plot <- function(){
                 mode='lines',
                 hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", d_second_last_pred$time %>% lubridate::year() %>% first(),
                                        " vuosiennuste", "<extra></extra>"))
-
   }
 
   list(

@@ -20,5 +20,4 @@ ptt_data_robo <- function(..., labels = FALSE){
     droplevels()
 }
 
-
 utils::globalVariables("where")
