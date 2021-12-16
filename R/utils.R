@@ -297,6 +297,7 @@ ptt_plot <- function(){
                                        " vuosiennuste", "<extra></extra>"))
   }
 
+
   list(
     "line" = plot_line,
     "lines" = plot_lines,
