@@ -1,0 +1,12 @@
+file1:
+  sheet1:
+  - id: eurostat/aact_eaa01
+    muunnos: vuosisumma
+    tiedot:
+      itm_newa:
+      - Wheat and spelt
+      - Rye and meslin
+      - Barley
+      indic_ag: Production value at basic price
+      unit: Million euro
+      geo: Finland

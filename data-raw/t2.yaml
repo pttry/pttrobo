@@ -1,0 +1,175 @@
+file1:
+  sheet1:
+  - id: eurostat/aact_eaa01
+    muunnos: vuosisumma
+    tiedot:
+      itm_newa:
+      - Cereals (including seeds)
+      - Wheat and spelt
+      - Soft wheat and spelt
+      - Durum wheat
+      - Rye and meslin
+      - Barley
+      - Oats and summer cereal mixtures
+      - Grain maize
+      - Rice
+      - Other cereals
+      - INDUSTRIAL CROPS
+      - Oil seeds and oleaginous fruits (including seeds)
+      - Rape and turnip rape seed
+      - Sunflower
+      - Soya
+      - Other oleaginous products
+      - Protein crops (including seeds)
+      - Raw tobacco
+      - Sugar beet
+      - Other industrial crops
+      - Fibre plants
+      - Hops
+      - 'Other industrial crops: others'
+      - FORAGE PLANTS
+      - Fodder maize
+      - Fodder root crops (including forage beet)
+      - Other forage plants
+      - VEGETABLES AND HORTICULTURAL PRODUCTS
+      - Fresh vegetables
+      - Cauliflower
+      - Tomatoes
+      - Other fresh vegetables
+      - Plants and flowers
+      - Nursery plants
+      - Ornamental plants and flowers (including Christmas trees)
+      - Plantations
+      - POTATOES (including seeds)
+      - FRUITS
+      - Fresh fruit
+      - Dessert apples
+      - Dessert pears
+      - Peaches
+      - Other fresh fruit
+      - Citrus fruits
+      - Sweet oranges
+      - Mandarins
+      - Lemons
+      - Other citrus fruits
+      - Tropical fruit
+      - Grapes
+      - Dessert grapes
+      - Other grapes
+      - Olives
+      - Table olives
+      - Other olives
+      - WINE
+      - Table wine
+      - Quality wine
+      - OLIVE OIL
+      - OTHER CROP PRODUCTS
+      - Vegetable materials used primarily for plaiting
+      - Seeds
+      - 'Other crop products: others'
+      - CROP OUTPUT
+      - ANIMALS
+      - Cattle
+      - Pigs
+      - Equines
+      - Sheep and goats
+      - Poultry
+      - Other animals
+      - ANIMAL PRODUCTS
+      - Milk
+      - Eggs
+      - Other animal products
+      - Raw wool
+      - Silkworm cocoons
+      - 'Other animal products: others'
+      - ANIMAL OUTPUT
+      - AGRICULTURAL GOODS OUTPUT
+      - AGRICULTURAL SERVICES OUTPUT
+      - AGRICULTURAL SERVICES
+      - RENTING OF MILK QUOTA
+      - AGRICULTURAL OUTPUT
+      - SECONDARY ACTIVITIES (INSEPARABLE)
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - cereals
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - vegetables
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - fruits
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - wine
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - animals
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - animal products
+      - 'TRANSFORMATION OF AGRICULTURAL PRODUCTS - animal products : milk'
+      - 'TRANSFORMATION OF AGRICULTURAL PRODUCTS - animal products : other animal
+        products'
+      - TRANSFORMATION OF AGRICULTURAL PRODUCTS - other
+      - OTHER NON-SEPARABLE SECONDARY ACTIVITIES (GOODS AND SERVICES)
+      - OUTPUT OF THE AGRICULTURAL 'INDUSTRY'
+      - TOTAL INTERMEDIATE CONSUMPTION
+      - SEEDS AND PLANTING STOCK (INTERMEDIATE CONSUMPTION)
+      - SEEDS AND PLANTING STOCK (INTERMEDIATE CONSUMPTION) supplied by other agricultural
+        holdings
+      - SEEDS AND PLANTING STOCK (INTERMEDIATE CONSUMPTION) purchased from outside
+        the agricultural 'industry'
+      - ENERGY; LUBRICANTS
+      - ENERGY; LUBRICANTS - electricity
+      - ENERGY; LUBRICANTS - gas
+      - ENERGY; LUBRICANTS - other fuels and propellants
+      - 'ENERGY; LUBRICANTS - energy; lubricants: other'
+      - FERTILISERS AND SOIL IMPROVERS
+      - FERTILISERS AND SOIL IMPROVERS - Fertilisers supplied by other agricultural
+        holdings
+      - FERTILISERS AND SOIL IMPROVERS - Fertilisers purchased from outside the agricultural
+        'industry'
+      - PLANT PROTECTION PRODUCTS, HERBICIDES, INSECTICIDES AND PESTICIDES
+      - VETERINARY EXPENSES
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION)
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION) - feedingstuffs supplied by other
+        agricultural holdings
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION) - feedingstuffs purchased from outside
+        the agricultural 'industry'
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION) - feedingstuffs produced and consumed
+        by the same holding
+      - MAINTENANCE OF MATERIALS
+      - MAINTENANCE OF BUILDINGS
+      - AGRICULTURAL SERVICES (INTERMEDIATE CONSUMPTION)
+      - FINANCIAL INTERMEDIATION SERVICES INDIRECTLY MEASURED (FISIM)
+      - OTHER GOODS AND SERVICES
+      - GROSS VALUE ADDED AT BASIC PRICES
+      - FIXED CAPITAL CONSUMPTION
+      - 'FIXED CAPITAL CONSUMPTION : EQUIPMENT'
+      - 'FIXED CAPITAL CONSUMPTION : BUILDINGS'
+      - PLANTATIONS
+      - OTHERS
+      - NET VALUE ADDED AT BASIC PRICES
+      - COMPENSATION OF EMPLOYEES
+      - OTHER TAXES ON PRODUCTION
+      - OTHER SUBSIDIES ON PRODUCTION
+      - FACTOR INCOME
+      - OPERATING SURPLUS/MIXED INCOME
+      - RENTS AND OTHER REAL ESTATE RENTAL CHARGES TO BE PAID
+      - INTEREST PAID
+      - INTEREST RECEIVED
+      - ENTREPRENEURIAL INCOME
+      - GFCF IN AGRICULTURAL PRODUCTS
+      - GFCF IN PLANTATIONS
+      - GFCF IN ANIMALS
+      - GFCF IN NON-AGRICULTURAL PRODUCTS
+      - GFCF IN MATERIALS
+      - GFCF IN MACHINES AND OTHER EQUIPMENT
+      - GFCF IN TRANSPORT EQUIPMENT
+      - GFCF IN BUILDINGS
+      - GFCF IN FARM BUILDINGS (NON-RESIDENTIAL)
+      - GFCF IN OTHER WORKS EXCEPT LAND IMPROVEMENTS (OTHER BUILDINGS, STRUCTURES,
+        ETC.)
+      - OTHER GFCF
+      - GFCF IN INTANGIBLE FIXED ASSETS (E.G. COMPUTER SOFTWARE)
+      - ADDITION TO THE VALUE OF NON-FINANCIAL NON-PRODUCED ASSETS
+      - GFCF IN MAJOR LAND IMPROVEMENTS
+      - COSTS LINKED TO THE PURCHASE OF LAND AND PRODUCTION RIGHTS
+      - GROSS FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      - NET FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      - CHANGES IN STOCKS
+      - CAPITAL TRANSFERS
+      - INVESTMENT GRANTS
+      - OTHER CAPITAL TRANSFERS
+      indic_ag: Production value at basic price
+      unit: Million euro
+      geo: Finland
