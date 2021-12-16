@@ -37,7 +37,7 @@ df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") %>%
 piirtaja$line_with_preds(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
                            filter(time > as.Date("2010-01-01")), 
                          excel_path = "ptt_ennusteet_testi.xlsx",
-                         serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015", title = "BKT", lahde = "Tilastokeskus")
+                         serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
 
 
   
