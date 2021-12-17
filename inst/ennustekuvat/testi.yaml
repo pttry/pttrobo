@@ -1,0 +1,68 @@
+my_ennustekuva:
+  otsikko: "Tärkeä kuvio"
+  alaotsikko: "y-akselin selite"
+  viite: "Lähde: PTT:n ennuste."
+  sarjat:
+    - nimi: BKT
+      ennusteet:
+        - vuosi: 2021
+          arvo: 5.5
+        - vuosi: 2022
+          arvo: 10.6
+      kiinteä_data: ennuste_hetken_data.rds
+      robonomist_data:
+        id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+        muunnos: vuosikeskiarvo
+        ajanjakso: satovuosi
+        tiedot:
+          Taloustoimi:
+            - E1 Työlliset, kotimaa (1000 henkeä)
+    - nimi: Yksityinen kulutus
+      ennusteet:
+        - vuosi: 2021
+          arvo: 5.5
+        - vuosi: 2022
+          arvo: 10.6
+      kiinteä_data: ennuste_hetken_data2.rds
+      robonomist_data:
+        id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+        muunnos: vuosikeskiarvo
+        ajanjakso: satovuosi
+        tiedot:
+          Taloustoimi:
+            - E1 Työlliset, kotimaa (1000 henkeä)
+
+my_ennustekuva2:
+  otsikko: "Toinen ärkeä kuvio"
+  alaotsikko: "y-akselin selite"
+  viite: "Lähde: PTT:n ennuste."
+  sarjat:
+    - nimi: BKT
+      ennusteet:
+        - vuosi: 2021
+          arvo: 5.5
+        - vuosi: 2022
+          arvo: 10.6
+      kiinteä_data: ennuste_hetken_data.rds
+      robonomist_data:
+        id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+        muunnos: vuosikeskiarvo
+        ajanjakso: satovuosi
+        tiedot:
+          Taloustoimi:
+            - E1 Työlliset, kotimaa (1000 henkeä)
+    - nimi: Yksityinen kulutus
+      ennusteet:
+        - vuosi: 2021
+          arvo: 5.5
+        - vuosi: 2022
+          arvo: 10.6
+      kiinteä_data: ennuste_hetken_data.rds
+      robonomist_data:
+        id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+        muunnos: vuosikeskiarvo
+        ajanjakso: satovuosi
+        tiedot:
+          Taloustoimi:
+            - E1 Työlliset, kotimaa (1000 henkeä)
+
