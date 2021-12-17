@@ -7,6 +7,7 @@ output: html_document
 ```{r, include = FALSE, message = FALSE}
 library(pttrobo)
 library(dplyr)
+library(stringr)
 ```
 
 Luetaan datanmääritys-yaml ja tulostetaan tiedot xlsx-tiedostoihin:
@@ -19,9 +20,16 @@ yaml_to_excel(esimerkkitiedosto)
 Suodatetaan data R:ssä ja tallennetaan yaml-tiedostoon:
 
 ```{r}
-data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+robonomistClient::data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter(Taloustoimi == "B1GMH Bruttokansantuote markkinahintaan",
          str_detect(Tiedot, "euroa")) |>
   data_to_yaml("output.yaml")
+
+```
+
+Muunna tuotettu yaml-tiedosto excel-tiedostoksi:
+
+```{r}
+yaml_to_excel("output.yaml")
 
 ```

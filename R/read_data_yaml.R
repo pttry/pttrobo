@@ -1,11 +1,17 @@
-#' @export
+#' Read data yaml file, get data, and output xlxs files
+#'
+#' @param file Path to yaml file
+#'
+#' #' @export
 yaml_to_excel <- function(file) {
   y <- yaml::read_yaml(file)
   for(i_file in seq_along(y)) {
     filename <- paste0(names(y[i_file]), ".xlsx")
     d <- koosta_tiedoston_datat(y[[i_file]])
     openxlsx::write.xlsx(d, filename, overwrite = TRUE)
+    cli_alert_success("Wrote {filename}")
   }
+  invisible(NULL)
 }
 
 koosta_tiedoston_datat <- function(x) {
@@ -21,19 +27,42 @@ muodosta_sarjat <- function(x) {
     )
 
   ## Aggregoi
-  freq <- switch(unlist(attr(d, "frequency"))[1],
-                 "Quarterly" = 4,
-                 "Monthly" = 12)
-  fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
+  if (is.null(x$muunnos) || x$muunnos == "alkuperäinen") {
+    d <-
+      d |>
+      mutate(time = lubridate::year(time)) |>
+      rename(Vuosi = time)
 
-  d <-
-    d |>
-    mutate(Vuosi = lubridate::year(time)) |>
-    drop_na() |>
-    group_by(across(c(-time, -value))) |>
-    add_tally() %>%
-    filter(n == freq) %>%
-    summarize(value = fun(value), .groups = "drop") 
+  } else {
+    fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
+    freq <- switch(unlist(attr(d, "frequency"))[1],
+                   "Quarterly" = 4,
+                   "Monthly" = 12)
+
+    if (!is.null(x$ajanjakso) && x$ajanjakso == "satovuosi") {
+      d <-
+        d |>
+        drop_na() |>
+        mutate(Vuosi = lubridate::year(time - months(6)),
+               Ajanjakso = "Satovuosi") |>
+        group_by(across(c(-time, -value))) |>
+        add_tally() %>%
+        filter(n == freq) %>%
+        summarize(value = fun(value), .groups = "drop")
+
+    } else {
+
+      d <-
+        d |>
+        mutate(Vuosi = lubridate::year(time)) |>
+        drop_na() |>
+        group_by(across(c(-time, -value))) |>
+        add_tally() %>%
+        filter(n == freq) %>%
+        summarize(value = fun(value), .groups = "drop")
+
+    }
+  }
 
   ## Järjestä
   d <-
@@ -49,16 +78,23 @@ muodosta_sarjat <- function(x) {
 }
 
 #' @export
-data_to_yaml <- function(d, file = stderr(), xlsx_tiedosto = "file1", välilehti = "sheet1", muunnos = c("vuosisumma", "vuosikeskiarvo")) {
-  setNames(list(
+data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1", välilehti = "sheet1",
+                         muunnos = c("alkuperäinen", "vuosisumma", "vuosikeskiarvo")) {
+  y <-
     setNames(list(
-      list(
-        id = attr(d, "robonomist_id"),
-        muunnos = match.arg(muunnos),
-        tiedot = d |>
-          select(!any_of(c("time", "value", "Vuosi", "Vuosineljännes", "Kuukausi"))) |>
-          purrr::map(unique)
-      )
-    ), välilehti)
-  ), xlsx_tiedosto) |> yaml::write_yaml(file) #yaml::as.yaml() |> cat()
+      setNames(list(
+        list(list(
+          id = attr(d, "robonomist_id"),
+          muunnos = match.arg(muunnos),
+          tiedot = d |>
+            select(!any_of(c("time", "value", "Vuosi", "Vuosineljännes", "Kuukausi"))) |>
+            purrr::map(unique)
+        ))
+      ), välilehti)
+    ), xlsx_tiedosto)
+  if (!is.null(file)) {
+    yaml::write_yaml(y, file)
+    cli_alert_success("Created {file}")
+  }
+  cat((yaml::as.yaml(y)))
 }
