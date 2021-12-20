@@ -12,7 +12,9 @@
 #'
 #' @export
 #' @examples
+#' \dontrun{
 #'   ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
+#' }
 ptt_data_robo <- function(..., labels = FALSE){
   robonomistClient::data_get(..., labels = labels, tidy_time = TRUE) |>
     statfitools::clean_names() |>
