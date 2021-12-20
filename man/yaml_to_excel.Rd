@@ -4,7 +4,7 @@
 \alias{yaml_to_excel}
 \title{Read data yaml file, get data, and output xlxs files}
 \usage{
-yaml_to_excel(file)
+yaml_to_excel(file, start_year)
 }
 \arguments{
 \item{file}{Path to yaml file
