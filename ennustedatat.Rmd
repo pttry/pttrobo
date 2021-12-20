@@ -14,7 +14,7 @@ Luetaan datanmääritys-yaml ja tulostetaan tiedot xlsx-tiedostoihin:
 
 ```{r, message = FALSE}
 esimerkkitiedosto <- system.file("ennustedata", "testi.yaml", package = "pttrobo")
-yaml_to_excel(esimerkkitiedosto)
+yaml_to_excel(esimerkkitiedosto, "2011")
 ```
 
 Suodatetaan data R:ssä ja tallennetaan yaml-tiedostoon:

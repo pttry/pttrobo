@@ -18,6 +18,7 @@ koosta_tiedoston_datat <- function(x, start_year) {
   purrr::map(x, ~{ purrr::map(.x, muodosta_sarjat, start_year = start_year) |> bind_rows() })
 }
 
+#' @importFrom rlang %||%
 muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
   d <-
@@ -27,8 +28,10 @@ muodosta_sarjat <- function(x, start_year) {
       lubridate::year(time) >= start_year
     )
 
+  x$muunnos <- x$muunnos %||% "alkuperäinen"
+
   ## Aggregoi
-  if (is.null(x$muunnos) || x$muunnos == "alkuperäinen") {
+  if (x$muunnos == "alkuperäinen") {
     d <-
       d |>
       mutate(time = lubridate::year(time)) |>
@@ -75,7 +78,9 @@ muodosta_sarjat <- function(x, start_year) {
   ## Pivotoi
   d |>
     unite("Aikasarja", -Vuosi, -value, sep = "; ") |>
-    pivot_wider(names_from = Vuosi)
+    pivot_wider(names_from = Vuosi) |>
+    mutate(id = x$id, Muunnos = x$muunnos) |>
+    relocate(id, Aikasarja, Muunnos)
 }
 
 #' @export
