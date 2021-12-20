@@ -80,7 +80,7 @@ muodosta_sarjat <- function(x, start_year) {
     unite("Aikasarja", -Vuosi, -value, sep = "; ") |>
     pivot_wider(names_from = Vuosi) |>
     mutate(id = x$id, Muunnos = x$muunnos) |>
-    relocate(id, Aikasarja, Muunnos)
+    relocate(id, Muunnos, Aikasarja)
 }
 
 #' @export
