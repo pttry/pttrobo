@@ -36,6 +36,7 @@ my_ennustekuva2:
   otsikko: "Toinen ärkeä kuvio"
   alaotsikko: "y-akselin selite"
   viite: "Lähde: PTT:n ennuste."
+  kuviotyyppi: pylväs
   sarjat:
     - nimi: BKT
       ennusteet:
