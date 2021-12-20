@@ -3,27 +3,28 @@
 #' @param file Path to yaml file
 #'
 #' #' @export
-yaml_to_excel <- function(file) {
+yaml_to_excel <- function(file, start_year) {
   y <- yaml::read_yaml(file)
   for(i_file in seq_along(y)) {
     filename <- paste0(names(y[i_file]), ".xlsx")
-    d <- koosta_tiedoston_datat(y[[i_file]])
+    d <- koosta_tiedoston_datat(y[[i_file]], start_year = start_year)
     openxlsx::write.xlsx(d, filename, overwrite = TRUE)
     cli_alert_success("Wrote {filename}")
   }
   invisible(NULL)
 }
 
-koosta_tiedoston_datat <- function(x) {
-  purrr::map(x, ~{ purrr::map(.x, muodosta_sarjat) |> bind_rows() })
+koosta_tiedoston_datat <- function(x, start_year) {
+  purrr::map(x, ~{ purrr::map(.x, muodosta_sarjat, start_year = start_year) |> bind_rows() })
 }
 
-muodosta_sarjat <- function(x) {
+muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
   d <-
     data_get(x$id, tidy_time = TRUE) |>
     filter(
-      !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x)))
+      !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x))),
+      lubridate::year(time) >= start_year
     )
 
   ## Aggregoi
