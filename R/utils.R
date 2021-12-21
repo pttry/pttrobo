@@ -14,6 +14,7 @@
 #' @import plotly htmltools RCurl lubridate
 ptt_plot <- function(){
   ptt_vihrea <- "#5B8233"
+
   ptt_sininen <- "#2f7ab9"
   ptt_ruskea <- "#C36B0D"
   ptt_keltainen <- "#FFCC00"
@@ -59,11 +60,11 @@ ptt_plot <- function(){
     }
     layout(p,
            margin = list(b = padding, l = 0),
-          annotations = list(x = source_x_adjustment, y = source_y_adjustment, text = text, align = "left",
-                             showarrow = F, xref = 'paper', yref = "paper",
-                             xanchor='left', yanchor = 'top', xshift=0, yshift=0,
-                             font = list(size = 12, family = "finlandicaregular, Open sans",
-                                         color = ptt_dark_grey)))
+           annotations = list(x = source_x_adjustment, y = source_y_adjustment, text = text, align = "left",
+                              showarrow = F, xref = 'paper', yref = "paper",
+                              xanchor='left', yanchor = 'top', xshift=0, yshift=0,
+                              font = list(size = 12, family = "finlandicaregular, Open sans",
+                                          color = ptt_dark_grey)))
   }
 
   add_custom_source <- function(p, text, padding = 0, size = 10) {
@@ -135,13 +136,13 @@ ptt_plot <- function(){
     txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
 
     plotly::layout(p,
-      images = list(
-        source = paste('data:image/png;base64', txt, sep=','),
-        xref= "paper", yref="paper",
-        x=1, y=-0.35,
-        sizex = 0.05, sizey = 0.05,
-        xanchor="right", yanchor = "bottom"
-      )
+                   images = list(
+                     source = paste('data:image/png;base64', txt, sep=','),
+                     xref= "paper", yref="paper",
+                     x=1, y=-0.35,
+                     sizex = 0.05, sizey = 0.05,
+                     xanchor="right", yanchor = "bottom"
+                   )
     )
   }
 
@@ -150,7 +151,7 @@ ptt_plot <- function(){
                          top_margin = 80, yksikko = "%", bottom_margin = 85,
                          color_vector = c(ptt_vihrea, ptt_sininen, ptt_ruskea, ptt_keltainen),
                          rounding = 1
-                         ){
+  ){
 
     if(missing(grouping_variable)){
       stop("Grouping variable for the data needed (without quotes)\nFor example: plot_lines(time_series_data, grouping_variable=Alue)")
@@ -223,14 +224,21 @@ ptt_plot <- function(){
 
 
   plot_line_with_preds <- function(d, excel_path, serie_name, title = "", subtitle = "", alaviite = "", lahde = "",
-                        source_y_adjustment = -0.12, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
-                        top_margin = 80, yksikko = "", bottom_margin = 60,
-                        color_vector = ptt_vihrea,
-                        rounding = 1){
+                                   source_y_adjustment = -0.12, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.14,
+                                   top_margin = 80, yksikko = "", bottom_margin = 60,
+                                   color_vector = ptt_vihrea,
+                                   rounding = 1){
 
-    # ennusteiden lisääminen
+    ennuste_color <- "rgba(91, 130, 51, 0.5)"
+    # jos värinä sininen, ennusteväriksi läpinäkyvä vihreä.
+    if (color_vector == "#2f7ab9"){
+      ennuste_color <- "rgba(47, 122, 185, 0.5)"
+    }
+
     prediction_data <- readxl::read_excel(excel_path) %>%
+      fill(c(name,title,ylab,caption), .direction = "down") %>%
       filter(str_detect(serie, !!serie_name))
+
 
     # parametrien poiminta kuvioon excelistä
     if(title == ""){
@@ -285,20 +293,20 @@ ptt_plot <- function(){
       change_ticks() %>%
       sizing(width = "100%", height = plotly_korkeus)  %>%
       add_logo() %>%
-            add_trace(x = d_second_last_pred$time,
+      add_trace(x = d_second_last_pred$time,
                 y = d_second_last_pred$value,
                 mode='lines',
-                color=color_vector,
+                line = list(color = ennuste_color, width = 4),
                 name=paste0("Ennuste ", d_second_last_pred$time %>% lubridate::year() %>% first()),
                 hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", d_second_last_pred$time %>% lubridate::year() %>% first(),
-                                       " vuosiennuste", "<extra></extra>")) %>% 
+                                       " vuosiennuste", "<extra></extra>")) %>%
       add_trace(x = d_last_pred$time,
                 y = d_last_pred$value,
                 mode='lines',
-                color=color_vector,
+                line = list(color = ennuste_color, width = 4),
                 name =paste0("Ennuste ", d_last_pred$time %>% lubridate::year() %>% first()),
                 hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", d_last_pred$time %>% lubridate::year() %>% first(),
-                " vuosiennuste", "<extra></extra>")) %>%
+                                       " vuosiennuste", "<extra></extra>")) %>%
       layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "top"),
              xaxis=list(tickfont=list(color=c(ptt_dark_grey)),
                         mirror=TRUE,
@@ -312,14 +320,149 @@ ptt_plot <- function(){
              margin = list(l = 0),
              autosize = TRUE,
              dragmode = FALSE
-      )                                       
+      )
   }
 
+  ennusteet_from_excel <- function(excel_path, serie_name){
+    prediction_data <- readxl::read_excel(excel_path) %>%
+      fill(c(name,title,ylab,caption), .direction = "down") %>%
+      filter(str_detect(serie, !!serie_name))
+
+
+    last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
+
+    create_ennuste_trace <- function(time, value){
+      times <- c(as.Date(paste0(time, "-02-01")), as.Date(paste0(time, "-11-01")))
+      values <- c(value, value)
+      tibble(
+        time = times,
+        value = values
+      )
+    }
+
+    second_last_prediction <-
+      list(
+        time = names(last_two_preds) %>% first(),
+        value = last_two_preds %>% first()
+      )
+
+    last_prediction <-
+      list(
+        time = names(last_two_preds) %>% last(),
+        value = last_two_preds %>% last()
+      )
+
+    d_last_pred <- create_ennuste_trace(last_prediction$time, last_prediction$value)
+    d_second_last_pred <- create_ennuste_trace(second_last_prediction$time, second_last_prediction$value)
+    list("viimeisin_ennuste" = d_last_pred,
+         "toiseksi_viimeisin_ennuste" = d_second_last_pred)
+  }
+
+  labels_from_excel <- function(excel_path, serie_name){
+    prediction_data <- readxl::read_excel(excel_path) %>%
+      fill(c(name,title,ylab,caption), .direction = "down") %>%
+      filter(str_detect(serie, !!serie_name))
+
+    list(
+      "title" = prediction_data$title,
+      "subtitle" = prediction_data$subtitle,
+      "ylab" = prediction_data$ylab,
+      "caption" = prediction_data$caption
+    )
+  }
+
+  serie_name_from_excel <- function(excel_path, serie_name){
+    prediction_data <- readxl::read_excel(excel_path) %>%
+      fill(c(name,title,ylab,caption), .direction = "down") %>%
+      filter(str_detect(serie, !!serie_name))
+
+    prediction_data$serie_name
+  }
+
+  plot_2_series_with_preds <- function(labels, d1, d1_ennusteet, serie_name_1, d2, d2_ennusteet, serie_name_2, alaviite = "",
+                                       source_y_adjustment = -0.22, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.12,
+                                       top_margin = 80, bottom_margin = 85,
+                                       rounding = 1){
+
+    color_vector  <- c(ptt_vihrea, ptt_sininen)
+    color_ennusteet <- c("rgba(91, 130, 51, 0.5)", "rgba(47, 122, 185, 0.5)")
+
+    if(is.na(labels$subtitle)){
+      labels$subtitle <- ""
+    }
+
+    add_two_latest_ennuste_traces <- function(p, ennuste_datat, color_selection){
+      p %>%
+        add_trace(x = ennuste_datat$viimeisin_ennuste$time,
+                y = ennuste_datat$viimeisin_ennuste$value,
+                mode='lines',
+                line = list(color = color_ennusteet[color_selection], width = 3),
+                name=paste0("Ennuste ", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first()),
+                hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first(),
+                                       " vuosiennuste", "<extra></extra>")) %>%
+        add_trace(x = ennuste_datat$toiseksi_viimeisin_ennuste$time,
+                  y = ennuste_datat$toiseksi_viimeisin_ennuste$value,
+                  mode='lines',
+                  line = list(color = color_ennusteet[color_selection], width = 3),
+                  name=paste0("Ennuste ", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first()),
+                  hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first(),
+                                         " vuosiennuste", "<extra></extra>"))
+    }
+
+    plotly::plot_ly() %>%
+      #plotly::plot_ly(d, x = d$time, y = d$value, name=sarjan_nimi) %>%
+      #  add_lines(hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(color = color_vector, width = 4),
+      #            mode ='lines') %>%
+      layout(hovermode = "compare") %>%
+      add_title(labels$title, labels$subtitle, top_margin = top_margin) %>%
+      add_source(labels$caption, alaviite, source_y_adjustment = source_y_adjustment, source_x_adjustment = source_x_adjustment, padding = bottom_margin) %>%
+      #add_fonts() %>%
+      set_grid() %>%
+      set_locale() %>%
+      minimal_modebar() %>%
+      zoom_off() %>%
+      change_ticks() %>%
+      sizing(width = "100%", height = plotly_korkeus)  %>%
+      add_logo() %>%
+      add_trace(x = d1$time,
+                y = d1$value,
+                mode ='lines',
+                line = list(color = color_vector[1], width = 4),
+                name = serie_name_1,
+                hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<extra></extra>")
+      ) %>%
+      add_two_latest_ennuste_traces(d1_ennusteet, color_selection = 1) %>%
+      add_trace(x = d2$time,
+                y = d2$value,
+                mode ='lines',
+                line = list(color = color_vector[2], width = 4),
+                name = serie_name_2,
+                hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<extra></extra>")
+      ) %>%
+      add_two_latest_ennuste_traces(d2_ennusteet, color_selection = 2) %>%
+      layout(legend = list(x= x_legend, y = y_legend, orientation =legend_orientation, xanchor = "left", yanchor = "top"),
+             xaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
+             yaxis=list(tickfont=list(color=c(ptt_dark_grey)),
+                        tickformat = "digit",
+                        mirror=TRUE,
+                        ticks='outside',
+                        showline= TRUE),
+             margin = list(l = 0),
+             autosize = TRUE,
+             dragmode = FALSE
+      )
+  }
 
   list(
     "line" = plot_line,
     "lines" = plot_lines,
-    "line_with_preds" = plot_line_with_preds
+    "line_with_preds" = plot_line_with_preds,
+    "two_lines_with_preds" = plot_2_series_with_preds,
+    "ennusteet_from_excel" = ennusteet_from_excel,
+    "labels_from_excel" = labels_from_excel
   )
 }
 
