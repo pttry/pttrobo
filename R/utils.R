@@ -398,14 +398,14 @@ ptt_plot <- function(){
                 mode='lines',
                 line = list(color = color_ennusteet[color_selection], width = 3),
                 name=paste0("Ennuste ", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first()),
-                hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first(),
+                hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first(),
                                        " vuosiennuste", "<extra></extra>")) %>%
         add_trace(x = ennuste_datat$toiseksi_viimeisin_ennuste$time,
                   y = ennuste_datat$toiseksi_viimeisin_ennuste$value,
                   mode='lines',
                   line = list(color = color_ennusteet[color_selection], width = 3),
                   name=paste0("Ennuste ", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first()),
-                  hovertemplate = paste0("%{y:.", rounding, "f} ", yksikko, "<br>", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first(),
+                  hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first(),
                                          " vuosiennuste", "<extra></extra>"))
     }
 
