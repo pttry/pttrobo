@@ -1,12 +1,14 @@
 #' Read data yaml file, get data, and output xlxs files
 #'
 #' @param file Path to yaml file
+#' @param xlsx_path A path to save excel files.
+#' @param start_year A numeric. Year to start data
 #'
 #' #' @export
-yaml_to_excel <- function(file, start_year) {
+yaml_to_excel <- function(file, xlsx_path = system.file("ennustedata", package = "pttrobo"), start_year) {
   y <- yaml::read_yaml(file)
   for(i_file in seq_along(y)) {
-    filename <- paste0(names(y[i_file]), ".xlsx")
+    filename <- file.path(xlsx_path, paste0(names(y[i_file]), ".xlsx"))
     d <- koosta_tiedoston_datat(y[[i_file]], start_year = start_year)
     openxlsx::write.xlsx(d, filename, overwrite = TRUE)
     cli_alert_success("Wrote {filename}")
