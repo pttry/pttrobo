@@ -20,5 +20,7 @@ but with PTT formating:
  - variables as factors
 }
 \examples{
+\dontrun{
   ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
+}
 }

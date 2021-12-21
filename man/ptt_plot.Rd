@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{ptt_plot}
 \alias{ptt_plot}
-\title{Plot PTT prediction data in plotly format}
+\title{Plot data with plotly}
 \usage{
 ptt_plot()
 }
@@ -13,16 +13,13 @@ ptt_plot()
 plotly object
 }
 \description{
-Plot PTT prediction data in plotly format
+Plot data with plotly
 }
 \examples{
 \dontrun{
-Filtering datatable that contains multiple different time series
-d <- excel_to_tibble("ptt_ennusteet_testi.xlsx") \%>\% filter(name == "bkt_private_consumption")
-Using plotting function with parameters
 ptt_plot()$lines(d,
-                title = d$title,
-                lahde = d$caption,
-                yksikko = d$ylab)
+                title = "otsikko",
+                lahde = "lähde",
+                yksikko = "yksikkö")
 }
 }

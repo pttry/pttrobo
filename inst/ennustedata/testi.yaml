@@ -26,6 +26,24 @@ excel_1:
       Ikäluokka:
         - 15 - 74
         - 15 - 64
+  satovuosittain:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: vuosikeskiarvo
+    ajanjakso: satovuosi
+    tiedot:
+      Taloustoimi:
+        - E1 Työlliset, kotimaa (1000 henkeä)
+  alkuperäinen:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi: B1GMH Bruttokansantuote markkinahintaan
+      Tiedot: Käypiin hintoihin, miljoonaa euroa
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+    tiedot:
+      Taloustoimi: B1GMH Bruttokansantuote markkinahintaan
+      Tiedot: Käypiin hintoihin, miljoonaa euroa
+
 # Toinen Tiedosto
 excel_2:
   ntp:
