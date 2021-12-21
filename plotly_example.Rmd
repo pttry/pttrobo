@@ -39,5 +39,52 @@ piirtaja$line_with_preds(df %>% filter(Tiedot == "Kausitasoitettu ja työpäivä
                          serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
 
 
-  
+"serie identifier: StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015"
+df2 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
+    filter(str_detect(Taloustoimi, "P3KS14_S15")) %>%
+    filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
+  mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
+    drop_na()
+
+
+piirtaja$line_with_preds(df %>% 
+                           filter(time > as.Date("2010-01-01")), 
+                         excel_path = "ptt_ennusteet_testi.xlsx",
+                         serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015")
+
+
+# ESIMERKKI KUN 2 SARJAA ENNUSTEINEEN
+excel_path <- "ptt_ennusteet_testi.xlsx"
+serie_names <- c("StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015",
+               "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015")
+
+# labels, poimitaan excelistä sarjan nimen perusteella. Käytetään apufunktiota.
+labels <- piirtaja$labels_from_excel(excel_path = excel_path, serie_name = serie_names[1])
+
+# Alustetaan 1. datasarja tarvittavine muuttujineen
+
+# datan yksilöivä tunniste: "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015"
+d1 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
+  filter(str_detect(Taloustoimi, "B1GMH")) %>%
+  filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")) %>%
+  mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
+  drop_na()
+
+d1_ennusteet <- ennusteet_from_excel("ptt_ennusteet_testi.xlsx", serie_names[1])
+serie_name_1 <- serie_name_from_excel("ptt_ennusteet_testi.xlsx", serie_names[1])
+
+# Alustetaan 2. datasarja tarvittavine muuttujinee
+# datasarjan yksilöivä nimi: StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015
+d2 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
+  filter(str_detect(Taloustoimi, "P3KS14_S15")) %>%
+  filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")) %>%
+  mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
+  drop_na()
+
+d2_ennusteet <- ennusteet_from_excel(excel_path, serie_names[2])
+serie_name_2 <- serie_name_from_excel(excel_path, serie_names[2])
+
+piirtaja$two_lines_with_preds(labels=labels, d1=d1, d1_ennusteet=d1_ennusteet, serie_name_1 = serie_name_1,
+                              d2=d2, d2_ennusteet=d2_ennusteet, serie_name_2 = serie_name_2,
+                              rounding= 2) 
 ```
