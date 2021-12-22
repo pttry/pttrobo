@@ -118,9 +118,18 @@ data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1", välilehti = "
         ))
       ), välilehti)
     ), xlsx_tiedosto)
+
+  handlers <- list(
+    character = function(x) enc2utf8(x),
+    list = function(x) {
+      if (!is.null(names(x))) names(x) <- enc2utf8(names(x))
+      x
+    }
+  )
+
   if (!is.null(file)) {
-    yaml::write_yaml(y, file)
+    yaml::write_yaml(y, file, handlers = handlers)
     cli_alert_success("Created {file}")
   }
-  cat((yaml::as.yaml(y)))
+  cat((yaml::as.yaml(y, handlers = handlers)))
 }

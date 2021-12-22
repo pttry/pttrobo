@@ -30,6 +30,6 @@ robonomistClient::data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 Muunna tuotettu yaml-tiedosto excel-tiedostoksi:
 
 ```{r}
-yaml_to_excel("output.yaml")
+yaml_to_excel("output.yaml", start_year = "2011")
 
 ```
