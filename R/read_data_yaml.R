@@ -70,12 +70,16 @@ muodosta_sarjat <- function(x, start_year) {
     }
   }
 
-  ## Järjestä
+  ## Taulukon vuodet
+  Vuodet <- as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+
+  ## Järjestä ja pakota kaikki vuodet taulukkoon
   d <-
     left_join(
-      expand_grid(!!!x$tiedot),
+      expand_grid(!!!x$tiedot, Vuosi = Vuodet),
       d,
-      by = intersect(names(x$tiedot), names(d)))
+      by = intersect(c(names(x$tiedot), "Vuosi"), names(d))
+    )
 
   ## Pivotoi
   d |>
