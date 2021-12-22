@@ -73,13 +73,24 @@ muodosta_sarjat <- function(x, start_year) {
     }
   }
 
-  ## Taulukon vuodet
-  Vuodet <- as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+  ## Määritä taulukon järjestys
+  Muuttujat <- setdiff(names(d), "value")
+  Järjestys <-
+    purrr::map(Muuttujat, ~{
+      if (is.null(x$tiedot[[.x]])) {
+        unique(d[[.x]])
+      } else if (.x == "Vuosi") {
+        as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+      } else {
+        x$tiedot[[.x]]
+      }
+    }) |>
+    setNames(Muuttujat)
 
   ## Järjestä ja pakota kaikki vuodet taulukkoon
   d <-
     left_join(
-      expand_grid(!!!x$tiedot, Vuosi = Vuodet),
+      expand_grid(!!!Järjestys),
       d,
       by = intersect(c(names(x$tiedot), "Vuosi"), names(d))
     )
