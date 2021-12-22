@@ -23,6 +23,7 @@ koosta_tiedoston_datat <- function(x, start_year) {
 #' @importFrom rlang %||%
 muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
+
   d <-
     data_get(x$id, tidy_time = TRUE) |>
     filter(
@@ -32,18 +33,20 @@ muodosta_sarjat <- function(x, start_year) {
 
   x$muunnos <- x$muunnos %||% "alkuperäinen"
 
+  freq <- switch(unlist(attr(d, "frequency"))[1],
+                 "Annual" = 1,
+                 "Quarterly" = 4,
+                 "Monthly" = 12)
+
   ## Aggregoi
   if (x$muunnos == "alkuperäinen") {
-    d <-
-      d |>
-      mutate(time = lubridate::year(time)) |>
-      rename(Vuosi = time)
+
+    if (freq == 1) d <- mutate(d, time = lubridate::year(time))
+    d <- rename(d, Vuosi = time)
 
   } else {
     fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
-    freq <- switch(unlist(attr(d, "frequency"))[1],
-                   "Quarterly" = 4,
-                   "Monthly" = 12)
+
 
     if (!is.null(x$ajanjakso) && x$ajanjakso == "satovuosi") {
       d <-
