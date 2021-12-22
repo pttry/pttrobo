@@ -23,6 +23,7 @@ koosta_tiedoston_datat <- function(x, start_year) {
 #' @importFrom rlang %||%
 muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
+
   d <-
     data_get(x$id, tidy_time = TRUE) |>
     filter(
@@ -32,18 +33,20 @@ muodosta_sarjat <- function(x, start_year) {
 
   x$muunnos <- x$muunnos %||% "alkuperäinen"
 
+  freq <- switch(unlist(attr(d, "frequency"))[1],
+                 "Annual" = 1,
+                 "Quarterly" = 4,
+                 "Monthly" = 12)
+
   ## Aggregoi
   if (x$muunnos == "alkuperäinen") {
-    d <-
-      d |>
-      mutate(time = lubridate::year(time)) |>
-      rename(Vuosi = time)
+
+    if (freq == 1) d <- mutate(d, time = lubridate::year(time))
+    d <- rename(d, Vuosi = time)
 
   } else {
     fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
-    freq <- switch(unlist(attr(d, "frequency"))[1],
-                   "Quarterly" = 4,
-                   "Monthly" = 12)
+
 
     if (!is.null(x$ajanjakso) && x$ajanjakso == "satovuosi") {
       d <-
@@ -70,12 +73,27 @@ muodosta_sarjat <- function(x, start_year) {
     }
   }
 
-  ## Järjestä
+  ## Määritä taulukon järjestys
+  Muuttujat <- setdiff(names(d), "value")
+  Järjestys <-
+    purrr::map(Muuttujat, ~{
+      if (is.null(x$tiedot[[.x]])) {
+        unique(d[[.x]])
+      } else if (.x == "Vuosi") {
+        as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+      } else {
+        x$tiedot[[.x]]
+      }
+    }) |>
+    setNames(Muuttujat)
+
+  ## Järjestä ja pakota kaikki vuodet taulukkoon
   d <-
     left_join(
-      expand_grid(!!!x$tiedot),
+      expand_grid(!!!Järjestys),
       d,
-      by = intersect(names(x$tiedot), names(d)))
+      by = intersect(c(names(x$tiedot), "Vuosi"), names(d))
+    )
 
   ## Pivotoi
   d |>
@@ -100,9 +118,18 @@ data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1", välilehti = "
         ))
       ), välilehti)
     ), xlsx_tiedosto)
+
+  handlers <- list(
+    character = function(x) enc2utf8(x),
+    list = function(x) {
+      if (!is.null(names(x))) names(x) <- enc2utf8(names(x))
+      x
+    }
+  )
+
   if (!is.null(file)) {
-    yaml::write_yaml(y, file)
+    yaml::write_yaml(y, file, handlers = handlers)
     cli_alert_success("Created {file}")
   }
-  cat((yaml::as.yaml(y)))
+  cat((yaml::as.yaml(y, handlers = handlers)))
 }
