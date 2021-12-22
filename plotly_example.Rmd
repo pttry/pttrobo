@@ -35,7 +35,7 @@ df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_tim
 
 piirtaja$line_with_preds(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
                            filter(time > as.Date("2010-01-01")), 
-                         excel_path = "ptt_ennusteet_testi.xlsx",
+                         excel_path = "ptt_ennusteet_KT.xlsx",
                          serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
 
 
@@ -49,12 +49,12 @@ df2 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_ti
 
 piirtaja$line_with_preds(df %>% 
                            filter(time > as.Date("2010-01-01")), 
-                         excel_path = "ptt_ennusteet_testi.xlsx",
+                         excel_path = "ptt_ennusteet_KT.xlsx",
                          serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015")
 
 
 # ESIMERKKI KUN 2 SARJAA ENNUSTEINEEN
-excel_path <- "ptt_ennusteet_testi.xlsx"
+excel_path <- "ptt_ennusteet_KT.xlsx"
 serie_names <- c("StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015",
                "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015")
 
@@ -70,8 +70,8 @@ d1 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_tim
   mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
   drop_na()
 
-d1_ennusteet <- ennusteet_from_excel("ptt_ennusteet_testi.xlsx", serie_names[1])
-serie_name_1 <- serie_name_from_excel("ptt_ennusteet_testi.xlsx", serie_names[1])
+d1_ennusteet <- ennusteet_from_excel("ptt_ennusteet_KT.xlsx", serie_names[1])
+serie_name_1 <- serie_name_from_excel("ptt_ennusteet_KT.xlsx", serie_names[1])
 
 # Alustetaan 2. datasarja tarvittavine muuttujinee
 # datasarjan yksilöivä nimi: StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015

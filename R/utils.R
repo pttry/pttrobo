@@ -236,22 +236,9 @@ ptt_plot <- function(){
     }
 
     prediction_data <- readxl::read_excel(excel_path) %>%
-      fill(c(name,title,ylab,caption), .direction = "down") %>%
-      filter(str_detect(serie, !!serie_name))
+      filter(str_detect(sarja, !!serie_name))
 
-
-    # parametrien poiminta kuvioon excelistä
-    if(title == ""){
-      title <- prediction_data$title
-    }
-    if(yksikko == ""){
-      yksikko <- prediction_data$ylab
-    }
-    if(lahde == "") {
-      lahde <- prediction_data$caption
-    }
-    sarjan_nimi <- prediction_data$serie_name
-
+    sarjan_nimi <- prediction_data$sarja_nmi
 
     last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
 
@@ -325,9 +312,7 @@ ptt_plot <- function(){
 
   ennusteet_from_excel <- function(excel_path, serie_name){
     prediction_data <- readxl::read_excel(excel_path) %>%
-      fill(c(name,title,ylab,caption), .direction = "down") %>%
-      filter(str_detect(serie, !!serie_name))
-
+      filter(str_detect(sarja, !!serie_name))
 
     last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
 
@@ -373,10 +358,9 @@ ptt_plot <- function(){
 
   serie_name_from_excel <- function(excel_path, serie_name){
     prediction_data <- readxl::read_excel(excel_path) %>%
-      fill(c(name,title,ylab,caption), .direction = "down") %>%
-      filter(str_detect(serie, !!serie_name))
+      filter(str_detect(sarja, !!serie_name))
 
-    prediction_data$serie_name
+    prediction_data$sarja_nmi
   }
 
   plot_2_series_with_preds <- function(labels, d1, d1_ennusteet, serie_name_1, d2, d2_ennusteet, serie_name_2, alaviite = "",
