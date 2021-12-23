@@ -1,0 +1,48 @@
+MEdata_Maitomarkkinat:
+  maito_tuottajahinta_kk:
+  - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/01_Tuottajahinnat_Maito_kk.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hinta:
+      - Tuottajahinta keskimäärin (c/l) 1)
+      - E-luokan normimaidon hinta (c/l) 2)
+      - I-luokan normimaidon hinta (c/l) 3)
+      - Rasvakymmenyksen hinta (c/0,1 %)
+      - Valkuaiskymmenyksen hinta (c/0,1 %)
+      - Tuotantotuki (c/l) 4)
+  maito_tuottajahinta_v:
+  - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/02_Tuottajahinnat_Maito_v.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hinta:
+      - Tuottajahinta keskimäärin (c/l) 1)
+      - E-luokan normimaidon hinta (c/l) 2)
+      - I-luokan normimaidon hinta (c/l) 3)
+      - Rasvakymmenyksen hinta (c/0,1 %)
+      - Valkuaiskymmenyksen hinta (c/0,1 %)
+      - Tuotantotuki (c/l) 4)
+      - Jälkitili (c/l) 5)
+  maito_tuotanto_v:
+  - id: luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/04_Vuositilastot/02_Meijerimaidon_tuotanto_v.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tieto:
+      - MAIDONTUOTTAJIA KESKIMÄÄRIN (kpl) 1)
+      - MAIDONTUOTTAJIA VUODEN LOPUSSA (kpl) 1)
+      - Luomutuottajia keskimäärin (kpl)
+      - Luomutuottajia vuoden lopussa (kpl)
+      - VASTAANOTETTU MAITOMÄÄRÄ YHTEENSÄ (l) 2)
+      - Vastaanotettu luomumaito (l)
+      - Koostumus rasva (%)
+      - Koostumus valkuainen (%)
+  maito_tuotanto_kk:
+  - id: luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/02_Kuukausitilastot/02_Meijerimaidon_tuotanto_kk.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tieto:
+      - MAIDONTUOTTAJAT YHTEENSÄ (kpl) 1)
+      - Luomutuottajat (kpl)
+      - VASTAANOTETTU MAITOMÄÄRÄ YHTEENSÄ (l) 2)
+      - Vastaanotettu luomumaito (l)
+      - Koostumus rasva (%)
+      - Koostumus valkuainen (%)
