@@ -12,7 +12,7 @@ data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_T
 
 # Myös lukella: luke/02_Maatalous/04_Tuotanto/14_Satotilasto/03_Vilja-_ja_perunasato_1920-.px
 data_get("StatFin/maa/satot/statfin_satot_pxt_001.px") |>
-  data_to_yaml(muunnos = "vuosisumma", välilehti = "vilja_tuotanto")
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "vilja_tuotanto")
 
 data_get("luke/02_Maatalous/04_Tuotanto/22_Kaytossa_oleva_maatalousmaa/03_Peltoala_1910_ja_1920-.px") |>
   data_to_yaml(muunnos = "vuosisumma", välilehti = "peltoala")

@@ -1,0 +1,48 @@
+MEdata_viljamarkkinat:
+  vilja_tuottajahinta:
+  - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Hinta: Perushinta 1)
+      Laji:
+      - VEHNÄ YHTEENSÄ 2)
+      - Leipävehnä
+      - Rehuvehnä
+      - RUIS
+      - OHRA YHTEENSÄ 3)
+      - Mallasohra
+      - Rehuohra
+      - KAURA YHTEENSÄ 5)
+      - Elintarvikekaura
+      - Rehukaura
+      - RYPSI JA RAPSI
+  vilja_tuotanto:
+  - id: StatFin/maa/satot/statfin_satot_pxt_001.px
+    muunnos: alkuperäinen
+    tiedot:
+      Viljelykasvi:
+      - Vehnä
+      - Ruis
+      - Ohra
+      - Kaura
+  peltoala:
+  - id: luke/02_Maatalous/04_Tuotanto/22_Kaytossa_oleva_maatalousmaa/03_Peltoala_1910_ja_1920-.px
+    muunnos: alkuperäinen
+    tiedot:
+      Laji:
+      - VILJELTY ALA YHTEENSÄ 7)
+      - Syysvehnä 1)
+      - Kevätvehnä
+      - Ruis
+      - Ohra
+      - Kaura
+      - Seosvilja
+      - Muut viljat
+      - Herne 2)
+      - Peruna
+      - Sokerijuurikas
+      - Rypsi ja rapsi 3)
+      - Nurmikasvit yhteensä 4)
+      - Muut kasvit 6, 7)
+      - Kesanto 7)
+      - VILJELTY ALA JA KESANTO YHTEENSÄ 7)

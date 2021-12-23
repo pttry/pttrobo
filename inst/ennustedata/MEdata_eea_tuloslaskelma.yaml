@@ -1,7 +1,7 @@
-file1:
-  sheet1:
-    id: eurostat/aact_eaa01
-    muunnos: vuosisumma
+MEdata_eea_tuloslaskelma:
+  eaa:
+  - id: eurostat/aact_eaa01
+    muunnos: alkuperäinen
     tiedot:
       itm_newa:
       - Cereals (including seeds)
