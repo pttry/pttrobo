@@ -41,11 +41,26 @@ data_get("luke/02_Maatalous/04_Tuotanto/06_Lihantuotanto/02_Kuukausitilastot/02_
 data_get("luke/02_Maatalous/08_Muut/02_Ravintotase/01_Elintarvikkeiden_kulutus.px") |>
   data_to_yaml(muunnos = "vuosisumma", välilehti = "liha_kulutus")
 
+data_get("StatFin/hin/ttohi/statfin_ttohi_pxt_11gv.px") |>
+  data_to_yaml(muunnos = "vuosikeskiarvo", välilehti = "ostajahinta")
+
+data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xb.px") |>
+  filter(stringr::str_starts(Hyödyke, "01\\.\\d\\.\\d ")) |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "khi_2015")
+data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xb.px") |>
+  filter(stringr::str_starts(Hyödyke, "01")) |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "khi_2015")
+data_get("StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px") |>
+  filter(stringr::str_starts(Hyödyke, "01")) |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "khi_2010")
 
 
-ME_yfile <- system.file("ennustedata", "ME_data.yaml", package = "pttrobo")
-yaml_to_excel(file = ME_yfile, start_year = 2010)
+# ME_yfile <- system.file("ennustedata", "ME_data.yaml", package = "pttrobo")
+# yaml_to_excel(file = ME_yfile, start_year = 2010)
 
 
-yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("Vilja", start_year = 2010)
+
+
+# yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
+ptt_update_ennustedata("Elintarvikkeet", start_year = 2012)
+ptt_copy_ennustedata("ME")
