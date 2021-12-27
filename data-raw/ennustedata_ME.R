@@ -48,4 +48,4 @@ yaml_to_excel(file = ME_yfile, start_year = 2010)
 
 
 yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-
+ptt_update_ennustedata("Vilja", start_year = 2010)
