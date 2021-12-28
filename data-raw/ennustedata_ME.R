@@ -1,10 +1,13 @@
 # Maa- ja elintarviketalouden ennusteen datojen tuonti
 
 data_get("eurostat/aact_eaa01") |>
-  filter(indic_ag == "Production value at basic price",
-         geo == "Finland",
-         unit == "Million euro") |>
-  data_to_yaml(file = "data-raw/eea.yaml", välilehti = "eaa")
+  # filter(indic_ag == "Production value at basic price",
+  #        geo == "Finland",
+  #        unit == "Million euro") |>
+  data_to_yaml(välilehti = "eaa")
+
+data_get("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
+  data_to_yaml(välilehti = "taloustili")
 
 data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px") |>
   filter(Hinta == "Perushinta 1)") |> View()
@@ -62,5 +65,5 @@ data_get("StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px") |>
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("Elintarvikkeet", start_year = 2012)
+ptt_update_ennustedata("Talous", start_year = 2012)
 ptt_copy_ennustedata("ME")

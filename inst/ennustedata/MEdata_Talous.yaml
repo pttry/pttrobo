@@ -1,0 +1,289 @@
+MEdata_Talous:
+  taloustili_th_arvo:
+  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maatalouden taloustili:
+      - 01 Viljakasvit (ml siemenet)
+      - 01.1 Vehnä ja speltti
+      - 01.2 Ruis sekä vehnän ja rukiin seosvilja
+      - 01.3 Ohra
+      - 01.4 Kaura ja seosviljat
+      - 02 Teollisuuskasvit
+      - 03 Rehukasvit
+      - 04 Vihannekset ja puutarhataloustuotteet
+      - 04.1 Tuoreet vihannekset
+      - 04.2 Taimet ja kukat
+      - 05 Perunat (ml siemenperunat)
+      - 10 Kasvinviljelyn tuotos (01-09)
+      - 11.1 Nautakarja
+      - 11.2 Siat
+      - 11.5 Siipikarja
+      - 12.1 Maito
+      - 13 Kotieläintalouden tuotos (11 + 12)
+      - 14 Maataloustuotteiden tuotos (10 + 13)
+      - 18 Maataloustoimialan tuotos (16 + 17)
+      - 19 Välituotekäyttö yhteensä
+      - 19.0.1 Siemenet ja taimet
+      - 19.0.2 Energia; voiteluaineet
+      - 19.0.3 Lannoitteet ja maanparannusaineet
+      - 19.0.4 Kasvinsuojelu- ja torjunta-aineet
+      - 19.0.5 Eläinlääkintäkustannukset
+      - 19.0.6 Rehut
+      - 19.0.7 Välineiden huolto
+      - 19.0.8 Rakennusten huolto
+      - 19.0.9 Maatalouspalvelut
+      - 20 Perushintainen bruttoarvonlisäys (18 - 19)
+      - 21 Kiinteän pääoman kuluminen
+      - 22 Perushintainen nettoarvonlisäys (20 - 21)
+      - 23 Palkansaajakorvaukset
+      - 24 Muut tuotantoverot
+      - 25 Muut tuotantotukipalkkiot
+      - 26 Tuotannontekijätulo (22 - 24 + 25)
+      - 27 Toimintaylijäämä / sekatulo (22 - 23 - 24 + 25)
+      - 28 Maanvuokrat
+      - 29 Korot, maksetut
+      - 30 Korot, saadut
+      - 31 Yrittäjätulo (27 - 28 - 29 + 30)
+      Tiedot:
+      - Tuottajahintaan, käyvin hinnoin,  miljoonaa euroa
+  taloustili_ph_arvo:
+  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maatalouden taloustili:
+      - 01 Viljakasvit (ml siemenet)
+      - 01.1 Vehnä ja speltti
+      - 01.2 Ruis sekä vehnän ja rukiin seosvilja
+      - 01.3 Ohra
+      - 01.4 Kaura ja seosviljat
+      - 02 Teollisuuskasvit
+      - 03 Rehukasvit
+      - 04 Vihannekset ja puutarhataloustuotteet
+      - 04.1 Tuoreet vihannekset
+      - 04.2 Taimet ja kukat
+      - 05 Perunat (ml siemenperunat)
+      - 10 Kasvinviljelyn tuotos (01-09)
+      - 11.1 Nautakarja
+      - 11.2 Siat
+      - 11.5 Siipikarja
+      - 12.1 Maito
+      - 13 Kotieläintalouden tuotos (11 + 12)
+      - 14 Maataloustuotteiden tuotos (10 + 13)
+      - 18 Maataloustoimialan tuotos (16 + 17)
+      - 19 Välituotekäyttö yhteensä
+      - 19.0.1 Siemenet ja taimet
+      - 19.0.2 Energia; voiteluaineet
+      - 19.0.3 Lannoitteet ja maanparannusaineet
+      - 19.0.4 Kasvinsuojelu- ja torjunta-aineet
+      - 19.0.5 Eläinlääkintäkustannukset
+      - 19.0.6 Rehut
+      - 19.0.7 Välineiden huolto
+      - 19.0.8 Rakennusten huolto
+      - 19.0.9 Maatalouspalvelut
+      - 20 Perushintainen bruttoarvonlisäys (18 - 19)
+      - 21 Kiinteän pääoman kuluminen
+      - 22 Perushintainen nettoarvonlisäys (20 - 21)
+      - 23 Palkansaajakorvaukset
+      - 24 Muut tuotantoverot
+      - 25 Muut tuotantotukipalkkiot
+      - 26 Tuotannontekijätulo (22 - 24 + 25)
+      - 27 Toimintaylijäämä / sekatulo (22 - 23 - 24 + 25)
+      - 28 Maanvuokrat
+      - 29 Korot, maksetut
+      - 30 Korot, saadut
+      - 31 Yrittäjätulo (27 - 28 - 29 + 30)
+      Tiedot:
+      - Perushintaan, käyvin hinnoin, miljoonaa euroa
+  taloustili_th_vol:
+  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maatalouden taloustili:
+      - 01 Viljakasvit (ml siemenet)
+      - 01.1 Vehnä ja speltti
+      - 01.2 Ruis sekä vehnän ja rukiin seosvilja
+      - 01.3 Ohra
+      - 01.4 Kaura ja seosviljat
+      - 02 Teollisuuskasvit
+      - 03 Rehukasvit
+      - 04 Vihannekset ja puutarhataloustuotteet
+      - 04.1 Tuoreet vihannekset
+      - 04.2 Taimet ja kukat
+      - 05 Perunat (ml siemenperunat)
+      - 10 Kasvinviljelyn tuotos (01-09)
+      - 11.1 Nautakarja
+      - 11.2 Siat
+      - 11.5 Siipikarja
+      - 12.1 Maito
+      - 13 Kotieläintalouden tuotos (11 + 12)
+      - 14 Maataloustuotteiden tuotos (10 + 13)
+      - 18 Maataloustoimialan tuotos (16 + 17)
+      - 19 Välituotekäyttö yhteensä
+      - 19.0.1 Siemenet ja taimet
+      - 19.0.2 Energia; voiteluaineet
+      - 19.0.3 Lannoitteet ja maanparannusaineet
+      - 19.0.4 Kasvinsuojelu- ja torjunta-aineet
+      - 19.0.5 Eläinlääkintäkustannukset
+      - 19.0.6 Rehut
+      - 19.0.7 Välineiden huolto
+      - 19.0.8 Rakennusten huolto
+      - 19.0.9 Maatalouspalvelut
+      - 20 Perushintainen bruttoarvonlisäys (18 - 19)
+      - 21 Kiinteän pääoman kuluminen
+      - 22 Perushintainen nettoarvonlisäys (20 - 21)
+      - 23 Palkansaajakorvaukset
+      - 24 Muut tuotantoverot
+      - 25 Muut tuotantotukipalkkiot
+      - 26 Tuotannontekijätulo (22 - 24 + 25)
+      - 27 Toimintaylijäämä / sekatulo (22 - 23 - 24 + 25)
+      - 28 Maanvuokrat
+      - 29 Korot, maksetut
+      - 30 Korot, saadut
+      - 31 Yrittäjätulo (27 - 28 - 29 + 30)
+      Tiedot:
+      - Tuottajahintaan, viitevuoden 2010 hinnoin,  miljoonaa euroa
+  taloustili_ph_vol:
+  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maatalouden taloustili:
+      - 01 Viljakasvit (ml siemenet)
+      - 01.1 Vehnä ja speltti
+      - 01.2 Ruis sekä vehnän ja rukiin seosvilja
+      - 01.3 Ohra
+      - 01.4 Kaura ja seosviljat
+      - 02 Teollisuuskasvit
+      - 03 Rehukasvit
+      - 04 Vihannekset ja puutarhataloustuotteet
+      - 04.1 Tuoreet vihannekset
+      - 04.2 Taimet ja kukat
+      - 05 Perunat (ml siemenperunat)
+      - 10 Kasvinviljelyn tuotos (01-09)
+      - 11.1 Nautakarja
+      - 11.2 Siat
+      - 11.5 Siipikarja
+      - 12.1 Maito
+      - 13 Kotieläintalouden tuotos (11 + 12)
+      - 14 Maataloustuotteiden tuotos (10 + 13)
+      - 18 Maataloustoimialan tuotos (16 + 17)
+      - 19 Välituotekäyttö yhteensä
+      - 19.0.1 Siemenet ja taimet
+      - 19.0.2 Energia; voiteluaineet
+      - 19.0.3 Lannoitteet ja maanparannusaineet
+      - 19.0.4 Kasvinsuojelu- ja torjunta-aineet
+      - 19.0.5 Eläinlääkintäkustannukset
+      - 19.0.6 Rehut
+      - 19.0.7 Välineiden huolto
+      - 19.0.8 Rakennusten huolto
+      - 19.0.9 Maatalouspalvelut
+      - 20 Perushintainen bruttoarvonlisäys (18 - 19)
+      - 21 Kiinteän pääoman kuluminen
+      - 22 Perushintainen nettoarvonlisäys (20 - 21)
+      - 23 Palkansaajakorvaukset
+      - 24 Muut tuotantoverot
+      - 25 Muut tuotantotukipalkkiot
+      - 26 Tuotannontekijätulo (22 - 24 + 25)
+      - 27 Toimintaylijäämä / sekatulo (22 - 23 - 24 + 25)
+      - 28 Maanvuokrat
+      - 29 Korot, maksetut
+      - 30 Korot, saadut
+      - 31 Yrittäjätulo (27 - 28 - 29 + 30)
+      Tiedot:
+      - Perushintaan, viitevuoden 2010 hinnoin, miljoonaa euroa
+  taloustili_th_evh:
+  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maatalouden taloustili:
+      - 01 Viljakasvit (ml siemenet)
+      - 01.1 Vehnä ja speltti
+      - 01.2 Ruis sekä vehnän ja rukiin seosvilja
+      - 01.3 Ohra
+      - 01.4 Kaura ja seosviljat
+      - 02 Teollisuuskasvit
+      - 03 Rehukasvit
+      - 04 Vihannekset ja puutarhataloustuotteet
+      - 04.1 Tuoreet vihannekset
+      - 04.2 Taimet ja kukat
+      - 05 Perunat (ml siemenperunat)
+      - 10 Kasvinviljelyn tuotos (01-09)
+      - 11.1 Nautakarja
+      - 11.2 Siat
+      - 11.5 Siipikarja
+      - 12.1 Maito
+      - 13 Kotieläintalouden tuotos (11 + 12)
+      - 14 Maataloustuotteiden tuotos (10 + 13)
+      - 18 Maataloustoimialan tuotos (16 + 17)
+      - 19 Välituotekäyttö yhteensä
+      - 19.0.1 Siemenet ja taimet
+      - 19.0.2 Energia; voiteluaineet
+      - 19.0.3 Lannoitteet ja maanparannusaineet
+      - 19.0.4 Kasvinsuojelu- ja torjunta-aineet
+      - 19.0.5 Eläinlääkintäkustannukset
+      - 19.0.6 Rehut
+      - 19.0.7 Välineiden huolto
+      - 19.0.8 Rakennusten huolto
+      - 19.0.9 Maatalouspalvelut
+      - 20 Perushintainen bruttoarvonlisäys (18 - 19)
+      - 21 Kiinteän pääoman kuluminen
+      - 22 Perushintainen nettoarvonlisäys (20 - 21)
+      - 23 Palkansaajakorvaukset
+      - 24 Muut tuotantoverot
+      - 25 Muut tuotantotukipalkkiot
+      - 26 Tuotannontekijätulo (22 - 24 + 25)
+      - 27 Toimintaylijäämä / sekatulo (22 - 23 - 24 + 25)
+      - 28 Maanvuokrat
+      - 29 Korot, maksetut
+      - 30 Korot, saadut
+      - 31 Yrittäjätulo (27 - 28 - 29 + 30)
+      Tiedot:
+      - Tuottajahintaan, edellisen vuoden hinnoin,  miljoonaa euroa
+  taloustili_ph_evh:
+  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maatalouden taloustili:
+      - 01 Viljakasvit (ml siemenet)
+      - 01.1 Vehnä ja speltti
+      - 01.2 Ruis sekä vehnän ja rukiin seosvilja
+      - 01.3 Ohra
+      - 01.4 Kaura ja seosviljat
+      - 02 Teollisuuskasvit
+      - 03 Rehukasvit
+      - 04 Vihannekset ja puutarhataloustuotteet
+      - 04.1 Tuoreet vihannekset
+      - 04.2 Taimet ja kukat
+      - 05 Perunat (ml siemenperunat)
+      - 10 Kasvinviljelyn tuotos (01-09)
+      - 11.1 Nautakarja
+      - 11.2 Siat
+      - 11.5 Siipikarja
+      - 12.1 Maito
+      - 13 Kotieläintalouden tuotos (11 + 12)
+      - 14 Maataloustuotteiden tuotos (10 + 13)
+      - 18 Maataloustoimialan tuotos (16 + 17)
+      - 19 Välituotekäyttö yhteensä
+      - 19.0.1 Siemenet ja taimet
+      - 19.0.2 Energia; voiteluaineet
+      - 19.0.3 Lannoitteet ja maanparannusaineet
+      - 19.0.4 Kasvinsuojelu- ja torjunta-aineet
+      - 19.0.5 Eläinlääkintäkustannukset
+      - 19.0.6 Rehut
+      - 19.0.7 Välineiden huolto
+      - 19.0.8 Rakennusten huolto
+      - 19.0.9 Maatalouspalvelut
+      - 20 Perushintainen bruttoarvonlisäys (18 - 19)
+      - 21 Kiinteän pääoman kuluminen
+      - 22 Perushintainen nettoarvonlisäys (20 - 21)
+      - 23 Palkansaajakorvaukset
+      - 24 Muut tuotantoverot
+      - 25 Muut tuotantotukipalkkiot
+      - 26 Tuotannontekijätulo (22 - 24 + 25)
+      - 27 Toimintaylijäämä / sekatulo (22 - 23 - 24 + 25)
+      - 28 Maanvuokrat
+      - 29 Korot, maksetut
+      - 30 Korot, saadut
+      - 31 Yrittäjätulo (27 - 28 - 29 + 30)
+      Tiedot:
+      - Perushintaan, edellisen vuoden hinnoin, miljoonaa euroa

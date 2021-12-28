@@ -11,7 +11,7 @@ yaml_files_ennustedata <- function(pattern = NULL){
              pattern = "\\.yaml$",
              full.names = TRUE)
   if (!is.null(pattern)){
-    files <- stringr::str_subset(files, pattern)
+    files <- files[grepl(pattern = pattern, basename(files))]
   }
   files
 }
@@ -23,13 +23,13 @@ yaml_files_ennustedata <- function(pattern = NULL){
 #' @export
 #' @examples
 #' excel_files_ennustedata()
-#' excel_files_ennustedata("ME)
+#' excel_files_ennustedata("ME")
 excel_files_ennustedata <- function(pattern = NULL){
   files <- list.files(path = system.file("ennustedata", package = "pttrobo"),
                       pattern = "\\.xlsx$",
                       full.names = TRUE)
   if (!is.null(pattern)){
-    files <- stringr::str_subset(files, pattern)
+    files <- files[grepl(pattern = pattern, basename(files))]
   }
   files
 }
