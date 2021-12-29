@@ -15,9 +15,11 @@ see \code{\link[robonomistClient]{data}}}
 \description{
 Uses \code{robonomistClient::data_get} to get data from robonomist,
 but with PTT formating:
- - codes instead of labels
- - tidy_time = TRUE
- - variables as factors
+\itemize{
+\item codes instead of labels
+\item tidy_time = TRUE
+\item variables as factors
+}
 }
 \examples{
 \dontrun{

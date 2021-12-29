@@ -1,10 +1,20 @@
 #' Read data yaml file, get data, and output xlxs files
 #'
+#' @details
+#' A *data yaml file* describes a list of excel files, sheets within them, and data within the sheets. There's an example file within the package to demonstrate the structure of the yaml file: \code{system.file("ennustedata", "testi.yaml", package = "pttrobo")}. The top-level list defines file names and the 2nd level defines sheet names. Under each sheet there's a list of data objects that describe what data is retrieved to populate the sheets. Each data object should at least contain an *id* to identify a data table in Robonomist Database. Additionally the data object can contain the following items:
+#' * **muunnos** This can take value "alkuperäinen", "vuosikeskiarvo", or "vuosisumma"
+#' * **ajanjakso** This can be set to "satovuosi" to aggregate annualy to intervals from July to June.
+#' * **tiedot** This shoud be a named list of variable names and values to be used as a filter for the data. The order of the named list is also used to arrage the data on to the excel sheets.
+#'
 #' @param file Path to yaml file
 #' @param xlsx_path A path to save excel files.
 #' @param start_year A numeric. Year to start data
-#'
-#' #' @export
+#' @examples
+#' \dontrun{
+#' esimerkkitiedosto <- system.file("ennustedata", "testi.yaml", package = "pttrobo")
+#' yaml_to_excel(esimerkkitiedosto, start_year = "2011")
+#' }
+#' @export
 yaml_to_excel <- function(file, xlsx_path = system.file("ennustedata", package = "pttrobo"), start_year) {
   y <- yaml::read_yaml(file)
   for(i_file in seq_along(y)) {

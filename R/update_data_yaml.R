@@ -5,7 +5,7 @@
 #' @export
 #' @examples
 #' yaml_files_ennustedata()
-#' yaml_files_ennustedata("ME)
+#' yaml_files_ennustedata("ME")
 yaml_files_ennustedata <- function(pattern = NULL){
   files <- list.files(path = system.file("ennustedata", package = "pttrobo"),
              pattern = "\\.yaml$",
