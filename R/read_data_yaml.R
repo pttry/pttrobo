@@ -39,10 +39,16 @@ muodosta_sarjat <- function(x, start_year) {
                  "Monthly" = 12)
 
   ## Aggregoi
-  if (x$muunnos == "alkuperäinen") {
+  if (x$muunnos == "alkuperäinen" && freq == 1) {
 
-    if (freq == 1) d <- mutate(d, time = lubridate::year(time))
-    d <- rename(d, Vuosi = time)
+    d <-
+      mutate(d, time = lubridate::year(time)) |>
+      rename(Vuosi = time)
+
+  } else if (x$muunnos == "alkuperäinen" && freq != 1) {
+    ## Aika-akseli "Vuosi" jätetään tyyppiin Date
+    d <-
+      rename(d, Vuosi = time)
 
   } else {
     fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
@@ -77,10 +83,15 @@ muodosta_sarjat <- function(x, start_year) {
   Muuttujat <- setdiff(names(d), "value")
   Järjestys <-
     purrr::map(Muuttujat, ~{
-      if (is.null(x$tiedot[[.x]])) {
+      if (.x == "Vuosi") {
+        if (lubridate::is.Date(d$Vuosi)) {
+          seq(make_date(start_year,1,1), max(d$Vuosi),
+              by = case_when(freq == 4 ~ "quarter", freq == 12 ~ "months"))
+        } else {
+          as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+        }
+      } else if (is.null(x$tiedot[[.x]])){
         unique(d[[.x]])
-      } else if (.x == "Vuosi") {
-        as.double(seq(as.numeric(start_year), max(d$Vuosi)))
       } else {
         x$tiedot[[.x]]
       }

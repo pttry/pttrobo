@@ -4,10 +4,18 @@
 \alias{yaml_to_excel}
 \title{Read data yaml file, get data, and output xlxs files}
 \usage{
-yaml_to_excel(file, start_year)
+yaml_to_excel(
+  file,
+  xlsx_path = system.file("ennustedata", package = "pttrobo"),
+  start_year
+)
 }
 \arguments{
-\item{file}{Path to yaml file
+\item{file}{Path to yaml file}
+
+\item{xlsx_path}{A path to save excel files.}
+
+\item{start_year}{A numeric. Year to start data
 
 #' @export}
 }
