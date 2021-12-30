@@ -1,0 +1,55 @@
+MEdata_Tuotantopanokset:
+  ostajahinta:
+  - id: StatFin/hin/ttohi/statfin_ttohi_pxt_11gv.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Maatalouden tuotantovälineiden ostohintaindeksin luokitus:
+      - 200000 MAATALOUDEN TUOTANTOTARVIKKEET JA PALVELUT (Panos 1)
+      - 201000 SIEMENET JA TAIMIMATERIAALI
+      - 202000 ENERGIA, VOITELUAINEET
+      - 202100 Sähkö
+      - 202200 Polttoaineet lämmitykseen
+      - 202300 Moottoripolttoaineet
+      - 202400 Voiteluaineet
+      - 203000 LANNOITTEET JA MAANPARANNUSAINEET
+      - 203100 Sekoittamattomat lannoitteet
+      - 203110 Typpilannoitteet
+      - 203200 Yhdistelmälannoitteet
+      - 203230 NPK-lannoitteet
+      - 203900 Muut lannoitteet, maanparannusaineet
+      - 204000 KASVINSUOJELUTUOTTEET JA TORJUNTA-AINEET
+      - 204100 Kasvitautien torjunta-aineet
+      - 204200 Tuholaisten torjunta-aineet
+      - 204300 Rikkakasvien torjunta-aineet
+      - 204900 Muut kasvinsuojelutuotteet
+      - 205000 ELÄINLÄÄKINTÄKULUT
+      - 206000 ELÄINTEN REHUT
+      - 206100 Sekoittamattomat rehut
+      - 206110 Viljat ja myllyjen sivutuotteet
+      - 206200 Rehuseokset
+      - 206210 Rehuseokset vasikoille
+      - 206220 Rehuseokset naudoille poislukien vasikat
+      - 206230 Rehuseokset sioille
+      - 206240 Rehuseokset siipikarjalle
+      - 206290 Muut rehuseokset
+      - 207000 KONEIDEN HUOLTO JA KORJAUS
+      - 208000 RAKENNUSTEN HUOLTO JA KORJAUS
+      - 209000 MUUT TAVARAT JA PALVELUT
+      - 210000 MAATALOUDEN INVESTOINTEIHIN KÄYTETYT TAVARAT JA PALVELUT (Panos 2)
+      - 211000 TARVIKKEET
+      - 211100 KONEET JA MUUT LAITTEET
+      - 211120 Viljelyyn käytettävät koneet ja laitteet
+      - 211130 Sadonkorjuuseen käytettävät koneet ja laitteet
+      - 211140 Maatalouskoneet ja -laitteet
+      - 211141 Kasvinviljelyssä käytettävät koneet ja laitteet
+      - 211142 Kotieläintuotannossa käytettävät koneet ja laitteet
+      - 211149 Muut maatalouden koneet ja laitteet
+      - 211200 KULJETUSKALUSTO
+      - 211210 Traktorit
+      - 212000 RAKENNUKSET
+      - 212100 MAATALOUSRAKENNUKSET (EI ASUINRAKENNUKSET)
+      - 219000 MUUTA
+      - 220000 MAATALOUDEN TUOTANTOVÄLINEIDEN OSTOHINTAINDEKSI YHTEENSÄ (Panos 1 +
+        Panos 2)
+      Tiedot:
+      - Maatalouden tuotantovälineiden ostohintaindeksi (2015=100)

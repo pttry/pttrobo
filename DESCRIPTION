@@ -1,14 +1,14 @@
 Package: pttrobo
 Type: Package
 Title: Automation of PTT data
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Janne", "Huovari", email = "janne.huovari@ptt.fi", role = c("aut", "cre")))
 Description: Automates data handling and processing in PTT.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
-Imports: 
+Roxygen: list(markdown = TRUE)
+Imports:
     magrittr,
     forcats,
     stringr,
@@ -28,4 +28,4 @@ Imports:
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools
-
+RoxygenNote: 7.1.2

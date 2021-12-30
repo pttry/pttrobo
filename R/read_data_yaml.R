@@ -1,16 +1,26 @@
 #' Read data yaml file, get data, and output xlxs files
 #'
+#' @details
+#' A *data yaml file* describes a list of excel files, sheets within them, and data within the sheets. There's an example file within the package to demonstrate the structure of the yaml file: \code{system.file("ennustedata", "testi.yaml", package = "pttrobo")}. The top-level list defines file names and the 2nd level defines sheet names. Under each sheet there's a list of data objects that describe what data is retrieved to populate the sheets. Each data object should at least contain an *id* to identify a data table in Robonomist Database. Additionally the data object can contain the following items:
+#' * **muunnos** This can take value "alkuperäinen", "vuosikeskiarvo", or "vuosisumma"
+#' * **ajanjakso** This can be set to "satovuosi" to aggregate annualy to intervals from July to June.
+#' * **tiedot** This shoud be a named list of variable names and values to be used as a filter for the data. The order of the named list is also used to arrage the data on to the excel sheets.
+#'
 #' @param file Path to yaml file
 #' @param xlsx_path A path to save excel files.
 #' @param start_year A numeric. Year to start data
-#'
-#' #' @export
+#' @examples
+#' \dontrun{
+#' esimerkkitiedosto <- system.file("ennustedata", "testi.yaml", package = "pttrobo")
+#' yaml_to_excel(esimerkkitiedosto, start_year = "2011")
+#' }
+#' @export
 yaml_to_excel <- function(file, xlsx_path = system.file("ennustedata", package = "pttrobo"), start_year) {
   y <- yaml::read_yaml(file)
   for(i_file in seq_along(y)) {
     filename <- file.path(xlsx_path, paste0(names(y[i_file]), ".xlsx"))
     d <- koosta_tiedoston_datat(y[[i_file]], start_year = start_year)
-    openxlsx::write.xlsx(d, filename, overwrite = TRUE)
+    openxlsx::write.xlsx(d, filename, overwrite = TRUE, keepNA = TRUE)
     cli_alert_success("Wrote {filename}")
   }
   invisible(NULL)
@@ -39,10 +49,16 @@ muodosta_sarjat <- function(x, start_year) {
                  "Monthly" = 12)
 
   ## Aggregoi
-  if (x$muunnos == "alkuperäinen") {
+  if (x$muunnos == "alkuperäinen" && freq == 1) {
 
-    if (freq == 1) d <- mutate(d, time = lubridate::year(time))
-    d <- rename(d, Vuosi = time)
+    d <-
+      mutate(d, time = lubridate::year(time)) |>
+      rename(Vuosi = time)
+
+  } else if (x$muunnos == "alkuperäinen" && freq != 1) {
+    ## Aika-akseli "Vuosi" jätetään tyyppiin Date
+    d <-
+      rename(d, Vuosi = time)
 
   } else {
     fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
@@ -77,10 +93,15 @@ muodosta_sarjat <- function(x, start_year) {
   Muuttujat <- setdiff(names(d), "value")
   Järjestys <-
     purrr::map(Muuttujat, ~{
-      if (is.null(x$tiedot[[.x]])) {
+      if (.x == "Vuosi") {
+        if (lubridate::is.Date(d$Vuosi)) {
+          seq(make_date(start_year,1,1), max(d$Vuosi),
+              by = case_when(freq == 4 ~ "quarter", freq == 12 ~ "months"))
+        } else {
+          as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+        }
+      } else if (is.null(x$tiedot[[.x]])){
         unique(d[[.x]])
-      } else if (.x == "Vuosi") {
-        as.double(seq(as.numeric(start_year), max(d$Vuosi)))
       } else {
         x$tiedot[[.x]]
       }

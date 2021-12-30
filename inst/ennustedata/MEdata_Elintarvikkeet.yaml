@@ -1,0 +1,113 @@
+MEdata_Elintarvikkeet:
+  khi_2015_v:
+  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xc.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hyödyke:
+      - 0 Kuluttajahintaindeksi
+      - 01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT
+      - 01.1 Elintarvikkeet
+      - 01.1.1 Viljatuotteet ja leipä
+      - 01.1.2 Liha
+      - 01.1.3 Kala ja äyriäiset
+      - 01.1.4 Maitotuotteet, juusto ja kananmunat
+      - 01.1.5 Öljyt ja rasvat
+      - 01.1.6 Hedelmät ja marjat
+      - 01.1.7 Vihannekset
+      - 01.1.8 Sokeri, hillot, hunaja, suklaa ja makeiset
+      - 01.1.9 Ruokatuotteet, muualle luokittelemattomat
+      - 01.2 Alkoholittomat juomat
+      - 01.2.1 Kahvi, tee ja kaakao
+      - 01.2.2 Kivennäisvedet, virvoitusjuomat, hedelmä- ja vihannesmehut
+      Tiedot:
+      - Indeksipisteluku
+  khi_2010_v:
+  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hyödyke:
+      - 0 KULUTTAJAHINTAINDEKSI
+      - 01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT
+      - 01.1 Elintarvikkeet
+      - 01.1.1 Viljatuotteet ja leipä
+      - 01.1.2 Liha
+      - 01.1.3 Kala ja äyriäiset
+      - 01.1.4 Maitotuotteet, juusto ja kananmunat
+      - 01.1.5 Öljyt ja rasvat
+      - 01.1.6 Hedelmät ja marjat
+      - 01.1.7 Vihannekset
+      - 01.1.8 Sokeri, hillot, hunaja, suklaa ja makeiset
+      - 01.1.9 Ruokavalmisteet, muualla luokittelemattomat
+      - 01.2 Alkoholittomat juomat
+      - 01.2.1 Kahvi, tee ja kaakao
+      - 01.2.2 Kivennäisvedet, virvoitusjuomat, hedelmä- ja vihannesmehut
+      Tiedot:
+      - Pisteluku
+  khi_2015_kk:
+  - id: StatFin/hin/khi/kk/statfin_khi_pxt_11xb.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hyödyke:
+      - 0 Kuluttajahintaindeksi
+      - 01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT
+      - 01.1 Elintarvikkeet
+      - 01.1.1 Viljatuotteet ja leipä
+      - 01.1.2 Liha
+      - 01.1.3 Kala ja äyriäiset
+      - 01.1.4 Maitotuotteet, juusto ja kananmunat
+      - 01.1.5 Öljyt ja rasvat
+      - 01.1.6 Hedelmät ja marjat
+      - 01.1.7 Vihannekset
+      - 01.1.8 Sokeri, hillot, hunaja, suklaa ja makeiset
+      - 01.1.9 Ruokatuotteet, muualle luokittelemattomat
+      - 01.2 Alkoholittomat juomat
+      - 01.2.1 Kahvi, tee ja kaakao
+      - 01.2.2 Kivennäisvedet, virvoitusjuomat, hedelmä- ja vihannesmehut
+      Tiedot:
+      - Indeksipisteluku
+  khi_2010_kk:
+  - id: StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hyödyke:
+      - 0 KULUTTAJAHINTAINDEKSI
+      - 01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT
+      - 01.1 Elintarvikkeet
+      - 01.1.1 Viljatuotteet ja leipä
+      - 01.1.2 Liha
+      - 01.1.3 Kala ja äyriäiset
+      - 01.1.4 Maitotuotteet, juusto ja kananmunat
+      - 01.1.5 Öljyt ja rasvat
+      - 01.1.6 Hedelmät ja marjat
+      - 01.1.7 Vihannekset
+      - 01.1.8 Sokeri, hillot, hunaja, suklaa ja makeiset
+      - 01.1.9 Ruokavalmisteet, muualla luokittelemattomat
+      - 01.2 Alkoholittomat juomat
+      - 01.2.1 Kahvi, tee ja kaakao
+      - 01.2.2 Kivennäisvedet, virvoitusjuomat, hedelmä- ja vihannesmehut
+      Tiedot:
+      - Pisteluku
+  khi_painot:
+  - id: StatFin/hin/khi/vv/statfin_khi_pxt_13a8.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hyodyke:
+      - 0 Kuluttajahintaindeksi
+      - 01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT
+      - 01.1 Elintarvikkeet
+      - 01.1.1 Viljatuotteet ja leipä
+      - 01.1.2 Liha
+      - 01.1.3 Kala ja äyriäiset
+      - 01.1.4 Maitotuotteet, juusto ja kananmunat
+      - 01.1.5 Öljyt ja rasvat
+      - 01.1.6 Hedelmät ja marjat
+      - 01.1.7 Vihannekset
+      - 01.1.8 Sokeri, hillot, hunaja, suklaa ja makeiset
+      - 01.1.9 Ruokatuotteet, muualle luokittelemattomat
+      - 01.2 Alkoholittomat juomat
+      - 01.2.1 Kahvi, tee ja kaakao
+      - 01.2.2 Kivennäisvedet, virvoitusjuomat, hedelmä- ja vihannesmehut
+      Tiedot:
+      - Painopromille
+      Indeksisarja:
+      - KHI

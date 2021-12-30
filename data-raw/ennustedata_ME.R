@@ -1,10 +1,13 @@
 # Maa- ja elintarviketalouden ennusteen datojen tuonti
 
 data_get("eurostat/aact_eaa01") |>
-  filter(indic_ag == "Production value at basic price",
-         geo == "Finland",
-         unit == "Million euro") |>
-  data_to_yaml(file = "data-raw/eea.yaml", välilehti = "eaa")
+  # filter(indic_ag == "Production value at basic price",
+  #        geo == "Finland",
+  #        unit == "Million euro") |>
+  data_to_yaml(välilehti = "eaa")
+
+data_get("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
+  data_to_yaml(välilehti = "taloustili")
 
 data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px") |>
   filter(Hinta == "Perushinta 1)") |> View()
@@ -41,11 +44,26 @@ data_get("luke/02_Maatalous/04_Tuotanto/06_Lihantuotanto/02_Kuukausitilastot/02_
 data_get("luke/02_Maatalous/08_Muut/02_Ravintotase/01_Elintarvikkeiden_kulutus.px") |>
   data_to_yaml(muunnos = "vuosisumma", välilehti = "liha_kulutus")
 
+data_get("StatFin/hin/ttohi/statfin_ttohi_pxt_11gv.px") |>
+  data_to_yaml(muunnos = "vuosikeskiarvo", välilehti = "ostajahinta")
+
+data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xb.px") |>
+  filter(stringr::str_starts(Hyödyke, "01\\.\\d\\.\\d ")) |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "khi_2015")
+data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xb.px") |>
+  filter(stringr::str_starts(Hyödyke, "01")) |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "khi_2015")
+data_get("StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px") |>
+  filter(stringr::str_starts(Hyödyke, "01")) |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "khi_2010")
 
 
-ME_yfile <- system.file("ennustedata", "ME_data.yaml", package = "pttrobo")
-yaml_to_excel(file = ME_yfile, start_year = 2010)
+# ME_yfile <- system.file("ennustedata", "ME_data.yaml", package = "pttrobo")
+# yaml_to_excel(file = ME_yfile, start_year = 2010)
 
 
-yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
 
+
+# yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
+ptt_update_ennustedata("Elint", start_year = 2012)
+ptt_copy_ennustedata("ME")
