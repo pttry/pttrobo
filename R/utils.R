@@ -369,7 +369,7 @@ ptt_plot <- function(){
                                        rounding = 1){
 
     color_vector  <- c(ptt_vihrea, ptt_sininen)
-    color_ennusteet <- c("rgba(91, 130, 51, 0.5)", "rgba(47, 122, 185, 0.5)")
+    color_ennusteet <- c("rgba(91, 130, 51, 0.7)", "rgba(47, 122, 185, 0.7)")
 
     if(is.na(labels$subtitle)){
       labels$subtitle <- ""
@@ -450,3 +450,109 @@ ptt_plot <- function(){
   )
 }
 
+#' Read output kuvio yaml file, containing specification for picture
+#' Output list containing data for plotting and label
+#'
+#' @param file Path to yaml file
+#' @return list object
+#' @examples
+#' \dontrun{
+#'yaml_to_plotly_data(file = system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
+#'                    kuvion_nimi = "bkt_ja_kulutus")
+#' @export
+#' @import yaml robonomistServer
+yaml_to_plotly_data <- function(file, kuvion_nimi) {
+  y <- yaml::read_yaml(file) %>% .[[kuvion_nimi]]
+
+  get_d <- function(y, sarja_nro){
+    d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
+
+    d <- robonomistServer::data_get(d_specs$id, tidy_time=TRUE)
+    for(name in names(d_specs$Tiedot)){
+      d <- d %>%
+        filter(d[name] == d_specs$Tiedot[name][[1]])
+    }
+    d
+  }
+
+  # OLETETAAN ETTÄ 2 SARJAA (todo: lisää 1 sarja tai jos 3 sarjaa)
+  d1 <- get_d(y, 1)
+  d2 <- get_d(y, 2)
+  serie_name_1 <- y$sarjat[[1]]$nimi
+  serie_name_2 <- y$sarjat[[2]]$nimi
+  return(
+    list(
+      d1 = d1,
+      serie_name_1 = serie_name_1,
+      d2 = d2,
+      serie_name_2 = serie_name_2,
+      labels = list(
+        "title" = y$otsikko,
+        "subtitle" = y$alaotsikko, # toimii y-akselin selitteenä
+        "ylab"= y$alaotsikko,
+        "caption" = y$viite
+      )
+    )
+  )
+}
+
+#' Read ennustedata from excel file and put it into plotly friendly time serie
+#'
+#' @param excel_path Path to excel file
+#' @param serie_name name of the serie/identifier
+#'
+#' @return list object containing last two predictions for the serie
+#' @examples
+#' \dontrun{
+#'ennusteet_from_excel(excel_path = "ptt_ennusteet_KT.xlsx",
+#'                    serie_name = StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
+#' @export
+#' @import readxl
+ennusteet_from_excel <- function(excel_path, serie_name){
+  prediction_data <- readxl::read_excel(excel_path) %>%
+    filter(str_detect(sarja, !!serie_name))
+
+  last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
+
+  create_ennuste_trace <- function(time, value){
+    times <- c(as.Date(paste0(time, "-02-01")), as.Date(paste0(time, "-11-01")))
+    values <- c(value, value)
+    tibble(
+      time = times,
+      value = values
+    )
+  }
+
+  second_last_prediction <-
+    list(
+      time = names(last_two_preds) %>% first(),
+      value = last_two_preds %>% first()
+    )
+
+  last_prediction <-
+    list(
+      time = names(last_two_preds) %>% last(),
+      value = last_two_preds %>% last()
+    )
+
+  d_last_pred <- create_ennuste_trace(last_prediction$time, last_prediction$value)
+  d_second_last_pred <- create_ennuste_trace(second_last_prediction$time, second_last_prediction$value)
+  list("viimeisin_ennuste" = d_last_pred,
+       "toiseksi_viimeisin_ennuste" = d_second_last_pred)
+}
+
+
+#' Transforms absolute values to yearly change
+#' @param tibble
+#' @return tibble
+#' @examples
+#' \dontrun{
+#'yearly_change(data = robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
+#'                      filter(str_detect(Taloustoimi, "B1GMH")) %>%
+#'                      filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
+#' @export
+yearly_change <- function(data){
+  data %>%
+    mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
+    drop_na()
+}

@@ -88,3 +88,33 @@ piirtaja$two_lines_with_preds(labels=labels, d1=d1, d1_ennusteet=d1_ennusteet, s
                               d2=d2, d2_ennusteet=d2_ennusteet, serie_name_2 = serie_name_2,
                               rounding= 2) 
 ```
+
+
+```{r, message = FALSE}
+library(pttrobo)
+library(tidyverse)
+
+# alustetaan piirtäjä
+piirtaja <- pttrobo::ptt_plot()
+
+# muodostetaan kuvion käyttämä historiadata ja määritykset käyttäen yaml tiedostoa
+file_path <- system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo")
+kuvion_nimi <- "bkt_ja_kulutus"
+kuvio_spec <- pttrobo::yaml_to_plotly_data(file=file_path, kuvion_nimi=kuvion_nimi)
+
+# haetaan kuvion käyttämä ennustedata 
+# kuviossa on sekä bkt että kulutus sarja. Seuraavassa Serie 1 on bkt ja serie 2 kulutus.
+ennustedata_path <- "ptt_ennusteet_KT.xlsx"
+ennustedata_serie_name_1 <- "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015"
+ennustedata_serie_name_2 <- "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015"
+
+ennustedata_serie_1 <- pttrobo::ennusteet_from_excel(ennustedata_path, ennustedata_serie_name_1)
+ennustedata_serie_2 <- pttrobo::ennusteet_from_excel(ennustedata_path, ennustedata_serie_name_2)
+
+# piirretään kuvio. Huom. Tehdään transform_data funktiolla tarvittaessa vuosimuutos transformaatio
+piirtaja$two_lines_with_preds(d1 = yearly_change(kuvio_spec$d1), d1_ennusteet = ennustedata_serie_1, serie_name_1 = kuvio_spec$serie_name_1,
+                              d2 = yearly_change(kuvio_spec$d2), d2_ennusteet = ennustedata_serie_2, serie_name_2 = kuvio_spec$serie_name_2,
+                              labels = kuvio_spec$labels)
+
+
+```
