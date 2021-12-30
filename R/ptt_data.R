@@ -22,4 +22,13 @@ ptt_data_robo <- function(..., labels = FALSE){
     droplevels()
 }
 
+
+#' @describeIn ptt_data_ropo With labels TRUE
+#' @export
+#'
+ptt_data_robo_l <- function(..., labels = TRUE){
+  ptt_data_robo(..., labels = labels)
+}
+
+
 utils::globalVariables("where")
