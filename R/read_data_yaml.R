@@ -20,7 +20,7 @@ yaml_to_excel <- function(file, xlsx_path = system.file("ennustedata", package =
   for(i_file in seq_along(y)) {
     filename <- file.path(xlsx_path, paste0(names(y[i_file]), ".xlsx"))
     d <- koosta_tiedoston_datat(y[[i_file]], start_year = start_year)
-    openxlsx::write.xlsx(d, filename, overwrite = TRUE)
+    openxlsx::write.xlsx(d, filename, overwrite = TRUE, keepNA = TRUE)
     cli_alert_success("Wrote {filename}")
   }
   invisible(NULL)

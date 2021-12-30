@@ -65,5 +65,5 @@ data_get("StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px") |>
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("Talous", start_year = 2012)
+ptt_update_ennustedata("Elint", start_year = 2012)
 ptt_copy_ennustedata("ME")
