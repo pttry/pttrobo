@@ -377,20 +377,13 @@ ptt_plot <- function(){
 
     add_two_latest_ennuste_traces <- function(p, ennuste_datat, color_selection){
       p %>%
-        add_trace(x = ennuste_datat$viimeisin_ennuste$time,
-                y = ennuste_datat$viimeisin_ennuste$value,
+        add_trace(x = ennuste_datat$time,
+                y = ennuste_datat$value,
                 mode='lines',
                 line = list(color = color_ennusteet[color_selection], width = 3),
-                name=paste0("Ennuste ", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first()),
-                hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first(),
-                                       " vuosiennuste", "<extra></extra>")) %>%
-        add_trace(x = ennuste_datat$toiseksi_viimeisin_ennuste$time,
-                  y = ennuste_datat$toiseksi_viimeisin_ennuste$value,
-                  mode='lines',
-                  line = list(color = color_ennusteet[color_selection], width = 3),
-                  name=paste0("Ennuste ", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first()),
-                  hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", ennuste_datat$toiseksi_viimeisin_ennuste$time %>% lubridate::year() %>% first(),
-                                         " vuosiennuste", "<extra></extra>"))
+                name=paste0("Ennuste"), #", ennuste_datat$viimeisin_ennuste$time %>% lubridate::year() %>% first()),
+                hovertemplate = paste0("%{y:.", rounding, "f} ", labels$ylab, "<br>", "%{x|%Y}",
+                                       " vuosiennuste", "<extra></extra>"))
     }
 
     plotly::plot_ly() %>%
@@ -505,18 +498,29 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
 #' @examples
 #' \dontrun{
 #'ennusteet_from_excel(excel_path = "ptt_ennusteet_KT.xlsx",
-#'                    serie_name = StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
+#'                    serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
 #' @export
 #' @import readxl
-ennusteet_from_excel <- function(excel_path, serie_name){
+ennuste_time_serie_from_excel <- function(excel_path, serie_name){
   prediction_data <- readxl::read_excel(excel_path) %>%
     filter(str_detect(sarja, !!serie_name))
 
   last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
 
   create_ennuste_trace <- function(time, value){
-    times <- c(as.Date(paste0(time, "-02-01")), as.Date(paste0(time, "-11-01")))
-    values <- c(value, value)
+    times <- c(as.Date(paste0(time, "-02-01")),
+               as.Date(paste0(time, "-03-01")),
+               as.Date(paste0(time, "-04-01")),
+               as.Date(paste0(time, "-05-01")),
+               as.Date(paste0(time, "-06-01")),
+               as.Date(paste0(time, "-07-01")),
+               as.Date(paste0(time, "-08-01")),
+               as.Date(paste0(time, "-09-01")),
+               as.Date(paste0(time, "-10-01")),
+               as.Date(paste0(time, "-11-01")),
+               NA,
+               NA)
+    values <- rep(value,12)
     tibble(
       time = times,
       value = values
@@ -537,8 +541,10 @@ ennusteet_from_excel <- function(excel_path, serie_name){
 
   d_last_pred <- create_ennuste_trace(last_prediction$time, last_prediction$value)
   d_second_last_pred <- create_ennuste_trace(second_last_prediction$time, second_last_prediction$value)
-  list("viimeisin_ennuste" = d_last_pred,
-       "toiseksi_viimeisin_ennuste" = d_second_last_pred)
+
+  # palautetaan "pseudo" ennustesarja, joka voidaan esittää plotly kuvaajassa
+  d_second_last_pred %>%
+    rbind( d_last_pred)
 }
 
 

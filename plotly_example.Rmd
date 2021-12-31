@@ -108,8 +108,8 @@ ennustedata_path <- "ptt_ennusteet_KT.xlsx"
 ennustedata_serie_name_1 <- "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015"
 ennustedata_serie_name_2 <- "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015"
 
-ennustedata_serie_1 <- pttrobo::ennusteet_from_excel(ennustedata_path, ennustedata_serie_name_1)
-ennustedata_serie_2 <- pttrobo::ennusteet_from_excel(ennustedata_path, ennustedata_serie_name_2)
+ennustedata_serie_1 <- pttrobo::ennuste_time_serie_from_excel(ennustedata_path, ennustedata_serie_name_1)
+ennustedata_serie_2 <- pttrobo::ennuste_time_serie_from_excel(ennustedata_path, ennustedata_serie_name_2)
 
 # piirretään kuvio. Huom. Tehdään transform_data funktiolla tarvittaessa vuosimuutos transformaatio
 piirtaja$two_lines_with_preds(d1 = yearly_change(kuvio_spec$d1), d1_ennusteet = ennustedata_serie_1, serie_name_1 = kuvio_spec$serie_name_1,
