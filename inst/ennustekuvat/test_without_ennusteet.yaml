@@ -1,0 +1,23 @@
+bkt_ja_kulutus:
+  otsikko: "BKT ja kulutus"
+  alaotsikko: "%"
+  viite: "Lähde: Tilastokeskus."
+  sarjat:
+    - nimi: BKT
+      robonomist_data:
+        id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+        muunnos: vuosimuutos
+        Tiedot:
+          Taloustoimi:
+            - B1GMH Bruttokansantuote markkinahintaan
+          Tiedot:
+            - Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa
+    - nimi: Yksityinen kulutus
+      robonomist_data:
+        id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+        muunnos: vuosimuutos
+        Tiedot:
+          Taloustoimi:
+            - P3KS14_S15 Yksityiset kulutusmenot, menona
+          Tiedot:
+            - Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa
