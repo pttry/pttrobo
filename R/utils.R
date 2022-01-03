@@ -443,7 +443,8 @@ ptt_plot <- function(){
   )
 }
 
-#' Read output kuvio yaml file, containing specification for picture
+#' Read output kuvio yaml file, containing specification for picture. Can handle up to 3 different data spesifications.
+#'
 #' Output list containing data for plotting and label
 #'
 #' @param file Path to yaml file
@@ -453,32 +454,51 @@ ptt_plot <- function(){
 #'yaml_to_plotly_data(file = system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
 #'                    kuvion_nimi = "bkt_ja_kulutus")
 #' @export
-#' @import yaml robonomistServer
+#' @import yaml robonomistServer rlang
 yaml_to_plotly_data <- function(file, kuvion_nimi) {
   y <- yaml::read_yaml(file) %>% .[[kuvion_nimi]]
 
-  get_d <- function(y, sarja_nro){
+
+  get_data <- function(y, sarja_nro){
     d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
 
     d <- robonomistServer::data_get(d_specs$id, tidy_time=TRUE)
     for(name in names(d_specs$Tiedot)){
-      d <- d %>%
+      d <- d |>
         filter(d[name] == d_specs$Tiedot[name][[1]])
     }
     d
   }
 
-  # OLETETAAN ETTÄ 2 SARJAA (todo: lisää 1 sarja tai jos 3 sarjaa)
-  d1 <- get_d(y, 1)
-  d2 <- get_d(y, 2)
-  serie_name_1 <- y$sarjat[[1]]$nimi
-  serie_name_2 <- y$sarjat[[2]]$nimi
+  id_from_yaml <- function(y, sarja_nro){
+    d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
+
+    id_alkuosa <- paste0("data('", d_specs$id, "', tidy_time=TRUE)")
+    id_loppuosa <- ""
+    for(name in names(d_specs$Tiedot)){
+      id_loppuosa <- paste0(id_loppuosa, "|>filter(",name,"=='",d_specs$Tiedot[name][[1]],"')")
+    }
+    paste0(id_alkuosa, id_loppuosa)
+  }
+
+  datas <- list()
+  length_datas <- y$sarjat %>% length()
+  for(i in 1:length_datas){
+    #datas[paste0("data_",i)] <- list()
+    print(i)
+    listan_nimi <- paste0("data_",i)
+    listan_objekti <- list(
+      "data" = get_data(y,i),
+      "serie_name" = y$sarjat[[i]]$nimi,
+      "datahaku_id" = id_from_yaml(y, i)
+    )
+    lista_objekti <- rlang::list2(!!listan_nimi := listan_objekti)
+    datas <- c(datas, lista_objekti)
+  }
+
   return(
     list(
-      d1 = d1,
-      serie_name_1 = serie_name_1,
-      d2 = d2,
-      serie_name_2 = serie_name_2,
+      "datas" = datas,
       labels = list(
         "title" = y$otsikko,
         "subtitle" = y$alaotsikko, # toimii y-akselin selitteenä
