@@ -1,0 +1,55 @@
+MEdata_Tuotanto:
+  teollisuus_vol_2015_kk:
+  - id: StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px
+    muunnos: alkuperäinen
+    tiedot:
+      Toimiala (TOL 2008):
+      - 10 Elintarvikkeiden valmistus
+      - 10-11 Elintarviketeollisuus
+      - 11 Juomien valmistus
+      Tiedot:
+      - Alkuperäinen indeksisarja
+      - Työpäiväkorjattu indeksisarja
+      - Kausitasoitettu indeksisarja
+      - Trendisarja
+  teollisuus_vol_2015_v:
+  - id: StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Toimiala (TOL 2008):
+      - 10 Elintarvikkeiden valmistus
+      - 10-11 Elintarviketeollisuus
+      - 11 Juomien valmistus
+      Tiedot:
+      - Alkuperäinen indeksisarja
+      - Työpäiväkorjattu indeksisarja
+  teollisuus_liikevaihto_2015_kk:
+  - id: StatFin/teo/tlv/statfin_tlv_pxt_112c.px
+    muunnos: alkuperäinen
+    tiedot:
+      Toimiala:
+      - 10 Elintarvikkeiden valmistus
+      - 10-11 Elintarviketeollisuus
+      - 11 Juomien valmistus
+      Muuttuja:
+      - Liikevaihto
+      Tiedot:
+      - Alkuperäinen indeksisarja
+      - Työpäiväkorjattu indeksisarja
+      - Kausitasoitettu indeksisarja
+      - Trendisarja
+  teollisuus_liikevaihto_2015_v:
+  - id: StatFin/teo/tlv/statfin_tlv_pxt_112c.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Toimiala:
+      - 10 Elintarvikkeiden valmistus
+      - 10-11 Elintarviketeollisuus
+      - 11 Juomien valmistus
+      Muuttuja:
+      - Liikevaihto
+      Tiedot:
+      - Alkuperäinen indeksisarja
+      - Työpäiväkorjattu indeksisarja
+      - Kausitasoitettu indeksisarja
+      - Trendisarja

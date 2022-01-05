@@ -1,5 +1,7 @@
 # Maa- ja elintarviketalouden ennusteen datojen tuonti
 
+library(pttdatahaku)
+
 data_get("eurostat/aact_eaa01") |>
   # filter(indic_ag == "Production value at basic price",
   #        geo == "Finland",
@@ -61,9 +63,16 @@ data_get("StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px") |>
 # ME_yfile <- system.file("ennustedata", "ME_data.yaml", package = "pttrobo")
 # yaml_to_excel(file = ME_yfile, start_year = 2010)
 
+data_get("StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px") |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "teollisuus_vol_2015")
+
+data_get("StatFin/teo/tlv/statfin_tlv_pxt_112c.px") |>
+  data_to_yaml(muunnos = "alkuperäinen", välilehti = "teollisuus_liikvaihto_2015_kk") |>
+  conc()
+
 
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("Elint", start_year = 2012)
+ptt_update_ennustedata("Tuotanto", start_year = 2012)
 ptt_copy_ennustedata("ME")
