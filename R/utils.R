@@ -453,6 +453,7 @@ ptt_plot <- function(){
 #' \dontrun{
 #'yaml_to_plotly_data(file = system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
 #'                    kuvion_nimi = "bkt_ja_kulutus")
+#'}
 #' @export
 #' @import yaml robonomistServer rlang
 yaml_to_plotly_data <- function(file, kuvion_nimi) {
@@ -519,6 +520,7 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
 #' \dontrun{
 #'ennusteet_from_excel(excel_path = "ptt_ennusteet_KT.xlsx",
 #'                    serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
+#' }
 #' @export
 #' @import readxl
 ennuste_time_serie_from_excel <- function(excel_path, serie_name){
@@ -569,13 +571,14 @@ ennuste_time_serie_from_excel <- function(excel_path, serie_name){
 
 
 #' Transforms absolute values to yearly change
-#' @param tibble
+#' @param tibble data to be transformed
 #' @return tibble
 #' @examples
 #' \dontrun{
 #'yearly_change(data = robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
 #'                      filter(str_detect(Taloustoimi, "B1GMH")) %>%
 #'                      filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
+#'}
 #' @export
 yearly_change <- function(data){
   data %>%
