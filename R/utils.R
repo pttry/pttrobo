@@ -364,7 +364,7 @@ ptt_plot <- function(){
   }
 
   plot_2_series_with_preds <- function(labels, d1, d1_ennusteet, serie_name_1, d2, d2_ennusteet, serie_name_2,
-                                       dataspec_1 = NULL, dataspec_2 = NULL, ennuste_path = NULL,
+                                       dataspec_1 = NULL, dataspec_2 = NULL, ennuste_path = NULL, from_year = NULL,
                                        alaviite = "",
                                        source_y_adjustment = -0.22, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.12,
                                        top_margin = 80, bottom_margin = 85,
@@ -400,6 +400,11 @@ ptt_plot <- function(){
        }
        serie_name_2 <- dataspec_2$serie_name
        d2_ennusteet <- ennuste_time_serie_from_excel(ennuste_path, dataspec_2$datahaku_id)
+    }
+
+    if(!is.null(from_year)){
+      d1 <- d1 %>% filter(lubridate::year(time) >= from_year)
+      d2 <- d2 %>% filter(lubridate::year(time) >= from_year)
     }
 
     add_two_latest_ennuste_traces <- function(p, ennuste_datat, color_selection){
@@ -459,7 +464,6 @@ ptt_plot <- function(){
              dragmode = FALSE
       )
   }
-
   list(
     "line" = plot_line,
     "lines" = plot_lines,
@@ -512,8 +516,6 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
   datas <- list()
   length_datas <- y$sarjat %>% length()
   for(i in 1:length_datas){
-    #datas[paste0("data_",i)] <- list()
-    print(i)
     listan_nimi <- paste0("data_",i)
     listan_objekti <- list(
       "data" = get_data(y,i),
@@ -625,7 +627,8 @@ yearly_change <- function(data){
 #'  excel_path = "ptt_ennusteet_KT_uusi_sarja_id.xlsx")
 #'}
 #' @export
-draw_ennuste <- function(yaml_path, yaml_kuvion_nimi, excel_path){
+#' @import plotly htmltools RCurl lubridate
+draw_ennuste <- function(yaml_path, yaml_kuvion_nimi, excel_path, from_year=NULL){
   piirtaja <- pttrobo::ptt_plot()
   kuvio_spec <- pttrobo::yaml_to_plotly_data(file=yaml_path, kuvion_nimi=yaml_kuvion_nimi)
 
@@ -636,7 +639,8 @@ draw_ennuste <- function(yaml_path, yaml_kuvion_nimi, excel_path){
         dataspec_1 = kuvio_spec$datas$data_1,
         dataspec_2 = kuvio_spec$datas$data_2,
         ennuste_path = excel_path,
-        labels = kuvio_spec$labels
+        labels = kuvio_spec$labels,
+        from_year = from_year
       )
     )
   }

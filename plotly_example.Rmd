@@ -158,16 +158,27 @@ piirtaja$two_lines_with_preds(
 ```
 
 ```{r, message = FALSE}
-# 3. esimerkki. Kuvion voi piirtää vielä automatisoidummin käyttäen 
+# 3. esimerkki. Kuvion voi piirtää vielä automatisoidummin 
 # parametreina pelkästään yaml tiedoston polkua sekä ennuste-excelin polkua.
 
-# käytetään draw_ennuste funktiota, joka tarvitsee parametreikseen 
-# yaml_path (polku kuvion/kuviot spesifioivaan yaml tiedostoon)
-# yaml_kuvion_nimi (yaml tiedostossa annettu nimi kuvion speksille) 
-# sekä excel_path (polku ennuste-exceliin)
+# käytetään draw_ennuste funktiota, joka tarvitsee parametreikseen:
+  # yaml_path (polku kuvion/kuviot spesifioivaan yaml tiedostoon)
+  # yaml_kuvion_nimi (yaml tiedostossa annettu nimi kuvion speksille) 
+  # excel_path (polku ennuste-exceliin)
+  # optional from_year (rajaa näytettävät vuodet alkamaan tästä vuodesta)
 
 library(pttrobo)
+
 draw_ennuste(yaml_path= system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
      yaml_kuvion_nimi = "bkt_ja_kulutus",
      excel_path = "ptt_ennusteet_KT_uusi_sarja_id.xlsx")
+
+
+# rajataan graafi 2015 vuodesta eteenpäin
+draw_ennuste(
+  yaml_path= system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
+  yaml_kuvion_nimi = "bkt_ja_kulutus",
+  excel_path = "ptt_ennusteet_KT_uusi_sarja_id.xlsx",
+  from_year = 2015
+)
 ```
