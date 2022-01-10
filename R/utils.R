@@ -363,7 +363,9 @@ ptt_plot <- function(){
     prediction_data$sarja_nmi
   }
 
-  plot_2_series_with_preds <- function(labels, d1, d1_ennusteet, serie_name_1, d2, d2_ennusteet, serie_name_2, alaviite = "",
+  plot_2_series_with_preds <- function(labels, d1, d1_ennusteet, serie_name_1, d2, d2_ennusteet, serie_name_2,
+                                       dataspec_1 = NULL, dataspec_2 = NULL, ennuste_path = NULL,
+                                       alaviite = "",
                                        source_y_adjustment = -0.22, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.12,
                                        top_margin = 80, bottom_margin = 85,
                                        rounding = 1){
@@ -373,6 +375,31 @@ ptt_plot <- function(){
 
     if(is.na(labels$subtitle)){
       labels$subtitle <- ""
+    }
+
+    # jos määritelty dataspec_1, 2 sekä ennuste path, käytetään näitä
+    if (!(is.null(dataspec_1) || is.null(dataspec_2) || is.null(ennuste_path))){
+      # dataspec 1 perusteellla määrittelyt
+       d1 <- dataspec_1$data
+       # tehdään muunnos jos määritelty
+       if (!is.null(dataspec_1$muunnos)){
+         if(dataspec_1$muunnos == "vuosimuutos"){
+           d1 <- d1 %>% yearly_change()
+         }
+       }
+       serie_name_1 <- dataspec_1$serie_name
+       d1_ennusteet <- ennuste_time_serie_from_excel(ennuste_path, dataspec_1$datahaku_id)
+
+       # dataspec_2 perusteella määrittelyt
+       d2 <- dataspec_2$data
+       # tehdään muunnos jos määritelty
+       if (!is.null(dataspec_2$muunnos)){
+         if(dataspec_2$muunnos == "vuosimuutos"){
+           d2 <- d2 %>% yearly_change()
+         }
+       }
+       serie_name_2 <- dataspec_2$serie_name
+       d2_ennusteet <- ennuste_time_serie_from_excel(ennuste_path, dataspec_2$datahaku_id)
     }
 
     add_two_latest_ennuste_traces <- function(p, ennuste_datat, color_selection){
@@ -491,6 +518,7 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
     listan_objekti <- list(
       "data" = get_data(y,i),
       "serie_name" = y$sarjat[[i]]$nimi,
+      "muunnos" = y$sarjat[[i]]$robonomist_data$muunnos,
       "datahaku_id" = id_from_yaml(y, i)
     )
     lista_objekti <- rlang::list2(!!listan_nimi := listan_objekti)
@@ -525,7 +553,7 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
 #' @import readxl
 ennuste_time_serie_from_excel <- function(excel_path, serie_name){
   prediction_data <- readxl::read_excel(excel_path) %>%
-    filter(str_detect(sarja, !!serie_name))
+    filter(sarja ==serie_name)
 
   last_two_preds <- prediction_data[,(ncol(prediction_data)-1): ncol(prediction_data)]
 
@@ -584,4 +612,35 @@ yearly_change <- function(data){
   data %>%
     mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
     drop_na()
+}
+
+#' Draw using yaml specification and corresponding prediction data from excel
+#' @param path path to yaml file specifying picture to draw, which datas used etc.
+#' @param path path to excel file containing prediction data
+#'
+#' @return plotly object
+#' @examples
+#' \dontrun{
+#' piirtaja$using_yaml_and_ennuste_excel(yaml_path = system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
+#'  excel_path = "ptt_ennusteet_KT_uusi_sarja_id.xlsx")
+#'}
+#' @export
+draw_ennuste <- function(yaml_path, yaml_kuvion_nimi, excel_path){
+  piirtaja <- pttrobo::ptt_plot()
+  kuvio_spec <- pttrobo::yaml_to_plotly_data(file=yaml_path, kuvion_nimi=yaml_kuvion_nimi)
+
+  # jos on 2 datasarjaa, käytetään piirtäjää 2:lle datasarjalle (tällä hetkellä ei vielä 1:lle datasarjalle, tai 3:lle tai useammalle toteutettu käsittelyä)
+  if(kuvio_spec$datas %>% length() == 2){
+    return(
+      piirtaja$two_lines_with_preds(
+        dataspec_1 = kuvio_spec$datas$data_1,
+        dataspec_2 = kuvio_spec$datas$data_2,
+        ennuste_path = excel_path,
+        labels = kuvio_spec$labels
+      )
+    )
+  }
+  return(
+    NULL
+  )
 }

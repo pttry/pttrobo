@@ -101,7 +101,7 @@ piirtaja <- pttrobo::ptt_plot()
 
 # muodostetaan kuvion käyttämä historiadata ja määritykset käyttäen yaml tiedostoa
 file_path <- system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo")
-kuvion_nimi <- "bkt_ja_kulutus"
+kuvion_nimi = "bkt_ja_kulutus"
 kuvio_spec <- pttrobo::yaml_to_plotly_data(file=file_path, kuvion_nimi=kuvion_nimi)
 
 # haetaan kuvion käyttämä ennustedata 
@@ -134,23 +134,40 @@ piirtaja <- pttrobo::ptt_plot()
 
 # muodostetaan kuvion käyttämä historiadata ja määritykset käyttäen yaml tiedostoa
 file_path <- system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo")
-kuvion_nimi <- "bkt_ja_kulutus"
+kuvion_nimi = "bkt_ja_kulutus"
 kuvio_spec <- pttrobo::yaml_to_plotly_data(file=file_path, kuvion_nimi=kuvion_nimi)
 
-
-# haetaan kuvion käyttämä ennustedata 
-# kuviossa on sekä bkt että kulutus sarja. Seuraavassa Serie 1 on bkt ja serie 2 kulutus.
-ennustedata_path <- "ptt_ennusteet_KT_uusi_sarja_id.xlsx"
-ennustedata_serie_name_1 <- kuvio_spec$datas$data_1$datahaku_id
-ennustedata_serie_name_2 <- kuvio_spec$datas$data_2$datahaku_id
-
-ennustedata_serie_1 <- pttrobo::ennuste_time_serie_from_excel(ennustedata_path, ennustedata_serie_name_1)
-ennustedata_serie_2 <- pttrobo::ennuste_time_serie_from_excel(ennustedata_path, ennustedata_serie_name_2)
-
 # piirretään kuvio. Huom. Tehdään transform_data funktiolla tarvittaessa vuosimuutos transformaatio
-piirtaja$two_lines_with_preds(d1 = yearly_change(kuvio_spec$datas$data_1$data), d1_ennusteet = ennustedata_serie_1, serie_name_1 = kuvio_spec$datas$data_1$serie_name,
-                              d2 = yearly_change(kuvio_spec$datas$data_2$data), d2_ennusteet = ennustedata_serie_2, serie_name_2 = kuvio_spec$datas$data_2$serie_name,
-                              labels = kuvio_spec$labels)
+piirtaja$two_lines_with_preds(
+  d1 = yearly_change(kuvio_spec$datas$data_1$data), 
+  d1_ennusteet = pttrobo::ennuste_time_serie_from_excel("ptt_ennusteet_KT_uusi_sarja_id.xlsx", kuvio_spec$datas$data_1$datahaku_id), 
+  serie_name_1 = kuvio_spec$datas$data_1$serie_name,
+  d2 = yearly_change(kuvio_spec$datas$data_2$data), 
+  d2_ennusteet = pttrobo::ennuste_time_serie_from_excel("ptt_ennusteet_KT_uusi_sarja_id.xlsx", kuvio_spec$datas$data_2$datahaku_id), 
+  serie_name_2 = kuvio_spec$datas$data_2$serie_name,
+  labels = kuvio_spec$labels
+)
 
+# kuvion voi piirtää myös automatisoidummin tarjoamalla data specsit sekä polun ennuste-exceliin joka koodattu datahaku id:llä
+piirtaja$two_lines_with_preds(
+  dataspec_1 = kuvio_spec$datas$data_1,
+  dataspec_2 = kuvio_spec$datas$data_2,
+  ennuste_path = "ptt_ennusteet_KT_uusi_sarja_id.xlsx",
+  labels = kuvio_spec$labels
+)
+```
 
+```{r, message = FALSE}
+# 3. esimerkki. Kuvion voi piirtää vielä automatisoidummin käyttäen 
+# parametreina pelkästään yaml tiedoston polkua sekä ennuste-excelin polkua.
+
+# käytetään draw_ennuste funktiota, joka tarvitsee parametreikseen 
+# yaml_path (polku kuvion/kuviot spesifioivaan yaml tiedostoon)
+# yaml_kuvion_nimi (yaml tiedostossa annettu nimi kuvion speksille) 
+# sekä excel_path (polku ennuste-exceliin)
+
+library(pttrobo)
+draw_ennuste(yaml_path= system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo"),
+     yaml_kuvion_nimi = "bkt_ja_kulutus",
+     excel_path = "ptt_ennusteet_KT_uusi_sarja_id.xlsx")
 ```
