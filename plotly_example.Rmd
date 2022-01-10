@@ -91,6 +91,8 @@ piirtaja$two_lines_with_preds(labels=labels, d1=d1, d1_ennusteet=d1_ennusteet, s
 
 
 ```{r, message = FALSE}
+# ESIMERKKI KÄYTTÄEN YAML TIEDOSTOA KUVION SPEKSAUKSEEN
+
 library(pttrobo)
 library(tidyverse)
 
