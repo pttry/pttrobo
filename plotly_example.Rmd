@@ -120,3 +120,37 @@ piirtaja$two_lines_with_preds(d1 = yearly_change(kuvio_spec$datas$data_1$data), 
 
 
 ```
+
+```{r, message = FALSE}
+# 2. ESIMERKKI KÄYTTÄEN YAML TIEDOSTOA KUVION SPEKSAUKSEEN.
+# Käytetään nyt haku_id:tä yaml tiedostosta Excel ennusteisiin "mäppäämiseen"
+# id:n muoto excelissä ptt_ennusteet_KT_uusi_sarja_id.xlsx
+
+library(pttrobo)
+library(tidyverse)
+
+# alustetaan piirtäjä
+piirtaja <- pttrobo::ptt_plot()
+
+# muodostetaan kuvion käyttämä historiadata ja määritykset käyttäen yaml tiedostoa
+file_path <- system.file("ennustekuvat/test_without_ennusteet.yaml", package="pttrobo")
+kuvion_nimi <- "bkt_ja_kulutus"
+kuvio_spec <- pttrobo::yaml_to_plotly_data(file=file_path, kuvion_nimi=kuvion_nimi)
+
+
+# haetaan kuvion käyttämä ennustedata 
+# kuviossa on sekä bkt että kulutus sarja. Seuraavassa Serie 1 on bkt ja serie 2 kulutus.
+ennustedata_path <- "ptt_ennusteet_KT_uusi_sarja_id.xlsx"
+ennustedata_serie_name_1 <- kuvio_spec$datas$data_1$datahaku_id
+ennustedata_serie_name_2 <- kuvio_spec$datas$data_2$datahaku_id
+
+ennustedata_serie_1 <- pttrobo::ennuste_time_serie_from_excel(ennustedata_path, ennustedata_serie_name_1)
+ennustedata_serie_2 <- pttrobo::ennuste_time_serie_from_excel(ennustedata_path, ennustedata_serie_name_2)
+
+# piirretään kuvio. Huom. Tehdään transform_data funktiolla tarvittaessa vuosimuutos transformaatio
+piirtaja$two_lines_with_preds(d1 = yearly_change(kuvio_spec$datas$data_1$data), d1_ennusteet = ennustedata_serie_1, serie_name_1 = kuvio_spec$datas$data_1$serie_name,
+                              d2 = yearly_change(kuvio_spec$datas$data_2$data), d2_ennusteet = ennustedata_serie_2, serie_name_2 = kuvio_spec$datas$data_2$serie_name,
+                              labels = kuvio_spec$labels)
+
+
+```
