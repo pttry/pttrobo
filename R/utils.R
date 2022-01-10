@@ -131,7 +131,7 @@ ptt_plot <- function(){
 
   }
 
-  add_logo <- function(p){
+  add_logo <- function(p, y_height=-0.35){
     image_file <- paste0(getwd(), "/ptt-logo.png")
     txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
 
@@ -139,7 +139,7 @@ ptt_plot <- function(){
                    images = list(
                      source = paste('data:image/png;base64', txt, sep=','),
                      xref= "paper", yref="paper",
-                     x=1, y=-0.35,
+                     x=1, y=y_height,
                      sizex = 0.05, sizey = 0.05,
                      xanchor="right", yanchor = "bottom"
                    )
@@ -400,7 +400,7 @@ ptt_plot <- function(){
       zoom_off() %>%
       change_ticks() %>%
       sizing(width = "100%", height = plotly_korkeus)  %>%
-      add_logo() %>%
+      add_logo(y_height=-0.25) %>%
       add_trace(x = d1$time,
                 y = d1$value,
                 mode ='lines',
