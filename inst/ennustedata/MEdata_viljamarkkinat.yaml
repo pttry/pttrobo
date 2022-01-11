@@ -5,16 +5,14 @@ MEdata_Viljamarkkinat:
     tiedot:
       Hinta: Perushinta 1)
       Laji:
-      - VEHNÄ YHTEENSÄ 2)
+      - KAIKKI VEHNÄ 2)
       - Leipävehnä
       - Rehuvehnä
       - RUIS
-      - OHRA YHTEENSÄ 3)
+      - KAIKKI OHRA 3)
       - Mallasohra
       - Rehuohra
-      - KAURA YHTEENSÄ 5)
-      - Elintarvikekaura
-      - Rehukaura
+      - KAURA
       - RYPSI JA RAPSI
   vilja_tuotanto:
   - id: StatFin/maa/satot/statfin_satot_pxt_001.px

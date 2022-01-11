@@ -1,7 +1,7 @@
 MEdata_Lihamarkkinat:
   liha_tuottajahinnat_v:
-  - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/03_Tuottajahinnat_Liha_kk.px
-    muunnos: vuosisumma
+  - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/04_Tuottajahinnat_Liha_v.px
+    muunnos: alkuperäinen
     tiedot:
       Laji:
       - Naudanliha keskimäärin

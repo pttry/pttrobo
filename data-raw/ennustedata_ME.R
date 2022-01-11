@@ -15,6 +15,10 @@ data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_T
   filter(Hinta == "Perushinta 1)") |> View()
   data_to_yaml(file = "data-raw/v_hinta.yaml", muunnos = "vuosikeskiarvo", välilehti = "vilja_tuottajahinta")
 
+  data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px") |>
+    filter(Hinta == "Perushinta 1)") |>
+  data_to_yaml(file = "data-raw/v_hinta.yaml", muunnos = "alkuperäinen", välilehti = "vilja_tuottajahinta")
+
 # Myös lukella: luke/02_Maatalous/04_Tuotanto/14_Satotilasto/03_Vilja-_ja_perunasato_1920-.px
 data_get("StatFin/maa/satot/statfin_satot_pxt_001.px") |>
   data_to_yaml(muunnos = "alkuperäinen", välilehti = "vilja_tuotanto")
@@ -74,5 +78,5 @@ data_get("StatFin/teo/tlv/statfin_tlv_pxt_112c.px") |>
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("Tuotanto", start_year = 2012)
+ptt_update_ennustedata("Liha", start_year = 2012)
 ptt_copy_ennustedata("ME")
