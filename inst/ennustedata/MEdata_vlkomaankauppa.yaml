@@ -1,0 +1,13 @@
+MEdata_Ulkomaankauppa:
+  Vienti_kk:
+  - id: tidy/tulli_ulkomaankauppa
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN2:
+      - 00 - 99 (2002--.) KAIKKI RYHMÄT
+      - 01 (2002--.) ELÄVÄT ELÄIMET
+      Maanosat ja ryhmiä:
+      - Kaikki maat yhteensä
+      Suunta:
+      - Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)

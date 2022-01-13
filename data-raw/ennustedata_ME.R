@@ -74,9 +74,17 @@ data_get("StatFin/teo/tlv/statfin_tlv_pxt_112c.px") |>
   data_to_yaml(muunnos = "alkuperäinen", välilehti = "teollisuus_liikvaihto_2015_kk") |>
   conc()
 
+data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px") |>
+  data_to_yaml()
 
-
+data_get("tidy/tulli_ulkomaankauppa") |>
+  data_to_yaml()
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("Liha", start_year = 2012)
+ptt_update_ennustedata("vlko", start_year = 2012)
 ptt_copy_ennustedata("ME")
+
+
+ptt_data_robo_l("tidy/tulli_ulkomaankauppa") |>
+  pttrobo_print_filter()
+
