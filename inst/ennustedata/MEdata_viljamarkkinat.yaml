@@ -1,5 +1,5 @@
 MEdata_Viljamarkkinat:
-  vilja_tuottajahinta:
+  vilja_tuottajahinta_v:
   - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px
     muunnos: alkuperäinen
     tiedot:
@@ -13,6 +13,25 @@ MEdata_Viljamarkkinat:
       - Mallasohra
       - Rehuohra
       - KAURA
+      - RYPSI JA RAPSI
+  vilja_tuottajahinta_kk:
+  - id: luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hinta:
+      - Perushinta 1)
+      - Laatukorjattu hinta 4)
+      Laji:
+      - VEHNÄ YHTEENSÄ 2)
+      - Leipävehnä
+      - Rehuvehnä
+      - RUIS
+      - OHRA YHTEENSÄ 3)
+      - Mallasohra
+      - Rehuohra
+      - KAURA YHTEENSÄ 5)
+      - Elintarvikekaura
+      - Rehukaura
       - RYPSI JA RAPSI
   vilja_tuotanto:
   - id: StatFin/maa/satot/statfin_satot_pxt_001.px
