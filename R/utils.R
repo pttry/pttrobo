@@ -503,14 +503,7 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
   }
 
   id_from_yaml <- function(y, sarja_nro){
-    d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
-
-    id_alkuosa <- paste0("data('", d_specs$id, "', tidy_time=TRUE)")
-    id_loppuosa <- ""
-    for(name in names(d_specs$Tiedot)){
-      id_loppuosa <- paste0(id_loppuosa, "|>filter(",name,"=='",d_specs$Tiedot[name][[1]],"')")
-    }
-    paste0(id_alkuosa, id_loppuosa)
+    y$sarjat[[sarja_nro]]$ennuste_id
   }
 
   datas <- list()
