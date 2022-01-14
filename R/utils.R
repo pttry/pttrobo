@@ -486,7 +486,7 @@ ptt_plot <- function(){
 #'                    kuvion_nimi = "bkt_ja_kulutus")
 #'}
 #' @export
-#' @import yaml robonomistServer rlang
+#' @import yaml rlang
 yaml_to_plotly_data <- function(file, kuvion_nimi) {
   y <- yaml::read_yaml(file) %>% .[[kuvion_nimi]]
 
@@ -494,7 +494,7 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
   get_data <- function(y, sarja_nro){
     d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
 
-    d <- robonomistServer::data_get(d_specs$id, tidy_time=TRUE)
+    d <- robonomistClient::data_get(d_specs$id, tidy_time=TRUE)
     for(name in names(d_specs$Tiedot)){
       d <- d |>
         filter(d[name] == d_specs$Tiedot[name][[1]])
