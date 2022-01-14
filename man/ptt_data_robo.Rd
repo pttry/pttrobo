@@ -2,7 +2,7 @@
 % Please edit documentation in R/ptt_data.R
 \name{ptt_data_robo}
 \alias{ptt_data_robo}
-\title{Get data with robonomistClient in PTT form}
+\title{Get Data with robonomistClient in PTT Format}
 \usage{
 ptt_data_robo(..., labels = FALSE)
 }

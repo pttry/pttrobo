@@ -1,4 +1,4 @@
-#' Get data with robonomistClient in PTT form
+#' Get Data with robonomistClient in PTT Format
 #'
 #' Uses \code{robonomistClient::data_get} to get data from robonomist,
 #' but with PTT formating:
