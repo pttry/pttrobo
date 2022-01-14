@@ -80,8 +80,15 @@ data_get("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_T
 data_get("tidy/tulli_ulkomaankauppa") |>
   data_to_yaml()
 
+data_get("luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke_maa_Ukaup_kk.px") |>
+  # filter(maa == "KAIKKI MAAT YHTEENSÄ",
+  #        muuttuja == "Tilastoarvo (1000 euro)",
+  #        suunta %in% c("Tuonti alkuperämaittain", "Vienti määrämaittain")) |>
+  data_to_yaml()
+
+
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("vlko", start_year = 2012)
+ptt_update_ennustedata("luke", start_year = 2012)
 ptt_copy_ennustedata("ME")
 
 

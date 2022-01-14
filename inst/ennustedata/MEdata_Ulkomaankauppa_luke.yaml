@@ -1,0 +1,469 @@
+MEdata_Ulkomaankauppa_luke:
+  Vienti_luke_kk:
+  - id: luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke_maa_Ukaup_kk.px
+    muunnos: alkuperäinen
+    tiedot:
+      tuoteryhmä:
+      - YHTEENSÄ
+      - YHTEENSÄ (poislukien sokerikemian ja tärkkelysjohdannaiset tuotteet)
+      - Elävät eläimet (pl. kalat)
+      - Elävät kalat
+      - Naudanliha, luuton
+      - Naudanliha, luullinen
+      - Sianliha, luuton
+      - Sianliha, luullinen
+      - Lampaan- ja vuohenliha, luuton
+      - Lampaan- ja vuohenliha, luullinen
+      - Siipikarjanliha, luuton
+      - Siipikarjanliha, luullinen
+      - Hevosenliha
+      - Poronliha
+      - Muut syötävät osat ja elimet (nauta, sika, lammas, vuohi ja siipikarja)
+      - Muiden eläinten liha ja muut syötävät osat
+      - Jäätelö
+      - Maito ja kerma, nestemäinen (rasvaa <= 6 %)
+      - Maito ja kerma, nestemäinen (rasvaa > 6 %)
+      - Maito ja kerma, tiivistetty
+      - Jogurtti
+      - Hapatetut maitovalmisteet
+      - Hera
+      - Voi ja maitopohjaiset levitteet
+      - Juusto ja juustoaine
+      - Siipikarjan munat, tuoreet
+      - Munatuotteet ja hedelmöittyneet munat
+      - Kala ja kalatuotteet (elintarvikekäyttö)
+      - Äyriäiset ja nilviäiset (elintarvikekäyttö)
+      - Mäti ja mätituotteet
+      - Muu kala (elintarvikekäyttö)
+      - Vehnä
+      - Ruis
+      - Ohra
+      - Kaura
+      - Maissi
+      - Riisi
+      - Muut viljat
+      - Ruoka- ja tärkkelysperuna
+      - Uudet perunat
+      - Siemenperuna
+      - Soijapapu
+      - Auringonkukka
+      - Rypsin- ja rapsinsiemenet
+      - Kuivatut palkokasvit (sis. kylvämiseen tarkoitetut)
+      - Rehukasvien ja sokerijuurikkaan kylvösiemen
+      - Muut siemenet (sis. kylvämiseen tarkoitetut)
+      - Puutarhakasvit ja niiden lisäysaineistot
+      - Sipulit
+      - Tomaatti
+      - Kurkku
+      - Paprika
+      - Sienet
+      - Porkkanat ja nauriit
+      - Herneet ja muut palkokasvit, tuoreet
+      - Herneet ja muut palkokasvit, jäädytetyt
+      - Jäädytetyt kasvikset ja sienet (pl. palkokasvit ja marjat)
+      - Kuivatut kasvikset
+      - Salaatit ja sikurit
+      - Kaalikasvit
+      - Muut vihannekset, juurekset, mukulakasvit ja sokerijuurikas
+      - Pähkinät
+      - Omenat
+      - Banaanit
+      - Sitrushedelmät
+      - Muut hedelmät
+      - Mansikat - tuoreet
+      - Mansikat - jäädytetyt
+      - Vadelmat - tuoreet
+      - Vadelmat - jäädytetyt
+      - Herukat - tuoreet
+      - Herukat - jäädytetyt
+      - Muut marjat - tuoreet
+      - Muut marjat - jäädytetyt
+      - Jauhot ja muut myllytuotteet
+      - Maltaat
+      - Viljapohjaiset alkoholijuomat
+      - Muut alkoholijuomat
+      - Kahvi ja tee
+      - Makeiset, suklaa ja kaakao
+      - Virvoitusjuomat ja kivennäisvedet
+      - Leipomotuotteet
+      - Sokeri, raakasokeri ja  hunaja
+      - Tärkkelys ja gluteeni
+      - Perunajalosteet
+      - Lihavalmisteet
+      - Hedelmä- ja kasvismehut
+      - Sienijalosteet
+      - Kasvisjalosteet (pl. sieni- ja perunajal., sis. pähkinäjal.)
+      - Muut maitovalmisteet
+      - Keitot, liemet ja kastikkeet
+      - Erinäiset elintarvikevalmisteet
+      - Mausteet
+      - Margariini
+      - Oliiviöljy
+      - Rypsi- ja rapsiöljy
+      - Muut kasvisrasvat
+      - Muut eläinperäiset rasvat
+      - Palmuöljy (tekn.)
+      - Tekniset rasvat ja öljyt (pl. palmuöljy)
+      - Tekniset uutteet, hajusteet yms.
+      - Muualle kuulumattomat eläinperäiset tuotteet
+      - Muualle kuulumattomat kasviperäiset tuotteet
+      - Rehu, myös sivuvirroista
+      - Tupakka
+      - Sokerikemian ja tärkkelysjohdannaiset tuotteet
+      maa:
+      - KAIKKI MAAT YHTEENSÄ
+      muuttuja:
+      - Tilastoarvo (1000 euro)
+      suunta:
+      - Vienti määrämaittain
+  Tuonti_luke_kk:
+  - id: luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke_maa_Ukaup_kk.px
+    muunnos: alkuperäinen
+    tiedot:
+      tuoteryhmä:
+      - YHTEENSÄ
+      - YHTEENSÄ (poislukien sokerikemian ja tärkkelysjohdannaiset tuotteet)
+      - Elävät eläimet (pl. kalat)
+      - Elävät kalat
+      - Naudanliha, luuton
+      - Naudanliha, luullinen
+      - Sianliha, luuton
+      - Sianliha, luullinen
+      - Lampaan- ja vuohenliha, luuton
+      - Lampaan- ja vuohenliha, luullinen
+      - Siipikarjanliha, luuton
+      - Siipikarjanliha, luullinen
+      - Hevosenliha
+      - Poronliha
+      - Muut syötävät osat ja elimet (nauta, sika, lammas, vuohi ja siipikarja)
+      - Muiden eläinten liha ja muut syötävät osat
+      - Jäätelö
+      - Maito ja kerma, nestemäinen (rasvaa <= 6 %)
+      - Maito ja kerma, nestemäinen (rasvaa > 6 %)
+      - Maito ja kerma, tiivistetty
+      - Jogurtti
+      - Hapatetut maitovalmisteet
+      - Hera
+      - Voi ja maitopohjaiset levitteet
+      - Juusto ja juustoaine
+      - Siipikarjan munat, tuoreet
+      - Munatuotteet ja hedelmöittyneet munat
+      - Kala ja kalatuotteet (elintarvikekäyttö)
+      - Äyriäiset ja nilviäiset (elintarvikekäyttö)
+      - Mäti ja mätituotteet
+      - Muu kala (elintarvikekäyttö)
+      - Vehnä
+      - Ruis
+      - Ohra
+      - Kaura
+      - Maissi
+      - Riisi
+      - Muut viljat
+      - Ruoka- ja tärkkelysperuna
+      - Uudet perunat
+      - Siemenperuna
+      - Soijapapu
+      - Auringonkukka
+      - Rypsin- ja rapsinsiemenet
+      - Kuivatut palkokasvit (sis. kylvämiseen tarkoitetut)
+      - Rehukasvien ja sokerijuurikkaan kylvösiemen
+      - Muut siemenet (sis. kylvämiseen tarkoitetut)
+      - Puutarhakasvit ja niiden lisäysaineistot
+      - Sipulit
+      - Tomaatti
+      - Kurkku
+      - Paprika
+      - Sienet
+      - Porkkanat ja nauriit
+      - Herneet ja muut palkokasvit, tuoreet
+      - Herneet ja muut palkokasvit, jäädytetyt
+      - Jäädytetyt kasvikset ja sienet (pl. palkokasvit ja marjat)
+      - Kuivatut kasvikset
+      - Salaatit ja sikurit
+      - Kaalikasvit
+      - Muut vihannekset, juurekset, mukulakasvit ja sokerijuurikas
+      - Pähkinät
+      - Omenat
+      - Banaanit
+      - Sitrushedelmät
+      - Muut hedelmät
+      - Mansikat - tuoreet
+      - Mansikat - jäädytetyt
+      - Vadelmat - tuoreet
+      - Vadelmat - jäädytetyt
+      - Herukat - tuoreet
+      - Herukat - jäädytetyt
+      - Muut marjat - tuoreet
+      - Muut marjat - jäädytetyt
+      - Jauhot ja muut myllytuotteet
+      - Maltaat
+      - Viljapohjaiset alkoholijuomat
+      - Muut alkoholijuomat
+      - Kahvi ja tee
+      - Makeiset, suklaa ja kaakao
+      - Virvoitusjuomat ja kivennäisvedet
+      - Leipomotuotteet
+      - Sokeri, raakasokeri ja  hunaja
+      - Tärkkelys ja gluteeni
+      - Perunajalosteet
+      - Lihavalmisteet
+      - Hedelmä- ja kasvismehut
+      - Sienijalosteet
+      - Kasvisjalosteet (pl. sieni- ja perunajal., sis. pähkinäjal.)
+      - Muut maitovalmisteet
+      - Keitot, liemet ja kastikkeet
+      - Erinäiset elintarvikevalmisteet
+      - Mausteet
+      - Margariini
+      - Oliiviöljy
+      - Rypsi- ja rapsiöljy
+      - Muut kasvisrasvat
+      - Muut eläinperäiset rasvat
+      - Palmuöljy (tekn.)
+      - Tekniset rasvat ja öljyt (pl. palmuöljy)
+      - Tekniset uutteet, hajusteet yms.
+      - Muualle kuulumattomat eläinperäiset tuotteet
+      - Muualle kuulumattomat kasviperäiset tuotteet
+      - Rehu, myös sivuvirroista
+      - Tupakka
+      - Sokerikemian ja tärkkelysjohdannaiset tuotteet
+      maa:
+      - KAIKKI MAAT YHTEENSÄ
+      muuttuja:
+      - Tilastoarvo (1000 euro)
+      suunta:
+      - Tuonti alkuperämaittain
+  Vienti_luke_v:
+  - id: luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke_maa_Ukaup_kk.px
+    muunnos: vuosisumma
+    tiedot:
+      tuoteryhmä:
+      - YHTEENSÄ
+      - YHTEENSÄ (poislukien sokerikemian ja tärkkelysjohdannaiset tuotteet)
+      - Elävät eläimet (pl. kalat)
+      - Elävät kalat
+      - Naudanliha, luuton
+      - Naudanliha, luullinen
+      - Sianliha, luuton
+      - Sianliha, luullinen
+      - Lampaan- ja vuohenliha, luuton
+      - Lampaan- ja vuohenliha, luullinen
+      - Siipikarjanliha, luuton
+      - Siipikarjanliha, luullinen
+      - Hevosenliha
+      - Poronliha
+      - Muut syötävät osat ja elimet (nauta, sika, lammas, vuohi ja siipikarja)
+      - Muiden eläinten liha ja muut syötävät osat
+      - Jäätelö
+      - Maito ja kerma, nestemäinen (rasvaa <= 6 %)
+      - Maito ja kerma, nestemäinen (rasvaa > 6 %)
+      - Maito ja kerma, tiivistetty
+      - Jogurtti
+      - Hapatetut maitovalmisteet
+      - Hera
+      - Voi ja maitopohjaiset levitteet
+      - Juusto ja juustoaine
+      - Siipikarjan munat, tuoreet
+      - Munatuotteet ja hedelmöittyneet munat
+      - Kala ja kalatuotteet (elintarvikekäyttö)
+      - Äyriäiset ja nilviäiset (elintarvikekäyttö)
+      - Mäti ja mätituotteet
+      - Muu kala (elintarvikekäyttö)
+      - Vehnä
+      - Ruis
+      - Ohra
+      - Kaura
+      - Maissi
+      - Riisi
+      - Muut viljat
+      - Ruoka- ja tärkkelysperuna
+      - Uudet perunat
+      - Siemenperuna
+      - Soijapapu
+      - Auringonkukka
+      - Rypsin- ja rapsinsiemenet
+      - Kuivatut palkokasvit (sis. kylvämiseen tarkoitetut)
+      - Rehukasvien ja sokerijuurikkaan kylvösiemen
+      - Muut siemenet (sis. kylvämiseen tarkoitetut)
+      - Puutarhakasvit ja niiden lisäysaineistot
+      - Sipulit
+      - Tomaatti
+      - Kurkku
+      - Paprika
+      - Sienet
+      - Porkkanat ja nauriit
+      - Herneet ja muut palkokasvit, tuoreet
+      - Herneet ja muut palkokasvit, jäädytetyt
+      - Jäädytetyt kasvikset ja sienet (pl. palkokasvit ja marjat)
+      - Kuivatut kasvikset
+      - Salaatit ja sikurit
+      - Kaalikasvit
+      - Muut vihannekset, juurekset, mukulakasvit ja sokerijuurikas
+      - Pähkinät
+      - Omenat
+      - Banaanit
+      - Sitrushedelmät
+      - Muut hedelmät
+      - Mansikat - tuoreet
+      - Mansikat - jäädytetyt
+      - Vadelmat - tuoreet
+      - Vadelmat - jäädytetyt
+      - Herukat - tuoreet
+      - Herukat - jäädytetyt
+      - Muut marjat - tuoreet
+      - Muut marjat - jäädytetyt
+      - Jauhot ja muut myllytuotteet
+      - Maltaat
+      - Viljapohjaiset alkoholijuomat
+      - Muut alkoholijuomat
+      - Kahvi ja tee
+      - Makeiset, suklaa ja kaakao
+      - Virvoitusjuomat ja kivennäisvedet
+      - Leipomotuotteet
+      - Sokeri, raakasokeri ja  hunaja
+      - Tärkkelys ja gluteeni
+      - Perunajalosteet
+      - Lihavalmisteet
+      - Hedelmä- ja kasvismehut
+      - Sienijalosteet
+      - Kasvisjalosteet (pl. sieni- ja perunajal., sis. pähkinäjal.)
+      - Muut maitovalmisteet
+      - Keitot, liemet ja kastikkeet
+      - Erinäiset elintarvikevalmisteet
+      - Mausteet
+      - Margariini
+      - Oliiviöljy
+      - Rypsi- ja rapsiöljy
+      - Muut kasvisrasvat
+      - Muut eläinperäiset rasvat
+      - Palmuöljy (tekn.)
+      - Tekniset rasvat ja öljyt (pl. palmuöljy)
+      - Tekniset uutteet, hajusteet yms.
+      - Muualle kuulumattomat eläinperäiset tuotteet
+      - Muualle kuulumattomat kasviperäiset tuotteet
+      - Rehu, myös sivuvirroista
+      - Tupakka
+      - Sokerikemian ja tärkkelysjohdannaiset tuotteet
+      maa:
+      - KAIKKI MAAT YHTEENSÄ
+      muuttuja:
+      - Tilastoarvo (1000 euro)
+      suunta:
+      - Vienti määrämaittain
+  Tuonti_luke_v:
+  - id: luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke_maa_Ukaup_kk.px
+    muunnos: vuosisumma
+    tiedot:
+      tuoteryhmä:
+      - YHTEENSÄ
+      - YHTEENSÄ (poislukien sokerikemian ja tärkkelysjohdannaiset tuotteet)
+      - Elävät eläimet (pl. kalat)
+      - Elävät kalat
+      - Naudanliha, luuton
+      - Naudanliha, luullinen
+      - Sianliha, luuton
+      - Sianliha, luullinen
+      - Lampaan- ja vuohenliha, luuton
+      - Lampaan- ja vuohenliha, luullinen
+      - Siipikarjanliha, luuton
+      - Siipikarjanliha, luullinen
+      - Hevosenliha
+      - Poronliha
+      - Muut syötävät osat ja elimet (nauta, sika, lammas, vuohi ja siipikarja)
+      - Muiden eläinten liha ja muut syötävät osat
+      - Jäätelö
+      - Maito ja kerma, nestemäinen (rasvaa <= 6 %)
+      - Maito ja kerma, nestemäinen (rasvaa > 6 %)
+      - Maito ja kerma, tiivistetty
+      - Jogurtti
+      - Hapatetut maitovalmisteet
+      - Hera
+      - Voi ja maitopohjaiset levitteet
+      - Juusto ja juustoaine
+      - Siipikarjan munat, tuoreet
+      - Munatuotteet ja hedelmöittyneet munat
+      - Kala ja kalatuotteet (elintarvikekäyttö)
+      - Äyriäiset ja nilviäiset (elintarvikekäyttö)
+      - Mäti ja mätituotteet
+      - Muu kala (elintarvikekäyttö)
+      - Vehnä
+      - Ruis
+      - Ohra
+      - Kaura
+      - Maissi
+      - Riisi
+      - Muut viljat
+      - Ruoka- ja tärkkelysperuna
+      - Uudet perunat
+      - Siemenperuna
+      - Soijapapu
+      - Auringonkukka
+      - Rypsin- ja rapsinsiemenet
+      - Kuivatut palkokasvit (sis. kylvämiseen tarkoitetut)
+      - Rehukasvien ja sokerijuurikkaan kylvösiemen
+      - Muut siemenet (sis. kylvämiseen tarkoitetut)
+      - Puutarhakasvit ja niiden lisäysaineistot
+      - Sipulit
+      - Tomaatti
+      - Kurkku
+      - Paprika
+      - Sienet
+      - Porkkanat ja nauriit
+      - Herneet ja muut palkokasvit, tuoreet
+      - Herneet ja muut palkokasvit, jäädytetyt
+      - Jäädytetyt kasvikset ja sienet (pl. palkokasvit ja marjat)
+      - Kuivatut kasvikset
+      - Salaatit ja sikurit
+      - Kaalikasvit
+      - Muut vihannekset, juurekset, mukulakasvit ja sokerijuurikas
+      - Pähkinät
+      - Omenat
+      - Banaanit
+      - Sitrushedelmät
+      - Muut hedelmät
+      - Mansikat - tuoreet
+      - Mansikat - jäädytetyt
+      - Vadelmat - tuoreet
+      - Vadelmat - jäädytetyt
+      - Herukat - tuoreet
+      - Herukat - jäädytetyt
+      - Muut marjat - tuoreet
+      - Muut marjat - jäädytetyt
+      - Jauhot ja muut myllytuotteet
+      - Maltaat
+      - Viljapohjaiset alkoholijuomat
+      - Muut alkoholijuomat
+      - Kahvi ja tee
+      - Makeiset, suklaa ja kaakao
+      - Virvoitusjuomat ja kivennäisvedet
+      - Leipomotuotteet
+      - Sokeri, raakasokeri ja  hunaja
+      - Tärkkelys ja gluteeni
+      - Perunajalosteet
+      - Lihavalmisteet
+      - Hedelmä- ja kasvismehut
+      - Sienijalosteet
+      - Kasvisjalosteet (pl. sieni- ja perunajal., sis. pähkinäjal.)
+      - Muut maitovalmisteet
+      - Keitot, liemet ja kastikkeet
+      - Erinäiset elintarvikevalmisteet
+      - Mausteet
+      - Margariini
+      - Oliiviöljy
+      - Rypsi- ja rapsiöljy
+      - Muut kasvisrasvat
+      - Muut eläinperäiset rasvat
+      - Palmuöljy (tekn.)
+      - Tekniset rasvat ja öljyt (pl. palmuöljy)
+      - Tekniset uutteet, hajusteet yms.
+      - Muualle kuulumattomat eläinperäiset tuotteet
+      - Muualle kuulumattomat kasviperäiset tuotteet
+      - Rehu, myös sivuvirroista
+      - Tupakka
+      - Sokerikemian ja tärkkelysjohdannaiset tuotteet
+      maa:
+      - KAIKKI MAAT YHTEENSÄ
+      muuttuja:
+      - Tilastoarvo (1000 euro)
+      suunta:
+      - Tuonti alkuperämaittain
