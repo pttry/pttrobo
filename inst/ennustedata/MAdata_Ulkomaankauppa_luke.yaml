@@ -1,0 +1,370 @@
+MAdata_Ulkomaankauppa_luke:
+  Vienti_määrä_kk:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: alkuperäinen
+    tiedot:
+      Kauppasuunta:
+      - Vienti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Määrä, yksikköä
+  Vienti_arvo_kk:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: alkuperäinen
+    tiedot:
+      Kauppasuunta:
+      - Vienti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Arvo, milj. e
+  Tuonti_määrä_kk:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: alkuperäinen
+    tiedot:
+      Kauppasuunta:
+      - Tuonti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Määrä, yksikköä
+  Tuonti_arvo_kk:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: alkuperäinen
+    tiedot:
+      Kauppasuunta:
+      - Tuonti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Arvo, milj. e
+  Vienti_määrä_v:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: vuosisumma
+    tiedot:
+      Kauppasuunta:
+      - Vienti
+      - Tuonti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Määrä, yksikköä
+  Vienti_arvo_v:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: vuosisumma
+    tiedot:
+      Kauppasuunta:
+      - Vienti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Arvo, milj. e
+  Tuonti_määrä_v:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: vuosisumma
+    tiedot:
+      Kauppasuunta:
+      - Tuonti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Määrä, yksikköä
+  Tuonti_arvo_v:
+  - id: luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px
+    muunnos: vuosisumma
+    tiedot:
+      Kauppasuunta:
+      - Tuonti
+      Nimike:
+      - KAIKKI TAVARAT
+      - .METSÄSEKTORIN TUOTTEET
+      - ..RAAKA- JA JÄTEPUU
+      - ..METSÄTEOLLISUUSTUOTTEET
+      - '...PUUTUOTETEOLLISUUS'
+      - '....Sahatavara'
+      - '.....Mäntysahatavara'
+      - '.....Kuusisahatavara'
+      - '.....Muu havusahatavara'
+      - '.....Höyläsahatavara'
+      - '.....Lehtisahatavara'
+      - '....Vaneri'
+      - '.....Havuvaneri'
+      - '.....Lehtivaneri'
+      - '.....Muut viilupintaiset levyt'
+      - '....Viilu'
+      - '....Lastulevy'
+      - '....Kuitulevy'
+      - '....Puiset huonekalut'
+      - '....Muut puutuotteet'
+      - '....Puutalot'
+      - '...MASSA- JA PAPERITEOLLISUUS'
+      - '....Massa'
+      - '....Paperi'
+      - '.....Sanomalehtipaperi'
+      - '.....Aikakauslehtipaperi'
+      - '.....Hienopaperi'
+      - '.....Säkkipaperi'
+      - '.....Muu voimapaperi'
+      - '.....Muu paperi'
+      - '....Kartonki'
+      - '.....Kraftlaineri'
+      - '.....Muu sulfaattikartonki'
+      - '.....Fluting'
+      - '.....Muu kartonki'
+      - '....Paperi- ja kartonkijalosteet'
+      - .MUUT TUOTTEET
+      Muuttuja:
+      - Arvo, milj. e
