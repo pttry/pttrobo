@@ -126,7 +126,8 @@ muodosta_sarjat <- function(x, start_year) {
 
 #' @export
 data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1", välilehti = "sheet1",
-                         muunnos = c("alkuperäinen", "vuosisumma", "vuosikeskiarvo")) {
+                         muunnos = c("alkuperäinen", "vuosisumma", "vuosikeskiarvo"),
+                         append = FALSE) {
   y <-
     setNames(list(
       setNames(list(
@@ -149,8 +150,10 @@ data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1", välilehti = "
   )
 
   if (!is.null(file)) {
-    yaml::write_yaml(y, file, handlers = handlers)
-    cli_alert_success("Created {file}")
+    con <- file(file, open = if (append) "a" else "w", encoding = "UTF-8")
+    yaml::write_yaml(y, con, handlers = handlers)
+    close(con)
+    cli_alert_success("Write in {file}")
   }
   cat((yaml::as.yaml(y, handlers = handlers)))
 }
