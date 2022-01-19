@@ -24,7 +24,8 @@ Imports:
     tidyr,
     cli,
     RCurl,
-    rlang
+    rlang,
+    yaml
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools
