@@ -35,11 +35,18 @@ muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
 
   d <-
-    data_get(x$id, tidy_time = TRUE) |>
-    filter(
-      !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x))),
-      lubridate::year(time) >= start_year
-    )
+    if (stringr::str_starts(x$id, "tulli/")) {
+      data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE)
+  } else if (!is.null(x$tiedot)) {
+      data_get(x$id, tidy_time = TRUE) |>
+      filter(
+        !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x)))
+      )
+  } else {
+    data_get(x$id, tidy_time = TRUE)
+  }
+
+  d <- filter(d, lubridate::year(time) >= start_year)
 
   x$muunnos <- x$muunnos %||% "alkuperäinen"
 
