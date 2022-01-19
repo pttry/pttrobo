@@ -38,3 +38,16 @@ purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/M
 
 ptt_update_ennustedata("MAdata_", start_year = 2012)
 ptt_copy_ennustedata("MA")
+
+
+ma_tulli_cn8 <- c("44071110", "44071120", "44071190", "44071210", "44071220", "44071290", "44123900", "44129985", "44123300")
+
+
+# Tilastoarvo (euro) Paljous
+
+dat_ma_vienti <-
+  data("tulli/uljas_cn",
+     dl_filter = list("Tavaraluokitus CN8" = ma_tulli_cn8,
+                      "Maa" = "AA",
+                      "Suunta" = "Vienti määrämaittain",
+                      "Indikaattorit" = "Tilastoarvo (euro)"))
