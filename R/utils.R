@@ -132,6 +132,7 @@ ptt_plot <- function(){
   }
 
   add_logo <- function(p, y_height=-0.35){
+
     image_file <- system.file("image", "ptt-logo.png", package = "pttrobo")
     txt <- RCurl::base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
 
