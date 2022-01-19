@@ -36,7 +36,7 @@ purrr::map(id_puunkaytto, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/M
 purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/MAdata_puukaupp2_raw.yaml", append = TRUE))
 
 
-ptt_update_ennustedata("MAdata_", start_year = 2012)
+ptt_update_ennustedata("MAdata_Tulli", start_year = 2012)
 ptt_copy_ennustedata("MA")
 
 
@@ -51,3 +51,5 @@ dat_ma_vienti <-
                       "Maa" = "AA",
                       "Suunta" = "Vienti määrämaittain",
                       "Indikaattorit" = "Tilastoarvo (euro)"))
+
+data_to_yaml(dat_ma_vienti, file = "inst/ennustedata/MAdata_Tulli_raw.yaml")
