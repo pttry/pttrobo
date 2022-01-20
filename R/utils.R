@@ -218,7 +218,7 @@ ptt_plot <- function(){
                          y_legend = -0.30,
                          top_margin = 80,
                          yksikko = "%",
-                         bottom_margin = 90,
+                         bottom_margin = 110,
                          color_vector = c(ptt_vihrea, ptt_sininen, ptt_ruskea, ptt_keltainen),
                          rounding = 1, ...
                          ){
@@ -285,7 +285,7 @@ ptt_plot <- function(){
                         y_legend = -0.14,
                         top_margin = 80,
                         yksikko = "€",
-                        bottom_margin = 85,
+                        bottom_margin = 110,
                         color_vector = ptt_vihrea,
                         rounding = 1){
 
@@ -346,7 +346,7 @@ ptt_plot <- function(){
                                    y_legend = -0.14,
                                    top_margin = 80,
                                    yksikko = "",
-                                   bottom_margin = 90,
+                                   bottom_margin = 110,
                                    color_vector = ptt_vihrea,
                                    rounding = 1){
 
@@ -633,6 +633,7 @@ ptt_plot <- function(){
     "line_with_preds" = plot_line_with_preds,
     "two_lines_with_preds" = plot_2_series_with_preds,
     "ennusteet_from_excel" = ennusteet_from_excel,
+    "serie_name_from_excel" = serie_name_from_excel,
     "labels_from_excel" = labels_from_excel
   )
 }
