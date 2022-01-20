@@ -33,12 +33,12 @@ koosta_tiedoston_datat <- function(x, start_year) {
 #' @importFrom rlang %||%
 muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
-
   d <-
     if (stringr::str_starts(x$id, "tulli/")) {
-      data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE)
+      data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
+        replace_na(list(value = 0))
   } else if (!is.null(x$tiedot)) {
-      data_get(x$id, tidy_time = TRUE) |>
+    data_get(x$id, tidy_time = TRUE) |>
       filter(
         !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x)))
       )
