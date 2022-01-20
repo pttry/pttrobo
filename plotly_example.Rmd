@@ -74,11 +74,12 @@ df2 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_ti
   mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
   drop_na()
 
-df |>
+df2 |>
   filter(time > as.Date("2010-01-01")) |> 
   piirtaja$line_with_preds(
     excel_path = "ptt_ennusteet_KT.xlsx",
-    serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015"
+    serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015",
+    lahde = "Tilastokeskus"
   )
 
 piirtaja <- pttrobo::ptt_plot()
