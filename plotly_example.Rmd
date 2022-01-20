@@ -21,13 +21,25 @@ df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_tim
 #https://www.ptt.fi/layout/img/ptt-logo.pn
 
 # lines funktion avulla voi piirtää useamman sarjan "grouping_variable" hyödyntäen
-piirtaja$lines(df, grouping_variable = Tiedot, title = "BKT", subtitle = "Vertailu kausitasoitettuun sarjaan", lahde = "Tilastokeskus", yksikko = "€")
+df |>
+  piirtaja$lines(
+    grouping_variable = Tiedot,
+    title = "BKT",
+    subtitle = "Vertailu kausitasoitettuun sarjaan",
+    lahde = "Tilastokeskus",
+    yksikko = "€"
+  )
 ```
 
 
 ```{r, message = FALSE}
 # yksittäinen sarja voidaan piirtää funktion "line" avulla
-piirtaja$line(df %>% filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa"), title = "BKT", lahde = "Tilastokeskus")
+df %>%
+  filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") |>
+  piirtaja$line(
+    title = "BKT",
+    lahde = "Tilastokeskus"
+  )
 ```
 
 
@@ -40,11 +52,15 @@ df <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_tim
     mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
     drop_na()
 
-piirtaja$line_with_preds(df %>% 
-                           filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
-                           filter(time > as.Date("2010-01-01")), 
-                         excel_path = "ptt_ennusteet_KT.xlsx",
-                         serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015")
+df %>%
+  filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>%
+  filter(time > as.Date("2010-01-01")) |>
+
+  piirtaja$line_with_preds(
+    excel_path = "ptt_ennusteet_KT.xlsx",
+    serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015",
+    lahde = "Tilastokeskus"
+  )
 
 
 "serie identifier: StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015"
@@ -53,17 +69,19 @@ piirtaja$line_with_preds(df %>%
 
 ```{r, message = FALSE}
 df2 <- robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
-    filter(str_detect(Taloustoimi, "P3KS14_S15")) %>%
-    filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
+  filter(str_detect(Taloustoimi, "P3KS14_S15")) %>%
+  filter(Tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") %>% 
   mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
-    drop_na()
+  drop_na()
 
+df |>
+  filter(time > as.Date("2010-01-01")) |> 
+  piirtaja$line_with_preds(
+    excel_path = "ptt_ennusteet_KT.xlsx",
+    serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015"
+  )
 
-piirtaja$line_with_preds(df %>% 
-                           filter(time > as.Date("2010-01-01")), 
-                         excel_path = "ptt_ennusteet_KT.xlsx",
-                         serie_name = "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015")
-
+piirtaja <- pttrobo::ptt_plot()
 
 # ESIMERKKI KUN 2 SARJAA ENNUSTEINEEN
 excel_path <- "ptt_ennusteet_KT.xlsx"
@@ -71,7 +89,8 @@ serie_names <- c("StatFin/kan/ntp/statfin_ntp_pxt_132h.px§B1GMH§kausitvv2015",
                "StatFin/kan/ntp/statfin_ntp_pxt_132h.px§P3KS14_S15§kausitvv2015")
 
 # labels, poimitaan excelistä sarjan nimen perusteella. Käytetään apufunktiota.
-labels <- piirtaja$labels_from_excel(excel_path = excel_path, serie_name = serie_names[1])
+labels <- piirtaja$labels_from_excel(excel_path = excel_path,
+                                     serie_name = serie_names[1])
 
 # Alustetaan 1. datasarja tarvittavine muuttujineen
 
@@ -151,7 +170,7 @@ kuvio_spec <- pttrobo::yaml_to_plotly_data(file=file_path, kuvion_nimi=kuvion_ni
 
 # piirretään kuvio. Huom. Tehdään transform_data funktiolla tarvittaessa vuosimuutos transformaatio
 piirtaja$two_lines_with_preds(
-  d1 = yearly_change(kuvio_spec$datas$data_1$data), 
+  d1 = yearly_change(kuvio_spec$datas$data_1$data),
   d1_ennusteet = pttrobo::ennuste_time_serie_from_excel("ptt_ennusteet_KT_uusi_sarja_id.xlsx", kuvio_spec$datas$data_1$datahaku_id), 
   serie_name_1 = kuvio_spec$datas$data_1$serie_name,
   d2 = yearly_change(kuvio_spec$datas$data_2$data), 
