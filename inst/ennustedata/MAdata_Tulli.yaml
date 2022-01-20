@@ -4,36 +4,15 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - 44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa,
-        tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös
-        höylätty tai hiottu
-      - 44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa,
-        tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään
-        jatkettu)
-      - 44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa,
-        tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu
-        ja höylätty)
-      - 44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty
-        *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6
-        mm, päistään jatkettu, myös höylätty tai hiottu
-      - 44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty
-        *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6
-        mm, höylätty (paitsi päistään jatkettu)
-      - 44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty
-        *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6
-        mm (paitsi päistään jatkettu ja höylätty)
-      - 44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista
-        puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä
-        puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi
-        tunnistettavat levyt)
-      - 44129985 (2010--.) Vaneroidut puulevyt ja niiden kaltainen kerrostettu puu,
-        jotka eivät sisällä lastulevykerroksia eikä rima-, sälö- tai kimpisydäntä
-        (paitsi sellaiset, joissa ainakin yksi pintaviiluista on lehtipuuta, bambua,
-        vaneri, jossa ainakin yk
-      - '44123300 (2017--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista
-        puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää,
-        saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta,
-        hikkoria, hevoskastanja'
+      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      - "44129985 (2010--.) Vaneroidut puulevyt ja niiden kaltainen kerrostettu puu, jotka eivät sisällä lastulevykerroksia eikä rima-, sälö- tai kimpisydäntä (paitsi sellaiset, joissa ainakin yksi pintaviiluista on lehtipuuta, bambua, vaneri, jossa ainakin yk"
+      - "44123300 (2017--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Tilastoarvo (euro)
