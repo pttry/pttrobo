@@ -1,5 +1,45 @@
 MAdata_Tulli:
-  Arvo_kk:
+  Arvo_CN4_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN4:
+      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Määrä_CN4_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN4:
+      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Paljous
+  Arvo_CN4_v:
+  - id: tulli/uljas_cn
+    muunnos: vuosisumma
+    tiedot:
+      Tavaraluokitus CN4:
+      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Määrä_CN4_v:
+  - id: tulli/uljas_cn
+    muunnos: vuosisumma
+    tiedot:
+      Tavaraluokitus CN4:
+      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Paljous
+  Arvo_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -16,3 +56,54 @@ MAdata_Tulli:
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Tilastoarvo (euro)
+  Määrä_CN8_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      - "44129985 (2010--.) Vaneroidut puulevyt ja niiden kaltainen kerrostettu puu, jotka eivät sisällä lastulevykerroksia eikä rima-, sälö- tai kimpisydäntä (paitsi sellaiset, joissa ainakin yksi pintaviiluista on lehtipuuta, bambua, vaneri, jossa ainakin yk"
+      - "44123300 (2017--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Paljous
+  Arvo_CN8_v:
+  - id: tulli/uljas_cn
+    muunnos: vuosisumma
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      - "44129985 (2010--.) Vaneroidut puulevyt ja niiden kaltainen kerrostettu puu, jotka eivät sisällä lastulevykerroksia eikä rima-, sälö- tai kimpisydäntä (paitsi sellaiset, joissa ainakin yksi pintaviiluista on lehtipuuta, bambua, vaneri, jossa ainakin yk"
+      - "44123300 (2017--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Määrä_CN8_v:
+  - id: tulli/uljas_cn
+    muunnos: vuosisumma
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu"
+      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu)"
+      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu ja höylätty)"
+      - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
+      - "44129985 (2010--.) Vaneroidut puulevyt ja niiden kaltainen kerrostettu puu, jotka eivät sisällä lastulevykerroksia eikä rima-, sälö- tai kimpisydäntä (paitsi sellaiset, joissa ainakin yksi pintaviiluista on lehtipuuta, bambua, vaneri, jossa ainakin yk"
+      - "44123300 (2017--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Paljous

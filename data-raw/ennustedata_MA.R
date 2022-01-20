@@ -36,20 +36,20 @@ purrr::map(id_puunkaytto, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/M
 purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/MAdata_puukaupp2_raw.yaml", append = TRUE))
 
 
-ptt_update_ennustedata("MAdata_Tulli", start_year = 2012)
+ptt_update_ennustedata("MAdata_", start_year = 2012)
 ptt_copy_ennustedata("MA")
 
 
 ma_tulli_cn8 <- c("44071110", "44071120", "44071190", "44071210", "44071220", "44071290", "44123900", "44129985", "44123300")
-
+ma_tulli_cn4 <- c("4407", "4412")
 
 # Tilastoarvo (euro) Paljous
 
 dat_ma_vienti <-
   data("tulli/uljas_cn",
-     dl_filter = list("Tavaraluokitus CN8" = ma_tulli_cn8,
+     dl_filter = list("Tavaraluokitus CN4" = ma_tulli_cn4,
                       "Maa" = "AA",
                       "Suunta" = "Vienti määrämaittain",
                       "Indikaattorit" = "Tilastoarvo (euro)"))
 
-data_to_yaml(dat_ma_vienti, file = "inst/ennustedata/MAdata_Tulli_raw.yaml")
+data_to_yaml(dat_ma_vienti)
