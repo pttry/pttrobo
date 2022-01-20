@@ -151,7 +151,7 @@ ptt_plot <- function(){
                          source_y_adjustment = -0.30, source_x_adjustment = 0, legend_orientation = "h", x_legend = 0, y_legend = -0.30,
                          top_margin = 80, yksikko = "%", bottom_margin = 85,
                          color_vector = c(ptt_vihrea, ptt_sininen, ptt_ruskea, ptt_keltainen),
-                         rounding = 1
+                         rounding = 1, ...
   ){
 
     if(missing(grouping_variable)){
@@ -160,7 +160,7 @@ ptt_plot <- function(){
 
     grouping_variable <- enquo(grouping_variable)
 
-    plotly::plot_ly(d, x = d$time, y = d$value, color = grouping_variable, text = grouping_variable) %>%
+    plotly::plot_ly(d, x = d$time, y = d$value, color = grouping_variable, text = grouping_variable, ...) %>%
       add_lines(hovertemplate = paste0("%{text}<br>%{y:.", rounding, "f} ", yksikko, "<extra></extra>"), line = list(width = 4),
                 colors = color_vector, mode ='lines') %>%
       layout(hovermode = "compare") %>%
