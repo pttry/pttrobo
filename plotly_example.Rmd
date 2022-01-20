@@ -82,7 +82,6 @@ df2 |>
     lahde = "Tilastokeskus"
   )
 
-piirtaja <- pttrobo::ptt_plot()
 
 # ESIMERKKI KUN 2 SARJAA ENNUSTEINEEN
 excel_path <- "ptt_ennusteet_KT.xlsx"

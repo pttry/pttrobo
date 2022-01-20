@@ -804,3 +804,5 @@ draw_ennuste <- function(yaml_path, yaml_kuvion_nimi, excel_path, from_year=NULL
     NULL
   )
 }
+
+piirtaja <- ptt_plot()
