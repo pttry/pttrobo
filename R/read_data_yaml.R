@@ -27,16 +27,19 @@ yaml_to_excel <- function(file, xlsx_path = system.file("ennustedata", package =
 }
 
 koosta_tiedoston_datat <- function(x, start_year) {
-  purrr::map(x, ~{ purrr::map(.x, muodosta_sarjat, start_year = start_year) |> bind_rows() })
+  purrr::map(x, ~{ purrr::map(.x, muodosta_sarjat, start_year = start_year) |>
+      dplyr::bind_rows() })
 }
 
 #' @importFrom rlang %||%
+#' @importFrom robonomistClient data_get
+#' @import dplyr
 muodosta_sarjat <- function(x, start_year) {
   ## Hae ja suodata
   d <-
     if (stringr::str_starts(x$id, "tulli/")) {
       data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
-        replace_na(list(value = 0))
+        tidyr::replace_na(list(value = 0))
   } else if (!is.null(x$tiedot)) {
     data_get(x$id, tidy_time = TRUE) |>
       filter(
@@ -87,7 +90,7 @@ muodosta_sarjat <- function(x, start_year) {
       d <-
         d |>
         mutate(Vuosi = lubridate::year(time)) |>
-        drop_na() |>
+        tidyr::drop_na() |>
         group_by(across(c(-time, -value))) |>
         add_tally() %>%
         filter(n == freq) %>%
@@ -103,7 +106,7 @@ muodosta_sarjat <- function(x, start_year) {
       if (.x == "Vuosi") {
         if (lubridate::is.Date(d$Vuosi)) {
           seq(make_date(start_year,1,1), max(d$Vuosi),
-              by = case_when(freq == 4 ~ "quarter", freq == 12 ~ "months"))
+              by = dplyr::case_when(freq == 4 ~ "quarter", freq == 12 ~ "months"))
         } else {
           as.double(seq(as.numeric(start_year), max(d$Vuosi)))
         }
@@ -118,15 +121,15 @@ muodosta_sarjat <- function(x, start_year) {
   ## Järjestä ja pakota kaikki vuodet taulukkoon
   d <-
     left_join(
-      expand_grid(!!!Järjestys),
+      tidyr::expand_grid(!!!Järjestys),
       d,
       by = intersect(c(names(x$tiedot), "Vuosi"), names(d))
     )
 
   ## Pivotoi
   d |>
-    unite("Aikasarja", -Vuosi, -value, sep = "; ") |>
-    pivot_wider(names_from = Vuosi) |>
+    tidyr::unite("Aikasarja", -Vuosi, -value, sep = "; ") |>
+    tidyr::pivot_wider(names_from = Vuosi) |>
     mutate(id = x$id, Muunnos = x$muunnos) |>
     relocate(id, Muunnos, Aikasarja)
 }

@@ -39,6 +39,8 @@ excel_files_ennustedata <- function(pattern = NULL){
 #'
 #' @param pattern A string to look in file names to update.
 #' @param start_year A first year of data
+#'
+#' @export
 ptt_update_ennustedata <- function(pattern = NULL, start_year){
   files <- yaml_files_ennustedata(pattern = pattern)
   for (file in files) {
@@ -46,6 +48,15 @@ ptt_update_ennustedata <- function(pattern = NULL, start_year){
   }
 
 }
+
+#' Copy ennustedata to teams
+#'
+#' @param ennuste A character of ennuste. One of "ME", "KT", "MA".
+#'
+#' @export
+#'
+#'
+#'
 
 ptt_copy_ennustedata <- function(ennuste = c("ME", "KT", "MA"), path = NULL){
 
