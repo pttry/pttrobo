@@ -88,7 +88,7 @@ data_get("luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("luke", start_year = 2012)
+ptt_update_ennustedata("MEdata_", start_year = 2012)
 ptt_copy_ennustedata("ME")
 
 
