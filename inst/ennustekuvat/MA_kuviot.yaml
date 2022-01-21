@@ -1,0 +1,29 @@
+tukin_hinta:
+  otsikko: "Tukkipuun nimelliset keskikantohinnat"
+  alaotsikko: "€ / m3"
+  viite: "Lähde: Luke, ennuste PTT."
+  sarjat:
+    - nimi: Mäntytukki
+      robonomist_data:
+        id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/02_Kuukausitilastot/01a_Kantohinnat_kk.px
+        muunnos: alkuperäinen
+        tiedot:
+          Hinta-alue:
+          - KOKO MAA
+          Hakkuutapa:
+          - Pystyhakkuut yhteensä
+          Puutavaralaji:
+          - Mäntytukki
+      ennuste_id: "ma_e_mantytukki_hinta"
+    - nimi: Kuusitukki
+      robonomist_data:
+        id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/02_Kuukausitilastot/01a_Kantohinnat_kk.px
+        muunnos: alkuperäinen
+        tiedot:
+          Hinta-alue:
+          - KOKO MAA
+          Hakkuutapa:
+          - Pystyhakkuut yhteensä
+          Puutavaralaji:
+          - Kuusitukki
+      ennuste_id: "ma_e_kuusitukki_hinta"

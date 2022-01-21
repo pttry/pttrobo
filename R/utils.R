@@ -659,9 +659,9 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
     d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
 
     d <- robonomistClient::data_get(d_specs$id, tidy_time=TRUE)
-    for(name in names(d_specs$Tiedot)){
+    for(name in names(d_specs$tiedot)){
       d <- d |>
-        filter(d[name] == d_specs$Tiedot[name][[1]])
+        filter(d[name] == d_specs$tiedot[name][[1]])
     }
     d
   }
@@ -767,10 +767,11 @@ ennuste_time_serie_from_excel <- function(excel_path, serie_name){
 #'                      filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
 #'}
 #' @export
+#' @import dplyr
 yearly_change <- function(data){
   data %>%
     mutate(value = ((value/ lag(value, 4)) -1) * 100) %>%
-    drop_na()
+    tidyr::drop_na()
 }
 
 #' Draw using yaml specification and corresponding prediction data from excel

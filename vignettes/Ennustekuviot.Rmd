@@ -1,0 +1,44 @@
+---
+title: "Ennustekuviot"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Ennustekuviot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pttrobo)
+```
+
+# Ennustekuviot
+
+## Ennustekuvioiden määrittely
+
+```{r}
+
+draw_ennuste(
+  yaml_path = system.file("ennustekuvat", "MA_kuviot.yaml", package="pttrobo"),
+  yaml_kuvion_nimi = "tukin_hinta",
+  excel_path = system.file("ennustekuvat", "ptt_ennusteet.xlsx", package = "pttrobo"),
+  from_year = 2015
+)
+
+
+```
+
+## Ennustekuvioiden päivittäminen
+
+```{r}
+
+
+
+```
+
