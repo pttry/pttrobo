@@ -36,6 +36,7 @@ pttrobo_print_filter <- function(x, conc = TRUE){
 }
 
 #' @describeIn pttrobo_print_filter version for pttdatahaku::filter_recode()
+#' @export
 pttrobo_print_filter_recode <- function(x, conc = TRUE){
   if (!inherits(x, "robonomist_data")){
     x <- ptt_data_robo_l(x)
