@@ -2,9 +2,12 @@
 % Please edit documentation in R/data_utils.R
 \name{pttrobo_print_filter}
 \alias{pttrobo_print_filter}
+\alias{pttrobo_print_filter_recode}
 \title{Print full filtering for Robonomist id or data}
 \usage{
 pttrobo_print_filter(x, conc = TRUE)
+
+pttrobo_print_filter_recode(x, conc = TRUE)
 }
 \arguments{
 \item{x}{A Robonomist id or robonomist_data}
@@ -14,6 +17,12 @@ pttrobo_print_filter(x, conc = TRUE)
 \description{
 In ptt-format
 }
+\section{Functions}{
+\itemize{
+\item \code{pttrobo_print_filter_recode}: version for pttdatahaku::filter_recode()
+}}
+
 \examples{
   pttrobo_print_filter(x = "luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px", conc = FALSE)
+  pttrobo_print_filter_recode(x = "luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px", conc = FALSE)
 }
