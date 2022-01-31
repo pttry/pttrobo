@@ -2,9 +2,15 @@
 % Please edit documentation in R/ptt_data.R
 \name{ptt_data_robo}
 \alias{ptt_data_robo}
+\alias{ptt_data_robo_l}
+\alias{ptt_data_robo_c}
 \title{Get Data with robonomistClient in PTT Format}
 \usage{
-ptt_data_robo(..., labels = FALSE)
+ptt_data_robo(..., labels = TRUE)
+
+ptt_data_robo_l(..., labels = TRUE)
+
+ptt_data_robo_c(..., labels = FALSE)
 }
 \arguments{
 \item{...}{Arguments to \code{\link[robonomistClient]{data_get}}.
@@ -21,6 +27,13 @@ but with PTT formating:
 \item variables as factors
 }
 }
+\section{Functions}{
+\itemize{
+\item \code{ptt_data_robo_l}: With labels TRUE.
+
+\item \code{ptt_data_robo_c}: With labels FALSE.
+}}
+
 \examples{
 \dontrun{
   ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()

@@ -15,7 +15,7 @@
 #' \dontrun{
 #'   ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
 #' }
-ptt_data_robo <- function(..., labels = FALSE){
+ptt_data_robo <- function(..., labels = TRUE){
   robonomistClient::data_get(..., labels = labels, tidy_time = TRUE) |>
     statfitools::clean_names() |>
     dplyr::mutate(dplyr::across(where(is.character), forcats::as_factor)) |>
@@ -23,10 +23,17 @@ ptt_data_robo <- function(..., labels = FALSE){
 }
 
 
-#' @describeIn ptt_data_ropo With labels TRUE
+#' @describeIn ptt_data_robo With labels TRUE.
 #' @export
 #'
 ptt_data_robo_l <- function(..., labels = TRUE){
+  ptt_data_robo(..., labels = labels)
+}
+
+#' @describeIn ptt_data_robo With labels FALSE.
+#' @export
+#'
+ptt_data_robo_c <- function(..., labels = FALSE){
   ptt_data_robo(..., labels = labels)
 }
 

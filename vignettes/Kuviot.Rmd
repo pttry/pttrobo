@@ -1,0 +1,54 @@
+---
+title: "Kuviot"
+output: rmarkdown::html_document
+vignette: >
+  %\VignetteIndexEntry{Kuviot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pttrobo)
+library(pttdatahaku)
+```
+
+Kuvioiden piirtämiseksi pttropo- paketti sisältää aplot_ -alkuisia 
+piirtofunktioita, joilla voidaan helposti piirtää kuvioita.
+
+Kuvio-funktiot on tarkoitettut toimaan 'ptt_data_robo' -funktioiden kanssa, 
+joissa päivämäärä muuttuja on time-sarakkeessa ja tiedot value-sarakkeessa.
+Nämä on x ja y -oletussarakkeet, mutta ne voidaa myös muuttaa.
+
+Muuttujat:
+
+- x Oletus time
+- y Oletus value
+- colour Värien luokat
+- size Koon luokat. Tarkoitus käyttää korostamiseen, joten ennaltamäärätyt koot, 
+  jos diskreetti (ei toiminnassa vielä).
+- title Otsikko
+- subtitle Alaotsikko, käytettään myös y-akselin otsikkona. (Ei näy ?)
+- source Lähde. Lisätään tekstiin: "Lähde: ..., PTT
+- caption Vaihtoehto source:lle. Voidaan käyttää koko lähde-tekstin kirjoittamiseen.
+
+```{r}
+
+ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
+  filter_recode(
+     taloustoimi = c("Tuonti" = "P7R Tavaroiden ja palvelujen tuonti, tulona",
+                     "Vienti" = "P6K Tavaroiden ja palvelujen vienti, menona"),
+     tiedot = c("Volyymin muutokset, %")) |>
+     aplot_lines(colour = taloustoimi,
+                 title = "Vienti ja tuonti",
+                 subtititle = "%, volyymin muutos",
+                 source = "Tilastokeskus")
+
+```
+
