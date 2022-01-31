@@ -22,7 +22,7 @@ library(pttrobo)
 
 ## Ennustekuvioiden määrittely
 
-```{r, eval=FALSE}
+```{r}
 
 draw_ennuste(
   yaml_path = system.file("ennustekuvat", "MA_kuviot.yaml", package="pttrobo"),
