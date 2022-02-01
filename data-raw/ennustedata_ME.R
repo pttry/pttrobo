@@ -86,9 +86,18 @@ data_get("luke/02_Maatalous/06_Talous/05_Maataloustuotteiden_ulkomaankauppa/Luke
   #        suunta %in% c("Tuonti alkuperämaittain", "Vienti määrämaittain")) |>
   data_to_yaml()
 
+data_get("tulli/uljas_sitc",
+     dl_filter = list("Tavaraluokitus SITC2" = c("00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
+                                                 "11", "12"),
+                      "Vuosi" = c("2020"),
+                      "Maa" = "AA",
+                      "Suunta" = c("Vienti määrämaittain", "Tuonti alkuperämaittain"),
+                      "Indikaattorit" = "Tilastoarvo (euro)")) |>
+  data_to_yaml()
+
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("MEdata_", start_year = 2012)
+ptt_update_ennustedata("MEdata_Ulkomaankauppa.yaml", start_year = 2012)
 ptt_copy_ennustedata("ME")
 
 

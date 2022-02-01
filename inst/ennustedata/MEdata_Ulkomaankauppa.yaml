@@ -1,5 +1,89 @@
 MEdata_Ulkomaankauppa:
-  Vienti_kk:
+  Vienti_sitc_kk:
+  - id: tulli/uljas_sitc
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus SITC2:
+      - 00 (2002--.) Elävät eläimet
+      - 01 (2002--.) Liha ja lihatuotteet
+      - 02 (2002--.) Maitotaloustuotteet ja munat
+      - 03 (2002--.) Kalat ja kalavalmisteet
+      - 04 (2002--.) Vilja ja viljatuotteet
+      - 05 (2002--.) Hedelmät ja kasvikset
+      - 06 (2002--.) Sokeri ja sokerivalmisteet, hunaja
+      - 07 (2002--.) Kahvi, tee, kaakao, mausteet; tuotteet niistä
+      - 08 (2002--.) Rehuaineet
+      - 09 (2002--.) Erinäiset elintarvikkeet
+      - 11 (2002--.) Juomat
+      - 12 (2002--.) Tupakka ja tupakkavalmisteet
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta:
+      - Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Tuonti_sitc_kk:
+  - id: tulli/uljas_sitc
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus SITC2:
+      - 00 (2002--.) Elävät eläimet
+      - 01 (2002--.) Liha ja lihatuotteet
+      - 02 (2002--.) Maitotaloustuotteet ja munat
+      - 03 (2002--.) Kalat ja kalavalmisteet
+      - 04 (2002--.) Vilja ja viljatuotteet
+      - 05 (2002--.) Hedelmät ja kasvikset
+      - 06 (2002--.) Sokeri ja sokerivalmisteet, hunaja
+      - 07 (2002--.) Kahvi, tee, kaakao, mausteet; tuotteet niistä
+      - 08 (2002--.) Rehuaineet
+      - 09 (2002--.) Erinäiset elintarvikkeet
+      - 11 (2002--.) Juomat
+      - 12 (2002--.) Tupakka ja tupakkavalmisteet
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta:
+      - Tuonti alkuperämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Vienti_sitc_v:
+  - id: tulli/uljas_sitc
+    muunnos: vuosisumma
+    tiedot:
+      Tavaraluokitus SITC2:
+      - 00 (2002--.) Elävät eläimet
+      - 01 (2002--.) Liha ja lihatuotteet
+      - 02 (2002--.) Maitotaloustuotteet ja munat
+      - 03 (2002--.) Kalat ja kalavalmisteet
+      - 04 (2002--.) Vilja ja viljatuotteet
+      - 05 (2002--.) Hedelmät ja kasvikset
+      - 06 (2002--.) Sokeri ja sokerivalmisteet, hunaja
+      - 07 (2002--.) Kahvi, tee, kaakao, mausteet; tuotteet niistä
+      - 08 (2002--.) Rehuaineet
+      - 09 (2002--.) Erinäiset elintarvikkeet
+      - 11 (2002--.) Juomat
+      - 12 (2002--.) Tupakka ja tupakkavalmisteet
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta:
+      - Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Tuonti_sitc_v:
+  - id: tulli/uljas_sitc
+    muunnos: vuosisumma
+    tiedot:
+      Tavaraluokitus SITC2:
+      - 00 (2002--.) Elävät eläimet
+      - 01 (2002--.) Liha ja lihatuotteet
+      - 02 (2002--.) Maitotaloustuotteet ja munat
+      - 03 (2002--.) Kalat ja kalavalmisteet
+      - 04 (2002--.) Vilja ja viljatuotteet
+      - 05 (2002--.) Hedelmät ja kasvikset
+      - 06 (2002--.) Sokeri ja sokerivalmisteet, hunaja
+      - 07 (2002--.) Kahvi, tee, kaakao, mausteet; tuotteet niistä
+      - 08 (2002--.) Rehuaineet
+      - 09 (2002--.) Erinäiset elintarvikkeet
+      - 11 (2002--.) Juomat
+      - 12 (2002--.) Tupakka ja tupakkavalmisteet
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta:
+      - Tuonti alkuperämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Vienti_cn_kk:
   - id: tidy/tulli_ulkomaankauppa
     muunnos: alkuperäinen
     tiedot:
@@ -42,7 +126,7 @@ MEdata_Ulkomaankauppa:
       Suunta:
       - Vienti määrämaittain
       Indikaattorit: Tilastoarvo (euro)
-  Tuonti_kk:
+  Tuonti_cn_kk:
   - id: tidy/tulli_ulkomaankauppa
     muunnos: alkuperäinen
     tiedot:
@@ -85,7 +169,7 @@ MEdata_Ulkomaankauppa:
       Suunta:
       - Tuonti alkuperämaittain
       Indikaattorit: Tilastoarvo (euro)
-  Vienti_v:
+  Vienti_cn_v:
   - id: tidy/tulli_ulkomaankauppa
     muunnos: vuosisumma
     tiedot:
@@ -128,7 +212,7 @@ MEdata_Ulkomaankauppa:
       Suunta:
       - Vienti määrämaittain
       Indikaattorit: Tilastoarvo (euro)
-  Tuonti_v:
+  Tuonti_cn_v:
   - id: tidy/tulli_ulkomaankauppa
     muunnos: vuosisumma
     tiedot:

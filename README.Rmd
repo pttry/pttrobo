@@ -26,11 +26,11 @@ Install from github:
 ```{r install, eval=FALSE}
 
 # install.packages("devtools")
-devtools::install_github("pttry/ggptt")
+devtools::install_github("pttry/pttrobo")
 
 ```
 
-## Example
+## Tietojen haku Robonomist-tietokannasta
 
 
 
@@ -42,3 +42,11 @@ library(pttrobo)
 ```
 
 
+## Ennustedatojen määrittely ja päivitys
+
+- Ennustedatat määritellää .yaml-tiedostoissa kansiossa inst/ennustedata.
+- Koodit yaml-raakaversioden kirjoitukseen löytyvät: data-raw/
+- ptt_update_ennustedata() päivittää ennustedatan. Esimerkiksi ME-datojen päivitys:
+  ptt_update_ennustedata("MEdata_", start_year = 2012)
+- ptt_copy_ennustedata("ME") Kopioi (ME) datat teamsiin. Data kansio pitää olla 
+  synkronoituna omalla koneella.
