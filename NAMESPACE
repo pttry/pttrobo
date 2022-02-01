@@ -2,6 +2,7 @@
 
 export("%>%")
 export(aplot_lines)
+export(aplot_trends)
 export(data_to_yaml)
 export(draw_ennuste)
 export(ennuste_time_serie_from_excel)

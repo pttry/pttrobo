@@ -2,9 +2,23 @@
 % Please edit documentation in R/plotting.R
 \name{aplot_lines}
 \alias{aplot_lines}
+\alias{aplot_trends}
 \title{Basic PTT line plot}
 \usage{
 aplot_lines(
+  dat,
+  x = time,
+  y = value,
+  colour = tiedot,
+  size = NULL,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  caption = NULL,
+  ...
+)
+
+aplot_trends(
   dat,
   x = time,
   y = value,
@@ -36,6 +50,11 @@ aplot_lines(
 \description{
 Basic PTT line plot
 }
+\section{Functions}{
+\itemize{
+\item \code{aplot_trends}: Estimate and plot trend with original
+}}
+
 \examples{
 ptt_data_robo_l("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
 dplyr::filter(
@@ -48,4 +67,13 @@ dplyr::filter(
                 source = "Tilastokeskus")
 
 
+ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+dplyr::filter(
+    taloustoimi \%in\% c("P7R Tavaroiden ja palvelujen tuonti, tulona",
+    "P6K Tavaroiden ja palvelujen vienti, menona"),
+    tiedot == c("Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa")) |>
+    aplot_trends(colour = taloustoimi,
+                title = "Vienti ja tuonti",
+                subtititle = "\%, volyymin muutos",
+                source = "Tilastokeskus")
 }

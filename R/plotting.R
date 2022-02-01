@@ -39,7 +39,7 @@ aplot_lines <- function(dat, x = time, y = value,
                    yksikko = NULL, ...)
 }
 
-#' @describeIn aplot_lines
+#' @describeIn aplot_lines Estimate and plot trend with original
 #' @export
 #' @examples
 #' ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
