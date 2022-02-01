@@ -1,11 +1,11 @@
-FROM rocker/tidyverse:4.1.1
+FROM rocker/tidyverse:4.1.2
 
-# RUN apt-get update \
-#     && apt-get install -y --no-install-recommends \
-#     nginx \
-#     && apt-get clean \
-#     && rm -rf /var/lib/apt/lists/* \
-#     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    libglpk-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
 RUN sed -i -e 's/# fi_FI.UTF-8 UTF-8/fi_FI.UTF-8 UTF-8/' /etc/locale.gen && \
