@@ -1,0 +1,224 @@
+KTdata_NA.xlsx:
+  Huoltotase_cp:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - B1GMH Bruttokansantuote markkinahintaan
+      - B1NMH Nettokansantuote markkinahintaan
+      - P1R Tuotos perushintaan, tulona
+      - P2K Välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P6K_M_P7R Tavaroiden ja palvelujen nettovienti (P6K-P7R)
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2N Tuotannon ja tuonnin verot miinus tukipalkkiot
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D4_B4N  Omaisuus- ja yrittäjätulot, netto
+      - D4_B4NS11 Omaisuus- ja yrittäjätulot, yritykset, netto
+      - D4_B4NS12 Omaisuus- ja yrittäjätulot, rahoitus- ja vakuutuslaitokset, netto
+      - D4_B4NS13 Omaisuus- ja yrittäjätulot, julkisyhteisöt, netto
+      - D4_B4NS14 Omaisuus- ja yrittäjätulot, kotitaloudet, netto
+      - D4_B4NS15 Omaisuus- ja yrittäjätulot, kotital. palv. voittoa tavoittelemattomat
+        yhteisöt, netto
+      - D1_D4N Ensitulo ulkomailta, netto
+      - B11VV Vaihtosuhdevaikutus
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5_D7N Tulonsiirrot ulkomailta, netto
+      - B6N Käytettävissä oleva tulo, netto
+      - B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P31NCK Yksityiset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - P3KS13 Julkiset kulutusmenot, menona
+      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
+      - F4S14 Lainat, kotitaloudet
+      - B8N Säästö, netto
+      - B8NS14  Säästämisaste, kotitaloudet
+      - F4NS14 Velkaantumisaste, kotitaloudet
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P51KS13 Julkiset investoinnit
+      - P51KXS13 Yksityiset investoinnit
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - DEB1G  Tilastollinen ero
+      - B7NS14 Oikaistu käytettävissä oleva tulo, kotitaloudet, netto
+      - P41K Todellinen yksilöllinen kulutus, menona
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Huoltotase_vol:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - B1GMH Bruttokansantuote markkinahintaan
+      - B1NMH Nettokansantuote markkinahintaan
+      - P1R Tuotos perushintaan, tulona
+      - P2K Välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P6K_M_P7R Tavaroiden ja palvelujen nettovienti (P6K-P7R)
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2N Tuotannon ja tuonnin verot miinus tukipalkkiot
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D4_B4N  Omaisuus- ja yrittäjätulot, netto
+      - D4_B4NS11 Omaisuus- ja yrittäjätulot, yritykset, netto
+      - D4_B4NS12 Omaisuus- ja yrittäjätulot, rahoitus- ja vakuutuslaitokset, netto
+      - D4_B4NS13 Omaisuus- ja yrittäjätulot, julkisyhteisöt, netto
+      - D4_B4NS14 Omaisuus- ja yrittäjätulot, kotitaloudet, netto
+      - D4_B4NS15 Omaisuus- ja yrittäjätulot, kotital. palv. voittoa tavoittelemattomat
+        yhteisöt, netto
+      - D1_D4N Ensitulo ulkomailta, netto
+      - B11VV Vaihtosuhdevaikutus
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5_D7N Tulonsiirrot ulkomailta, netto
+      - B6N Käytettävissä oleva tulo, netto
+      - B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P31NCK Yksityiset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - P3KS13 Julkiset kulutusmenot, menona
+      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
+      - F4S14 Lainat, kotitaloudet
+      - B8N Säästö, netto
+      - B8NS14  Säästämisaste, kotitaloudet
+      - F4NS14 Velkaantumisaste, kotitaloudet
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P51KS13 Julkiset investoinnit
+      - P51KXS13 Yksityiset investoinnit
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - DEB1G  Tilastollinen ero
+      - B7NS14 Oikaistu käytettävissä oleva tulo, kotitaloudet, netto
+      - P41K Todellinen yksilöllinen kulutus, menona
+      Tiedot:
+      - Volyymisarja, viitevuosi 2015
+  Huoltotase_pp:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - B1GMH Bruttokansantuote markkinahintaan
+      - B1NMH Nettokansantuote markkinahintaan
+      - P1R Tuotos perushintaan, tulona
+      - P2K Välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P6K_M_P7R Tavaroiden ja palvelujen nettovienti (P6K-P7R)
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2N Tuotannon ja tuonnin verot miinus tukipalkkiot
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D4_B4N  Omaisuus- ja yrittäjätulot, netto
+      - D4_B4NS11 Omaisuus- ja yrittäjätulot, yritykset, netto
+      - D4_B4NS12 Omaisuus- ja yrittäjätulot, rahoitus- ja vakuutuslaitokset, netto
+      - D4_B4NS13 Omaisuus- ja yrittäjätulot, julkisyhteisöt, netto
+      - D4_B4NS14 Omaisuus- ja yrittäjätulot, kotitaloudet, netto
+      - D4_B4NS15 Omaisuus- ja yrittäjätulot, kotital. palv. voittoa tavoittelemattomat
+        yhteisöt, netto
+      - D1_D4N Ensitulo ulkomailta, netto
+      - B11VV Vaihtosuhdevaikutus
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5_D7N Tulonsiirrot ulkomailta, netto
+      - B6N Käytettävissä oleva tulo, netto
+      - B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P31NCK Yksityiset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - P3KS13 Julkiset kulutusmenot, menona
+      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
+      - F4S14 Lainat, kotitaloudet
+      - B8N Säästö, netto
+      - B8NS14  Säästämisaste, kotitaloudet
+      - F4NS14 Velkaantumisaste, kotitaloudet
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P51KS13 Julkiset investoinnit
+      - P51KXS13 Yksityiset investoinnit
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - DEB1G  Tilastollinen ero
+      - B7NS14 Oikaistu käytettävissä oleva tulo, kotitaloudet, netto
+      - P41K Todellinen yksilöllinen kulutus, menona
+      Tiedot:
+      - Edellisen vuoden hinnoin, miljoonaa euroa
+  Julkinen_kulutus:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11t4.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - P3K Kulutusmenot, menona
+      Sektori:
+      - S13 Julkisyhteisöt
+      - S1311 Valtionhallinto
+      - S1313 Paikallishallinto
+      - S1314 Sosiaaliturvarahastot
+      - S13141 Työeläkelaitokset
+      - S13149 Muut sosiaaliturvarahastot
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+      - Volyymisarja, viitevuosi 2015

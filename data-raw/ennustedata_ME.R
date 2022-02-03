@@ -97,7 +97,7 @@ data_get("tulli/uljas_sitc",
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("MEdata_Ulkomaankauppa.yaml", start_year = 2012)
+ptt_update_ennustedata("MEdata_Vil", start_year = 2012)
 ptt_copy_ennustedata("ME")
 
 
