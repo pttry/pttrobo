@@ -64,7 +64,7 @@ aplot_trends <- function(dat, x = time, y = value,
     droplevels() |>
     mutate(alk = {{y}}) |>
     group_by({{colour}}) |>
-    mutate(value = statfitools::trend_series({{y}}, time)) |>
+    mutate(value = statfitools::trend_series({{y}}, time, ...)) |>
     ungroup()
 
   tiedot_name <- rlang::enquo(colour)

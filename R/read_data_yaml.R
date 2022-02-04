@@ -165,5 +165,7 @@ data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1", välilehti = "
     close(con)
     cli_alert_success("Write in {file}")
   }
-  cat((yaml::as.yaml(y, handlers = handlers)))
+  out <- yaml::as.yaml(y, handlers = handlers)
+  cat(out)
+  cat(out, file = "clipboard-128")
 }

@@ -62,7 +62,8 @@ ptt_copy_ennustedata <- function(ennuste = c("ME", "KT", "MA"), path = NULL){
 
   paths <-
     c(ME = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut ME/data",
-      MA = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - MAdata")
+      MA = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - MAdata",
+      KT = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - KTdata")
 
   if (is.null(path)){
     path <- paths[ennuste]
