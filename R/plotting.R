@@ -8,6 +8,7 @@
 #' @param source A source information for caption. Text is added to
 #'               "Lähde: ..., PTT".
 #' @param caption A caption text. Will override source
+#' @param ... Additional arguments
 #'
 #' @export
 #' @examples
