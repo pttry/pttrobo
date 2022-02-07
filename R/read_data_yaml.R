@@ -154,7 +154,7 @@ muodosta_sarjat <- function(x, start_year) {
 #' @export
 
 data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1",
-                         välilehti = "sheet1",
+                         sheet = "sheet1",
                          muunnos = c("alkuperäinen", "vuosisumma", "vuosikeskiarvo"),
                          append = FALSE) {
   y <-
@@ -167,7 +167,7 @@ data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1",
             select(!any_of(c("time", "value", "Vuosi", "Vuosineljännes", "Kuukausi"))) |>
             purrr::map(unique)
         ))
-      ), välilehti)
+      ), sheet)
     ), xlsx_tiedosto)
 
   handlers <- list(
