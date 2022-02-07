@@ -46,6 +46,11 @@ aplot_trends(
 "Lähde: ..., PTT".}
 
 \item{caption}{A caption text. Will override source}
+<<<<<<< HEAD
+=======
+
+\item{...}{Additional arguments}
+>>>>>>> afde89e3f93a69858754978812431814fdc74b20
 }
 \description{
 Basic PTT line plot
