@@ -27,7 +27,7 @@
 #' }
 #' @export
 yaml_to_excel <- function(file,
-                          xlsx_path = system.file("ennustedata",
+                          xlsx_path = system.file("ennustedata_xlsx",
                                                   package = "pttrobo"),
                           start_year) {
 

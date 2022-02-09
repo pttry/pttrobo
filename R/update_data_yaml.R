@@ -25,7 +25,7 @@ yaml_files_ennustedata <- function(pattern = NULL){
 #' excel_files_ennustedata()
 #' excel_files_ennustedata("ME")
 excel_files_ennustedata <- function(pattern = NULL){
-  files <- list.files(path = system.file("ennustedata", package = "pttrobo"),
+  files <- list.files(path = system.file("ennustedata_xlsx", package = "pttrobo"),
                       pattern = "\\.xlsx$",
                       full.names = TRUE)
   if (!is.null(pattern)){

@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 inst/ennustedata/*.xlsx
+inst/ennustedata_xlsx/*.xlsx
 inst/doc
