@@ -65,7 +65,7 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of pttrobo is to …</p>
+<p>PTT-paketti tietojen hakuun Robonomistista ja kuvioiden piirtämiseen.</p>
 <p>Install from github:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
@@ -77,12 +77,12 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">pttrobo</span><span class="op">)</span>
 <span class="co">#&gt; v Loaded robonomistClient 2.1.8</span>
-<span class="co">#&gt; i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [33ms]</span>
+<span class="co">#&gt; i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [46ms]</span>
 
 <span class="fu"><a href="reference/ptt_data_robo.html">ptt_data_robo</a></span><span class="op">(</span><span class="st">"StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px"</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [99ms]</span>
-<span class="co">#&gt; i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [31ms]</span>
-<span class="co">#&gt; \ Requesting getv Requesting get [96ms]</span>
+<span class="co">#&gt; i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [146ms]</span>
+<span class="co">#&gt; i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [38ms]</span>
+<span class="co">#&gt; \ Requesting getv Requesting get [104ms]</span>
 <span class="co">#&gt; # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px</span>
 <span class="co">#&gt; # A tibble:      6 x 5</span>
 <span class="co">#&gt; # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,</span>
@@ -101,20 +101,20 @@
 <p><code><a href="https://rdrr.io/pkg/pttdatahaku/man/filter_recode.html" class="external-link">filter_recode()</a></code> -funktiota, josta saa mallin <code><a href="https://rdrr.io/pkg/pttdatahaku/man/print_full_filter.html" class="external-link">print_full_filter_recode()</a></code> -funktiolla.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">pttdatahaku</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</span>
+<span class="co">#&gt; v ggplot2 3.3.5     v purrr   0.3.4</span>
+<span class="co">#&gt; v tibble  3.1.6     v dplyr   1.0.7</span>
+<span class="co">#&gt; v tidyr   1.2.0     v stringr 1.4.0</span>
+<span class="co">#&gt; v readr   2.1.2     v forcats 0.5.1</span>
+<span class="co">#&gt; -- Conflicts ------------------------------------------ tidyverse_conflicts() --</span>
+<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
 
 <span class="fu"><a href="reference/ptt_data_robo.html">ptt_data_robo</a></span><span class="op">(</span><span class="st">"StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px"</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://rdrr.io/pkg/pttdatahaku/man/print_full_filter.html" class="external-link">print_full_filter_recode</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; \ Requesting get</span>
-<span class="co">#&gt; v Requesting get [11ms]</span>
+<span class="co">#&gt; v Requesting get [8ms]</span>
 <span class="co">#&gt; filter_recode(</span>
 <span class="co">#&gt;   sukupuoli = c("Yhteensä", "Miehet", "Naiset"),</span>
 <span class="co">#&gt;   ikaluokka = c("15 - 74", "15 - 64", "15 - 24", "20 - 64", "20 - 69", "25 - 34", "35 - 44", "45 - 54", "55 - 64"),</span>
@@ -129,7 +129,7 @@
             <span class="st">"Työlliset"</span> <span class="op">=</span> <span class="st">"Työlliset, 1000 henkilöä"</span><span class="op">)</span>
   <span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op">&gt;=</span> <span class="st">"2021-12-01"</span><span class="op">)</span>
-<span class="co">#&gt; \ Requesting getv Requesting get [11ms]</span>
+<span class="co">#&gt; \ Requesting getv Requesting get [10ms]</span>
 <span class="co">#&gt; # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px</span>
 <span class="co">#&gt; # A tibble:      2 x 5</span>
 <span class="co">#&gt; # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,</span>
@@ -140,8 +140,31 @@
 <span class="co">#&gt;   &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;date&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Yhteensä  15 - 74   Työvoima  2021-12-01  2782</span>
 <span class="co">#&gt; 2 Yhteensä  15 - 74   Työlliset 2021-12-01  2595</span></code></pre></div>
-<p>Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta: <a href="https://eye.robonomist.app/" class="external-link uri">https://eye.robonomist.app/</a> tai R:n kautta robonomistClient paketin avulla</p>
+</div>
+<div class="section level2">
+<h2 id="tietojen-vienti-muihin-ohjelmiin">Tietojen vienti muihin ohjelmiin<a class="anchor" aria-label="anchor" href="#tietojen-vienti-muihin-ohjelmiin"></a>
+</h2>
+<p>pttdatahaku paketin <code><a href="https://rdrr.io/pkg/pttdatahaku/man/conc.html" class="external-link">conc()</a></code> kopioi tiedot leikepöydälle, josta ne voi liittää vaikka excel-tauluun.</p>
+<p>write.csv2() -kirjoittaa csv-tiedostoon esim. openxlsx-pakerin write.xlsx excel-tiedostoon. haven-paketin write_dta - stata-tiedostoon</p>
+<p>Tiedot voi myös levittää ennen vientiä (spread)</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ptt_data_robo.html">ptt_data_robo</a></span><span class="op">(</span><span class="st">"StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px"</span><span class="op">)</span> |&gt; 
+  <span class="fu"><a href="https://rdrr.io/pkg/pttdatahaku/man/filter_recode.html" class="external-link">filter_recode</a></span><span class="op">(</span>
+  sukupuoli <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Yhteensä"</span><span class="op">)</span>,
+  ikaluokka <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"15 - 74"</span><span class="op">)</span>,
+  tiedot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Työvoima"</span> <span class="op">=</span> <span class="st">"Työvoima, 1000 henkilöä"</span>, 
+            <span class="st">"Työlliset"</span> <span class="op">=</span> <span class="st">"Työlliset, 1000 henkilöä"</span><span class="op">)</span>
+  <span class="op">)</span> |&gt;
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html" class="external-link">spread</a></span><span class="op">(</span><span class="va">tiedot</span>, <span class="va">value</span><span class="op">)</span>
+<span class="co">#&gt; \ Requesting getv Requesting get [8ms]</span>
+
+<span class="co"># leikepöydälle</span>
+  <span class="co"># conc(dat)</span>
+  
+ <span class="co"># csv-tiedostoon omaan Tiedostot kansioon</span>
+  <span class="co"># write.csv2(dat, "~/dat.csv")</span></code></pre></div>
+<p>Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta: <a href="https://eye.robonomist.app/" class="external-link uri">https://eye.robonomist.app/</a> tai R:n kautta robonomistClient paketin avulla</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://robonomist.github.io/robonomistClient/" class="external-link">robonomistClient</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'robonomistClient'</span>
@@ -152,7 +175,7 @@
 <span class="fu"><a href="https://robonomist.github.io/robonomistClient/reference/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"luke/"</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; \ Requesting data</span>
-<span class="co">#&gt; v Requesting data [103ms]</span>
+<span class="co">#&gt; v Requesting data [91ms]</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; -- Robonomist Database search results</span>
 <span class="co">#&gt;   id                                              title                         </span>

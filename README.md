@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pttrobo is to …
+PTT-paketti tietojen hakuun Robonomistista ja kuvioiden piirtämiseen.
 
 Install from github:
 
@@ -23,12 +23,12 @@ id:tä.
 ``` r
 library(pttrobo)
 #> v Loaded robonomistClient 2.1.8
-#> i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [33ms]
+#> i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [46ms]
 
 ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> head()
-#> i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [99ms]
-#> i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [31ms]
-#> \ Requesting getv Requesting get [96ms]
+#> i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [146ms]
+#> i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [38ms]
+#> \ Requesting getv Requesting get [104ms]
 #> # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
 #> # A tibble:      6 x 5
 #> # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,
@@ -52,20 +52,20 @@ Tietojen filtteröintiin kannattaa käyttää pttdatahaku-paketin
 
 ``` r
 library(pttdatahaku)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+library(tidyverse)
+#> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+#> v ggplot2 3.3.5     v purrr   0.3.4
+#> v tibble  3.1.6     v dplyr   1.0.7
+#> v tidyr   1.2.0     v stringr 1.4.0
+#> v readr   2.1.2     v forcats 0.5.1
+#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
 
 ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
   print_full_filter_recode()
 #> \ Requesting get
-#> v Requesting get [11ms]
+#> v Requesting get [8ms]
 #> filter_recode(
 #>   sukupuoli = c("Yhteensä", "Miehet", "Naiset"),
 #>   ikaluokka = c("15 - 74", "15 - 64", "15 - 24", "20 - 64", "20 - 69", "25 - 34", "35 - 44", "45 - 54", "55 - 64"),
@@ -80,7 +80,7 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
             "Työlliset" = "Työlliset, 1000 henkilöä")
   ) |> 
   filter(time >= "2021-12-01")
-#> \ Requesting getv Requesting get [11ms]
+#> \ Requesting getv Requesting get [10ms]
 #> # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
 #> # A tibble:      2 x 5
 #> # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,
@@ -91,6 +91,34 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
 #>   <fct>     <fct>     <fct>     <date>     <dbl>
 #> 1 Yhteensä  15 - 74   Työvoima  2021-12-01  2782
 #> 2 Yhteensä  15 - 74   Työlliset 2021-12-01  2595
+```
+
+## Tietojen vienti muihin ohjelmiin
+
+pttdatahaku paketin `conc()` kopioi tiedot leikepöydälle, josta ne voi
+liittää vaikka excel-tauluun.
+
+write.csv2() -kirjoittaa csv-tiedostoon esim. openxlsx-pakerin
+write.xlsx excel-tiedostoon. haven-paketin write_dta - stata-tiedostoon
+
+Tiedot voi myös levittää ennen vientiä (spread)
+
+``` r
+dat <- ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
+  filter_recode(
+  sukupuoli = c("Yhteensä"),
+  ikaluokka = c("15 - 74"),
+  tiedot = c("Työvoima" = "Työvoima, 1000 henkilöä", 
+            "Työlliset" = "Työlliset, 1000 henkilöä")
+  ) |>
+  spread(tiedot, value)
+#> \ Requesting getv Requesting get [8ms]
+
+# leikepöydälle
+  # conc(dat)
+  
+ # csv-tiedostoon omaan Tiedostot kansioon
+  # write.csv2(dat, "~/dat.csv")
 ```
 
 Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta:
@@ -108,7 +136,7 @@ library(robonomistClient)
 data("luke/") |> 
   head()
 #> \ Requesting data
-#> v Requesting data [103ms]
+#> v Requesting data [91ms]
 #> 
 #> -- Robonomist Database search results
 #>   id                                              title                         

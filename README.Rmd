@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pttrobo is to ...
+PTT-paketti tietojen hakuun Robonomistista ja kuvioiden piirtämiseen.
 
 
 Install from github:
@@ -48,7 +48,7 @@ Tietojen filtteröintiin kannattaa käyttää pttdatahaku-paketin
 
 ```{r}
 library(pttdatahaku)
-library(dplyr)
+library(tidyverse)
 
 ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
   print_full_filter_recode()
@@ -62,7 +62,39 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   ) |> 
   filter(time >= "2021-12-01")
   
+
 ```
+
+## Tietojen vienti muihin ohjelmiin
+
+pttdatahaku paketin `conc()` kopioi tiedot leikepöydälle, josta ne voi liittää
+vaikka excel-tauluun.
+
+write.csv2() -kirjoittaa csv-tiedostoon
+esim. openxlsx-pakerin write.xlsx excel-tiedostoon.
+haven-paketin write_dta - stata-tiedostoon
+
+Tiedot voi myös levittää ennen vientiä (spread)
+
+```{r}
+
+dat <- ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
+  filter_recode(
+  sukupuoli = c("Yhteensä"),
+  ikaluokka = c("15 - 74"),
+  tiedot = c("Työvoima" = "Työvoima, 1000 henkilöä", 
+            "Työlliset" = "Työlliset, 1000 henkilöä")
+  ) |>
+  spread(tiedot, value)
+
+# leikepöydälle
+  # conc(dat)
+  
+ # csv-tiedostoon omaan Tiedostot kansioon
+  # write.csv2(dat, "~/dat.csv")
+
+```
+
 
 Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta: https://eye.robonomist.app/ 
 tai R:n kautta robonomistClient paketin avulla
