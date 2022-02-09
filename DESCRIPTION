@@ -30,7 +30,7 @@ Imports:
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,
-    github::pttry/pttdatahaku
+    github::pttry/pttdatahaku,
     github::pttry/ptt
 RoxygenNote: 7.1.2
 Suggests: 
