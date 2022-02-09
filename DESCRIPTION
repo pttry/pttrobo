@@ -34,5 +34,7 @@ Remotes:
 RoxygenNote: 7.1.2
 Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    ptt
 VignetteBuilder: knitr
+URL: https://pttry.github.io/pttrobo/

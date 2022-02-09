@@ -64,7 +64,7 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   
 ```
 
-Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta: [https://eye.robonomist.app/] 
+Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta: https://eye.robonomist.app/ 
 tai R:n kautta robonomistClient paketin avulla
 
 ```{r}
@@ -75,7 +75,7 @@ data("luke/") |>
 
 
 ```
-RobonomistClient ohjeet: [https://robonomist.github.io/robonomistClient/]
+RobonomistClient ohjeet: https://robonomist.github.io/robonomistClient/
 
 
 

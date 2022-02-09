@@ -26,9 +26,9 @@ library(pttrobo)
 #> i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [33ms]
 
 ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> head()
-#> i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [114ms]
-#> i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [34ms]
-#> \ Requesting getv Requesting get [371ms]
+#> i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [99ms]
+#> i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [31ms]
+#> \ Requesting getv Requesting get [96ms]
 #> # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
 #> # A tibble:      6 x 5
 #> # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,
@@ -65,7 +65,7 @@ library(dplyr)
 ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
   print_full_filter_recode()
 #> \ Requesting get
-#> v Requesting get [9ms]
+#> v Requesting get [11ms]
 #> filter_recode(
 #>   sukupuoli = c("Yhteensä", "Miehet", "Naiset"),
 #>   ikaluokka = c("15 - 74", "15 - 64", "15 - 24", "20 - 64", "20 - 69", "25 - 34", "35 - 44", "45 - 54", "55 - 64"),
@@ -80,7 +80,7 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
             "Työlliset" = "Työlliset, 1000 henkilöä")
   ) |> 
   filter(time >= "2021-12-01")
-#> \ Requesting getv Requesting get [9ms]
+#> \ Requesting getv Requesting get [11ms]
 #> # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
 #> # A tibble:      2 x 5
 #> # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,
@@ -94,8 +94,8 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
 ```
 
 Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta:
-\[<https://eye.robonomist.app/>\] tai R:n kautta robonomistClient
-paketin avulla
+<https://eye.robonomist.app/> tai R:n kautta robonomistClient paketin
+avulla
 
 ``` r
 library(robonomistClient)
@@ -108,7 +108,7 @@ library(robonomistClient)
 data("luke/") |> 
   head()
 #> \ Requesting data
-#> v Requesting data [110ms]
+#> v Requesting data [103ms]
 #> 
 #> -- Robonomist Database search results
 #>   id                                              title                         
@@ -122,7 +122,7 @@ data("luke/") |>
 ```
 
 RobonomistClient ohjeet:
-\[<https://robonomist.github.io/robonomistClient/>\]
+<https://robonomist.github.io/robonomistClient/>
 
 ## Ennustedatojen määrittely ja päivitys
 

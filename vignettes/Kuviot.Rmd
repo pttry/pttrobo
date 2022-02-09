@@ -14,9 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(pttrobo)
-library(pttdatahaku)
+```{r setup, message=FALSE}
+library(ptt)
 ```
 
 Kuvioiden piirtämiseksi pttropo- paketti sisältää aplot_ -alkuisia 
@@ -40,7 +39,7 @@ Muuttujat:
 
 ## aplot_lines - perus viivakuvio
 
-```{r}
+```{r, message=FALSE}
 
 ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
   filter_recode(
