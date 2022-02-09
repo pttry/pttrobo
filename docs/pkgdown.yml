@@ -1,0 +1,11 @@
+pandoc: 2.14.0.3
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles:
+  Ennustekuviot: Ennustekuviot.html
+  Kuviot: Kuviot.html
+last_built: 2022-02-09T11:07Z
+urls:
+  reference: https://pttry.github.io/pttrobo/reference
+  article: https://pttry.github.io/pttrobo/articles
+
