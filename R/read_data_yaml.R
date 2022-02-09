@@ -42,14 +42,17 @@ yaml_to_excel <- function(file,
 }
 
 koosta_tiedoston_datat <- function(x, start_year) {
-  purrr::map(x, ~{ purrr::map(.x, muodosta_sarjat, start_year = start_year) |>
+  purrr::imap(x, ~{ purrr::map(.x, muodosta_sarjat, name = .y, start_year = start_year) |>
       dplyr::bind_rows() })
 }
 
 #' @importFrom rlang %||%
 #' @importFrom robonomistClient data_get
 #' @import dplyr
-muodosta_sarjat <- function(x, start_year) {
+muodosta_sarjat <- function(x, name = NULL, start_year) {
+
+  message(name)
+
   ## Hae ja suodata
   d <-
     if (stringr::str_starts(x$id, "tulli/")) {

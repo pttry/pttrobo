@@ -1,0 +1,3324 @@
+KTdata_sektorit:
+  Kansantalous:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S1 Koko kansantalous
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Yritykset:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S1 Koko kansantalous
+      - S11 Yritykset
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Rahoitus:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S12 Rahoitus- ja vakuutuslaitokset
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Julkinen:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13 Julkisyhteisöt
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Valtio:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S1311 Valtionhallinto
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Paikallishallinto:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S1313 Paikallishallinto
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Työeläkelaitokset:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13141 Työeläkelaitokset
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Muut_sosiaaliturva:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13149 Muut sosiaaliturvarahastot
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Kotitaloudet:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S14 Kotitaloudet
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Voittoa_tavoittelematon:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S15 Kotitalouksia palvelevat voittoa tavoittelemattomat yhteisöt
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa
+  Ulkomaat:
+  - id: StatFin/kan/vtp/statfin_vtp_pxt_11yx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S2 Ulkomaat
+      Taloustoimi:
+      - P1R Tuotos perushintaan, tulona
+      - P11R Markkinatuotos, tulona
+      - P12R Tuotos omaan loppukäyttöön, tulona
+      - P119R Välilliset rahoituspalvelut (FISIM), tulona
+      - P131R Markkinattomien tuotteiden myynnit, tulona
+      - P132R  Muu markkinaton tuotos, tulona
+      - P2K Välituotekäyttö, menona
+      - P119K Välilliset rahoituspalvelut (FISIM), menona
+      - P22K Muu välituotekäyttö, menona
+      - B1GPH Bruttoarvonlisäys perushintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - B1NPH Arvonlisäys, netto perushintaan
+      - D1K Palkansaajakorvaukset, menona
+      - D11K Palkat ja palkkiot, menona
+      - D12K Työnantajan sosiaaliturvamaksut, menona
+      - D1211K Työnantajan todelliset eläkemaksut, menona
+      - D12111K Työnantajan todelliset pakolliset eläkemaksut, menona
+      - D12112K Työnantajan todelliset vapaaehtoiset eläkemaksut, menona
+      - D12121K Työnantajan KELA-maksut, menona
+      - D12122K Työnantajan lakisääteiset tapaturmavakuutusmaksut, menona
+      - D12123K Työnantajan työttömyysvakuutusmaksut, menona
+      - D12124K Työnantajan ryhmähenkivakuutukset, menona
+      - D12125K Työnantajan vapaaehtoiset sosiaaliturvamaksut pl. eläkemaksut, menona
+      - D12129K Työnantajan erittelemättömät todelliset sosiaalivakuutusmaksut, menona
+      - D29K Muut tuotantoverot, menona
+      - D39R Muut tuotantotukipalkkiot, tulona
+      - B13G Bruttotoimintaylijäämä / sekatulo
+      - B2G Toimintaylijäämä, brutto
+      - B3G Sekatulo, brutto
+      - B13N Toimintaylijäämä / sekatulo, netto
+      - B2N Toimintaylijäämä, netto
+      - B3N Sekatulo, netto
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P721R FISIM tuonti, tulona
+      - P722R Muu palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - P621K  FISIM vienti, menona
+      - P622K Muu palvelujen vienti, menona
+      - B11 Tavaroiden ja palveluiden tase
+      - D1R Palkansaajakorvaukset, tulona
+      - D11R Saadut palkat ja palkkiot, menona
+      - D12R Työnantajan sosiaaliturvamaksut, tulona
+      - D2R Tuotannon ja tuonnin verot, tulona
+      - D21R  Tuoteverot, tulona
+      - D211R Arvonlisävero, tulona
+      - D212R Tuontiverot ja -tullit ilman ALV:a, tulona
+      - D214R Muut tuoteverot kuin ALV ja tuontiverot, tulona
+      - D29R Muut tuotantoverot, tulona
+      - D3K Tukipalkkiot, menona
+      - D31K Tuotetukipalkkiot, menona
+      - D39K Muut tuotantotukipalkkiot, menona
+      - D4R Omaisuustulot, tulona
+      - D41R Korot FISIM-oikaisun jälkeen, tulona
+      - D411R Todelliset korot, tulona
+      - D411RS13  Julkisyhteisöjen väliset todelliset korot, tulona
+      - D412R Korkojen FISIM-oikaisu, talletukset, tulona
+      - D42R Yritysten jakamat tulot, tulona
+      - D421R Osingot, tulona
+      - D422R Yrittäjätulon otot yritysmäisistä yhteisöistä, tulona
+      - D43R Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, tulona
+      - D44R Muut sijoitustulot, tulona
+      - D441R Vakuutuksenottajien sijoitustulo, tulona
+      - D442R Eläkeoikeuksiin perustuvat sijoitustulot, tulona
+      - D443R Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, tulona
+      - D45R Luonnonvaravuokrat, tulona
+      - D4K Omaisuustulot, menona
+      - D41K Korot FISIM-oikaisun jälkeen, menona
+      - D411K Todelliset korot, menona
+      - D412K Korkojen FISIM-oikaisu, lainat, menona
+      - D42K Yritysten jakamat tulot, menona
+      - D421K Osingot, menona
+      - D411KS13  Julkisyhteisöjen väliset todelliset korot, menona
+      - D411KS1313 Todelliset korot kunnille ja kuntayhtymille, menona
+      - D411KS13141 Todelliset korot työeläkelaitoksille, menona
+      - D411KS13149 Todelliset korot muille sosiaaliturvarahastoille, menona
+      - D422K Yrittäjätulon otot yritysmäisistä yhteisöistä, menona
+      - D43K Suorien ulkomaisten sijoitusten uudelleensijoitetut voitot, menona
+      - D44K Muut sijoitustulot, menona
+      - D441K Vakuutuksenottajien sijoitustulo, menona
+      - D442K Eläkeoikeuksiin perustuvat sijoitustulot, menona
+      - D443K Osuudenomistajille kuuluva sijoitusrahastojen sijoitustulo, menona
+      - D45K Luonnonvaravuokrat, menona
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - B4G  Yrittäjätulo, brutto
+      - B41G Yrittäjätulo maataloudesta, brutto
+      - B42G  Yrittäjätulo metsätaloudesta, brutto
+      - B43G Laskennallinen asuntotulo, brutto
+      - B44G Muu yrittäjätulo, brutto
+      - B4N Yrittäjätulo, netto
+      - B41N Yrittäjätulo maataloudesta
+      - B42N Yrittäjätulo metsätaloudesta
+      - B43N Laskennallinen asuntotulo
+      - B44N Muu yrittäjätulo, netto
+      - D5R Tulo-, varallisuus-, ym. välittömät verot, pl. pääomaverot, tulona
+      - D51R Tuloverot, tulona
+      - D59R Muut välittömät verot pl. pääomaverot, tulona
+      - D61R Sosiaaliturvamaksut, tulona
+      - D611R Työnantajan todelliset sosiaaliturvamaksut, tulona
+      - D6111R Työnantajan todelliset eläkemaksut, tulona
+      - D61111R Työnantajan pakolliset todelliset eläkemaksut, tulona
+      - D61112R Työnantajan vapaaehtoiset todelliset sosiaaliturvamaksut, tulona
+      - D6112R Työnantajan todelliset muut maksut kuin eläkemaksut, tulona
+      - D61121R Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, tulona
+      - D61122R Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut
+        , tulona
+      - D612R Laskennalliset sosiaaliturvamaksut, tulona
+      - D613R Kotitalouksien todelliset sosiaaliturvamaksut, tulona
+      - D6131R Kotitalouksien todelliset eläkemaksut, tulona
+      - D61311R Kotitalouksien pakolliset todelliset eläkemaksut, tulona
+      - D61312R Kotitalouksien vapaaehtoiset todelliset eläkemaksut, tulona
+      - D6132R Kotitalouksien todelliset muut maksut kuin eläkemaksut, tulona
+      - D61321R Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D61322R Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        tulona
+      - D614R Kotitalouksien sosiaaliturvamaksutäydennykset, tulona
+      - D61SCR Sosiaalivakuutusjärjestelmän palvelumaksut, tulona
+      - D62R Rahamääräiset sosiaalietuudet, tulona
+      - D621R Rahamääräiset sosiaaliturvaetuudet, tulona
+      - D6211R Rahamääräiset sosiaaliturvaeläke-etuudet, tulona
+      - D6212R Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, tulona
+      - D622R Muut sosiaalivakuutusetuudet, tulona
+      - D6221R Muut sosiaalivakuutuksen eläke-etuudet, tulona
+      - D6222R Muut sosiaalivakuutusetuudet kuin eläkkeet, tulona
+      - D623R Rahamääräiset sosiaaliavustukset, tulona
+      - D7R Muut tulonsiirrot, tulona
+      - D71R Vahinkovakuutusmaksut, tulona
+      - D72R Vahinkovakuutuskorvaukset, tulona
+      - D73RS13  Julkisyhteisöjen sisäiset tulonsiirrot, tulona
+      - D73RS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto, tulona
+      - D73RS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto, tulona
+      - D73RS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot, tulona
+      - D73RS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset, tulona
+      - D73RS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot,
+        tulona
+      - D74R Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, tulona
+      - D74RS1311 Tulonsiirrot kansainväliseen yhteistyöhön,  valtionhallinto, tulona
+      - D74RS13149 Tulonsiirrot kansainvälisestä yhteistyöstä, muut sosiaaliturvarahastot,
+        tulona
+      - D74RS2 Tulonsiirrot kansainvälisestä yhteistyöstä, ulkomaat, tulona
+      - D74RS21 Tulonsiirrot kansainvälisestä yhteistyöstä, EU, tulona
+      - D74RS22 Tulonsiirrot kansainvälisestä yhteistyöstä, Euroopan unionin ulkopuoliset
+        valtiot ja kansainväliset järjestöt, tulona
+      - D75R Muut sekalaiset tulonsiirrot, tulona
+      - D759RS1 Muut sekalaiset tulonsiirrot kotimaasta
+      - D759RS11 Muut sekalaiset tulonsiirrot yrityksiltä
+      - D759RS12 Muut sekalaiset tulonsiirrot rahoituslaitoksilta
+      - D759RS13 Muut sekalaiset tulonsiirrot julkisyhteisöiltä
+      - D759RS1311 Muut sekalaiset tulonsiirrot valtionhallinnolta
+      - D759RS1313 Muut sekalaiset tulonsiirrot paikallishallinnolta
+      - D759RS1314 Muut sekalaiset tulonsiirrot sosiaaliturvarahastoilta
+      - D759RS13149 Muut sekalaiset tulonsiirrot muilta sosiaaliturvarahastoilta
+      - D759RS14 Muut sekalaiset tulonsiirrot kotitalouksilta
+      - D759RS15 Muut sekalaiset tulonsiirrot voittoa tavoittelemattomilta yhteisöiltä
+      - D759RS2 Muut sekalaiset tulonsiirrot tulonsiirrot ulkomailta
+      - D759RS21 Muut sekalaiset tulonsiirrot EU:lta
+      - D759RS22 Muut sekalaiset tulonsiirrot muilta mailta
+      - D76R Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        tulona
+      - D761R Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, tulona
+      - D762R Arvonlisäveroon perustuvat EU:n omat varat, tulona
+      - D5K Tulo-, varallisuus-, ym. välittömätt verot, pl. pääomaverot, menona
+      - D51K Tuloverot, menona
+      - D59K Muut välittömät verot pl. pääomavero, menona
+      - D61K Maksetut sosiaaliturvamaksut
+      - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
+      - D6111K Työnantajan todelliset eläkemaksut, menona
+      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
+      - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
+      - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
+      - D61122K Työnantajan vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D612K Laskennalliset sosiaaliturvamaksut, menona
+      - D613K Kotitalouksien todelliset sosiaaliturvamaksut, menona
+      - D6131K Kotitalouksien todelliset eläkemaksut, menona
+      - D61311K Kotitalouksien pakolliset todelliset eläkemaksut, menona
+      - D61312K Kotitalouksien vapaaehtoiset todelliset eläkemaksut, menona
+      - D6132K Kotitalouksien todelliset muut maksut kuin eläkemaksut, menona
+      - D61321K Kotitalouksien pakolliset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D61322K Kotitalouksien vapaaehtoiset todelliset muut maksut kuin eläkemaksut,
+        menona
+      - D614K Kotitalouksien sosiaaliturvamaksutäydennykset, menona
+      - D61SCK Sosiaalivakuutusjärjestelmän palvelumaksut, menona
+      - D62K Rahamääräiset sosiaalietuudet, menona
+      - D621K Rahamääräiset sosiaaliturvaetuudet, menona
+      - D6211K Rahamääräiset sosiaaliturvaeläke-etuudet, menona
+      - D6212K Rahamääräiset muut sosiaaliturvaetuudet kuin eläkkeet, menona
+      - D622K Muut sosiaalivakuutusetuudet, menona
+      - D6221K Muut sosiaalivakuutuksen eläke-etuudet, menona
+      - D6222K Muut sosiaalivakuutusetuudet kuin eläkkeet, menona
+      - D623K Rahamääräiset sosiaaliavustukset, menona
+      - D7K Muut tulonsiirrot, menona
+      - D71K Vahinkovakuutusmaksut, menona
+      - D72K Vahinkovakuutuskorvaukset, menona
+      - D73KS13 Julkisyhteisöjen sisäiset tulonsiirrot
+      - D73KS1311 Julkisyhteisöjen sisäiset tulonsiirrot, valtionhallinto
+      - D73KS1313 Julkisyhteisöjen sisäiset tulonsiirrot, paikallishallinto
+      - D73KS1314 Julkisyhteisöjen sisäiset tulonsiirrot, sosiaaliturvarahastot
+      - D73KS13141 Julkisyhteisöjen sisäiset tulonsiirrot, työeläkelaitokset
+      - D73KS13149 Julkisyhteisöjen sisäiset tulonsiirrot, muut sosiaaliturvarahastot
+      - D74K Julkisyhteisöjen tulonsiirrot kansainväliseen yhteistyöhön, menona
+      - D74KS1311 Tulonsiirrot kv. yhteistyöhön, valtionhallinto
+      - D74KS1313 Tulonsiirrot kv. yhteistyöhön, paikallishallinto
+      - D74KS13141 Tulonsiirrot kv. yhteistyöhön, sosiaaliturvarahastot
+      - D74KS13149 Tulonsiirrot kv. yhteistyöhön, muut sosiaaliturvarahastot
+      - D74KS2 Tulonsiirrot kansainväliseen yhteistyöhön
+      - D74KS21 Tulonsiirrot kv. yhteistyöhön EU:lle
+      - D74KS22 Tulonsiirrot kv. yhteistyöhön muille
+      - D75K Muut sekalaiset tulonsiirrot, menona
+      - D759KS1 Muut tulonsiirrot kotimaahan
+      - D759KS11 Tulonsiirrot yrityksille
+      - D759KS12 Tulonsiirrot rahoituslaitoksille
+      - D759KS13 Tulonsiirrot julkisyhteisöille
+      - D759KS1311 Tulonsiirrot valtionhallinnolle
+      - D759KS1313 Tulonsiirrot paikallishallinnolle
+      - D759KS1314 Tulonsiirrot sosiaaliturvarahastoille
+      - D759KS13149 Tulonsiirrot muille sosiaaliturvarahastoille
+      - D759KS14 Tulonsiirrot kotitalouksille
+      - D759KS15 Tulonsiirrot voittoa tavoittelemattomille yhteisöille
+      - D759KS2 Muut tulonsiirrot ulkomaille
+      - D759KS21 Muut tulonsiirrot EU:lle
+      - D759KS22 Muut ulkomaiset tulonsiirrot
+      - D76K Arvonlisäveroon ja bruttokansantuloon (BKTL) perustuvat EU:n omat varat,
+        menona
+      - D761K Bruttokansantuloon (BKTL) perustuvat EU:n omat varat, menona
+      - D762K Arvonlisäveroon perustuvat EU:n omat varat, menona
+      - B6G Käytettävissä oleva tulo, brutto
+      - B6N Käytettävissä oleva tulo, netto
+      - B12 Vaihtotase
+      - D8R Eläkeoikeuksien muutoksen oikaisu, tulona
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P32K Kollektiiviset kulutusmenot, menona
+      - F4 Lainat
+      - D8K Eläkeoikeuksien muutoksen oikaisu, menona
+      - B8G Säästö, brutto
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D91R Pääomaverot, tulona
+      - D91RS0XS13 Pääomaverot muilta kuin julkisyhteisöiltä, tulona
+      - D92R Investointiavustukset, tulona
+      - D92RS13  Julkisyhteisöjen väliset investointiavustukset, tulona
+      - D99R Muut pääomansiirrot, tulona
+      - D99RS13  Julkisyhteisöjen väliset muut pääomansiirrot, tulona
+      - D99RS1313 Muut pääomansiirrot kunnilta ja kuntayhtymiltä, tulona
+      - D9K Pääomansiirrot, menona
+      - D91K Pääomaverot, menona
+      - D92K Investointiavustukset, menona
+      - D92KS1313 Investointiavustukset kunnille ja kuntayhtymille, menona
+      - D99K Muut pääomansiirrot, menona
+      - D99KS13  Julkisyhteisöjen väliset muut pääomansiirrot, menona
+      - D99KS1313 Muut pääomansiirrot kunnille ja kuntayhtymille, menona
+      - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
+      - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
+      - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
+      - P51CR Kiinteän pääoman kuluminen, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
+      - NP1Luonnonvarojen nettohankinta
+      - NP11 Luonnonvarojen osto
+      - NP12 Luonnonvarojen myynnit
+      - NP2 Muiden valmistamattomien varojen nettohankinta
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - D63R Luontoismuotoiset yhteiskunnaliset tulonsiirrot, tulona
+      - D631R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        tulot
+      - D632R Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        tulona
+      - D63K Luontoismuotoiset yhteiskunnaliset tulonsiirrot, menona
+      - D631K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - markkinaton tuotanto,
+        menot
+      - D632K Luontoismuotoiset yhteiskunnalliset tulonsiirrot - ostettu markkinatuotanto,
+        menona
+      - B7G Oikaistu käytettävissä oleva tulo, brutto
+      - B7N Oikaistu käytettävissä oleva tulo, netto
+      - P4K Todellinen kulutus, menona
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - P42K Todellinen kollektiivinen kulutus, menona
+      - OTR Tulot yhteensä
+      - OTRS  Tulot yhteensä, sulautettu
+      - OTE Menot yhteensä
+      - OTES  Menot yhteensä, sulautettu
+      Tiedot:
+      - Käypiin hintoihin, miljoonaa euroa

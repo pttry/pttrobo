@@ -15,5 +15,8 @@ data_get("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
 data_get("StatFin/kan/vtp/statfin_vtp_pxt_11t4.px") |>
   data_to_yaml()
 
+data_get("StatFin/kan/vtp/statfin_vtp_pxt_11yx.px") |>
+data_to_yaml()
+
 ptt_update_ennustedata("KTdata_NA", start_year = 2012)
 ptt_copy_ennustedata("KT")
