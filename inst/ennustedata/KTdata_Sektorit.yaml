@@ -306,7 +306,6 @@ KTdata_Sektorit:
     muunnos: alkuperäinen
     tiedot:
       Sektori:
-      - S1 Koko kansantalous
       - S11 Yritykset
       Taloustoimi:
       - P1R Tuotos perushintaan, tulona

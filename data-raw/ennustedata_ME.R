@@ -1,6 +1,7 @@
 # Maa- ja elintarviketalouden ennusteen datojen tuonti
 
 library(pttdatahaku)
+library(robonomistClient)
 
 data_get("eurostat/aact_eaa01") |>
   # filter(indic_ag == "Production value at basic price",
@@ -96,11 +97,14 @@ data_get("tulli/uljas_sitc",
   data_to_yaml()
 
 
+data_get()
+
+
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
 ptt_update_ennustedata("MEdata_Vil", start_year = 2012)
 ptt_copy_ennustedata("ME")
 
+data("unctad/") |> print(n = 100)
 
-ptt_data_robo_l("tidy/tulli_ulkomaankauppa") |>
-  pttrobo_print_filter()
-
+data_get("unctad/US_GNI", tidy_time = TRUE) |> str()
+  data_to_yaml()

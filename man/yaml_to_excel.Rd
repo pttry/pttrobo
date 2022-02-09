@@ -6,7 +6,7 @@
 \usage{
 yaml_to_excel(
   file,
-  xlsx_path = system.file("ennustedata", package = "pttrobo"),
+  xlsx_path = system.file("ennustedata_xlsx", package = "pttrobo"),
   start_year
 )
 }

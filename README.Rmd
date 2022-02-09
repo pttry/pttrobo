@@ -30,16 +30,53 @@ devtools::install_github("pttry/pttrobo")
 
 ```
 
-## Tietojen haku Robonomist-tietokannasta
+## Tietojen haku ja käyttö Robonomist-tietokannasta
 
-
+Tietojen hakuun käytetään `ptt_data_ropo()` -funktiota ja robonomist id:tä.
 
 ```{r example}
 library(pttrobo)
 
-# ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
+ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> head()
 
 ```
+
+Tietojen filtteröintiin kannattaa käyttää pttdatahaku-paketin
+
+`filter_recode()` -funktiota, josta saa mallin `print_full_filter_recode()` 
+-funktiolla.
+
+```{r}
+library(pttdatahaku)
+library(dplyr)
+
+ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
+  print_full_filter_recode()
+
+ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> 
+  filter_recode(
+  sukupuoli = c("Yhteensä"),
+  ikaluokka = c("15 - 74"),
+  tiedot = c("Työvoima" = "Työvoima, 1000 henkilöä", 
+            "Työlliset" = "Työlliset, 1000 henkilöä")
+  ) |> 
+  filter(time >= "2021-12-01")
+  
+```
+
+Tietoja ja niiden id:tä voi etsiä Robonomist eye:sta: [https://eye.robonomist.app/] 
+tai R:n kautta robonomistClient paketin avulla
+
+```{r}
+library(robonomistClient)
+
+data("luke/") |> 
+  head()
+
+
+```
+RobonomistClient ohjeet: [https://robonomist.github.io/robonomistClient/]
+
 
 
 ## Ennustedatojen määrittely ja päivitys
