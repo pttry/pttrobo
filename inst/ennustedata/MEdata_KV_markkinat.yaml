@@ -1,0 +1,36 @@
+MEdata_KV_markkinat:
+  unctad_hinnat_kk:
+  - id: tidy/US_CommodityPrice_M
+    muunnos: alkuperäinen
+    tiedot:
+      CommodityProduct Label:
+      - Beef, Australia/New Zealand, frozen, CIF US ports ($/kg)
+      - Salmon, fresh, fish-farm bred, export price, Norway ($/kg)
+      - Coffee, Colombian mild Arabicas, ex-dock US (¢/lb.)
+      - Coffee, Brazilian and other natural Arabicas, ex-dock USA (¢/lb.)
+      - Coffee, Robustas, ex-dock EU (¢/lb.)
+      - Tea, Kenya Mombasa/Nairobi, auction price ($/kg)
+      - Wheat, United States, n° 2 Hard Red Winter (ordinary), FOB Gulf ($/t)
+      - Wheat, Argentina, Trigo Pan, Up River, FOB ($/t)
+      - Maize, Argentina, Rosario, Up River, FOB ($/t)
+      - Maize, United States, n° 3 yellow, FOB Gulf ($/t)
+      - Rice, Thailand, white milled, 5% broken, export price, FOB ($/t)
+      - Soybeans, in bulk, United States, n° 2 yellow, CIF Rotterdam ($/t)
+  unctad_hinnat_v:
+  - id: tidy/US_CommodityPrice_M
+    muunnos: vuosikeskiarvo
+    tiedot:
+      CommodityProduct Label:
+      - Beef, Australia/New Zealand, frozen, CIF US ports ($/kg)
+      - Salmon, fresh, fish-farm bred, export price, Norway ($/kg)
+      - Coffee, Colombian mild Arabicas, ex-dock US (¢/lb.)
+      - Coffee, Brazilian and other natural Arabicas, ex-dock USA (¢/lb.)
+      - Coffee, Robustas, ex-dock EU (¢/lb.)
+      - Tea, Kenya Mombasa/Nairobi, auction price ($/kg)
+      - Wheat, United States, n° 2 Hard Red Winter (ordinary), FOB Gulf ($/t)
+      - Wheat, Argentina, Trigo Pan, Up River, FOB ($/t)
+      - Maize, Argentina, Rosario, Up River, FOB ($/t)
+      - Maize, United States, n° 3 yellow, FOB Gulf ($/t)
+      - Rice, Thailand, white milled, 5% broken, export price, FOB ($/t)
+      - Soybeans, in bulk, United States, n° 2 yellow, CIF Rotterdam ($/t)
+
