@@ -101,10 +101,10 @@ data_get()
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata("MEdata_", start_year = 2012)
+ptt_update_ennustedata("MEdata_KV", start_year = 2012)
 ptt_copy_ennustedata("ME")
 
 data("unctad/") |> print(n = 100)
 
-data_get("tidy/US_CommodityPrice_M") |> ogle()
+data_get("tidy/US_CommodityPrice_M") |>
   data_to_yaml()
