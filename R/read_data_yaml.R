@@ -119,7 +119,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
 
   ## Määritä taulukon järjestys
   # Muuttujat <- setdiff(names(d), "value")
-  Muuttujat <- c(names(x$tiedot), "Vuosi")
+  Muuttujat <- c(names(x$tiedot), intersect(names(d), c("Vuosi", "time")))
 
   jarjestys <-
     purrr::map(Muuttujat, ~{
