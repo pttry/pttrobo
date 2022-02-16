@@ -108,7 +108,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
       d <-
         d |>
         mutate(Vuosi = lubridate::year(time)) |>
-        tidyr::drop_na() |>
+        tidyr::drop_na(value) |>
         group_by(across(c(-time, -value))) |>
         add_tally() %>%
         filter(n == freq) %>%
