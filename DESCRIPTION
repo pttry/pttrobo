@@ -26,7 +26,8 @@ Imports:
     RCurl,
     rlang,
     yaml,
-    pttdatahaku
+    pttdatahaku,
+    farver
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,
@@ -37,6 +38,8 @@ RoxygenNote: 7.1.2
 Suggests: 
     rmarkdown,
     knitr,
-    ptt
+    ptt,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 URL: https://pttry.github.io/pttrobo/
+Config/testthat/edition: 3
