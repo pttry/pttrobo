@@ -100,7 +100,7 @@ ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
             var a = document.createElement('a');
             const object_URL = URL.createObjectURL(blob);
             a.href = object_URL;
-            a.download = '",dl_title,"_data.csv';
+            a.download = '",dl_title,"_data.csv2';
             document.body.appendChild(a);
             a.click();
             URL.revokeObjectURL(object_URL);
@@ -141,9 +141,24 @@ ptt_plot_set_ticks <- function(p, font) {
     layout(xaxis=list(tickfont = font,
                       mirror = TRUE,
                       ticks = 'outside',
+                      type = "date",
+                      tickformatstops = list(
+                        list(
+                          dtickrange = list(NULL, 604800000),
+                          value = "%Y-%m-%d"
+                        ),
+                        list(
+                          dtickrange = list(604800000, "M12"),
+                          value = "%YM%m"
+                        ),
+                        list(
+                          dtickrange = list("M12", NULL),
+                          value = "%Y"
+                        )
+                      ),
                       showline = TRUE),
            yaxis=list(tickfont = font,
-                      tickformat = "digit",
+                      tickformat = ",.2~r",
                       ticksuffix = " ",
                       mirror = TRUE,
                       ticks = 'outside',
@@ -205,6 +220,7 @@ ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.5) {
 
 #' @importFrom dplyr case_when
 #' @importFrom stringr str_length
+#' @importFrom plotly plot_ly
 ptt_plot_config <- function(p,
                               title, subtitle = "", caption,
                               font_color = "#696969",
@@ -240,16 +256,17 @@ ptt_plot_config <- function(p,
   rangeslider_ht <- ifelse(enable_rangeslider, round((height * rangeslider_size)+15-(margin$t*rangeslider_size)-(margin$b*rangeslider_size)),0)
   legend_ht <- ifelse(legend_position %in% c("auto","bottom"), font_size, 0)
   plot_ht <- height-sum(ht_constants,rangeslider_ht,tickfont_ht,legend_ht,margin$t,ifelse(enable_rangeslider, margin$b, margin$b-25))
-  plot_wd <- width-sum(margin$r,margin$l,(xaxis_offset*(font_size-1)))
-
-  # print(str_c("plot ht: ", plot_ht))
-  # print(str_c("rangeslider ht: ", rangeslider_ht))
-  # print(str_c("margin$b: ", margin$b))
+  # message(str_c("xaxis_offset: ",xaxis_offset))
+  # plot_wd <- width-sum(margin$r,margin$l,(xaxis_offset*(font_size-1)))
+  # message(str_c("margin r: ",margin$r))
+  # message(str_c("margin l: ",margin$l))
+  # message(str_c("plot_wd_offset: ",(xaxis_offset*(font_size-1))))
+  # message(str_c("plot wd: ",plot_wd))
   caption_ht <- ifelse(!is.na(caption), font_size, 0)
-  legend_offset <- list(x = -((38)/plot_wd),
+  legend_offset <- list(x = 0,#-((38)/plot_wd),
                         y = -((rangeslider_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
-  caption_offset <- list(x = -((36)/plot_wd),
-                         y = -((tickfont_ht+rangeslider_ht+legend_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
+  caption_offset <- list(x = 0,#-((36)/plot_wd),
+                         y = -((tickfont_ht+4+rangeslider_ht+legend_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
   logo_offset <- list(x = 0, y = -((tickfont_ht+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
 
   # print(str_c("Legend offset: ",legend_offset$y))
@@ -283,6 +300,7 @@ ptt_plot_set_legend <- function(p, position, orientation, offset, font) {
     y.pos <- ifelse(position == "right", 1, offset$y) #-0.05
     orientation <- case_when(orientation == "auto" ~ ifelse(position == "right", "v","h"), TRUE ~ str_extract(orientation, "^(v|h)"))
     p |> layout(
+      showlegend = T,
       legend = list(font = font,
                     x = x.pos, y = y.pos,
                     orientation = orientation,
@@ -326,7 +344,9 @@ ptt_plot_set_title <- function(p, title, subtitle, font) {
             tags$sub(subtitle),"</span>"
           ),
           font = font,
-          xanchor = "left", x = 0.025, xref = "container")
+          xanchor = "left",
+          x = 0,
+          xref = "paper")
       )
   }
 }
@@ -389,6 +409,7 @@ ptt_plot_create_widget <- function(p,title) {
 }
 
 #' @importFrom grDevices colorRampPalette
+#' @importFrom plotly plot_ly
 ptt_plot_set_colors <- function(n_unique, pred = F) {
   ptt_vihrea <- "#5B8233"
   ptt_sininen <- "#2f7ab9"
@@ -414,13 +435,13 @@ ptt_plot_set_colors <- function(n_unique, pred = F) {
 #' Outputs a plotly object.
 #'
 #' @param d Tibble for plotting.
-#' @param grouping_variable Tibble column from tibble d to use for grouping.
+#' @param grouping Tibble column from tibble d to use for grouping.
 #' @param title,subtitle,caption labeling for plot
 #' @param legend_orientation,legend_position Legend positioning.
-#' @param margin List for plot margins.
+#' @param margin List for plot margins if calculated margins do not work.
 #' @param font_color,grid_color,font_size Plot background element colors and font sizes.
-#' @param rangeslider Include a rangeslider in plot?
-#' @param lwd First factor level of grouping variable will have wider line width
+#' @param secondary_grouping Additional grouping variable for line widths.
+#' @param rangeslider Determines rangeslider inclusion.
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param height Height of the plot.
 #' @return plotly object
@@ -435,13 +456,13 @@ ptt_plot_set_colors <- function(n_unique, pred = F) {
 #'                    caption =  "Lähde: Tilastokeskus ja PTT",lwd = F,rangeslider = T,height = 600)
 #' p
 #' @export
-#' @importFrom plotly plot_ly
+#' @importFrom plotly plot_ly add_trace
 #' @importFrom scales extended_breaks
 #' @importFrom rlang enquo quo_name set_names
 #' @importFrom dplyr group_split
 #' @importFrom stringr str_length
 ptt_plot <- function(d,
-                     grouping_variable,
+                     grouping,
                      title,subtitle = "",
                      caption,
                      legend_orientation = "auto",
@@ -450,54 +471,63 @@ ptt_plot <- function(d,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
                      rangeslider = T,
-                     lwd = F,
+                     secondary_grouping = NA,
                      font_size = 14,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
                      height = 400,
                      ...
 ){
 
-  if(missing(d) || missing(grouping_variable)){
+  if(missing(d) || missing(grouping)){
     stop("Data and grouping variable (without quotes)\n",
-         "For example: plot_lines(a_tibble, grouping_variable=tiedot)")
+         "For example: plot_lines(a_tibble, grouping=tiedot)")
   }
+  grouping <- enquo(grouping)
+
+  secondary_grouping <- enquo(secondary_grouping)
 
   d <- droplevels(d)
 
-  grouping_variable <- enquo(grouping_variable)
-
-  unique_groups <- d[[quo_name(grouping_variable)]] |> unique() |> sort()
+  unique_groups <- d[[quo_name(grouping)]] |> unique() |> sort()
 
   color_vector <- (function() {
     color_vector <- ptt_plot_set_colors(length(unique_groups))
     color_vector |> set_names(unique_groups)
   })()
 
-  xaxis_offset <- extended_breaks(5)((d$value)) |> str_length() |> max()
+  # xaxis_offset <- extended_breaks(5)((d$value)) %>% {round(./5)*5} |> str_length() |> max()
 
   p <- plot_ly(d, x = ~ time, height = height)
 
-  split_d <- group_split(d, !!grouping_variable)
+  split_d <- if (is.na(quo_name(secondary_grouping))) { group_split(d, !!grouping) } else { group_split(d, !!grouping, !!secondary_grouping) }
 
   for (g in split_d) {
-    g.name <- unique(g[[quo_name(grouping_variable)]])
-    lw <- if(!lwd) { 4 } else {ifelse(which(g.name == levels(g.name)) == 1, 4, 2)}
+    g.color <- unique(g[[quo_name(grouping)]])
+    if (is.na(quo_name(secondary_grouping))) {
+      g.name <- unique(g[[quo_name(grouping)]])
+      lw <- 4
+    } else {
+      g.alt <- unique(g[[quo_name(secondary_grouping)]])
+      g.name <- str_c(g.color,ifelse(tolower(g.alt) == "alkuperäinen", "", str_c(", ",g.alt)))
+      lw <- seq.int(4,2,length.out = length(levels(g.alt)))[which(g.alt == levels(g.alt))]
+    }
     p <-
       p |>
-      add_trace(data=g, y = ~value, text = g[[quo_name(grouping_variable)]],
+      add_trace(data=g, y = ~value, text = g.name,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
                 line = list(width = lw),
                 legendgroup = g.name,
                 name = g.name,
-                color = I(color_vector[g.name]), type = "scatter", mode ='lines'
+                color = I(color_vector[g.color]), type = "scatter", mode ='lines'
       )
   }
+  p$color_vector <- color_vector
   p |>
     ptt_plot_config(title = title, subtitle = subtitle, caption = caption,
                       font_color = font_color, font_size = font_size,
                       legend_position = legend_position, legend_orientation = legend_orientation,
                       tick_color = font_color, grid_color = grid_color, margin = margin,
-                      height = height, xaxis_offset = xaxis_offset,
+                      height = height, #xaxis_offset = xaxis_offset,
                       enable_rangeslider = rangeslider)
 }
 
@@ -519,6 +549,8 @@ ptt_plot <- function(d,
 #' @export
 #' @importFrom tidyr uncount pivot_longer
 #' @importFrom dplyr slice_tail
+#' @importFrom plotly plot_ly add_lines
+
 
 ptt_plot_add_prediction_traces <- function(p,
                                   pred_data,
@@ -537,11 +569,12 @@ ptt_plot_add_prediction_traces <- function(p,
     relocate(value, .after = time) |>
     group_by(year, !!grouping) |>
     group_split()
-  color_vector <- (function() {
-    color_vector <- ptt_plot_set_colors(nrow(pred_data), T)
-    unique_groups <- pred_data[[quo_name(grouping)]] |> unique() |> sort()
-    color_vector |> setNames(unique_groups)
-  })()
+  color_vector <- p$color_vector
+  pred_groups <- pred_data[[quo_name(grouping)]] |> unique()
+  if(!all(names(color_vector) %in% pred_groups)) {
+    message("All prediction traces must have a correspondingly named trace in original plot.")
+    stop()
+  }
   legend.items <- c()
   for (s in pred_series) {
     s.name <- unique(s[[quo_name(grouping)]])

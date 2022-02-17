@@ -6,7 +6,7 @@
 \usage{
 ptt_plot(
   d,
-  grouping_variable,
+  grouping,
   title,
   subtitle = "",
   caption,
@@ -16,7 +16,7 @@ ptt_plot(
   font_color = "#696969",
   grid_color = "#E8E8E8",
   rangeslider = T,
-  lwd = F,
+  secondary_grouping = NA,
   font_size = 14,
   hovertext = list(rounding = 1, unit = "", extra = ""),
   height = 400,
@@ -26,19 +26,19 @@ ptt_plot(
 \arguments{
 \item{d}{Tibble for plotting.}
 
-\item{grouping_variable}{Tibble column from tibble d to use for grouping.}
+\item{grouping}{Tibble column from tibble d to use for grouping.}
 
 \item{title, subtitle, caption}{labeling for plot}
 
 \item{legend_orientation, legend_position}{Legend positioning.}
 
-\item{margin}{List for plot margins.}
+\item{margin}{List for plot margins if calculated margins do not work.}
 
 \item{font_color, grid_color, font_size}{Plot background element colors and font sizes.}
 
-\item{rangeslider}{Include a rangeslider in plot?}
+\item{rangeslider}{Determines rangeslider inclusion.}
 
-\item{lwd}{First factor level of grouping variable will have wider line width}
+\item{secondary_grouping}{Additional grouping variable for line widths.}
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 
