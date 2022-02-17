@@ -303,6 +303,7 @@ ptt_plot_set_legend <- function(p, position, orientation, offset, font) {
       showlegend = T,
       legend = list(font = font,
                     x = x.pos, y = y.pos,
+                    traceorder = "reversed",
                     orientation = orientation,
                     xanchor = "left",
                     yanchor = "top"))
@@ -499,7 +500,7 @@ ptt_plot <- function(d,
 
   p <- plot_ly(d, x = ~ time, height = height)
 
-  split_d <- if (is.na(quo_name(secondary_grouping))) { group_split(d, !!grouping) } else { group_split(d, !!grouping, !!secondary_grouping) }
+  split_d <- if (is.na(quo_name(secondary_grouping))) { group_split(d, !!grouping) } else { group_split(d, !!grouping, !!secondary_grouping) } %>% rev()
 
   for (g in split_d) {
     g.color <- unique(g[[quo_name(grouping)]])
