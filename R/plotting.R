@@ -26,20 +26,22 @@
 #'
 aplot_lines <- function(dat, x = time, y = value,
                         colour = tiedot, size = NULL,
-                      title = NULL, subtitle = NULL,
-                      source = NULL,
-                      caption = NULL,
-                      rangeslider = FALSE,
-                      ...){
+                        title = "",
+                        subtitle = "NULL",
+                        source = NULL,
+                        caption = "",
+                        rangeslider = FALSE,
+                        ...){
 
 
-  if (is.null(caption) & !is.null(source)){
+  if ((is.null(caption) || caption == "" ) & !is.null(source)){
     caption <- paste0("Lähde: ", source, ", PTT")
   }
 
-    dat |>
+
+  dat |>
     ptt_plot(grouping = {{colour}},
-                   title = title, subtitle = subtitle, caption = caption,
+             title = title, subtitle = subtitle, caption = caption,
              rangeslider = rangeslider, ...)
 }
 
