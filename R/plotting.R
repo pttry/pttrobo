@@ -8,7 +8,8 @@
 #' @param source A source information for caption. Text is added to
 #'               "Lähde: ..., PTT".
 #' @param caption A caption text. Will override source
-#' @param ... Additional arguments
+#' @param rangeslider A locigal for rangeslider
+#' @param ... Additional arguments for ptt_plot.
 #'
 #' @export
 #' @examples
@@ -27,17 +28,19 @@ aplot_lines <- function(dat, x = time, y = value,
                         colour = tiedot, size = NULL,
                       title = NULL, subtitle = NULL,
                       source = NULL,
-                      caption = NULL, ...){
-  piirtaja <- ptt_plot()
+                      caption = NULL,
+                      rangeslider = FALSE,
+                      ...){
+
 
   if (is.null(caption) & !is.null(source)){
     caption <- paste0("Lähde: ", source, ", PTT")
   }
 
     dat |>
-    piirtaja$lines(grouping_variable = {{colour}},
-                   title = title, subtitle = subtitle, lahde = caption,
-                   yksikko = NULL, ...)
+    ptt_plot(grouping = {{colour}},
+                   title = title, subtitle = subtitle, caption = caption,
+             rangeslider = rangeslider, ...)
 }
 
 #' @describeIn aplot_lines Estimate and plot trend with original
