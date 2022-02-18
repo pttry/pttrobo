@@ -27,7 +27,7 @@
 aplot_lines <- function(dat, x = time, y = value,
                         colour = tiedot, size = NULL,
                         title = "",
-                        subtitle = "NULL",
+                        subtitle = "",
                         source = NULL,
                         caption = "",
                         rangeslider = FALSE,
@@ -60,10 +60,13 @@ aplot_lines <- function(dat, x = time, y = value,
 
 aplot_trends <- function(dat, x = time, y = value,
                          colour = tiedot, size = NULL,
-                         title = NULL, subtitle = NULL,
+                         title = "", subtitle = "",
                          source = NULL,
-                         caption = NULL, ...){
-  piirtaja <- ptt_plot()
+                         caption = "", ...){
+
+  if ((is.null(caption) || caption == "" ) & !is.null(source)){
+    caption <- paste0("Lähde: ", source, ", PTT")
+  }
 
   dat <-
     dat |>
@@ -75,9 +78,9 @@ aplot_trends <- function(dat, x = time, y = value,
 
   tiedot_name <- rlang::enquo(colour)
 
-  piirtaja$lines(dat, grouping_variable = {{colour}},
-                 title = title, subtitle = subtitle, lahde = caption,
-                 yksikko = NULL, legendgroup = tiedot_name) |>
+  ptt_plot(dat, grouping = {{colour}},
+                 title = title, subtitle = subtitle, caption = caption,
+           legendgroup = tiedot_name) |>
     plotly::add_lines(y = dat$alk,
                       size = I(0.5),
                       legendgroup = tiedot_name,
