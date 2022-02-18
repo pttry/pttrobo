@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, message=FALSE}
-library(ptt)
+library(tidyverse)
+library(pttdatahaku)
 ```
 
 Kuvioiden piirtämiseksi pttropo- paketti sisältää aplot_ -alkuisia 
@@ -41,15 +42,99 @@ Muuttujat:
 
 ```{r, message=FALSE}
 
-ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
+ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |> 
   filter_recode(
      taloustoimi = c("Tuonti" = "P7R Tavaroiden ja palvelujen tuonti, tulona",
                      "Vienti" = "P6K Tavaroiden ja palvelujen vienti, menona"),
      tiedot = c("Volyymin muutokset, %")) |>
      aplot_lines(colour = taloustoimi,
                  title = "Vienti ja tuonti",
-                 subtititle = "%, volyymin muutos",
+                 subtitle = "%, volyymin muutos",
                  source = "Tilastokeskus")
+
+```
+```{r}
+
+ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter_recode(
+     taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan",
+                     "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
+     tiedot = c("Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa")) |>
+     aplot_trends(colour = taloustoimi,
+                 title = "Vienti ja tuonti",
+                 subtitle = "%, volyymin muutos",
+                 source = "Tilastokeskus")
+
+```
+
+
+```{r}
+
+e <- readxl::read_excel(here::here("ptt_ennusteet_KT.xlsx")) |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
+
+ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter_recode(
+     taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan",
+                     "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
+     tiedot = c("Työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %")) |>
+  # mutate(value = value /100) |> 
+  filter(time >= "2014-01-01") |>
+  rename(sarjan_nimi = taloustoimi) |> 
+     ptt_plot(grouping = sarjan_nimi, 
+                 title = "Vienti ja tuonti",
+                 subtitle = "%, volyymin muutos",
+                 caption = "Tilastokeskus",
+              rangeslider = F,height = 500) |> 
+  ptt_plot_add_prediction_traces(e, with_labs = F)
+```
+
+```{r}
+
+ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter_recode(
+    taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan",
+                    "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
+    tiedot = c("Työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %")) |>
+  # mutate(value = value /100) |> 
+  filter(time >= "2014-01-01") |>
+  rename(sarjan_nimi = taloustoimi) |> 
+  ptt_plot(grouping = sarjan_nimi, 
+           title = "Vienti ja tuonti",
+           subtitle = "%, volyymin muutos",
+           caption = "Tilastokeskus",
+           rangeslider = F,height = 500) |> 
+  ptt_plot_add_secondary_traces(ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+                         filter_recode(
+                           taloustoimi = c("Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
+                           tiedot = c("Trendi" = "Trendisarjan volyymin muutos vuodentakaisesta, %")) |>
+                         # mutate(value = value /100) |> 
+                         filter(time >= "2014-01-01"),
+                       `Yksityinen kulutus`, tiedot) |>
+  ptt_plot_add_secondary_traces(ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+                                  filter_recode(
+                                    taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan"),
+                                    tiedot = c("Trendi" = "Trendisarjan volyymin muutos vuodentakaisesta, %")) |>
+                                  # mutate(value = value /100) |> 
+                                  filter(time >= "2014-01-01"),
+                                BKT, tiedot
+  )
+
+```
+```{r}
+
+ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter_recode(
+    taloustoimi = c("Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
+    tiedot = c("Yksityinen kulutus" = "Työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %",
+               "Trendi" = "Trendisarjan volyymin muutos edellisneljänneksestä, %")) |>
+  # mutate(value = value /100) |> 
+  filter(time >= "2014-01-01") |>
+  ptt_plot(grouping = tiedot, 
+           title = "Yksityinen kulutus",
+           caption = "Tilastokeskus",
+           isolate_primary = T,
+           rangeslider = F,height = 500)
+  
 
 ```
 

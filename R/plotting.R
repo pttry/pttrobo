@@ -8,7 +8,8 @@
 #' @param source A source information for caption. Text is added to
 #'               "Lähde: ..., PTT".
 #' @param caption A caption text. Will override source
-#' @param ... Additional arguments
+#' @param rangeslider A locigal for rangeslider
+#' @param ... Additional arguments for ptt_plot.
 #'
 #' @export
 #' @examples
@@ -25,19 +26,23 @@
 #'
 aplot_lines <- function(dat, x = time, y = value,
                         colour = tiedot, size = NULL,
-                      title = NULL, subtitle = NULL,
-                      source = NULL,
-                      caption = NULL, ...){
-  piirtaja <- ptt_plot()
+                        title = "",
+                        subtitle = "",
+                        source = NULL,
+                        caption = "",
+                        rangeslider = FALSE,
+                        ...){
 
-  if (is.null(caption) & !is.null(source)){
+
+  if ((is.null(caption) || caption == "" ) & !is.null(source)){
     caption <- paste0("Lähde: ", source, ", PTT")
   }
 
-    dat |>
-    piirtaja$lines(grouping_variable = {{colour}},
-                   title = title, subtitle = subtitle, lahde = caption,
-                   yksikko = NULL, ...)
+
+  dat |>
+    ptt_plot(grouping = {{colour}},
+             title = title, subtitle = subtitle, caption = caption,
+             rangeslider = rangeslider, ...)
 }
 
 #' @describeIn aplot_lines Estimate and plot trend with original
@@ -55,10 +60,13 @@ aplot_lines <- function(dat, x = time, y = value,
 
 aplot_trends <- function(dat, x = time, y = value,
                          colour = tiedot, size = NULL,
-                         title = NULL, subtitle = NULL,
+                         title = "", subtitle = "",
                          source = NULL,
-                         caption = NULL, ...){
-  piirtaja <- ptt_plot()
+                         caption = "", ...){
+
+  if ((is.null(caption) || caption == "" ) & !is.null(source)){
+    caption <- paste0("Lähde: ", source, ", PTT")
+  }
 
   dat <-
     dat |>
@@ -70,12 +78,18 @@ aplot_trends <- function(dat, x = time, y = value,
 
   tiedot_name <- rlang::enquo(colour)
 
-  piirtaja$lines(dat, grouping_variable = {{colour}},
-                 title = title, subtitle = subtitle, lahde = caption,
-                 yksikko = NULL, legendgroup = tiedot_name) |>
-    plotly::add_lines(y = dat$alk,
-                      size = I(0.5),
-                      legendgroup = tiedot_name,
-                      showlegend = FALSE
-    )
+  p <- ptt_plot(dat, grouping = {{colour}},
+                title = title, subtitle = subtitle, caption = caption)
+
+  print(names(p$color_vector))
+
+  for(var in unique(dat[[as_name(tiedot_name)]])) {
+    # print(as_name(tiedot_name))
+    # print(var)
+    sec.dat <- dat %>% filter(!!tiedot_name == var) %>% mutate(value = alk) %>%
+      mutate(alk.sarja = "Alkuperäinen sarja")
+    rel <- unique(sec.dat[[as_name(tiedot_name)]]) %>% as.character()
+    p <- p|> ptt_plot_add_secondary_traces(sec.dat, !!rel, alk.sarja)
+  }
+  p
 }

@@ -11,10 +11,11 @@ aplot_lines(
   y = value,
   colour = tiedot,
   size = NULL,
-  title = NULL,
-  subtitle = NULL,
+  title = "",
+  subtitle = "",
   source = NULL,
-  caption = NULL,
+  caption = "",
+  rangeslider = FALSE,
   ...
 )
 
@@ -24,10 +25,10 @@ aplot_trends(
   y = value,
   colour = tiedot,
   size = NULL,
-  title = NULL,
-  subtitle = NULL,
+  title = "",
+  subtitle = "",
   source = NULL,
-  caption = NULL,
+  caption = "",
   ...
 )
 }
@@ -47,7 +48,9 @@ aplot_trends(
 
 \item{caption}{A caption text. Will override source}
 
-\item{...}{Additional arguments}
+\item{rangeslider}{A locigal for rangeslider}
+
+\item{...}{Additional arguments for ptt_plot.}
 }
 \description{
 Basic PTT line plot

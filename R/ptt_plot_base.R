@@ -470,7 +470,7 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
 #' @export
 #' @importFrom plotly plot_ly add_trace
 #' @importFrom scales extended_breaks
-#' @importFrom rlang enquo quo_name set_names
+#' @importFrom rlang enquo as_name set_names
 #' @importFrom dplyr group_split
 #' @importFrom stringr str_length
 ptt_plot <- function(d,
@@ -498,10 +498,14 @@ ptt_plot <- function(d,
 
   d <- droplevels(d)
 
-  unique_groups <- d[[quo_name(grouping)]] |> unique() |> sort()
+  unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
 
   color_vector <- (function() {
-    color_vector <- ptt_plot_set_colors(length(unique_groups))
+    color_vector <- if (isolate_primary == T) {
+      ptt_plot_set_colors(1) %>% rep(length(unique_groups))
+    } else {
+        ptt_plot_set_colors(length(unique_groups))
+      }
     color_vector |> set_names(unique_groups)
   })()
 
@@ -510,10 +514,11 @@ ptt_plot <- function(d,
   split_d <- group_split(d, !!grouping) |> rev()
 
   for (g in split_d) {
-    g.color <- unique(g[[quo_name(grouping)]])
-    g.name <- unique(g[[quo_name(grouping)]])
-    lw <- if(!isolate_primary) { 4 } else {ifelse(which(g.name == levels(g.name)) == 1, 4, 2)}
-    legend.rank <- which(g.name == levels(g.name)) * 100
+    g.color <- unique(g[[as_name(grouping)]])
+    g.name <- unique(g[[as_name(grouping)]])
+    g.level <-  which(g.name == levels(g.name))
+    lw <- if(!isolate_primary) { 4 } else {seq.int(4,1,length.out = length(levels(g.name)))[g.level]}
+    legend.rank <- g.level * 100
     p <- p |>
       add_trace(data=g, y = ~value, text = g.name,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
@@ -552,7 +557,7 @@ ptt_plot <- function(d,
 #' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
 #' p <- p |> ptt_plot_add_prediction_traces(e)
 #' p
-#' @importFrom rlang enquo quo_name
+#' @importFrom rlang enquo as_name
 #' @importFrom tidyr uncount pivot_longer
 #' @importFrom dplyr slice_tail
 #' @importFrom plotly plot_ly add_lines
@@ -577,21 +582,21 @@ ptt_plot_add_prediction_traces <- function(p,
     group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   test_color_vector <<- color_vector
-  pred_groups <- pred_data[[quo_name(grouping)]] |> unique()
+  pred_groups <- pred_data[[as_name(grouping)]] |> unique()
   if(!all(names(color_vector) %in% pred_groups)) {
     message("All prediction traces must have a correspondingly named trace in original plot.")
     stop()
   }
   legend.items <- c()
   for (s in pred_series) {
-    s.name <- unique(s[[quo_name(grouping)]])
+    s.name <- unique(s[[as_name(grouping)]])
     s.level <- p$legend_ranks[s.name]
     lw <- if(!isolate_primary) { 4 } else {ifelse(s.level == 100, 4, 2)}
     show.legend <- ifelse(!s.name %in% legend.items, showlegend, F)
     legend.items <- c(legend.items, s.name) |> unique()
     legend.rank <- s.level * 1.1 + 1
     p <- p |>
-      add_lines(data = s, y = ~value, x = ~time, text = s[[quo_name(grouping)]],
+      add_lines(data = s, y = ~value, x = ~time, text = s[[as_name(grouping)]],
                 type = "scatter", mode="lines",
                 line = list(width = lw),
                 color = I(color_vector[s.name]),
@@ -633,7 +638,7 @@ ptt_plot_add_secondary_traces <- function(p,secondary_data,relates_to,grouping,h
     stop()
   }
 
-  relates_to <- quo_name(enquo(relates_to))
+  relates_to <- as_name(enquo(relates_to))
 
   if(!relates_to %in% names(p$color_vector)) {
     message("Provided relates_to not in parent ptt_plot variables!")
@@ -644,20 +649,20 @@ ptt_plot_add_secondary_traces <- function(p,secondary_data,relates_to,grouping,h
 
   d <- droplevels(secondary_data)
 
-  if(!is.factor(d[[quo_name(grouping)]])) {
-    d[[quo_name(grouping)]] <- fct_inorder(d[[quo_name(grouping)]])
+  if(!is.factor(d[[as_name(grouping)]])) {
+    d[[as_name(grouping)]] <- fct_inorder(d[[as_name(grouping)]])
     }
 
-  unique_groups <- d[[quo_name(grouping)]] |> unique() |> sort()
+  unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
 
   split_d <- group_split(d, !!grouping) |> rev()
 
   for (g in split_d) {
-    g.name <- unique(g[[quo_name(grouping)]])
+    g.name <- unique(g[[as_name(grouping)]])
     g.level <- which(g.name == levels(g.name))
     lw <- seq.int(2,1,length.out = length(levels(g.name)))[g.level]
     g.name <- str_c(relates_to,", ",tolower(g.name))
-    legend.rank <- p$legend_ranks[quo_name(relates_to)] + (g.level*10)
+    legend.rank <- p$legend_ranks[as_name(relates_to)] + (g.level*10)
     p <-
       p |>
       add_trace(data=g, y = ~value, text = g.name,
