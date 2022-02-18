@@ -9,7 +9,7 @@ ptt_plot_create_widget(p, title)
 \arguments{
 \item{p}{A plotly object.}
 
-\item{title}{The filename of the html element (without file format). The function will clean the name up.}
+\item{title}{The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.}
 }
 \value{
 None
@@ -18,5 +18,5 @@ None
 Writes an html element for embedding.
 }
 \examples{
-p \%>\% ptt_plot_create_widget("bkt_ja_kulutus")
+p |> ptt_plot_create_widget()
 }

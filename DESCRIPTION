@@ -27,7 +27,8 @@ Imports:
     rlang,
     yaml,
     pttdatahaku,
-    farver
+    farver,
+    forcats
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,

@@ -10,7 +10,7 @@ ptt_plot_add_prediction_traces(
   grouping = sarja_nmi,
   n_obs = 2,
   with_labs = T,
-  lwd = F,
+  isolate_primary = F,
   showlegend = F,
   hovertext = list(rounding = 1, unit = "\%", extra = "(ennuste)")
 )
@@ -24,7 +24,9 @@ ptt_plot_add_prediction_traces(
 
 \item{n_obs}{Number of observations (counted from the latest) used from the prediction set pred_data.}
 
-\item{showlegend, with_labs}{Controls prediction trace legend.}
+\item{isolate_primary}{Separates the first factor in parent plot grouping by line width.}
+
+\item{showlegend, with_labs}{Controls prediction trace legend. Hovertemplate takes labeling based on with_labs.}
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 }
@@ -36,6 +38,6 @@ Outputs a plotly object.
 }
 \examples{
 e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
-p <- p |> ptt_plot_add_prediction_traces(e, with_labs = T)
+p <- p |> ptt_plot_add_prediction_traces(e)
 p
 }

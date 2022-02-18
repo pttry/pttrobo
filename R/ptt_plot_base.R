@@ -269,7 +269,6 @@ ptt_plot_config <- function(p,
                          y = -((tickfont_ht+4+rangeslider_ht+legend_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
   logo_offset <- list(x = 0, y = -((tickfont_ht+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
 
-  # print(str_c("Legend offset: ",legend_offset$y))
 
 
   p |>
@@ -303,7 +302,7 @@ ptt_plot_set_legend <- function(p, position, orientation, offset, font) {
       showlegend = T,
       legend = list(font = font,
                     x = x.pos, y = y.pos,
-                    traceorder = "reversed",
+                    traceorder = "normal",
                     orientation = orientation,
                     xanchor = "left",
                     yanchor = "top"))
@@ -392,13 +391,17 @@ ptt_plot_hovertemplate <- function(specs) {
 #' Writes an html element for embedding.
 #'
 #' @param p A plotly object.
-#' @param title The filename of the html element (without file format). The function will clean the name up.
+#' @param title The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.
 #' @examples
-#' p %>% ptt_plot_create_widget("bkt_ja_kulutus")
+#' p |> ptt_plot_create_widget()
 #' @return None
 #' @importFrom stringr str_extract_all
 #' @importFrom htmlwidgets saveWidget
 ptt_plot_create_widget <- function(p,title) {
+  if(missing(title)) {
+    message("Extracting title from ptt_plot..")
+    title <- (p$x$layoutAttrs %>% unlist())[grep("title.text", names((p$x$layoutAttrs %>% unlist())))] %>%
+      str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)")}
   title <- str_extract_all(title, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
     str_c(collapse = "") |>
     str_squish() |>
@@ -409,9 +412,20 @@ ptt_plot_create_widget <- function(p,title) {
 
 }
 
+#' Gives a vector of desired length of colors.
+#'
+#' Outputs a vector of colors.
+#'
+#' @param n_unique How many colors are needed.
+#' @param color_vector Optional. A vector or colors.
+#' @param accessibility_params Placeholder for accessibility features.
+#' @return plotly object
+#' @return Vector of colors.
+#' @export
 #' @importFrom grDevices colorRampPalette
 #' @importFrom plotly plot_ly
-ptt_plot_set_colors <- function(n_unique, pred = F) {
+
+ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
   ptt_vihrea <- "#5B8233"
   ptt_sininen <- "#2f7ab9"
   ptt_ruskea <- "#C36B0D"
@@ -425,10 +439,7 @@ ptt_plot_set_colors <- function(n_unique, pred = F) {
   } else {
     cols <- colorRampPalette(colors = ptt_cols)(n_unique)
   }
-  if (pred == T) {
-    cols <- cols |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
-  }
-  cols# |> alter_color_for_accessibility()
+  cols# |> alter_color_for_accessibility() ## tähän tulee saavutettavuuskoodi
 }
 
 #' Creates a plotly object with visual specifications of ptt.
@@ -441,9 +452,9 @@ ptt_plot_set_colors <- function(n_unique, pred = F) {
 #' @param legend_orientation,legend_position Legend positioning.
 #' @param margin List for plot margins if calculated margins do not work.
 #' @param font_color,grid_color,font_size Plot background element colors and font sizes.
-#' @param secondary_grouping Additional grouping variable for line widths.
 #' @param rangeslider Determines rangeslider inclusion.
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
+#' @param isolate_primary Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.
 #' @param height Height of the plot.
 #' @return plotly object
 #' @examples
@@ -452,7 +463,7 @@ ptt_plot_set_colors <- function(n_unique, pred = F) {
 #' dplyr::group_by(taloustoimi) |>
 #' dplyr::mutate(value = ((value/ lag(value, 4)) -1) * 100) |>
 #' dplyr::ungroup() |>
-#' dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") %>% forcats::as_factor()
+#' dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") |> forcats::as_factor()
 #' p <- d |> ptt_plot(tiedot, "BKT ja kulutus", subtitle = "Vuosimuutos",
 #'                    caption =  "Lähde: Tilastokeskus ja PTT",lwd = F,rangeslider = T,height = 600)
 #' p
@@ -472,7 +483,7 @@ ptt_plot <- function(d,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
                      rangeslider = T,
-                     secondary_grouping = NA,
+                     isolate_primary = F,
                      font_size = 14,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
                      height = 400,
@@ -485,8 +496,6 @@ ptt_plot <- function(d,
   }
   grouping <- enquo(grouping)
 
-  secondary_grouping <- enquo(secondary_grouping)
-
   d <- droplevels(d)
 
   unique_groups <- d[[quo_name(grouping)]] |> unique() |> sort()
@@ -496,33 +505,28 @@ ptt_plot <- function(d,
     color_vector |> set_names(unique_groups)
   })()
 
-  # xaxis_offset <- extended_breaks(5)((d$value)) %>% {round(./5)*5} |> str_length() |> max()
-
   p <- plot_ly(d, x = ~ time, height = height)
 
-  split_d <- if (is.na(quo_name(secondary_grouping))) { group_split(d, !!grouping) } else { group_split(d, !!grouping, !!secondary_grouping) } %>% rev()
+  split_d <- group_split(d, !!grouping) |> rev()
 
   for (g in split_d) {
     g.color <- unique(g[[quo_name(grouping)]])
-    if (is.na(quo_name(secondary_grouping))) {
-      g.name <- unique(g[[quo_name(grouping)]])
-      lw <- 4
-    } else {
-      g.alt <- unique(g[[quo_name(secondary_grouping)]])
-      g.name <- str_c(g.color,ifelse(tolower(g.alt) == "alkuperäinen", "", str_c(", ",g.alt)))
-      lw <- seq.int(4,2,length.out = length(levels(g.alt)))[which(g.alt == levels(g.alt))]
-    }
-    p <-
-      p |>
+    g.name <- unique(g[[quo_name(grouping)]])
+    lw <- if(!isolate_primary) { 4 } else {ifelse(which(g.name == levels(g.name)) == 1, 4, 2)}
+    legend.rank <- which(g.name == levels(g.name)) * 100
+    p <- p |>
       add_trace(data=g, y = ~value, text = g.name,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
                 line = list(width = lw),
                 legendgroup = g.name,
+                legendrank = legend.rank,
                 name = g.name,
                 color = I(color_vector[g.color]), type = "scatter", mode ='lines'
       )
   }
   p$color_vector <- color_vector
+  p$hover_template <- hovertext
+  p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
   p |>
     ptt_plot_config(title = title, subtitle = subtitle, caption = caption,
                       font_color = font_color, font_size = font_size,
@@ -540,25 +544,26 @@ ptt_plot <- function(d,
 #' @param pred_data Tibble in ptt prediction data format.
 #' @param grouping Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.
 #' @param n_obs Number of observations (counted from the latest) used from the prediction set pred_data.
-#' @param showlegend,with_labs Controls prediction trace legend.
+#' @param showlegend,with_labs Controls prediction trace legend. Hovertemplate takes labeling based on with_labs.
+#' @param isolate_primary Separates the first factor in parent plot grouping by line width.
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @return plotly object
 #' @examples
 #' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
-#' p <- p |> ptt_plot_add_prediction_traces(e, with_labs = T)
+#' p <- p |> ptt_plot_add_prediction_traces(e)
 #' p
-#' @export
+#' @importFrom rlang enquo quo_name
 #' @importFrom tidyr uncount pivot_longer
 #' @importFrom dplyr slice_tail
 #' @importFrom plotly plot_ly add_lines
-
+#' @export
 
 ptt_plot_add_prediction_traces <- function(p,
                                   pred_data,
                                   grouping = sarja_nmi,
                                   n_obs = 2,
                                   with_labs = T,
-                                  lwd = F,
+                                  isolate_primary = F,
                                   showlegend = F,
                                   hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
   grouping <- enquo(grouping)
@@ -570,7 +575,8 @@ ptt_plot_add_prediction_traces <- function(p,
     relocate(value, .after = time) |>
     group_by(year, !!grouping) |>
     group_split()
-  color_vector <- p$color_vector
+  color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
+  test_color_vector <<- color_vector
   pred_groups <- pred_data[[quo_name(grouping)]] |> unique()
   if(!all(names(color_vector) %in% pred_groups)) {
     message("All prediction traces must have a correspondingly named trace in original plot.")
@@ -579,18 +585,90 @@ ptt_plot_add_prediction_traces <- function(p,
   legend.items <- c()
   for (s in pred_series) {
     s.name <- unique(s[[quo_name(grouping)]])
-    lw <- if(!lwd) { 4 } else {ifelse(which(s.name == levels(s.name)) == 1, 4, 2)}
+    s.level <- p$legend_ranks[s.name]
+    lw <- if(!isolate_primary) { 4 } else {ifelse(s.level == 100, 4, 2)}
     show.legend <- ifelse(!s.name %in% legend.items, showlegend, F)
     legend.items <- c(legend.items, s.name) |> unique()
+    legend.rank <- s.level * 1.1 + 1
     p <- p |>
       add_lines(data = s, y = ~value, x = ~time, text = s[[quo_name(grouping)]],
                 type = "scatter", mode="lines",
                 line = list(width = lw),
                 color = I(color_vector[s.name]),
-                name = str_c("Ennuste ",ifelse(with_labs == T, s.name, "")),
+                name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
                 legendgroup = s.name,
+                legendrank = legend.rank,
                 showlegend = show.legend,
                 hovertemplate = ptt_plot_hovertemplate(hovertext))
   }
+  p
+}
+
+
+#' Add secondary traces of existing traces with reduced linewidth to an existing ptt_plot.
+#'
+#' Outputs a plotly object.
+#'
+#' @param p Plotly object created with ptt_plot to add prediction traces to.
+#' @param secondary_data Tibble with secondary variables of one grouping in the parent ptt_plot object.
+#' @param relates_to The name of the grouping that the secondary data relates.
+#' @param grouping Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.
+#' @param hovertext Uses parent ptt_plot specification if undefined. A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
+#' @return plotly object
+#' @examples
+#' d2 <- d |> dplyr::filter(tiedot == "BKT") |> dplyr::mutate(value = statfitools::trend_series(value, time)) |> dplyr::mutate(tiedot = "esimerkkisarja")
+#  p |> ptt_plot_add_secondary_traces(d2, BKT, tiedot)
+#' @export
+#' @importFrom tidyr uncount pivot_longer
+#' @importFrom dplyr slice_tail
+#' @importFrom forcats fct_inorder
+#' @importFrom plotly plot_ly add_lines
+
+ptt_plot_add_secondary_traces <- function(p,secondary_data,relates_to,grouping,hovertext) {
+
+  grouping <- enquo(grouping)
+
+  if (missing(relates_to) | missing(secondary_data)) {
+    message("Define the relation to parent ptt_plot by providing both the data with the secondary data and the relates_to variable.")
+    stop()
+  }
+
+  relates_to <- quo_name(enquo(relates_to))
+
+  if(!relates_to %in% names(p$color_vector)) {
+    message("Provided relates_to not in parent ptt_plot variables!")
+    stop()
+    }
+
+  if (missing(hovertext)) { hovertext <- p$hover_template }
+
+  d <- droplevels(secondary_data)
+
+  if(!is.factor(d[[quo_name(grouping)]])) {
+    d[[quo_name(grouping)]] <- fct_inorder(d[[quo_name(grouping)]])
+    }
+
+  unique_groups <- d[[quo_name(grouping)]] |> unique() |> sort()
+
+  split_d <- group_split(d, !!grouping) |> rev()
+
+  for (g in split_d) {
+    g.name <- unique(g[[quo_name(grouping)]])
+    g.level <- which(g.name == levels(g.name))
+    lw <- seq.int(2,1,length.out = length(levels(g.name)))[g.level]
+    g.name <- str_c(relates_to,", ",tolower(g.name))
+    legend.rank <- p$legend_ranks[quo_name(relates_to)] + (g.level*10)
+    p <-
+      p |>
+      add_trace(data=g, y = ~value, text = g.name,
+                hovertemplate = ptt_plot_hovertemplate(hovertext),
+                line = list(width = lw),
+                legendgroup = relates_to,
+                legendrank = legend.rank,
+                name = g.name,
+                color = I(p$color_vector[relates_to]), type = "scatter", mode ='lines'
+      )
+  }
+
   p
 }

@@ -16,7 +16,7 @@ ptt_plot(
   font_color = "#696969",
   grid_color = "#E8E8E8",
   rangeslider = T,
-  secondary_grouping = NA,
+  isolate_primary = F,
   font_size = 14,
   hovertext = list(rounding = 1, unit = "", extra = ""),
   height = 400,
@@ -38,7 +38,7 @@ ptt_plot(
 
 \item{rangeslider}{Determines rangeslider inclusion.}
 
-\item{secondary_grouping}{Additional grouping variable for line widths.}
+\item{isolate_primary}{Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.}
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 
@@ -56,7 +56,7 @@ dplyr::filter(stringr::str_detect(taloustoimi, "B1GMH|P3KS14_S15"), tiedot == "K
 dplyr::group_by(taloustoimi) |>
 dplyr::mutate(value = ((value/ lag(value, 4)) -1) * 100) |>
 dplyr::ungroup() |>
-dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") \%>\% forcats::as_factor()
+dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") |> forcats::as_factor()
 p <- d |> ptt_plot(tiedot, "BKT ja kulutus", subtitle = "Vuosimuutos",
                    caption =  "Lähde: Tilastokeskus ja PTT",lwd = F,rangeslider = T,height = 600)
 p
