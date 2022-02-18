@@ -15,7 +15,7 @@ ptt_plot(
   margin = NA,
   font_color = "#696969",
   grid_color = "#E8E8E8",
-  rangeslider = T,
+  rangeslider = FALSE,
   secondary_grouping = NA,
   font_size = 14,
   hovertext = list(rounding = 1, unit = "", extra = ""),
