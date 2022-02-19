@@ -486,7 +486,7 @@ ptt_plot <- function(d,
                      isolate_primary = F,
                      font_size = 14,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
-                     height = 400,
+                     height = 500,
                      ...
 ){
 
@@ -619,6 +619,7 @@ ptt_plot_add_prediction_traces <- function(p,
 #' @param relates_to The name of the grouping that the secondary data relates.
 #' @param grouping Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.
 #' @param hovertext Uses parent ptt_plot specification if undefined. A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
+#' @param showlegend A locigal to show legend for secondary trace.
 #' @return plotly object
 #' @examples
 #' d2 <- d |> dplyr::filter(tiedot == "BKT") |> dplyr::mutate(value = statfitools::trend_series(value, time)) |> dplyr::mutate(tiedot = "esimerkkisarja")
@@ -629,7 +630,9 @@ ptt_plot_add_prediction_traces <- function(p,
 #' @importFrom forcats fct_inorder
 #' @importFrom plotly plot_ly add_lines
 
-ptt_plot_add_secondary_traces <- function(p,secondary_data,relates_to,grouping,hovertext) {
+ptt_plot_add_secondary_traces <-
+  function(p, secondary_data, relates_to, grouping,
+           hovertext, showlegend = TRUE) {
 
   grouping <- enquo(grouping)
 
@@ -670,6 +673,7 @@ ptt_plot_add_secondary_traces <- function(p,secondary_data,relates_to,grouping,h
                 line = list(width = lw),
                 legendgroup = relates_to,
                 legendrank = legend.rank,
+                showlegend = showlegend,
                 name = g.name,
                 color = I(p$color_vector[relates_to]), type = "scatter", mode ='lines'
       )

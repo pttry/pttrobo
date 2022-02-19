@@ -46,6 +46,7 @@ aplot_lines <- function(dat, x = time, y = value,
 }
 
 #' @describeIn aplot_lines Estimate and plot trend with original
+#' @param org_showlegend A locigal to show legend for original data.
 #' @export
 #' @examples
 #' ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
@@ -62,7 +63,10 @@ aplot_trends <- function(dat, x = time, y = value,
                          colour = tiedot, size = NULL,
                          title = "", subtitle = "",
                          source = NULL,
-                         caption = "", ...){
+                         caption = "",
+                         rangeslider = FALSE,
+                         org_showlegend = FALSE,
+                         ...){
 
   if ((is.null(caption) || caption == "" ) & !is.null(source)){
     caption <- paste0("Lähde: ", source, ", PTT")
@@ -79,7 +83,8 @@ aplot_trends <- function(dat, x = time, y = value,
   tiedot_name <- rlang::enquo(colour)
 
   p <- ptt_plot(dat, grouping = {{colour}},
-                title = title, subtitle = subtitle, caption = caption)
+                title = title, subtitle = subtitle, caption = caption,
+                rangeslider = rangeslider)
 
   print(names(p$color_vector))
 
@@ -89,7 +94,9 @@ aplot_trends <- function(dat, x = time, y = value,
     sec.dat <- dat %>% filter(!!tiedot_name == var) %>% mutate(value = alk) %>%
       mutate(alk.sarja = "Alkuperäinen sarja")
     rel <- unique(sec.dat[[as_name(tiedot_name)]]) %>% as.character()
-    p <- p|> ptt_plot_add_secondary_traces(sec.dat, !!rel, alk.sarja)
+    p <- p|>
+      ptt_plot_add_secondary_traces(sec.dat, !!rel, alk.sarja,
+                                    showlegend = org_showlegend)
   }
   p
 }

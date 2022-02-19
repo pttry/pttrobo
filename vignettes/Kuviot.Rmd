@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, message=FALSE}
+
+devtools::load_all()
 library(tidyverse)
 library(pttdatahaku)
 ```
@@ -120,6 +122,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   )
 
 ```
+
 ```{r}
 
 ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
