@@ -18,7 +18,11 @@ data_get("StatFin/kan/vtp/statfin_vtp_pxt_11t4.px") |>
 data_get("StatFin/kan/vtp/statfin_vtp_pxt_11yx.px") |>
 data_to_yaml()
 
+# työvoimatutkimus
+
+data_get("StatFin/tym/tyti/vv/statfin_tyti_pxt_13aj.px") |>
+  data_to_yaml()
 
 
-ptt_update_ennustedata("KTdata_Sek", start_year = 2012)
+ptt_update_ennustedata("KTdata_Ty", start_year = 2012)
 ptt_copy_ennustedata("KT")

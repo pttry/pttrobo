@@ -16,9 +16,13 @@ knitr::opts_chunk$set(
 
 ```{r setup, message=FALSE}
 
-devtools::load_all()
+
 library(tidyverse)
 library(pttdatahaku)
+library(pttrobo)
+
+start_time <- "2013-01-01"
+
 ```
 
 Kuvioiden piirtämiseksi pttropo- paketti sisältää aplot_ -alkuisia 
@@ -55,6 +59,22 @@ ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
                  source = "Tilastokeskus")
 
 ```
+
+```{r, message=FALSE}
+
+ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |> 
+  filter_recode(
+     taloustoimi = c("Tuonti" = "P7R Tavaroiden ja palvelujen tuonti, tulona",
+                     "Vienti" = "P6K Tavaroiden ja palvelujen vienti, menona"),
+     tiedot = c("Volyymin muutokset, %")) |>
+     aplot_lines(colour = taloustoimi,
+                 title = "Vienti ja tuonti",
+                 subtitle = "%, volyymin muutos",
+                 source = "Tilastokeskus",
+                 rangeslider = TRUE)
+
+```
+
 ```{r}
 
 ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>

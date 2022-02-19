@@ -1,0 +1,16 @@
+KTdata_Tyovoimatutkimus:
+  Vaesto_v:
+  - id: StatFin/tym/tyti/vv/statfin_tyti_pxt_13aj.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sukupuoli:
+      - Yhteensä
+      Ikäluokka:
+      - 15 - 74
+      - 15 - 64
+      Tiedot:
+      - Väestö, 1000 henkilöä
+      - Työvoima, 1000 henkilöä
+      - Työlliset, 1000 henkilöä
+      - Työttömät, 1000 henkilöä
+      - Työvoiman ulkopuolella olevat, 1000 henkilöä
