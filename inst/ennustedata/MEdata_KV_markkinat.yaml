@@ -18,7 +18,7 @@ MEdata_KV_markkinat:
       - Soybeans, in bulk, United States, n° 2 yellow, CIF Rotterdam ($/t)
   unctad_hinnat_v:
   - id: tidy/US_CommodityPrice_M
-    muunnos: vuosisumma
+    muunnos: vuosikeskiarvo
     tiedot:
       CommodityProduct Label:
       - Beef, Australia/New Zealand, frozen, CIF US ports ($/kg)
@@ -33,6 +33,48 @@ MEdata_KV_markkinat:
       - Maize, United States, n° 3 yellow, FOB Gulf ($/t)
       - Rice, Thailand, white milled, 5% broken, export price, FOB ($/t)
       - Soybeans, in bulk, United States, n° 2 yellow, CIF Rotterdam ($/t)
+  eu_agri_kk:
+  - id: tidy/dg_agri
+    muunnos: alkuperäinen
+    tiedot:
+      Country:
+      - EU
+      - FI
+      Product desc:
+      - Young Bulls
+      - Cows
+      - Pigmeat Class E
+      - Raw Milk
+      - Feed Oats
+      - Feed Wheat
+      - Bread Wheat
+      - Feed Maize
+      - Malting Barley
+      - Feed Barley
+      - Feed Rye
+      - Bread Rye
+  eu_agri_v:
+  - id: tidy/dg_agri
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Country:
+      - EU
+      - FI
+      Product desc:
+      - Young Bulls
+      - Cows
+      - Pigmeat Class E
+      - Raw Milk
+      - Feed Oats
+      - Feed Wheat
+      - Bread Wheat
+      - Feed Maize
+      - Malting Barley
+      - Feed Barley
+      - Feed Rye
+      - Bread Rye
+
+
 
 
 
