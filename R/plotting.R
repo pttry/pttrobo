@@ -31,6 +31,7 @@ aplot_lines <- function(dat, x = time, y = value,
                         source = NULL,
                         caption = "",
                         rangeslider = FALSE,
+                        start_time = NULL,
                         ...){
 
 
@@ -42,7 +43,7 @@ aplot_lines <- function(dat, x = time, y = value,
   dat |>
     ptt_plot(grouping = {{colour}},
              title = title, subtitle = subtitle, caption = caption,
-             rangeslider = rangeslider, ...)
+             rangeslider = rangeslider, start_time = start_time, ...)
 }
 
 #' @describeIn aplot_lines Estimate and plot trend with original
@@ -65,6 +66,7 @@ aplot_trends <- function(dat, x = time, y = value,
                          source = NULL,
                          caption = "",
                          rangeslider = FALSE,
+                         start_time = NULL,
                          org_showlegend = FALSE,
                          ...){
 

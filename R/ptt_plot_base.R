@@ -209,13 +209,14 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 
 #' @importFrom plotly layout
 #' @importFrom dplyr case_when
-ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.5) {
+ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.5, slider_range = NULL) {
   if(enable == T) {
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
     p |>
       layout(
         xaxis = list(
-          rangeslider = list(type = "date", thickness = height)))
+          range = slider_range,
+           rangeslider = list(type = "date", thickness = height)))
   } else { p }
 }
 
@@ -231,7 +232,8 @@ ptt_plot_config <- function(p,
                               height, width = 800,
                               xaxis_offset = 0,
                               margin = NA,
-                              enable_rangeslider = F) {
+                              enable_rangeslider = F,
+                             slider_range = NULL) {
 
   if(missing(title) | missing(caption)) {
     stop("Title and caption must be strings, or NA for no plot title or plot caption.")
@@ -279,7 +281,7 @@ ptt_plot_config <- function(p,
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo(logo_offset, plot_ht) |>
-    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size) |>
+    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
     ptt_plot_set_caption(caption, offset = caption_offset, main_font)
@@ -484,6 +486,7 @@ ptt_plot <- function(d,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
                      rangeslider = T,
+                     start_time = NULL,
                      isolate_primary = F,
                      font_size = 14,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
@@ -493,7 +496,7 @@ ptt_plot <- function(d,
 
   if(missing(d) || missing(grouping)){
     stop("Data and grouping variable (without quotes)\n",
-         "For example: plot_lines(a_tibble, grouping=tiedot)")
+         "For example: ptt_plot(a_tibble, grouping=tiedot)")
   }
   grouping <- enquo(grouping)
 
@@ -533,13 +536,20 @@ ptt_plot <- function(d,
   p$color_vector <- color_vector
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
+
+  if (!is.null(start_time)){
+    slider_range <- c(as.Date(start_time), max(d$time))
+
+  }
+
   p |>
     ptt_plot_config(title = title, subtitle = subtitle, caption = caption,
                       font_color = font_color, font_size = font_size,
                       legend_position = legend_position, legend_orientation = legend_orientation,
                       tick_color = font_color, grid_color = grid_color, margin = margin,
                       height = height, #xaxis_offset = xaxis_offset,
-                      enable_rangeslider = rangeslider)
+                      enable_rangeslider = rangeslider,
+                    slider_range = slider_range)
 }
 
 #' Add prediction traces to an existing ptt_plot.
