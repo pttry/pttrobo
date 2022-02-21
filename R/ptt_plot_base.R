@@ -145,11 +145,11 @@ ptt_plot_set_ticks <- function(p, font) {
                       tickformatstops = list(
                         list(
                           dtickrange = list(NULL, 604800000),
-                          value = "%Y-%m-%d"
+                          value = "%d.%m.%Y"
                         ),
                         list(
                           dtickrange = list(604800000, "M12"),
-                          value = "%YM%m"
+                          value = "%m/%Y"
                         ),
                         list(
                           dtickrange = list("M12", NULL),
