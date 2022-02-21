@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">pttrobo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,19 +74,19 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">pttrobo_print_filter</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px"</span>, conc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> \ Requesting get</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">v</span> Requesting get <span style="color: #B2B2B2;">[61ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">v</span> Requesting get <span style="color: #B2B2B2;">[58ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> filter(</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   hinta %in% c("Perushinta 1)", "Laatukorjattu hinta 4)"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   laji %in% c("KAIKKI VEHNÄ 2)", "Leipävehnä", "Rehuvehnä", "RUIS", "KAIKKI OHRA 3)", "Mallasohra", "Rehuohra", "KAURA YHTEENSÄ 5)", "Elintarvikekaura", "Rehukaura", "RYPSI JA RAPSI")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   laji %in% c("VEHNÄ YHTEENSÄ 2)", "Leipävehnä", "Rehuvehnä", "RUIS", "OHRA YHTEENSÄ 3)", "Mallasohra", "Rehuohra", "KAURA YHTEENSÄ 5)", "Elintarvikekaura", "Rehukaura", "RYPSI JA RAPSI")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   )</span>
 <span class="r-in">  <span class="fu">pttrobo_print_filter_recode</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px"</span>, conc <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> \ Requesting get</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">v</span> Requesting get <span style="color: #B2B2B2;">[22ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">v</span> Requesting get <span style="color: #B2B2B2;">[14ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> filter_recode(</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   hinta = c("Perushinta 1)", "Laatukorjattu hinta 4)"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   laji = c("KAIKKI VEHNÄ 2)", "Leipävehnä", "Rehuvehnä", "RUIS", "KAIKKI OHRA 3)", "Mallasohra", "Rehuohra", "KAURA YHTEENSÄ 5)", "Elintarvikekaura", "Rehukaura", "RYPSI JA RAPSI")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   laji = c("VEHNÄ YHTEENSÄ 2)", "Leipävehnä", "Rehuvehnä", "RUIS", "OHRA YHTEENSÄ 3)", "Mallasohra", "Rehuohra", "KAURA YHTEENSÄ 5)", "Elintarvikekaura", "Rehukaura", "RYPSI JA RAPSI")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   )</span>
 </code></pre></div>
     </div>

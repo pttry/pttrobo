@@ -16,10 +16,11 @@ ptt_plot(
   font_color = "#696969",
   grid_color = "#E8E8E8",
   rangeslider = T,
+  start_time = NULL,
   isolate_primary = F,
   font_size = 14,
   hovertext = list(rounding = 1, unit = "", extra = ""),
-  height = 400,
+  height = 500,
   ...
 )
 }

@@ -22,13 +22,13 @@ id:tä.
 
 ``` r
 library(pttrobo)
-#> v Loaded robonomistClient 2.1.8
-#> i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [46ms]
+#> v Loaded robonomistClient 2.2.0
+#> i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [116ms]
 
 ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |> head()
-#> i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [146ms]
-#> i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [38ms]
-#> \ Requesting getv Requesting get [104ms]
+#> i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [102ms]
+#> i Connected successfully to robonomistServer 2.5.6v Connected successfully to robonomistServer 2.5.6 [35ms]
+#> \ Requesting getv Requesting get [96ms]
 #> # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
 #> # A tibble:      6 x 5
 #> # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,
@@ -55,7 +55,7 @@ library(pttdatahaku)
 library(tidyverse)
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
 #> v ggplot2 3.3.5     v purrr   0.3.4
-#> v tibble  3.1.6     v dplyr   1.0.7
+#> v tibble  3.1.6     v dplyr   1.0.8
 #> v tidyr   1.2.0     v stringr 1.4.0
 #> v readr   2.1.2     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
@@ -80,7 +80,7 @@ ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
             "Työlliset" = "Työlliset, 1000 henkilöä")
   ) |> 
   filter(time >= "2021-12-01")
-#> \ Requesting getv Requesting get [10ms]
+#> \ Requesting getv Requesting get [12ms]
 #> # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px
 #> # A tibble:      2 x 5
 #> # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,
@@ -136,17 +136,17 @@ library(robonomistClient)
 data("luke/") |> 
   head()
 #> \ Requesting data
-#> v Requesting data [91ms]
+#> v Requesting data [73ms]
 #> 
 #> -- Robonomist Database search results
-#>   id                                              title                         
-#> 1 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~
-#> 2 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~
-#> 3 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~
-#> 4 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~
-#> 5 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~
-#> 6 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatilojen lukumäärä alueitta~
-#> # ... with 1 more variable: lang <chr>
+#>   id                                                                 title lang 
+#>   <r_id>                                                             <chr> <chr>
+#> 1 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   
+#> 2 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   
+#> 3 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   
+#> 4 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   
+#> 5 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   
+#> 6 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi
 ```
 
 RobonomistClient ohjeet:

@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">pttrobo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,14 +75,14 @@
 </h2>
 <p>Tietojen hakuun käytetään <code>ptt_data_ropo()</code> -funktiota ja robonomist id:tä.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">pttrobo</span><span class="op">)</span>
-<span class="co">#&gt; v Loaded robonomistClient 2.1.8</span>
-<span class="co">#&gt; i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [46ms]</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pttry.github.io/pttrobo/">pttrobo</a></span><span class="op">)</span>
+<span class="co">#&gt; v Loaded robonomistClient 2.2.0</span>
+<span class="co">#&gt; i Set to connect ptt.robonomist.comv Set to connect ptt.robonomist.com [116ms]</span>
 
 <span class="fu"><a href="reference/ptt_data_robo.html">ptt_data_robo</a></span><span class="op">(</span><span class="st">"StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px"</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [146ms]</span>
-<span class="co">#&gt; i Connected successfully to robonomistServer 2.4.21v Connected successfully to robonomistServer 2.4.21 [38ms]</span>
-<span class="co">#&gt; \ Requesting getv Requesting get [104ms]</span>
+<span class="co">#&gt; i Connecting to robonomistServer at ptt.robonomist.comv Connecting to robonomistServer at ptt.robonomist.com [102ms]</span>
+<span class="co">#&gt; i Connected successfully to robonomistServer 2.5.6v Connected successfully to robonomistServer 2.5.6 [35ms]</span>
+<span class="co">#&gt; \ Requesting getv Requesting get [96ms]</span>
 <span class="co">#&gt; # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px</span>
 <span class="co">#&gt; # A tibble:      6 x 5</span>
 <span class="co">#&gt; # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,</span>
@@ -104,7 +104,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</span>
 <span class="co">#&gt; v ggplot2 3.3.5     v purrr   0.3.4</span>
-<span class="co">#&gt; v tibble  3.1.6     v dplyr   1.0.7</span>
+<span class="co">#&gt; v tibble  3.1.6     v dplyr   1.0.8</span>
 <span class="co">#&gt; v tidyr   1.2.0     v stringr 1.4.0</span>
 <span class="co">#&gt; v readr   2.1.2     v forcats 0.5.1</span>
 <span class="co">#&gt; -- Conflicts ------------------------------------------ tidyverse_conflicts() --</span>
@@ -129,7 +129,7 @@
             <span class="st">"Työlliset"</span> <span class="op">=</span> <span class="st">"Työlliset, 1000 henkilöä"</span><span class="op">)</span>
   <span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op">&gt;=</span> <span class="st">"2021-12-01"</span><span class="op">)</span>
-<span class="co">#&gt; \ Requesting getv Requesting get [10ms]</span>
+<span class="co">#&gt; \ Requesting getv Requesting get [12ms]</span>
 <span class="co">#&gt; # Robonomist id: StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px</span>
 <span class="co">#&gt; # A tibble:      2 x 5</span>
 <span class="co">#&gt; # Title:         135y -- Väestö työmarkkina-aseman, sukupuolen ja iän mukaan,</span>
@@ -175,17 +175,17 @@
 <span class="fu"><a href="https://robonomist.github.io/robonomistClient/reference/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"luke/"</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; \ Requesting data</span>
-<span class="co">#&gt; v Requesting data [91ms]</span>
+<span class="co">#&gt; v Requesting data [73ms]</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; -- Robonomist Database search results</span>
-<span class="co">#&gt;   id                                              title                         </span>
-<span class="co">#&gt; 1 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~</span>
-<span class="co">#&gt; 2 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~</span>
-<span class="co">#&gt; 3 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~</span>
-<span class="co">#&gt; 4 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~</span>
-<span class="co">#&gt; 5 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatalous- ja puutarhayrityst~</span>
-<span class="co">#&gt; 6 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_~ Maatilojen lukumäärä alueitta~</span>
-<span class="co">#&gt; # ... with 1 more variable: lang &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt;   id                                                                 title lang </span>
+<span class="co">#&gt;   &lt;r_id&gt;                                                             &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   </span>
+<span class="co">#&gt; 2 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   </span>
+<span class="co">#&gt; 3 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   </span>
+<span class="co">#&gt; 4 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   </span>
+<span class="co">#&gt; 5 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi   </span>
+<span class="co">#&gt; 6 luke/02_Maatalous/02_Rakenne/02_Maatalous-_ja_puutarhayritysten_r~ Maat~ fi</span></code></pre></div>
 <p>RobonomistClient ohjeet: <a href="https://robonomist.github.io/robonomistClient/" class="external-link uri">https://robonomist.github.io/robonomistClient/</a></p>
 </div>
 <div class="section level2">

@@ -16,6 +16,7 @@ aplot_lines(
   source = NULL,
   caption = "",
   rangeslider = FALSE,
+  start_time = NULL,
   ...
 )
 
@@ -29,6 +30,9 @@ aplot_trends(
   subtitle = "",
   source = NULL,
   caption = "",
+  rangeslider = FALSE,
+  start_time = NULL,
+  org_showlegend = FALSE,
   ...
 )
 }
@@ -51,6 +55,8 @@ aplot_trends(
 \item{rangeslider}{A locigal for rangeslider}
 
 \item{...}{Additional arguments for ptt_plot.}
+
+\item{org_showlegend}{A locigal to show legend for original data.}
 }
 \description{
 Basic PTT line plot
