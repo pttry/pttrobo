@@ -148,11 +148,12 @@ ptt_plot_set_ticks <- function(p, font) {
                           value = "%d.%m.%Y"
                         ),
                         list(
-                          dtickrange = list(604800000, "M12"),
+                          # end is year in milliseconds
+                          dtickrange = list(604800000, 3.15e10),
                           value = "%m/%Y"
                         ),
                         list(
-                          dtickrange = list("M12", NULL),
+                          dtickrange = list(3.15e10, NULL),
                           value = "%Y"
                         )
                       ),
