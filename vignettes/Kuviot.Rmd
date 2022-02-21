@@ -100,7 +100,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
                      "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
      tiedot = c("Työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %")) |>
   # mutate(value = value /100) |> 
-  filter(time >= "2014-01-01") |>
+  filter(time >= "2019-01-01") |>
   rename(sarjan_nimi = taloustoimi) |> 
      ptt_plot(grouping = sarjan_nimi, 
                  title = "Vienti ja tuonti",

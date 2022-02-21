@@ -46,7 +46,9 @@ KTdata_QNA:
       - P51KN111+N1121 Investoinnit asuinrakennuksiin ja muihin rakennuksiin
       - P51KN1121  Investoinnit muihin talorakennuksiin kuin asuinrakennuksiin
       - P51KN1122+N1123 Maa- ja vesirakennusinvestoinnit sekä maanparannukset
+      - 'P51KN113+N114 Kone-, laite- ja kuljetusvälineinvestoinnit: asejärjestelmät'
       - P51KN1131 Investoinnit kuljetusvälineisiin
+      - 'P51KN1132+N114 Kone- ja laiteinvestoinnit: asejärjestelmät'
       - P51KN115+N117 Kasvatettavat varat ja henkiset omaisuustuotteet
       - P51KS13 Julkiset investoinnit
       - P51KXS13 Yksityiset investoinnit
@@ -108,7 +110,9 @@ KTdata_QNA:
       - P51KN111+N1121 Investoinnit asuinrakennuksiin ja muihin rakennuksiin
       - P51KN1121  Investoinnit muihin talorakennuksiin kuin asuinrakennuksiin
       - P51KN1122+N1123 Maa- ja vesirakennusinvestoinnit sekä maanparannukset
+      - 'P51KN113+N114 Kone-, laite- ja kuljetusvälineinvestoinnit: asejärjestelmät'
       - P51KN1131 Investoinnit kuljetusvälineisiin
+      - 'P51KN1132+N114 Kone- ja laiteinvestoinnit: asejärjestelmät'
       - P51KN115+N117 Kasvatettavat varat ja henkiset omaisuustuotteet
       - P51KS13 Julkiset investoinnit
       - P51KXS13 Yksityiset investoinnit
