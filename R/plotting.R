@@ -88,7 +88,7 @@ aplot_trends <- function(dat, x = time, y = value,
                 title = title, subtitle = subtitle, caption = caption,
                 rangeslider = rangeslider)
 
-  print(names(p$color_vector))
+  # print(names(p$color_vector))
 
   for(var in unique(dat[[as_name(tiedot_name)]])) {
     # print(as_name(tiedot_name))

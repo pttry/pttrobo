@@ -63,7 +63,7 @@ ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
       path = chalkboard_icon,
       transform = "scale(0.12) translate(-1, 0.2)"
     ),
-    click = JS(js_string(1200,800)))
+    click = JS(js_string(1000,500)))
 
   dl_btn <- list(
     name = "Lataa kuva",
@@ -538,7 +538,7 @@ ptt_plot <- function(d,
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
 
   if (!is.null(start_time)){
-    slider_range <- c(as.Date(start_time), max(d$time))
+    slider_range <- c(start_time, as.character(max(d$time)))
 
   }
 
