@@ -1,0 +1,25 @@
+KTdata_Tulot:
+  Ansiotasoindeksi:
+  - id: StatFin/pal/ati/nj/statfin_ati_pxt_13dy.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Työnantajasektori:
+      - Kaikki palkansaajat
+      Palkkausmuoto:
+      - Kaikki
+      Sukupuoli:
+      - Yhteensä
+      Tiedot:
+      - Ansiotasoindeksi 2010=100
+      - Ansiotasoindeksi 2015=100
+  Työeläkeindeksi:
+  - id: etk/200indeksiluvut/indeksit01.px
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Tiedot:
+      - TEL-indeksi / TEL-puoliväli-indeksi
+      - Työeläkeindeksi
+      - Palkkakerroin
+      - Kansaneläkeindeksi
+
+
