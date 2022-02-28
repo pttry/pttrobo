@@ -1,0 +1,205 @@
+KTdata_QNA_Q:
+  Huoltotase_cp:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - B1GMH Bruttokansantuote markkinahintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - D1K Palkansaajakorvaukset, menona
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - D1R Palkansaajakorvaukset, tulona
+      - D2K Tuotannon ja tuonnin verot, menona
+      - D3R Tukipalkkiot, tulona
+      - D4R Omaisuustulot, tulona
+      - D4K Omaisuustulot, menona
+      - D1_D4K Ulkomaille maksettu ensitulo
+      - D1_D4R Ulkomailta saatu ensitulo
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - D5_D7K Tulonsiirrot ulkomaille
+      - D5_D7R Tulonsiirrot ulkomailta
+      - B6N Käytettävissä oleva tulo, netto
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P31KCD Kotitalouksien kulutusmenot, kestävät kulutustavarat, menona
+      - P31KCND Kotitalouksien kulutusmenot, lyhytikäiset tavarat, menona
+      - P31KCS  Kotitalouksien kulutusmenot, palvelut, menona
+      - P31KCSD Kotitalouksien kulutusmenot, puolikestävät tavarat, menona
+      - P31KDC Kotitalouksien kulutusmenot Suomessa, menona
+      - P31KNC Kotitalouksien kulutusmenot (kansallinen), menona
+      - P3KS13 Julkiset kulutusmenot, menona
+      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D9K Pääomansiirrot, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P51KN111 Investoinnit asuinrakennuksiin
+      - P51KN111+N112 Rakennusinvestoinnit
+      - P51KN111+N1121 Investoinnit asuinrakennuksiin ja muihin rakennuksiin
+      - P51KN1121  Investoinnit muihin talorakennuksiin kuin asuinrakennuksiin
+      - P51KN1122+N1123 Maa- ja vesirakennusinvestoinnit sekä maanparannukset
+      - 'P51KN113+N114 Kone-, laite- ja kuljetusvälineinvestoinnit: asejärjestelmät'
+      - P51KN1131 Investoinnit kuljetusvälineisiin
+      - 'P51KN1132+N114 Kone- ja laiteinvestoinnit: asejärjestelmät'
+      - P51KN115+N117 Kasvatettavat varat ja henkiset omaisuustuotteet
+      - P51KS13 Julkiset investoinnit
+      - P51KXS13 Yksityiset investoinnit
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - SUPP Kokonaistarjonta
+      - TUR Turismimenot netto
+      - USE Kokonaiskysyntä
+      - USEX Kotimaan kokonaiskysyntä
+      Tiedot:
+      - Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa
+  Huoltotase_vol:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - B1GMH Bruttokansantuote markkinahintaan
+      - P51CK Kiinteän pääoman kuluminen, tulona
+      - D1K Palkansaajakorvaukset, menona
+      - P7R Tavaroiden ja palvelujen tuonti, tulona
+      - P71R Tavaroiden tuonti, tulona
+      - P72R Palvelujen tuonti, tulona
+      - P6K Tavaroiden ja palvelujen vienti, menona
+      - P61K Tavaroiden vienti, menona
+      - P62K Palvelujen vienti, menona
+      - D1R Palkansaajakorvaukset, tulona
+      - D2K Tuotannon ja tuonnin verot, menona
+      - D3R Tukipalkkiot, tulona
+      - D4R Omaisuustulot, tulona
+      - D4K Omaisuustulot, menona
+      - D1_D4K Ulkomaille maksettu ensitulo
+      - D1_D4R Ulkomailta saatu ensitulo
+      - B5G Bruttokansantulo (BKTL)
+      - B5N Nettokansantulo
+      - D5_D7K Tulonsiirrot ulkomaille
+      - D5_D7R Tulonsiirrot ulkomailta
+      - B6N Käytettävissä oleva tulo, netto
+      - P3K Kulutusmenot, menona
+      - P31K Yksilölliset kulutusmenot, menona
+      - P31KCD Kotitalouksien kulutusmenot, kestävät kulutustavarat, menona
+      - P31KCND Kotitalouksien kulutusmenot, lyhytikäiset tavarat, menona
+      - P31KCS  Kotitalouksien kulutusmenot, palvelut, menona
+      - P31KCSD Kotitalouksien kulutusmenot, puolikestävät tavarat, menona
+      - P31KDC Kotitalouksien kulutusmenot Suomessa, menona
+      - P31KNC Kotitalouksien kulutusmenot (kansallinen), menona
+      - P3KS13 Julkiset kulutusmenot, menona
+      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
+      - B8N Säästö, netto
+      - D9R Pääomansiirrot, tulona
+      - D9K Pääomansiirrot, menona
+      - P5K  Pääoman bruttomuodostus, menona
+      - P51K Kiinteän pääoman bruttomuodostus, menona
+      - P51KN111 Investoinnit asuinrakennuksiin
+      - P51KN111+N112 Rakennusinvestoinnit
+      - P51KN111+N1121 Investoinnit asuinrakennuksiin ja muihin rakennuksiin
+      - P51KN1121  Investoinnit muihin talorakennuksiin kuin asuinrakennuksiin
+      - P51KN1122+N1123 Maa- ja vesirakennusinvestoinnit sekä maanparannukset
+      - 'P51KN113+N114 Kone-, laite- ja kuljetusvälineinvestoinnit: asejärjestelmät'
+      - P51KN1131 Investoinnit kuljetusvälineisiin
+      - 'P51KN1132+N114 Kone- ja laiteinvestoinnit: asejärjestelmät'
+      - P51KN115+N117 Kasvatettavat varat ja henkiset omaisuustuotteet
+      - P51KS13 Julkiset investoinnit
+      - P51KXS13 Yksityiset investoinnit
+      - P52K Varaston muutos, menona
+      - P53K Arvoesineiden nettohankinta, menona
+      - DEB1G  Tilastollinen ero
+      - B9  Nettoluotonanto (+)/Nettoluotonotto(-)
+      - P41K Todellinen yksilöllinen kulutus, menona
+      - SUPP Kokonaistarjonta
+      - TUR Turismimenot netto
+      - USE Kokonaiskysyntä
+      - USEX Kotimaan kokonaiskysyntä
+      Tiedot:
+      - Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa
+  Työlliset:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - E1 Työlliset, kotimaa (1000 henkeä)
+      - E11 Yrittäjät, kotimaa (1000 henkeä)
+      - E12 Palkansaajat, kotimaa (1 000 henkeä)
+      - EEM Palkansaajat, kansallinen (1 000 henkeä)
+      - EN Työlliset, kansallinen (1000 henkeä)
+      - EP Keskiväkiluku (1000 henk.)
+      - ESE Yrittäjät, kansallinen (1000 henk.)
+      Toimiala:
+      - Yhteensä
+      Tiedot:
+      - Alkuperäinen sarja
+  Tunnit:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: alkuperäinen
+    tiedot:
+      Taloustoimi:
+      - E2 Tehdyt työtunnit (1 000 000 tuntia)
+      - E21 Yrittäjien tehdyt työtunnit ( 1 000 000 tuntia)
+      - E22 Palkansaajien tehdyt työtunnit (1 000 000 tuntia)
+      Toimiala:
+      - Yhteensä
+      Tiedot:
+      - Alkuperäinen sarja
+  Työlliset_tol:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: alkuperäinen
+    tiedot:
+      Toimiala:
+      - Yhteensä
+      - 0, pl. S13 Toimialat yhteensä, yksityiset sektorit
+      - 0, S13 Toimialat yhteensä, julkiset sektorit
+      - A Maatalous, metsätalous ja kalatalous (01-03)
+      - B-E Koko teollisuus (05-39)
+      - C Teollisuus (10-33)
+      - F Rakentaminen (41-43)
+      - G-I Kauppa, kuljetus ja varastointi, majoitus- ja ravitsemistoiminta  (45-56)
+      - J Informaatio ja viestintä (58-63)
+      - K Rahoitus- ja vakuutustoiminta (64-66)
+      - L Kiinteistöalan toiminta (68)
+      - M, N Ammatillinen, tieteellinen ja tekninen toiminta, hallinto- ja tukipalvelutoiminta
+        (69-82)
+      - O-Q  Julkinen hallinto, koulutus, terveys- ja sosiaalipalvelut (84-88)
+      - R-U Taiteet, viihde ja virkistys; muut palvelut (90-99)
+      Taloustoimi:
+      - E1 Työlliset, kotimaa (1000 henkeä)
+      Tiedot:
+      - Alkuperäinen sarja
+  Tunnit_tol:
+  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+    muunnos: alkuperäinen
+    tiedot:
+      Toimiala:
+      - Yhteensä
+      - 0, pl. S13 Toimialat yhteensä, yksityiset sektorit
+      - 0, S13 Toimialat yhteensä, julkiset sektorit
+      - A Maatalous, metsätalous ja kalatalous (01-03)
+      - B-E Koko teollisuus (05-39)
+      - C Teollisuus (10-33)
+      - F Rakentaminen (41-43)
+      - G-I Kauppa, kuljetus ja varastointi, majoitus- ja ravitsemistoiminta  (45-56)
+      - J Informaatio ja viestintä (58-63)
+      - K Rahoitus- ja vakuutustoiminta (64-66)
+      - L Kiinteistöalan toiminta (68)
+      - M, N Ammatillinen, tieteellinen ja tekninen toiminta, hallinto- ja tukipalvelutoiminta
+        (69-82)
+      - O-Q  Julkinen hallinto, koulutus, terveys- ja sosiaalipalvelut (84-88)
+      - R-U Taiteet, viihde ja virkistys; muut palvelut (90-99)
+      Taloustoimi:
+      - E2 Tehdyt työtunnit (1 000 000 tuntia)
+      Tiedot:
+      - Alkuperäinen sarja

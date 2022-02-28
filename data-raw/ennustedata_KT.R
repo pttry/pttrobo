@@ -34,6 +34,6 @@ data_get("StatFin/pal/ati/nj/statfin_ati_pxt_13dy.px") |>
 data_get("etk/200indeksiluvut/indeksit01.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Q", start_year = 2012)
+ptt_update_ennustedata("KTdata_Q", start_year = 2013)
 ptt_copy_ennustedata("KT")
 
