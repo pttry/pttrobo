@@ -4,7 +4,7 @@
 library(pttdatahaku)
 
 data_get("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
-  data_to_yaml(xlsx_tiedosto = "KTdata_QNA.xlsx")
+  data_to_yaml()
 
 data_get("StatFin/kan/ntp/statfin_ntp_pxt_11tj.px") |>
   data_to_yaml()
@@ -34,6 +34,6 @@ data_get("StatFin/pal/ati/nj/statfin_ati_pxt_13dy.px") |>
 data_get("etk/200indeksiluvut/indeksit01.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Q", start_year = 2013)
+ptt_update_ennustedata("KTdata_QNA_Q", start_year = 2013)
 ptt_copy_ennustedata("KT")
 

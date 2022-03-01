@@ -125,11 +125,11 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
     purrr::map(Muuttujat, ~{
       if (.x == "Vuosi") {
         if (lubridate::is.Date(d$Vuosi)) {
-          seq(make_date(start_year,1,1), max(d$Vuosi),
+          seq(lubridate::make_date(start_year,1,1), max(lubridate::make_date(start_year + 11,1,1), max(d$Vuosi)),
               by = dplyr::case_when(freq == 4 ~ "quarter",
                                     freq == 12 ~ "months"))
         } else {
-          as.double(seq(as.numeric(start_year), max(d$Vuosi)))
+          as.double(seq(as.numeric(start_year), max(start_year + 10 ,max(d$Vuosi))))
         }
       } else if (is.null(x$tiedot[[.x]])){
         unique(d[[.x]])
@@ -138,6 +138,8 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
       }
     }) |>
     setNames(Muuttujat)
+
+
 
   ## Järjestä ja pakota kaikki vuodet taulukkoon
   d <-
