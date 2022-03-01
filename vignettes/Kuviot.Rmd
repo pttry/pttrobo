@@ -96,6 +96,23 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 ```
 
+Tai ilman alkuperäistä
+
+```{r}
+
+ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter_recode(
+     taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan",
+                     "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
+     tiedot = c("Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa")) |>
+     aplot_trends(colour = taloustoimi,
+                  trends_only = TRUE,
+                 title = "Vienti ja tuonti",
+                 subtitle = "%, volyymin muutos",
+                 source = "Tilastokeskus")
+
+```
+
 ## Tietojen muokkaaminen kuvioita varten
 
 ```{r}

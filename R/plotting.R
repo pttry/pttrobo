@@ -47,7 +47,8 @@ aplot_lines <- function(dat, x = time, y = value,
 }
 
 #' @describeIn aplot_lines Estimate and plot trend with original
-#' @param org_showlegend A locigal to show legend for original data.
+#' @param org_showlegend A logical to show legend for original data.
+#' @param trends_only A logical to have only trends in plot.
 #' @export
 #' @examples
 #' ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
@@ -68,6 +69,7 @@ aplot_trends <- function(dat, x = time, y = value,
                          rangeslider = FALSE,
                          start_time = NULL,
                          org_showlegend = FALSE,
+                         trends_only = FALSE,
                          ...){
 
   if ((is.null(caption) || caption == "" ) & !is.null(source)){
@@ -90,7 +92,8 @@ aplot_trends <- function(dat, x = time, y = value,
 
   # print(names(p$color_vector))
 
-  for(var in unique(dat[[as_name(tiedot_name)]])) {
+  if (!trends_only) {
+    for(var in unique(dat[[as_name(tiedot_name)]])) {
     # print(as_name(tiedot_name))
     # print(var)
     sec.dat <- dat %>% filter(!!tiedot_name == var) %>% mutate(value = alk) %>%
@@ -99,6 +102,6 @@ aplot_trends <- function(dat, x = time, y = value,
     p <- p|>
       ptt_plot_add_secondary_traces(sec.dat, !!rel, alk.sarja,
                                     showlegend = org_showlegend)
-  }
+  }}
   p
 }
