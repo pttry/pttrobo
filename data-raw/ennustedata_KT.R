@@ -1,4 +1,9 @@
 
+# Markkinat
+
+data_get("ecb/IRS") |>
+  data_to_yaml()
+
 # Kansantalouden tilinpito
 
 library(pttdatahaku)
