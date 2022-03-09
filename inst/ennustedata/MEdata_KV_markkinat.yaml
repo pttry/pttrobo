@@ -2,6 +2,7 @@ MEdata_KV_markkinat:
   unctad_hinnat_kk:
   - id: tidy/US_CommodityPrice_M
     muunnos: alkuperäinen
+    poista_muut_tiedot: TRUE
     tiedot:
       CommodityProduct Label:
       - Beef, Australia/New Zealand, frozen, CIF US ports ($/kg)
@@ -19,6 +20,7 @@ MEdata_KV_markkinat:
   unctad_hinnat_v:
   - id: tidy/US_CommodityPrice_M
     muunnos: vuosikeskiarvo
+    poista_muut_tiedot: TRUE
     tiedot:
       CommodityProduct Label:
       - Beef, Australia/New Zealand, frozen, CIF US ports ($/kg)
@@ -36,6 +38,7 @@ MEdata_KV_markkinat:
   eu_agri_kk:
   - id: tidy/dg_agri
     muunnos: alkuperäinen
+    poista_muut_tiedot: TRUE
     tiedot:
       Country:
       - EU
@@ -56,6 +59,7 @@ MEdata_KV_markkinat:
   eu_agri_v:
   - id: tidy/dg_agri
     muunnos: vuosikeskiarvo
+    poista_muut_tiedot: TRUE
     tiedot:
       Country:
       - EU

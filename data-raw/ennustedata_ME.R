@@ -101,7 +101,7 @@ data_get()
 
 
 # yaml_to_excel(file = system.file("ennustedata", "tt.yaml", package = "pttrobo"), start_year = 1980)
-ptt_update_ennustedata(pattern = "MEdata", start_year = 2013)
+ptt_update_ennustedata(pattern = "MEdata_", start_year = 2013)
 ptt_copy_ennustedata("ME")
 
 data("unctad/") |> print(n = 100)

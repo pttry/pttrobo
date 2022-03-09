@@ -67,6 +67,10 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
     data_get(x$id, tidy_time = TRUE)
   }
 
+  if (!is.null(x$poista_muut_tiedot)&&x$poista_muut_tiedot){
+    d <- select(d, names(x$tiedot), time, value)
+  }
+
   d <- filter(d, lubridate::year(time) >= start_year)
 
   x$muunnos <- x$muunnos %||% "alkuperäinen"
