@@ -49,7 +49,13 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
           gd.layout.annotations[1].y = ',layout$caption_offset,';
           gd.layout.annotations[2].y = ',layout$caption_offset,';
           gd.layout.legend.y = ',layout$legend_offset,';
-          //alert(JSON.stringify((gd.layout.annotations)));
+          gd.layout.xaxis.tickfont.size = ',layout$font_sizing$main,';
+          gd.layout.yaxis.tickfont.size = ',layout$font_sizing$main,';
+          gd.layout.annotations[0].font.size = ',layout$font_sizing$caption,';
+          gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
+          gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
+          gd.layout.title.font.size = ',layout$font_sizing$title,';
+          //alert(JSON.stringify((gd.layout.title)));
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           }
    ')
@@ -267,28 +273,30 @@ ptt_plot_config <- function(p,
   rangeslider_ht <- ifelse(enable_rangeslider, round((height * rangeslider_size)+15-(margin$t*rangeslider_size)-(margin$b*rangeslider_size)),0)
   legend_ht <- ifelse(legend_position %in% c("auto","bottom"), font_size, 0)
   plot_ht <- height-sum(ht_constants,rangeslider_ht,tickfont_ht,legend_ht,margin$t,ifelse(enable_rangeslider, margin$b, margin$b-25))
-  caption_ht <- ifelse(!is.na(caption), font_size, 0)
+  caption_ht <- ifelse(!is.na(caption), round(font_size*0.8), 0)
   legend_offset <- list(x = 0,#-((38)/plot_wd),
                         y = -((rangeslider_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
   caption_offset <- list(x = 0,#-((36)/plot_wd),
                          y = -((tickfont_ht+4+rangeslider_ht+legend_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
-  logo_offset <- list(x = 0, y = -((tickfont_ht+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
+  logo_offset <- list(x = 0, y = -((tickfont_ht+4+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
 
   png_attrs <- (function(small_ht = 500, large_ht = 720) {
     png_margin_b_sm <- max(0, ifelse(is.na(caption), round(0.35*small_ht), 0)-15)
     png_margin_b_lg <- max(0, ifelse(is.na(caption), round(0.35*large_ht), 0)-15)
     ht_sm <- small_ht-sum(ht_constants,tickfont_ht,legend_ht,margin$t,png_margin_b_sm)
     ht_lg <- large_ht-sum(ht_constants,tickfont_ht,legend_ht,margin$t,png_margin_b_lg)
-    legend_offset_sm <- -(60/ht_sm) # 80 liian alhaalla
-    legend_offset_lg <- -(50/ht_lg) # 100 aivan liian alhaalla
+    legend_offset_sm <- -(60/ht_sm)
+    legend_offset_lg <- -(50/ht_lg)
     caption_offset_sm <- -((tickfont_ht*4+legend_ht*3+(png_margin_b_sm*0.24))/ht_sm)
     caption_offset_lg <- -((tickfont_ht*3+legend_ht*2+(png_margin_b_lg*0.24))/ht_lg)
     logo_offset_sm <- -((tickfont_ht*4+caption_ht*2+legend_ht*3+(png_margin_b_sm*0.24))/ht_sm)
     logo_offset_lg <- -((tickfont_ht*3+caption_ht*2+legend_ht*2+(png_margin_b_lg*0.24))/ht_lg)
     logo_sizing_sm <-  40 / ht_sm
     logo_sizing_lg <- 30 / ht_lg
-    list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin = png_margin_b_sm),
-         lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin = png_margin_b_lg))
+    font_sizing_lg <- list(title = 23, main = 20, caption = 12)
+    font_sizing_sm <- list(title = 23, main = 18, caption = 14)
+    list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin = png_margin_b_sm, font_sizing = font_sizing_sm),
+         lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin = png_margin_b_lg, font_sizing = font_sizing_lg))
   })()
 
   p |>
@@ -338,6 +346,7 @@ ptt_plot_set_caption <- function(p, caption, offset = list(x = 0, y = 0), font) 
   } else if (!is.character(caption)) {
     stop("Caption and caption footer must be a string, or caption = NA for no plot caption.", call. = F)
   } else {
+    font$size <- round(font$size * 0.8)
     p |>
       layout(
         annotations = list(
