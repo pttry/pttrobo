@@ -28,7 +28,8 @@ Imports:
     yaml,
     pttdatahaku,
     farver,
-    forcats
+    forcats,
+    openxlsx
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,

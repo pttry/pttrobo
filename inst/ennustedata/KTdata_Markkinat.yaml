@@ -1,0 +1,8 @@
+KTdata_Markkinat:
+  Energia:
+  - id: eia/PET.RBRTE.M
+    muunnos: vuosikeskiarvo
+    tiedot:
+      Series: Europe Brent Spot Price FOB, Monthly
+      Units: Dollars per Barrel
+      Frequency: Monthly
