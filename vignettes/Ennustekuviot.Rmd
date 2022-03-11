@@ -1,10 +1,6 @@
 ---
 title: "Ennustekuviot"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Ennustekuviot}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_document
 ---
 
 ```{r, include = FALSE}
@@ -16,6 +12,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(pttrobo)
+library(tidyverse)
 ```
 
 # Ennustekuviot
@@ -24,12 +21,27 @@ library(pttrobo)
 
 ```{r, include=FALSE, eval=FALSE}
 
-draw_ennuste(
-  yaml_path = system.file("ennustekuvat", "MA_kuviot.yaml", package="pttrobo"),
-  yaml_kuvion_nimi = "tukin_hinta",
-  excel_path = system.file("ennustekuvat", "ptt_ennusteet.xlsx", package = "pttrobo"),
-  from_year = 2015
-)
+ennuste_data <-
+  read_ennuste_data(
+    system.file("ennustekuvat", "ptt_ennusteet_KT_2022_1.xlsx", package="pttrobo")
+  )
+
+
+vuosimuutos <- function(d, groups) {
+  d |>
+    with_groups(
+      .groups = {{ groups }},
+      mutate,
+      value = 100 * ((value / lag(value, 4, order_by = time)) -1)
+    )
+}
+
+## draw_ennuste(
+##   yaml_path = system.file("ennustekuvat", "MA_kuviot.yaml", package="pttrobo"),
+##   yaml_kuvion_nimi = "tukin_hinta",
+##   excel_path = system.file("ennustekuvat", "ptt_ennusteet.xlsx", package = "pttrobo"),
+##   from_year = 2015
+## )
 
 
 ```
@@ -37,7 +49,33 @@ draw_ennuste(
 ## Ennustekuvioiden päivittäminen
 
 ```{r}
+ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter(
+    taloustoimi == "B1GMH Bruttokansantuote markkinahintaan",
+    tiedot == "Kausitasoitetun ja työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %",
+    time >= "2010-01-01"
+  ) |>
+  mutate(tiedot = "BKT") |>
+  ptt_plot(
+    grouping = tiedot,
+    title = "BKT Suomi",
+    subtitle = "Vuosimuutos",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    ## rangeslider = "2015-01-01",
+    zeroline = T
+  ) |>
+  ptt_plot_add_prediction_traces(ennuste_data, with_labs = T, showlegend = F)
 
+## p
+## p |> ptt_plot_create_widget()
+## e <-
+  ## readxl::read_excel(ennuste_data_file) |>
+  ## dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
+p <-
+  p |>
+
+p
 
 
 ```

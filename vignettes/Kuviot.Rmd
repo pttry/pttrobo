@@ -146,7 +146,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 ```{r}
 
-e <- readxl::read_excel(here::here("ptt_ennusteet_KT.xlsx")) |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
+e <- readxl::read_excel(here::here("ptt_ennusteet_KT.xlsx")) |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
 
 ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter_recode(
