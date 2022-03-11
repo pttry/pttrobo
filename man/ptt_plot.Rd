@@ -15,29 +15,32 @@ ptt_plot(
   margin = NA,
   font_color = "#696969",
   grid_color = "#E8E8E8",
+  zeroline = F,
   rangeslider = T,
   start_time = NULL,
   isolate_primary = F,
-  font_size = 14,
+  font_size = 18,
   hovertext = list(rounding = 1, unit = "", extra = ""),
-  height = 500,
+  height = 600,
   ...
 )
 }
 \arguments{
-\item{d}{Tibble for plotting.}
+\item{d}{Data for plotting (Tibble).}
 
-\item{grouping}{Tibble column from tibble d to use for grouping.}
+\item{grouping}{Tibble column from tibble d to use for grouping (Unquoted string).}
 
 \item{title, subtitle, caption}{labeling for plot}
 
 \item{legend_orientation, legend_position}{Legend positioning.}
 
-\item{margin}{List for plot margins if calculated margins do not work.}
+\item{margin}{Plot margins if calculated margins do not work (List).}
 
 \item{font_color, grid_color, font_size}{Plot background element colors and font sizes.}
 
-\item{rangeslider}{Determines rangeslider inclusion.}
+\item{zeroline}{Determines zeroline inclusion (Logical or double).}
+
+\item{rangeslider}{Determines rangeslider inclusion (Logical).}
 
 \item{isolate_primary}{Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.}
 

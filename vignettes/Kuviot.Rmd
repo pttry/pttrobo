@@ -59,7 +59,7 @@ ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
 
 Rangesliderilla voi valita kuvion periodin. Se on nykyisellään liian isoja 
 ja tulee pienenemään jatkossa.
-Sliderille voi antaa alkuarvon
+Sliderille voi antaa joko TRUE tai FALSE, tai antaa sille alkuarvon
 
 ```{r, message=FALSE}
 
@@ -72,8 +72,10 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
                  title = "Vienti ja tuonti",
                  subtitle = "%, volyymin muutos",
                  source = "Tilastokeskus",
-                 rangeslider = TRUE,
-                 start_time = start_time)
+                 rangeslider = start_time
+                 #rangeslider = TRUE,
+                 #start_time = start_time
+                 )
 
 ```
 
@@ -159,7 +161,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
                  subtitle = "%, volyymin muutos",
                  caption = "Tilastokeskus",
               rangeslider = F,height = 500) |> 
-  ptt_plot_add_prediction_traces(e, with_labs = F)
+  ptt_plot_add_prediction_traces(e, with_labs = F, showlegend = T)
 ```
 
 

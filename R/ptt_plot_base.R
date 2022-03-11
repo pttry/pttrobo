@@ -20,7 +20,7 @@ ptt_plot_set_defaults <- function(p) {
 #' @importFrom stringr str_c str_extract_all str_replace_all str_squish
 #' @importFrom htmlwidgets JS
 #' @importFrom plotly config
-ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
+ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
 
   data_dl_icon <- "M15.608,6.262h-2.338v0.935h2.338c0.516,0,0.934,0.418,0.934,0.935v8.879c0,0.517-0.418,0.935-0.934,0.935H4.392c-0.516,0-0.935-0.418-0.935-0.935V8.131c0-0.516,0.419-0.935,0.935-0.935h2.336V6.262H4.392c-1.032,0-1.869,0.837-1.869,1.869v8.879c0,1.031,0.837,1.869,1.869,1.869h11.216c1.031,0,1.869-0.838,1.869-1.869V8.131C17.478,7.099,16.64,6.262,15.608,6.262z M9.513,11.973c0.017,0.082,0.047,0.162,0.109,0.226c0.104,0.106,0.243,0.143,0.378,0.126c0.135,0.017,0.274-0.02,0.377-0.126c0.064-0.065,0.097-0.147,0.115-0.231l1.708-1.751c0.178-0.183,0.178-0.479,0-0.662c-0.178-0.182-0.467-0.182-0.645,0l-1.101,1.129V1.588c0-0.258-0.204-0.467-0.456-0.467c-0.252,0-0.456,0.209-0.456,0.467v9.094L8.443,9.553c-0.178-0.182-0.467-0.182-0.645,0c-0.178,0.184-0.178,0.479,0,0.662L9.513,11.973z"
   chalkboard_icon <- "M69.53,91.55l13.23,13.23c3.2,0.09,5.77,2.72,5.77,5.95c0,3.29-2.66,5.95-5.95,5.95c-3.29,0-5.95-2.67-5.95-5.95 c0-0.36,0.03-0.72,0.09-1.07L65.21,98.16v8.46l-8.24,0v-8.23l-11.69,11.7c0.02,0.21,0.03,0.43,0.03,0.65c0,0,0,0,0,0 c0,3.29-2.66,5.95-5.96,5.95c-3.29,0-5.95-2.67-5.95-5.95c0-3.29,2.67-5.95,5.95-5.95c0.1,0,0.2,0,0.29,0.01l13.23-13.23L0,91.55 V15.71c0-0.05,0-0.09,0-0.14V7.52c0-0.87,0.72-1.57,1.61-1.57h55.36V0h8.24v5.95h56.06c0.89,0,1.61,0.71,1.61,1.57v8.05 c0,0.03,0,0.05,0,0.08v75.89H69.53L69.53,91.55z M26.89,62.71l23.26-22.74c5.76,5.76,11.46,11.46,17.28,17.21l15.41-15.6 l-7.15-7.15l20.12-0.18v20.29l-6.87-6.87c-7.16,7.25-14.29,14.48-21.47,21.67L50.03,52.12L32.99,68.81L26.89,62.71L26.89,62.71 L26.89,62.71z M113.79,21.73H8.92v60.64h104.87V21.73L113.79,21.73z"
@@ -37,12 +37,26 @@ ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
       str_replace_all(c("ä" = "a", "å" = "o", "ö" = "o", " |\\." = "_"))
   }
 
-  js_string <- function(wd, ht, ttl = dl_title, rs = rangeslider) {
+  js_string <- function(wd, ht, suffix, layout, ttl = dl_title) {
+    #legend_offset = legend_offset_sm, caption_offset = caption_offset_sm
     str_c('
-          function(gd) { ',
-          ifelse(rs, 'gd.layout.xaxis.rangeslider.visible = false
-                 ',''),
-          'Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_large"});
+          function(gd) {
+          delete gd.layout.xaxis.rangeslider;
+          //gd.layout.margin.b = ',layout$margin,';
+          gd.layout.images[0].sizey = ',layout$logo_sizing,';
+          gd.layout.images[0].y = ',layout$logo_offset,';
+          gd.layout.annotations[0].y = ',layout$caption_offset,';
+          gd.layout.annotations[1].y = ',layout$caption_offset,';
+          gd.layout.annotations[2].y = ',layout$caption_offset,';
+          gd.layout.legend.y = ',layout$legend_offset,';
+          gd.layout.xaxis.tickfont.size = ',layout$font_sizing$main,';
+          gd.layout.yaxis.tickfont.size = ',layout$font_sizing$main,';
+          gd.layout.annotations[0].font.size = ',layout$font_sizing$caption,';
+          gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
+          gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
+          gd.layout.title.font.size = ',layout$font_sizing$title,';
+          //alert(JSON.stringify((gd.layout.title)));
+          Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           }
    ')
   }
@@ -58,28 +72,29 @@ ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
     )
 
   dl_conference_btn <- list(
-    name = "Lataa kuva (esityskoko)",
+    name = "Lataa kuva (leveä)",
     icon = list(
       path = chalkboard_icon,
-      transform = "scale(0.12) translate(-1, 0.2)"
+      transform = "scale(0.14) translate(-4.5, 0.2)"
     ),
-    click = JS(js_string(1000,500)))
+    click = JS(js_string(1280,720,"levea",png_layout$lg))
+    )
 
   dl_btn <- list(
-    name = "Lataa kuva",
+    name = "Lataa kuva (kapea)",
     icon = list(
       path = png_icon,
       transform = "scale(0.14) translate(-4.5, 0.2)"
     ),
-    click = JS(js_string(800,600)))
+    click = JS(js_string(640,720,"kapea",png_layout$lg)))
 
   dl_twitter_btn <- list(
-    name = "Lataa kuva (Twitter)",
+    name = "Lataa kuva (pieni)",
     icon = list(
       path = twitter_icon,
       transform = "scale(0.022) translate(0.2, 0.4)"
     ),
-    click = JS(js_string(600,400)))
+    click = JS(js_string(889,500,"pieni",png_layout$sm)))
 
   data_dl_btn <- list(
     name = "Lataa tiedot",
@@ -95,7 +110,6 @@ ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
               text = text + gd.data[i].name + ',' + gd.data[i].x + '\\n';
               text = text + gd.data[i].name + ',' + gd.data[i].y + '\\n';
             };
-            console.log(text)
             var blob = new Blob([text], {type: 'text/plain'});
             var a = document.createElement('a');
             const object_URL = URL.createObjectURL(blob);
@@ -106,22 +120,6 @@ ptt_plot_set_modebar <- function(p, dl_title, rangeslider) {
             URL.revokeObjectURL(object_URL);
           }
    ")))
-
-  # function(gd) {
-  #   var text = '';
-  #   for(var i = 0; i < gd.data.length; i++){
-  #     text += gd.layout.xaxis.title.text + gd.data[i].name + ',' + gd.data[i].x + '\\n';
-  #     text += gd.layout.yaxis.title.text + gd.data[i].name + ',' + gd.data[i].y + '\\n';
-  #   };
-  #   var blob = new Blob([text], {type: 'text/plain'});
-  #   var a = document.createElement('a');
-  #   const object_URL = URL.createObjectURL(blob);
-  #   a.href = object_URL;
-  #   a.download = '",dl_title,"_data.csv';
-  #   document.body.appendChild(a);
-  #   a.click();
-  #   URL.revokeObjectURL(object_URL);
-  # }
 
   p |> config(
     displaylogo = FALSE,
@@ -191,7 +189,7 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 
   image_file <- system.file("image", "ptt-logo.png", package = "pttrobo")
   txt <- base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
-  img_size <- 30 / plot_height
+  img_size <- 20 / plot_height
   p |> plotly::layout(
     images = list(
       source = paste('data:image/png;base64', txt, sep=','),
@@ -216,32 +214,47 @@ ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.5, slider_range =
       layout(
         xaxis = list(
           range = slider_range,
-           rangeslider = list(type = "date", thickness = height)))
+          rangeslider = list(type = "date", thickness = height)))
   } else { p }
 }
 
 #' @importFrom dplyr case_when
 #' @importFrom stringr str_length
 #' @importFrom plotly plot_ly
+#' @importFrom lubridate as_date today
 ptt_plot_config <- function(p,
-                              title, subtitle = "", caption,
-                              font_color = "#696969",
-                              font_size = 14,
-                              legend_position, legend_orientation,
-                              tick_color, grid_color,
-                              height, width = 800,
-                              xaxis_offset = 0,
-                              margin = NA,
-                              enable_rangeslider = F,
-                             slider_range = NULL) {
+                            title, subtitle = "", caption,
+                            font_color = "#696969",
+                            font_size = 14,
+                            legend_position, legend_orientation,
+                            tick_color, grid_color,
+                            height, width = 800,
+                            xaxis_offset = 0,
+                            margin = NA,
+                            zeroline = zeroline,
+                            enable_rangeslider = list(rangeslider = F, max = as_date(today))) {
 
   if(missing(title) | missing(caption)) {
-    stop("Title and caption must be strings, or NA for no plot title or plot caption.")
+    stop("Title and caption must be strings, or NA for no plot title or plot caption.", call. = F)
+  }
+
+  if(!is.logical(enable_rangeslider$rangeslider) & !is.character(enable_rangeslider$rangeslider)) {
+    stop("Rangeslider must be TRUE, FALSE or a string interpretable as date, eg. \"2015-01-01\".", call. = F)
+  } else if (is.logical(enable_rangeslider$rangeslider)) {
+    enable_rangeslider <- enable_rangeslider$rangeslider
+    slider_range <- NULL
+  } else if (is.character(enable_rangeslider$rangeslider)) {
+    if (is.na(suppressWarnings(as_date(enable_rangeslider$rangeslider)))) {
+      stop("Rangeslider must be TRUE, FALSE or a string interpretable as date, eg. \"2015-01-01\".", call. = F)
+    } else {
+      slider_range <- list(enable_rangeslider$rangeslider, enable_rangeslider$max)
+      enable_rangeslider <- T
+    }
   }
 
   if(!is.list(margin)) {
     if(is.na(margin)) {
-      margin <- list(t = 30, r = 20, b = 0, l = 0, pad = 0)
+      margin <- list(t = 35, r = 20, b = 0, l = 0, pad = 0)
       margin$t <- case_when(str_length(subtitle) > 0 ~ margin$t + 50, TRUE ~ margin$t)
       margin$b <- case_when(!is.na(caption) || enable_rangeslider ~ margin$b + round(0.35*height),
                             TRUE ~ margin$b)
@@ -249,42 +262,55 @@ ptt_plot_config <- function(p,
   }
 
 
+
   main_font <- list(size = font_size, family = "sans-serif", color = font_color)
   title_font <- list(size = round(font_size*1.3), family = "sans-serif", color = font_color)
 
-  rangeslider_size <- round(1-((height/1000)^(1/2)),2)
+  rangeslider_size <- 0.1#round(1-((height/1000)^(1/2)),2)
 
   ht_constants <- 4 # 2 pikseliä korkeudesta häviää aina + 1*2 plotin reunat, tick pituus ei lasketa eli 0
   tickfont_ht <- round((font_size+2)*1.4)#20#+max(0,ceiling(main_font$size-7)) #20+tickfontin korkeus mikä ylittää tämän: fontti 14 = 3 ei ole täysin johdonmukainen y-akselin yläreunan vuoksi. -Suunnilleen - +1.6 / piste yli fontti 12
   rangeslider_ht <- ifelse(enable_rangeslider, round((height * rangeslider_size)+15-(margin$t*rangeslider_size)-(margin$b*rangeslider_size)),0)
   legend_ht <- ifelse(legend_position %in% c("auto","bottom"), font_size, 0)
   plot_ht <- height-sum(ht_constants,rangeslider_ht,tickfont_ht,legend_ht,margin$t,ifelse(enable_rangeslider, margin$b, margin$b-25))
-  # message(str_c("xaxis_offset: ",xaxis_offset))
-  # plot_wd <- width-sum(margin$r,margin$l,(xaxis_offset*(font_size-1)))
-  # message(str_c("margin r: ",margin$r))
-  # message(str_c("margin l: ",margin$l))
-  # message(str_c("plot_wd_offset: ",(xaxis_offset*(font_size-1))))
-  # message(str_c("plot wd: ",plot_wd))
-  caption_ht <- ifelse(!is.na(caption), font_size, 0)
+  caption_ht <- ifelse(!is.na(caption), round(font_size*0.8), 0)
   legend_offset <- list(x = 0,#-((38)/plot_wd),
                         y = -((rangeslider_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
   caption_offset <- list(x = 0,#-((36)/plot_wd),
                          y = -((tickfont_ht+4+rangeslider_ht+legend_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
-  logo_offset <- list(x = 0, y = -((tickfont_ht+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
+  logo_offset <- list(x = 0, y = -((tickfont_ht+4+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
 
-
+  png_attrs <- (function(small_ht = 500, large_ht = 720) {
+    png_margin_b_sm <- max(0, ifelse(is.na(caption), round(0.35*small_ht), 0)-15)
+    png_margin_b_lg <- max(0, ifelse(is.na(caption), round(0.35*large_ht), 0)-15)
+    ht_sm <- small_ht-sum(ht_constants,tickfont_ht,legend_ht,margin$t,png_margin_b_sm)
+    ht_lg <- large_ht-sum(ht_constants,tickfont_ht,legend_ht,margin$t,png_margin_b_lg)
+    legend_offset_sm <- -(60/ht_sm)
+    legend_offset_lg <- -(50/ht_lg)
+    caption_offset_sm <- -((tickfont_ht*4+legend_ht*3+(png_margin_b_sm*0.24))/ht_sm)
+    caption_offset_lg <- -((tickfont_ht*3+legend_ht*2+(png_margin_b_lg*0.24))/ht_lg)
+    logo_offset_sm <- -((tickfont_ht*4+caption_ht*2+legend_ht*3+(png_margin_b_sm*0.24))/ht_sm)
+    logo_offset_lg <- -((tickfont_ht*3+caption_ht*2+legend_ht*2+(png_margin_b_lg*0.24))/ht_lg)
+    logo_sizing_sm <-  40 / ht_sm
+    logo_sizing_lg <- 30 / ht_lg
+    font_sizing_lg <- list(title = 23, main = 20, caption = 12)
+    font_sizing_sm <- list(title = 23, main = 18, caption = 14)
+    list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin = png_margin_b_sm, font_sizing = font_sizing_sm),
+         lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin = png_margin_b_lg, font_sizing = font_sizing_lg))
+  })()
 
   p |>
     ptt_plot_set_defaults() |>
     ptt_plot_set_grid(grid_color) |>
-    ptt_plot_set_modebar(title, enable_rangeslider) |>
+    ptt_plot_set_modebar(title, png_attrs) |>
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo(logo_offset, plot_ht) |>
     ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
-    ptt_plot_set_caption(caption, offset = caption_offset, main_font)
+    ptt_plot_set_caption(caption, offset = caption_offset, main_font) %>%
+    ptt_plot_add_zeroline(zeroline)
 }
 
 
@@ -318,8 +344,9 @@ ptt_plot_set_caption <- function(p, caption, offset = list(x = 0, y = 0), font) 
   if(is.na(caption)) {
     p
   } else if (!is.character(caption)) {
-    stop("Caption and caption footer must be a string, or caption = NA for no plot caption.")
+    stop("Caption and caption footer must be a string, or caption = NA for no plot caption.", call. = F)
   } else {
+    font$size <- round(font$size * 0.8)
     p |>
       layout(
         annotations = list(
@@ -337,7 +364,7 @@ ptt_plot_set_title <- function(p, title, subtitle, font) {
   if (is.na(title)) {
     p
   } else if (!is.character(title) || !is.character(subtitle)) {
-    stop("Title and subtitle must be strings, or title = NA for no plot title.")
+    stop("Title and subtitle must be strings, or title = NA for no plot title.", call. = F)
   } else {
     p <- p |>
       layout(
@@ -358,7 +385,7 @@ ptt_plot_set_title <- function(p, title, subtitle, font) {
 ptt_plot_set_axis_labels <- function(p, label_x = NA, label_y = NA) {
   if (any(!is.na(c(label_x, label_y)))||any(is.null(c(label_x, label_y)))) {
     if(!any(is.character(na.omit(c(label_x, label_y))))) {
-      stop("Axis labels must be strings or NA.")
+      stop("Axis labels must be strings or NA.", call. = F)
     }
   }
   p |>
@@ -368,22 +395,34 @@ ptt_plot_set_axis_labels <- function(p, label_x = NA, label_y = NA) {
     )
 }
 
+#' @importFrom plotly layout
+ptt_plot_add_zeroline <- function(p, z) {
+  if(!is.logical(z$zeroline) & !is.double(z$zeroline)) {
+    stop("Zeroline must be TRUE, FALSE or of type double.")
+  } else if (z$zeroline == F) {
+    p
+  } else {
+    zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
+    p %>% layout(yaxis = list(zeroline = T),
+                 shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
+  }
+}
 
 #' @importFrom stringr str_subset
 ptt_plot_hovertemplate <- function(specs) {
   if (is.null(specs)) {
     NA
   } else if (!is.list(specs)) {
-    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", or \"extra\", or NULL")
+    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", or \"extra\", or NULL", call. = F)
   } else if (!any(c("rounding","unit","extra") %in% names(specs))) {
-    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", or \"extra\", or NULL")
+    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", or \"extra\", or NULL", call. = F)
   } else {
     specs_template <- list(rounding = 1, unit = "%", extra = "")
     for (spec.name in (names(specs) |> str_subset("^(rounding|unit|extra)$"))) {
       if(spec.name == "rounding") {
-        if ((specs$rounding)%%1!=0) { stop("Hovertemplate rounding must be an integer.") }
+        if ((specs$rounding)%%1!=0) { stop("Hovertemplate rounding must be an integer.", call. = F) }
       } else if (!is.character(specs[[spec.name]])) {
-        stop(str_c("Hovertemplate ",spec.name," must be a string."))
+        stop(str_c("Hovertemplate ",spec.name," must be a string.", call. = F))
       }
       specs_template[[spec.name]] <- specs[[spec.name]]
     }
@@ -401,15 +440,21 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom stringr str_extract_all
 #' @importFrom htmlwidgets saveWidget
 ptt_plot_create_widget <- function(p,title) {
+  tofilename <- function(str) {
+    str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
+      str_c(collapse = "") |>
+      str_squish() |>
+      tolower() |>
+      str_replace_all(c("ä" = "a", "å" = "o", "ö" = "o", " |\\." = "_"))
+  }
   if(missing(title)) {
-    message("Extracting title from ptt_plot..")
-    title <- (p$x$layoutAttrs %>% unlist())[grep("title.text", names((p$x$layoutAttrs %>% unlist())))] %>%
-      str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)")}
-  title <- str_extract_all(title, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
-    str_c(collapse = "") |>
-    str_squish() |>
-    tolower() |>
-    str_replace_all(c("ä" = "a", "å" = "o", "ö" = "o", " |\\." = "_"))
+    title <- (p$x$layoutAttrs |> unlist())[grep("title.text", names((p$x$layoutAttrs |> unlist())))] |>
+      str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)") %>% unlist() %>% str_c(collapse = "_") %>% tofilename()
+    message(str_c("Using \"",title,"\" for htmlwidget filename.."))
+  } else {
+    title <- tofilename(str)
+  }
+
   p |>
     htmlwidgets::saveWidget(str_c(title,".html"), selfcontained = F, libdir = "plot_dependencies")
 
@@ -449,13 +494,14 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
 #'
 #' Outputs a plotly object.
 #'
-#' @param d Tibble for plotting.
-#' @param grouping Tibble column from tibble d to use for grouping.
+#' @param d Data for plotting (Tibble).
+#' @param grouping Tibble column from tibble d to use for grouping (Unquoted string).
 #' @param title,subtitle,caption labeling for plot
 #' @param legend_orientation,legend_position Legend positioning.
-#' @param margin List for plot margins if calculated margins do not work.
+#' @param margin Plot margins if calculated margins do not work (List).
 #' @param font_color,grid_color,font_size Plot background element colors and font sizes.
-#' @param rangeslider Determines rangeslider inclusion.
+#' @param zeroline Determines zeroline inclusion (Logical or double).
+#' @param rangeslider Determines rangeslider inclusion (Logical).
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param isolate_primary Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.
 #' @param height Height of the plot.
@@ -485,18 +531,18 @@ ptt_plot <- function(d,
                      margin = NA,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
+                     zeroline = F,
                      rangeslider = T,
                      start_time = NULL,
                      isolate_primary = F,
-                     font_size = 14,
+                     font_size = 18,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
-                     height = 500,
+                     height = 600,
                      ...
 ){
 
   if(missing(d) || missing(grouping)){
-    stop("Data and grouping variable (without quotes)\n",
-         "For example: ptt_plot(a_tibble, grouping=tiedot)")
+    stop("Data and grouping variable (without quotes)\nFor example: ptt_plot(a_tibble, grouping=tiedot)", call. = F)
   }
   grouping <- enquo(grouping)
 
@@ -508,8 +554,8 @@ ptt_plot <- function(d,
     color_vector <- if (isolate_primary == T) {
       ptt_plot_set_colors(1) %>% rep(length(unique_groups))
     } else {
-        ptt_plot_set_colors(length(unique_groups))
-      }
+      ptt_plot_set_colors(length(unique_groups))
+    }
     color_vector |> set_names(unique_groups)
   })()
 
@@ -537,19 +583,17 @@ ptt_plot <- function(d,
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
 
-  if (!is.null(start_time)){
-    slider_range <- c(start_time, as.character(max(d$time)))
 
-  }
+  maxtime <- max(d$time)
 
   p |>
     ptt_plot_config(title = title, subtitle = subtitle, caption = caption,
-                      font_color = font_color, font_size = font_size,
-                      legend_position = legend_position, legend_orientation = legend_orientation,
-                      tick_color = font_color, grid_color = grid_color, margin = margin,
-                      height = height, #xaxis_offset = xaxis_offset,
-                      enable_rangeslider = rangeslider,
-                    slider_range = slider_range)
+                    font_color = font_color, font_size = font_size,
+                    legend_position = legend_position, legend_orientation = legend_orientation,
+                    tick_color = font_color, grid_color = grid_color, margin = margin,
+                    height = height,
+                    zeroline = list(zeroline = zeroline, xrange = list(min = min(d$time), max = maxtime)),
+                    enable_rangeslider = list(rangeslider = rangeslider, max = maxtime))
 }
 
 #' Add prediction traces to an existing ptt_plot.
@@ -575,13 +619,13 @@ ptt_plot <- function(d,
 #' @export
 
 ptt_plot_add_prediction_traces <- function(p,
-                                  pred_data,
-                                  grouping = sarja_nmi,
-                                  n_obs = 2,
-                                  with_labs = T,
-                                  isolate_primary = F,
-                                  showlegend = F,
-                                  hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
+                                           pred_data,
+                                           grouping = sarja_nmi,
+                                           n_obs = 2,
+                                           with_labs = T,
+                                           isolate_primary = F,
+                                           showlegend = F,
+                                           hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
   grouping <- enquo(grouping)
   pred_series <- pred_data |>
     pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
@@ -595,8 +639,7 @@ ptt_plot_add_prediction_traces <- function(p,
   test_color_vector <<- color_vector
   pred_groups <- pred_data[[as_name(grouping)]] |> unique()
   if(!all(names(color_vector) %in% pred_groups)) {
-    message("All prediction traces must have a correspondingly named trace in original plot.")
-    stop()
+    stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
   }
   legend.items <- c()
   for (s in pred_series) {
@@ -645,50 +688,50 @@ ptt_plot_add_secondary_traces <-
   function(p, secondary_data, relates_to, grouping,
            hovertext, showlegend = TRUE) {
 
-  grouping <- enquo(grouping)
+    grouping <- enquo(grouping)
 
-  if (missing(relates_to) | missing(secondary_data)) {
-    message("Define the relation to parent ptt_plot by providing both the data with the secondary data and the relates_to variable.")
-    stop()
-  }
-
-  relates_to <- as_name(enquo(relates_to))
-
-  if(!relates_to %in% names(p$color_vector)) {
-    message("Provided relates_to not in parent ptt_plot variables!")
-    stop()
+    if (missing(relates_to) | missing(secondary_data)) {
+      message("Define the relation to parent ptt_plot by providing both the data with the secondary data and the relates_to variable.")
+      stop()
     }
 
-  if (missing(hovertext)) { hovertext <- p$hover_template }
+    relates_to <- as_name(enquo(relates_to))
 
-  d <- droplevels(secondary_data)
-
-  if(!is.factor(d[[as_name(grouping)]])) {
-    d[[as_name(grouping)]] <- fct_inorder(d[[as_name(grouping)]])
+    if(!relates_to %in% names(p$color_vector)) {
+      message("Provided relates_to not in parent ptt_plot variables!")
+      stop()
     }
 
-  unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
+    if (missing(hovertext)) { hovertext <- p$hover_template }
 
-  split_d <- group_split(d, !!grouping) |> rev()
+    d <- droplevels(secondary_data)
 
-  for (g in split_d) {
-    g.name <- unique(g[[as_name(grouping)]])
-    g.level <- which(g.name == levels(g.name))
-    lw <- seq.int(2,1,length.out = length(levels(g.name)))[g.level]
-    g.name <- str_c(relates_to,", ",tolower(g.name))
-    legend.rank <- p$legend_ranks[as_name(relates_to)] + (g.level*10)
-    p <-
-      p |>
-      add_trace(data=g, y = ~value, text = g.name,
-                hovertemplate = ptt_plot_hovertemplate(hovertext),
-                line = list(width = lw),
-                legendgroup = relates_to,
-                legendrank = legend.rank,
-                showlegend = showlegend,
-                name = g.name,
-                color = I(p$color_vector[relates_to]), type = "scatter", mode ='lines'
-      )
+    if(!is.factor(d[[as_name(grouping)]])) {
+      d[[as_name(grouping)]] <- fct_inorder(d[[as_name(grouping)]])
+    }
+
+    unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
+
+    split_d <- group_split(d, !!grouping) |> rev()
+
+    for (g in split_d) {
+      g.name <- unique(g[[as_name(grouping)]])
+      g.level <- which(g.name == levels(g.name))
+      lw <- seq.int(2,1,length.out = length(levels(g.name)))[g.level]
+      g.name <- str_c(relates_to,", ",tolower(g.name))
+      legend.rank <- p$legend_ranks[as_name(relates_to)] + (g.level*10)
+      p <-
+        p |>
+        add_trace(data=g, y = ~value, text = g.name,
+                  hovertemplate = ptt_plot_hovertemplate(hovertext),
+                  line = list(width = lw),
+                  legendgroup = relates_to,
+                  legendrank = legend.rank,
+                  showlegend = showlegend,
+                  name = g.name,
+                  color = I(p$color_vector[relates_to]), type = "scatter", mode ='lines'
+        )
+    }
+
+    p
   }
-
-  p
-}
