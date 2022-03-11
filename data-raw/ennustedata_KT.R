@@ -39,6 +39,14 @@ data_get("StatFin/pal/ati/nj/statfin_ati_pxt_13dy.px") |>
 data_get("etk/200indeksiluvut/indeksit01.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Mark", start_year = 2013)
+# Hinnat
+
+data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
+  data_to_yaml()
+
+data_get("eurostat/prc_hicp_midx") |>
+  data_to_yaml()
+
+ptt_update_ennustedata("KTdata_Hin", start_year = 2013)
 ptt_copy_ennustedata("KT")
 
