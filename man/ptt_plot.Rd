@@ -17,7 +17,6 @@ ptt_plot(
   grid_color = "#E8E8E8",
   zeroline = F,
   rangeslider = T,
-  start_time = NULL,
   isolate_primary = F,
   font_size = 18,
   hovertext = list(rounding = 1, unit = "", extra = ""),
@@ -56,12 +55,15 @@ Outputs a plotly object.
 }
 \examples{
 d <- ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
-dplyr::filter(stringr::str_detect(taloustoimi, "B1GMH|P3KS14_S15"), tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa", lubridate::year(time) >= 2010) |>
-dplyr::group_by(taloustoimi) |>
-dplyr::mutate(value = ((value/ lag(value, 4)) -1) * 100) |>
-dplyr::ungroup() |>
-dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") |> forcats::as_factor()
-p <- d |> ptt_plot(tiedot, "BKT ja kulutus", subtitle = "Vuosimuutos",
-                   caption =  "Lähde: Tilastokeskus ja PTT",lwd = F,rangeslider = T,height = 600)
-p
+  dplyr::filter(stringr::str_detect(taloustoimi, "B1GMH|P3KS14_S15"), tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa", lubridate::year(time) >= 2010) |>
+  dplyr::group_by(taloustoimi) |>
+  dplyr::mutate(value = ((value/ lag(value, 4)) -1) * 100) |>
+  dplyr::ungroup() |>
+  dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") |> forcats::as_factor()) |>
+  tidyr::drop_na()
+  p <- d |> ptt_plot(tiedot, "BKT ja kulutus", subtitle = "Vuosimuutos",
+  caption =  "Lähde: Tilastokeskus ja PTT",
+  rangeslider = "2015-01-01",
+  zeroline = T)
+  p
 }

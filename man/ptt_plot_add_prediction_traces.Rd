@@ -37,7 +37,7 @@ plotly object
 Outputs a plotly object.
 }
 \examples{
-e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
+e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
 p <- p |> ptt_plot_add_prediction_traces(e)
 p
 }
