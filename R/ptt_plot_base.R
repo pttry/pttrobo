@@ -447,7 +447,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @return None
 #' @importFrom stringr str_extract_all
 #' @importFrom htmlwidgets saveWidget
-ptt_plot_create_widget <- function(p,title) {
+ptt_plot_create_widget <- function(p, title) {
   tofilename <- function(str) {
     str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
       str_c(collapse = "") |>
@@ -455,17 +455,17 @@ ptt_plot_create_widget <- function(p,title) {
       tolower() |>
       str_replace_all(c("ä" = "a", "å" = "o", "ö" = "o", " |\\." = "_"))
   }
-  if(missing(title)) {
+  if (missing(title)) {
     title <- (p$x$layoutAttrs |> unlist())[grep("title.text", names((p$x$layoutAttrs |> unlist())))] |>
       str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)") %>% unlist() %>% str_c(collapse = "_") %>% tofilename()
     message(str_c("Using \"",title,"\" for htmlwidget filename.."))
   } else {
-    title <- tofilename(str)
+    title <- tofilename(title)
   }
 
   p |>
     htmlwidgets::saveWidget(str_c(title,".html"), selfcontained = F, libdir = "plot_dependencies")
-
+  p
 }
 
 #' Gives a vector of desired length of colors.
@@ -620,22 +620,21 @@ ptt_plot <- function(d,
 #' @return plotly object
 #' @examples
 #' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
-#' p <- p |> ptt_plot_add_prediction_traces(e)
+#' p <- p |> ptt_plot_add_prediction(e)
 #' p
 #' @importFrom rlang enquo as_name
 #' @importFrom tidyr uncount pivot_longer
 #' @importFrom dplyr slice_tail
 #' @importFrom plotly plot_ly add_lines
 #' @export
-
-ptt_plot_add_prediction_traces <- function(p,
-                                           pred_data,
-                                           grouping = sarja_nmi,
-                                           n_obs = 2,
-                                           with_labs = T,
-                                           isolate_primary = F,
-                                           showlegend = F,
-                                           hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
+ptt_plot_add_prediction <- function(p,
+                                    pred_data,
+                                    grouping = sarja_nmi,
+                                    n_obs = 2,
+                                    with_labs = T,
+                                    isolate_primary = F,
+                                    showlegend = F,
+                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
   grouping <- enquo(grouping)
   pred_series <- pred_data |>
     filter(!!grouping %in% names(p$color_vector)) |>
