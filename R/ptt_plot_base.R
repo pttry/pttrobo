@@ -207,14 +207,10 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 
 #' @importFrom plotly layout
 #' @importFrom dplyr case_when
-ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.5, slider_range = NULL) {
+ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range = NULL) {
   if(enable == T) {
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
-    p |>
-      layout(
-        xaxis = list(
-          range = slider_range,
-          rangeslider = list(type = "date", thickness = height)))
+    p |> rangeslider(slider_range[1],slider_range[2], thickness = height)
   } else { p }
 }
 
@@ -231,7 +227,7 @@ ptt_plot_config <- function(p,
                             height, width = 800,
                             xaxis_offset = 0,
                             margin = NA,
-                            zeroline = zeroline,
+                            zeroline = F,
                             enable_rangeslider = list(rangeslider = F, max = as_date(today))) {
 
   if(missing(title) | missing(caption)) {
@@ -298,6 +294,9 @@ ptt_plot_config <- function(p,
     list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin = png_margin_b_sm, font_sizing = font_sizing_sm),
          lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin = png_margin_b_lg, font_sizing = font_sizing_lg))
   })()
+
+  p$enable_rangeslider <- list(enable = enable_rangeslider, size = rangeslider_size, range = slider_range)
+  p$add_zeroline <- zeroline
 
   p |>
     ptt_plot_set_defaults() |>
@@ -403,8 +402,7 @@ ptt_plot_add_zeroline <- function(p, z) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p %>% layout(yaxis = list(zeroline = T),
-                 shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
+    p %>% layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
   }
 }
 
@@ -508,14 +506,17 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
 #' @return plotly object
 #' @examples
 #' d <- ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
-#' dplyr::filter(stringr::str_detect(taloustoimi, "B1GMH|P3KS14_S15"), tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa", lubridate::year(time) >= 2010) |>
-#' dplyr::group_by(taloustoimi) |>
-#' dplyr::mutate(value = ((value/ lag(value, 4)) -1) * 100) |>
-#' dplyr::ungroup() |>
-#' dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") |> forcats::as_factor()
-#' p <- d |> ptt_plot(tiedot, "BKT ja kulutus", subtitle = "Vuosimuutos",
-#'                    caption =  "Lähde: Tilastokeskus ja PTT",lwd = F,rangeslider = T,height = 600)
-#' p
+#'   dplyr::filter(stringr::str_detect(taloustoimi, "B1GMH|P3KS14_S15"), tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa", lubridate::year(time) >= 2010) |>
+#'   dplyr::group_by(taloustoimi) |>
+#'   dplyr::mutate(value = ((value/ lag(value, 4)) -1) * 100) |>
+#'   dplyr::ungroup() |>
+#'   dplyr::mutate(tiedot = dplyr::case_when(stringr::str_detect(taloustoimi, "B1GMH") ~ "BKT", TRUE ~ "Yksityinen kulutus") |> forcats::as_factor()) |>
+#'   tidyr::drop_na()
+#'   p <- d |> ptt_plot(tiedot, "BKT ja kulutus", subtitle = "Vuosimuutos",
+#'   caption =  "Lähde: Tilastokeskus ja PTT",
+#'   rangeslider = "2015-01-01",
+#'   zeroline = T)
+#'   p
 #' @export
 #' @importFrom plotly plot_ly add_trace
 #' @importFrom scales extended_breaks
@@ -533,7 +534,6 @@ ptt_plot <- function(d,
                      grid_color = "#E8E8E8",
                      zeroline = F,
                      rangeslider = T,
-                     start_time = NULL,
                      isolate_primary = F,
                      font_size = 18,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
@@ -609,7 +609,7 @@ ptt_plot <- function(d,
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @return plotly object
 #' @examples
-#' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(sarja, "B1GMH|P3KS14"))
+#' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
 #' p <- p |> ptt_plot_add_prediction_traces(e)
 #' p
 #' @importFrom rlang enquo as_name
@@ -628,13 +628,17 @@ ptt_plot_add_prediction_traces <- function(p,
                                            hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
   grouping <- enquo(grouping)
   pred_series <- pred_data |>
+    mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
     pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
     select(year, !!grouping, value) |> group_by(!!grouping) |> slice_tail(n = n_obs) |>
     mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |>
     ungroup() |>
-    relocate(value, .after = time) |>
-    group_by(year, !!grouping) |>
-    group_split()
+    relocate(value, .after = time)
+  range.slider <- p$enable_rangeslider
+  range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
+  zero.line <- p$add_zeroline
+  zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
+  pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   test_color_vector <<- color_vector
   pred_groups <- pred_data[[as_name(grouping)]] |> unique()
@@ -660,7 +664,9 @@ ptt_plot_add_prediction_traces <- function(p,
                 showlegend = show.legend,
                 hovertemplate = ptt_plot_hovertemplate(hovertext))
   }
-  p
+  p %>%
+    ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) %>%
+    ptt_plot_add_zeroline(zero.line)
 }
 
 
