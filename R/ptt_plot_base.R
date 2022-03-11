@@ -628,6 +628,7 @@ ptt_plot_add_prediction_traces <- function(p,
                                            hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
   grouping <- enquo(grouping)
   pred_series <- pred_data |>
+    filter(!!grouping %in% names(p$color_vector)) |>
     mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
     pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
     select(year, !!grouping, value) |> group_by(!!grouping) |> slice_tail(n = n_obs) |>
@@ -640,7 +641,6 @@ ptt_plot_add_prediction_traces <- function(p,
   zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
-  test_color_vector <<- color_vector
   pred_groups <- pred_data[[as_name(grouping)]] |> unique()
   if(!all(names(color_vector) %in% pred_groups)) {
     stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
