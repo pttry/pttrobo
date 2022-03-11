@@ -42,20 +42,22 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
     str_c('
           function(gd) {
           delete gd.layout.xaxis.rangeslider;
-          //gd.layout.margin.b = ',layout$margin,';
+          gd.layout.margin.t = ',layout$margin_t,';
+          gd.layout.margin.b = ',layout$margin_b,';
           gd.layout.images[0].sizey = ',layout$logo_sizing,';
           gd.layout.images[0].y = ',layout$logo_offset,';
           gd.layout.annotations[0].y = ',layout$caption_offset,';
           gd.layout.annotations[1].y = ',layout$caption_offset,';
           gd.layout.annotations[2].y = ',layout$caption_offset,';
           gd.layout.legend.y = ',layout$legend_offset,';
+          gd.layout.legend.font.size = ',layout$font_sizing$main,';
           gd.layout.xaxis.tickfont.size = ',layout$font_sizing$main,';
           gd.layout.yaxis.tickfont.size = ',layout$font_sizing$main,';
           gd.layout.annotations[0].font.size = ',layout$font_sizing$caption,';
           gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
           gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
           gd.layout.title.font.size = ',layout$font_sizing$title,';
-          //alert(JSON.stringify((gd.layout.title)));
+          alert(JSON.stringify((gd.layout.margin)));
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           }
    ')
@@ -250,8 +252,8 @@ ptt_plot_config <- function(p,
 
   if(!is.list(margin)) {
     if(is.na(margin)) {
-      margin <- list(t = 35, r = 20, b = 0, l = 0, pad = 0)
-      margin$t <- case_when(str_length(subtitle) > 0 ~ margin$t + 50, TRUE ~ margin$t)
+      margin <- list(t = round(font_size*1.3)+20, r = 20, b = 0, l = 0, pad = 0)
+      margin$t <- case_when(str_length(subtitle) > 0 ~ margin$t + font_size+30, TRUE ~ margin$t)
       margin$b <- case_when(!is.na(caption) || enable_rangeslider ~ margin$b + round(0.35*height),
                             TRUE ~ margin$b)
     }
@@ -277,22 +279,30 @@ ptt_plot_config <- function(p,
   logo_offset <- list(x = 0, y = -((tickfont_ht+4+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
 
   png_attrs <- (function(small_ht = 500, large_ht = 720) {
-    png_margin_b_sm <- max(0, ifelse(is.na(caption), round(0.35*small_ht), 0)-15)
-    png_margin_b_lg <- max(0, ifelse(is.na(caption), round(0.35*large_ht), 0)-15)
-    ht_sm <- small_ht-sum(ht_constants,tickfont_ht,legend_ht,margin$t,png_margin_b_sm)
-    ht_lg <- large_ht-sum(ht_constants,tickfont_ht,legend_ht,margin$t,png_margin_b_lg)
-    legend_offset_sm <- -(60/ht_sm)
-    legend_offset_lg <- -(50/ht_lg)
-    caption_offset_sm <- -((tickfont_ht*4+legend_ht*3+(png_margin_b_sm*0.24))/ht_sm)
-    caption_offset_lg <- -((tickfont_ht*3+legend_ht*2+(png_margin_b_lg*0.24))/ht_lg)
-    logo_offset_sm <- -((tickfont_ht*4+caption_ht*2+legend_ht*3+(png_margin_b_sm*0.24))/ht_sm)
-    logo_offset_lg <- -((tickfont_ht*3+caption_ht*2+legend_ht*2+(png_margin_b_lg*0.24))/ht_lg)
+    font_sizing_lg <- list(title = 31, main = 24, caption = 19)
+    font_sizing_sm <- list(title = 23, main = 18, caption = 14)
+    tickfont_ht_lg <- round((font_sizing_lg$main+2)*1.4)
+    tickfont_ht_sm <- round((font_sizing_sm$main+2)*1.4)
+    margin_t_sm <-  font_sizing_sm$title+20 + ifelse(str_length(subtitle) > 0, font_sizing_sm$main+30, 0)
+    margin_t_lg <- font_sizing_lg$title+20 + ifelse(str_length(subtitle) > 0, font_sizing_lg$main+30, 0)
+    margin_b_sm <- max(0, ifelse(!is.na(caption), round(0.2*small_ht), 0))
+    margin_b_lg <- max(0, ifelse(!is.na(caption), round(0.2*large_ht), 0))
+    legend_ht_sm <- ifelse(legend_position %in% c("auto","bottom"), font_sizing_sm$main, 0)
+    legend_ht_lg <- ifelse(legend_position %in% c("auto","bottom"), font_sizing_lg$main, 0)
+    ht_sm <- small_ht-sum(ht_constants,tickfont_ht_sm,legend_ht_sm,margin_t_sm,margin_b_sm)
+    ht_lg <- large_ht-sum(ht_constants,tickfont_ht_lg,legend_ht_lg,margin_t_lg,margin_b_lg)
+    legend_offset_sm <- -(30/ht_sm)
+    legend_offset_lg <- -(30/ht_lg)
+    caption_offset_sm <- -((tickfont_ht_sm+legend_ht_sm+(margin_b_sm*0.24))/ht_sm)
+    caption_offset_lg <- -((tickfont_ht_lg+legend_ht_lg+(margin_b_lg*0.24))/ht_lg)
+    caption_ht_sm <- ifelse(!is.na(caption), round(font_sizing_sm$main*0.8), 0)
+    caption_ht_lg <- ifelse(!is.na(caption), round(font_sizing_lg$main*0.8), 0)
+    logo_offset_sm <- -((tickfont_ht+caption_ht_sm+legend_ht_sm+(margin_b_sm*0.24))/ht_sm)
+    logo_offset_lg <- -((tickfont_ht+caption_ht_lg+legend_ht_lg+(margin_b_lg*0.24))/ht_lg)
     logo_sizing_sm <-  40 / ht_sm
     logo_sizing_lg <- 30 / ht_lg
-    font_sizing_lg <- list(title = 23, main = 20, caption = 12)
-    font_sizing_sm <- list(title = 23, main = 18, caption = 14)
-    list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin = png_margin_b_sm, font_sizing = font_sizing_sm),
-         lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin = png_margin_b_lg, font_sizing = font_sizing_lg))
+    list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin_t = margin_t_sm, margin_b = margin_b_sm, font_sizing = font_sizing_sm),
+         lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin_t = margin_t_lg, margin_b = margin_b_lg, font_sizing = font_sizing_lg))
   })()
 
   p$enable_rangeslider <- list(enable = enable_rangeslider, size = rangeslider_size, range = slider_range)
@@ -535,7 +545,7 @@ ptt_plot <- function(d,
                      zeroline = F,
                      rangeslider = T,
                      isolate_primary = F,
-                     font_size = 18,
+                     font_size = 16,
                      hovertext = list(rounding = 1, unit = "", extra = ""),
                      height = 600,
                      ...
