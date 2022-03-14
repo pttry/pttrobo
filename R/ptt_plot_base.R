@@ -11,7 +11,7 @@ ptt_plot_set_defaults <- function(p) {
   config(p, locale = "fi") |>
     layout(separators = ", ") |>
     layout(xaxis = list(fixedrange = TRUE),
-           yaxis = list(fixedrange = TRUE)) |>
+           yaxis = list(autorange = T, fixedrange = F)) |>
     layout(hovermode = "compare") |>
     ptt_plot_set_axis_labels()
 
@@ -57,7 +57,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
           gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
           gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
           gd.layout.title.font.size = ',layout$font_sizing$title,';
-          alert(JSON.stringify((gd.layout.margin)));
+          //alert(JSON.stringify((gd.layout.margin)));
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           }
    ')
@@ -108,15 +108,18 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
           function(gd) {
             let text = ''
             for(var i = 0; i < gd.data.length; i++){
-              console.log(gd.data[i])
-              text = text + gd.data[i].name + ',' + gd.data[i].x + '\\n';
-              text = text + gd.data[i].name + ',' + gd.data[i].y + '\\n';
+              //console.log(gd.data[i])
+              //var array1 = gd.data[i].y
+              //array1.forEach(element => console.log(element));
+              //console.log((gd.data[i].y))
+              text = text + gd.data[i].name + ';' + gd.data[i].x + '\\n';
+              text = text + gd.data[i].name + ';' + gd.data[i].y + '\\n';
             };
             var blob = new Blob([text], {type: 'text/plain'});
             var a = document.createElement('a');
             const object_URL = URL.createObjectURL(blob);
             a.href = object_URL;
-            a.download = '",dl_title,"_data.csv2';
+            a.download = '",dl_title,"_data.csv';
             document.body.appendChild(a);
             a.click();
             URL.revokeObjectURL(object_URL);
@@ -212,7 +215,7 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range = NULL) {
   if(enable == T) {
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
-    p |> rangeslider(slider_range[1],slider_range[2], thickness = height)
+    p |> rangeslider(slider_range[1],slider_range[2], thickness = height, yaxis = list(rangemode = "auto"))
   } else { p }
 }
 
@@ -315,7 +318,7 @@ ptt_plot_config <- function(p,
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo(logo_offset, plot_ht) |>
-    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
+    # ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
     ptt_plot_set_caption(caption, offset = caption_offset, main_font) %>%
@@ -529,7 +532,6 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
 #'   p
 #' @export
 #' @importFrom plotly plot_ly add_trace
-#' @importFrom scales extended_breaks
 #' @importFrom rlang enquo as_name set_names
 #' @importFrom dplyr group_split
 #' @importFrom stringr str_length
