@@ -715,6 +715,7 @@ ptt_plot <- function(d,
 #' @param showlegend,with_labs Controls prediction trace legend. Hovertemplate takes labeling based on with_labs.
 #' @param isolate_primary Separates the first factor in parent plot grouping by line width.
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
+#' @param value_multiplier A number. Value of 0.001 would cause values to be divided by 1000, value of 1000 would cause values to be multiplied by 1000 hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @return plotly object
 #' @examples
 #' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
@@ -732,7 +733,8 @@ ptt_plot_add_prediction <- function(p,
                                     with_labs = T,
                                     isolate_primary = F,
                                     showlegend = F,
-                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "Annual")) {
+                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "Annual"),
+                                    value_multiplier = 1) {
   grouping <- enquo(grouping)
   pred_series <- pred_data |>
     filter(!!grouping %in% names(p$color_vector)) |>
@@ -741,7 +743,8 @@ ptt_plot_add_prediction <- function(p,
     select(year, !!grouping, value) |> group_by(!!grouping) |> slice_tail(n = n_obs) |>
     mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |>
     ungroup() |>
-    relocate(value, .after = time)
+    relocate(value, .after = time) |>
+    mutate(value = value * value_multiplier)
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
   zero.line <- p$add_zeroline
@@ -761,7 +764,7 @@ ptt_plot_add_prediction <- function(p,
     legend.items <- c(legend.items, s.name) |> unique()
     legend.rank <- s.level * 1.1 + 1
     p <- p |>
-      add_lines(data = s, y = ~value, x = ~time, text = s[[as_name(grouping)]],
+      add_lines(data = s, y = ~value , x = ~time, text = s[[as_name(grouping)]],
                 type = "scatter", mode="lines",
                 line = list(width = lw),
                 color = I(color_vector[s.name]),
@@ -870,3 +873,7 @@ ptt_plot_add_secondary_traces <-
     p$data <- bind_rows(p$data, sec_d) |> arrange(time, tiedot)
     p |> ptt_plot_set_modebar(p$title, p$png_attrs, T)
   }
+
+ptt_plot_add_distinct_trace <- function(){
+
+}
