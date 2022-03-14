@@ -12,7 +12,7 @@ ptt_plot_create_widget(p, title)
 \item{title}{The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.}
 }
 \value{
-None
+The plotly object p.
 }
 \description{
 Writes an html element for embedding.

@@ -11,7 +11,7 @@ ptt_plot_set_defaults <- function(p) {
   config(p, locale = "fi") |>
     layout(separators = ", ") |>
     layout(xaxis = list(fixedrange = TRUE),
-           yaxis = list(autorange = T, fixedrange = F)) |>
+           yaxis = list(fixedrange = T)) |>
     layout(hovermode = "compare") |>
     ptt_plot_set_axis_labels()
 
@@ -20,7 +20,9 @@ ptt_plot_set_defaults <- function(p) {
 #' @importFrom stringr str_c str_extract_all str_replace_all str_squish
 #' @importFrom htmlwidgets JS
 #' @importFrom plotly config
-ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
+ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
+
+  if (reset == T) { p <- config(p, modeBarButtons = NULL) }
 
   data_dl_icon <- "M15.608,6.262h-2.338v0.935h2.338c0.516,0,0.934,0.418,0.934,0.935v8.879c0,0.517-0.418,0.935-0.934,0.935H4.392c-0.516,0-0.935-0.418-0.935-0.935V8.131c0-0.516,0.419-0.935,0.935-0.935h2.336V6.262H4.392c-1.032,0-1.869,0.837-1.869,1.869v8.879c0,1.031,0.837,1.869,1.869,1.869h11.216c1.031,0,1.869-0.838,1.869-1.869V8.131C17.478,7.099,16.64,6.262,15.608,6.262z M9.513,11.973c0.017,0.082,0.047,0.162,0.109,0.226c0.104,0.106,0.243,0.143,0.378,0.126c0.135,0.017,0.274-0.02,0.377-0.126c0.064-0.065,0.097-0.147,0.115-0.231l1.708-1.751c0.178-0.183,0.178-0.479,0-0.662c-0.178-0.182-0.467-0.182-0.645,0l-1.101,1.129V1.588c0-0.258-0.204-0.467-0.456-0.467c-0.252,0-0.456,0.209-0.456,0.467v9.094L8.443,9.553c-0.178-0.182-0.467-0.182-0.645,0c-0.178,0.184-0.178,0.479,0,0.662L9.513,11.973z"
   chalkboard_icon <- "M69.53,91.55l13.23,13.23c3.2,0.09,5.77,2.72,5.77,5.95c0,3.29-2.66,5.95-5.95,5.95c-3.29,0-5.95-2.67-5.95-5.95 c0-0.36,0.03-0.72,0.09-1.07L65.21,98.16v8.46l-8.24,0v-8.23l-11.69,11.7c0.02,0.21,0.03,0.43,0.03,0.65c0,0,0,0,0,0 c0,3.29-2.66,5.95-5.96,5.95c-3.29,0-5.95-2.67-5.95-5.95c0-3.29,2.67-5.95,5.95-5.95c0.1,0,0.2,0,0.29,0.01l13.23-13.23L0,91.55 V15.71c0-0.05,0-0.09,0-0.14V7.52c0-0.87,0.72-1.57,1.61-1.57h55.36V0h8.24v5.95h56.06c0.89,0,1.61,0.71,1.61,1.57v8.05 c0,0.03,0,0.05,0,0.08v75.89H69.53L69.53,91.55z M26.89,62.71l23.26-22.74c5.76,5.76,11.46,11.46,17.28,17.21l15.41-15.6 l-7.15-7.15l20.12-0.18v20.29l-6.87-6.87c-7.16,7.25-14.29,14.48-21.47,21.67L50.03,52.12L32.99,68.81L26.89,62.71L26.89,62.71 L26.89,62.71z M113.79,21.73H8.92v60.64h104.87V21.73L113.79,21.73z"
@@ -38,7 +40,6 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
   }
 
   js_string <- function(wd, ht, suffix, layout, ttl = dl_title) {
-    #legend_offset = legend_offset_sm, caption_offset = caption_offset_sm
     str_c('
           function(gd) {
           delete gd.layout.xaxis.rangeslider;
@@ -98,6 +99,14 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
     ),
     click = JS(js_string(889,500,"pieni",png_layout$sm)))
 
+  dl_string <- (function() {
+    row.data <- p$data |> pmap(function(...) {
+      as.character(list(...)) |> str_c(collapse = ";")
+    }) |> unlist() |> str_c(collapse = "\\n")
+    col.names <- names(p$data) |> str_c(collapse = ";")
+    str_c(col.names,"\\n",row.data)
+  })()
+
   data_dl_btn <- list(
     name = "Lataa tiedot",
     icon = list(
@@ -106,15 +115,15 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
     ),
     click = JS(str_c("
           function(gd) {
-            let text = ''
-            for(var i = 0; i < gd.data.length; i++){
+            let text = '",dl_string,"';
+            //for(var i = 0; i < gd.data.length; i++){
               //console.log(gd.data[i])
               //var array1 = gd.data[i].y
               //array1.forEach(element => console.log(element));
               //console.log((gd.data[i].y))
-              text = text + gd.data[i].name + ';' + gd.data[i].x + '\\n';
-              text = text + gd.data[i].name + ';' + gd.data[i].y + '\\n';
-            };
+              //text = text + gd.data[i].name + ';' + gd.data[i].x + '\\n';
+              //text = text + gd.data[i].name + ';' + gd.data[i].y + '\\n';
+            //};
             var blob = new Blob([text], {type: 'text/plain'});
             var a = document.createElement('a');
             const object_URL = URL.createObjectURL(blob);
@@ -124,7 +133,8 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout) {
             a.click();
             URL.revokeObjectURL(object_URL);
           }
-   ")))
+   "))
+    )
 
   p |> config(
     displaylogo = FALSE,
@@ -215,8 +225,58 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range = NULL) {
   if(enable == T) {
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
-    p |> rangeslider(slider_range[1],slider_range[2], thickness = height, yaxis = list(rangemode = "auto"))
+    p |> rangeslider(slider_range[1],slider_range[2], thickness = height)
   } else { p }
+}
+
+#' @importFrom stringr str_c
+#' @importFrom htmlwidgets onRender
+ptt_plot_rangeslider_responsive_y_scale <- function(p) {
+  print(p$elementId)
+  p |>
+    onRender(jsCode = str_c("
+                        function (gd){
+                        var timerId=0;
+                        var plotlyRelayoutEventFunction=function(eventdata){
+                        if( Object.prototype.toString.call(eventdata[\"xaxis.range\"]) === '[object Array]' ) {
+                        //console.log(\"rangeslider event!!\");
+                        var xRange = gd.layout.xaxis.range
+                        var yRange = gd.layout.yaxis.range
+                        var yInside = []
+                        var visdata = gd.data.filter(trace => trace.visible === true || !(trace.hasOwnProperty('visible')))
+                        visdata.forEach(trace => {
+                        var len = Math.min(trace.x.length, trace.y.length)
+                        var xInside = []
+
+                        for (var i = 0; i < len; i++) {
+                          var x = trace.x[i]
+                          var y = trace.y[i]
+
+                          if(x > xRange[0] && x < xRange[1]) {
+                            //xInside.push(x)
+                            yInside.push(y)
+                          }
+                          }}
+                        )
+                        var update = {
+                          'yaxis.range': [Math.min(...yInside)*1.1,Math.max(...yInside)*1.1]     // updates the end of the yaxis range
+                        };
+                        Plotly.relayout(gd, update);
+                        if(timerId>=0){
+                          //timer is running: stop it
+                          window.clearTimeout(timerId);
+                          }
+                        timerId = window.setTimeout(function(){
+                          //fire end event
+                          console.log(\"rangeslider event ENDS\");
+                          //reset timer to undefined
+                          timerId = -1;
+                          }, 800);
+  }
+}
+
+                  document.getElementById('",p$elementId,"').on('plotly_relayout', plotlyRelayoutEventFunction);
+                        }"))
 }
 
 #' @importFrom dplyr case_when
@@ -230,7 +290,6 @@ ptt_plot_config <- function(p,
                             legend_position, legend_orientation,
                             tick_color, grid_color,
                             height, width = 800,
-                            xaxis_offset = 0,
                             margin = NA,
                             zeroline = F,
                             enable_rangeslider = list(rangeslider = F, max = as_date(today))) {
@@ -310,18 +369,20 @@ ptt_plot_config <- function(p,
 
   p$enable_rangeslider <- list(enable = enable_rangeslider, size = rangeslider_size, range = slider_range)
   p$add_zeroline <- zeroline
+  p$png_attrs <- png_attrs
 
   p |>
     ptt_plot_set_defaults() |>
+    ptt_plot_rangeslider_responsive_y_scale() |>
     ptt_plot_set_grid(grid_color) |>
     ptt_plot_set_modebar(title, png_attrs) |>
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo(logo_offset, plot_ht) |>
-    # ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
+    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
-    ptt_plot_set_caption(caption, offset = caption_offset, main_font) %>%
+    ptt_plot_set_caption(caption, offset = caption_offset, main_font) |>
     ptt_plot_add_zeroline(zeroline)
 }
 
@@ -415,29 +476,50 @@ ptt_plot_add_zeroline <- function(p, z) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p %>% layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
+    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
   }
 }
 
 #' @importFrom stringr str_subset
 ptt_plot_hovertemplate <- function(specs) {
+
+  hovertemplate_freq <- function(f) {
+    if (is.null(f)) { "" } else {
+      switch(f,
+             "Annual" = "%Y",
+             "Quarterly" = "%YQ%q",
+             "Monthly" = "%Y-%m-%d",
+             "Weekly" = "%YW%U",
+             "Daily" = "%d.%m.%Y"
+      )
+    }
+  }
+
   if (is.null(specs)) {
     NA
   } else if (!is.list(specs)) {
-    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", or \"extra\", or NULL", call. = F)
-  } else if (!any(c("rounding","unit","extra") %in% names(specs))) {
-    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", or \"extra\", or NULL", call. = F)
+    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", \"extra\" or \"dateformat\" or NULL", call. = F)
+  } else if (!any(c("rounding","unit","","extra", "dateformat") %in% names(specs))) {
+    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", \"extra\" or \"dateformat\" or NULL", call. = F)
   } else {
-    specs_template <- list(rounding = 1, unit = "%", extra = "")
-    for (spec.name in (names(specs) |> str_subset("^(rounding|unit|extra)$"))) {
+    specs_template <- list(rounding = 1, unit = "%", extra = "", dateformat = hovertemplate_freq("Monthly"))
+    for (spec.name in (names(specs) |> str_subset("^(rounding|unit|extra|dateformat)$"))) {
       if(spec.name == "rounding") {
         if ((specs$rounding)%%1!=0) { stop("Hovertemplate rounding must be an integer.", call. = F) }
+      } else if(spec.name == "dateformat") {
+        if (!is.character(specs$dateformat)) {
+          stop("Hovertemplate dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
+        } else if (!(specs$dateformat %in% c("Annual", "Quarterly","Monthly","Weekly","Daily"))) {
+          stop("Hovertemplate dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
+        } else {
+          specs$dateformat <- hovertemplate_freq(specs$dateformat)
+          }
       } else if (!is.character(specs[[spec.name]])) {
         stop(str_c("Hovertemplate ",spec.name," must be a string.", call. = F))
       }
       specs_template[[spec.name]] <- specs[[spec.name]]
     }
-    paste0("%{text}<br>%{y:.",specs_template$rounding,"f} ",specs_template$unit,"<br>%{x|%Y-%m-%d}",ifelse(specs_template$extra == "", "", paste0("<br>",str_c(specs_template$extra, collapse = " "))),"<extra></extra>")
+    paste0("%{text}<br>%{y:.",specs_template$rounding,"f} ",specs_template$unit,"<br>%{x|",specs_template$dateformat,"}",ifelse(specs_template$extra == "", "", paste0("<br>",str_c(specs_template$extra, collapse = " "))),"<extra></extra>")
   }
 }
 
@@ -447,7 +529,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @param title The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.
 #' @examples
 #' p |> ptt_plot_create_widget()
-#' @return None
+#' @return The plotly object p.
 #' @importFrom stringr str_extract_all
 #' @importFrom htmlwidgets saveWidget
 ptt_plot_create_widget <- function(p, title) {
@@ -460,14 +542,14 @@ ptt_plot_create_widget <- function(p, title) {
   }
   if (missing(title)) {
     title <- (p$x$layoutAttrs |> unlist())[grep("title.text", names((p$x$layoutAttrs |> unlist())))] |>
-      str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)") %>% unlist() %>% str_c(collapse = "_") %>% tofilename()
+      str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)") |> unlist() |> first() |> str_c(collapse = "_") |> tofilename()
     message(str_c("Using \"",title,"\" for htmlwidget filename.."))
   } else {
     title <- tofilename(title)
   }
 
   p |>
-    htmlwidgets::saveWidget(str_c(title,".html"), selfcontained = F, libdir = "plot_dependencies")
+    saveWidget(str_c(title,".html"), selfcontained = F, libdir = "plot_dependencies")
   p
 }
 
@@ -548,14 +630,19 @@ ptt_plot <- function(d,
                      rangeslider = T,
                      isolate_primary = F,
                      font_size = 16,
-                     hovertext = list(rounding = 1, unit = "", extra = ""),
+                     hovertext,
                      height = 600,
                      ...
 ){
 
   if(missing(d) || missing(grouping)){
-    stop("Data and grouping variable (without quotes)\nFor example: ptt_plot(a_tibble, grouping=tiedot)", call. = F)
+    stop("Data and unquoted grouping variable are needed!\nFor example: ptt_plot(a_tibble, grouping=tiedot)", call. = F)
   }
+
+  if(missing(hovertext)) {
+    hovertext <- list(rounding = 1, unit = "", extra = "", timeformat = attributes(d)$frequency$en)
+  }
+
   grouping <- enquo(grouping)
 
   d <- droplevels(d)
@@ -564,7 +651,7 @@ ptt_plot <- function(d,
 
   color_vector <- (function() {
     color_vector <- if (isolate_primary == T) {
-      ptt_plot_set_colors(1) %>% rep(length(unique_groups))
+      ptt_plot_set_colors(1) |> rep(length(unique_groups))
     } else {
       ptt_plot_set_colors(length(unique_groups))
     }
@@ -591,9 +678,18 @@ ptt_plot <- function(d,
                 color = I(color_vector[g.color]), type = "scatter", mode ='lines'
       )
   }
+  p$data <- d |> rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
+    select(tiedot, time, value) |>
+    mutate(
+      across(everything(), ~ as.character(.x)),
+      value = str_replace(value, "\\.",",")
+    )
+
+  p$elementId <- str_c("widget",runif(1)) |> str_replace("0\\.","-")
   p$color_vector <- color_vector
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
+  p$title <- title
 
 
   maxtime <- max(d$time)
@@ -636,7 +732,7 @@ ptt_plot_add_prediction <- function(p,
                                     with_labs = T,
                                     isolate_primary = F,
                                     showlegend = F,
-                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)")) {
+                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "Annual")) {
   grouping <- enquo(grouping)
   pred_series <- pred_data |>
     filter(!!grouping %in% names(p$color_vector)) |>
@@ -675,9 +771,22 @@ ptt_plot_add_prediction <- function(p,
                 showlegend = show.legend,
                 hovertemplate = ptt_plot_hovertemplate(hovertext))
   }
-  p %>%
-    ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) %>%
-    ptt_plot_add_zeroline(zero.line)
+  pred_d <- pred_series |> map_dfr(~.x) |>
+    rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
+    select(tiedot, time, value) |>
+    distinct(tiedot, time, value) |>
+    mutate(
+      tiedot = str_c(tiedot, ", ennuste"),
+      across(everything(), ~ as.character(.x)),
+      value = str_replace(value, "\\.",",")
+    )
+  p$data <- p$data |>
+    bind_rows(pred_d) |>
+    arrange(time, tiedot)
+  p |>
+    ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
+    ptt_plot_add_zeroline(zero.line) |>
+    ptt_plot_set_modebar(p$title, p$png_attrs, T)
 }
 
 
@@ -750,5 +859,14 @@ ptt_plot_add_secondary_traces <-
         )
     }
 
-    p
+    sec_d <- map_dfr(split_d, ~ .x) |>
+      rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
+      select(tiedot, time, value) |>
+      mutate(
+        tiedot = str_c(as_name(relates_to),", ",tiedot),
+        across(everything(), ~ as.character(.x)),
+        value = str_replace(value, "\\.",",")
+      )
+    p$data <- bind_rows(p$data, sec_d) |> arrange(time, tiedot)
+    p |> ptt_plot_set_modebar(p$title, p$png_attrs, T)
   }

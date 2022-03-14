@@ -18,8 +18,8 @@ ptt_plot(
   zeroline = F,
   rangeslider = T,
   isolate_primary = F,
-  font_size = 18,
-  hovertext = list(rounding = 1, unit = "", extra = ""),
+  font_size = 16,
+  hovertext,
   height = 600,
   ...
 )
