@@ -337,8 +337,8 @@ ptt_data_robo_l("tidy/10yield") |>
   select(maa, time, value) |> ## TODO bug in ptt_plot
   ptt_plot(
     grouping = maa,
-    title = "Työlliset ja työvoima",
-    subtitle = "Miljoonaa, trendi",
+    title = "Pitkät korot",
+    subtitle = "%",
     caption =  "Lähde: Suomen Pankki, Deutche Bundesbank, Fed ja PTT",
     rangeslider = FALSE,
     hovertext = list(rounding = 2),
