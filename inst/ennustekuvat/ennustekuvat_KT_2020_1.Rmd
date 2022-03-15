@@ -170,7 +170,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     tiedot == "Työllisyysaste, 15-64-vuotiaat, %, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työllisyysaste") |> 
+  mutate(tiedot = "Työllisyysaste") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työllisyysaste",
@@ -190,7 +190,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     tiedot == "Työttömyysaste, %, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työttömyysaste") |> 
+  mutate(tiedot = "Työttömyysaste") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työttömyysaste",
@@ -210,10 +210,10 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   filter(
     tiedot == "Työvoima, 1000 henkilöä",
     time >= "2014-01-01",
-    sukupuoli == "Yhteensä", 
+    sukupuoli == "Yhteensä",
     ikaluokka == "15 - 74"
   ) |>
-  mutate(tiedot = "Työvoima") |> 
+  mutate(tiedot = "Työvoima") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työvoima",
@@ -222,7 +222,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
     rangeslider = FALSE,
     zeroline = T
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0, 
+  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))  ##  |>
   ## ptt_plot_create_widget("")
 ```
@@ -234,7 +234,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     tiedot == "Työlliset, 1000 henkilöä, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työlliset") |> 
+  mutate(tiedot = "Työlliset") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työlliset",
@@ -243,19 +243,19 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     rangeslider = FALSE,
     zeroline = T
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0, 
+  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))
 ```
 
 ## Työlliset ja työvoima
 
 ```{r}
-# yhdistetään datasetit: 
+# yhdistetään datasetit:
 tyovoima <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   filter(
     tiedot == "Työvoima, 1000 henkilöä",
     time >= "2014-01-01",
-    sukupuoli == "Yhteensä", 
+    sukupuoli == "Yhteensä",
     ikaluokka == "15 - 74"
   ) |>
   mutate(tiedot = "Työvoima") |>
@@ -278,9 +278,9 @@ p_tyovoima_tyolliset <- rbind(tyovoima, tyolliset) |>
     rangeslider = FALSE,
     zeroline = T
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2, 
+  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2,
         unit = "(Miljoonaa henkilöä)", extra = "(ennuste)"),
-        value_multiplier = 0.001) 
+        value_multiplier = 0.001)
 
 palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
     filter(
@@ -291,8 +291,8 @@ palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") 
   mutate(value = value / 1000)
 
 
-# yhdistetään erikseen palkansaajat, koska tästä ei ennustetta. 
-p_tyovoima_tyolliset  %>% 
+# yhdistetään erikseen palkansaajat, koska tästä ei ennustetta.
+p_tyovoima_tyolliset  %>%
   plotly::add_trace(data=palkansaajat, y = ~value,
                     text = "Palkansaajat",
                     type = "scatter", mode="lines",
@@ -306,3 +306,4 @@ p_tyovoima_tyolliset  %>%
   )
 ```
 
+##
