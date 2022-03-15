@@ -4,6 +4,13 @@
 data_get("eia/PET.RBRTE.M") |>
   data_to_yaml()
 
+# KV-talous
+
+data_get("eurostat/namq_10_gdp") |>
+  data_to_yaml()
+
+
+
 # Kansantalouden tilinpito
 
 library(pttdatahaku)
@@ -47,6 +54,6 @@ data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
 data_get("eurostat/prc_hicp_midx") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Hin", start_year = 2013)
+ptt_update_ennustedata("KTdata_", start_year = 2013)
 ptt_copy_ennustedata("KT")
 

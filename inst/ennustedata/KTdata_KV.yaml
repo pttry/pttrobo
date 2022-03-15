@@ -1,0 +1,44 @@
+KTdata_KV:
+  BKT_q_sa_vol:
+  - id: eurostat/namq_10_gdp
+    muunnos: alkuperäinen
+    tiedot:
+      unit:
+      - Chain linked volumes, index 2015=100
+      s_adj:
+      - Seasonally and calendar adjusted data
+      na_item:
+      - Gross domestic product at market prices
+      geo:
+      - Austria
+      - Switzerland
+      - Czechia
+      - Finland
+      - France
+      - Hungary
+      - Italy
+      - Lithuania
+      - Luxembourg
+      - Latvia
+      - Netherlands
+      - Belgium
+      - Bulgaria
+      - Germany (until 1990 former territory of the FRG)
+      - Denmark
+      - Euro area (EA11-1999, EA12-2001, EA13-2007, EA15-2008, EA16-2009, EA17-2011,
+        EA18-2014, EA19-2015)
+      - Euro area - 12 countries (2001-2006)
+      - Euro area - 19 countries  (from 2015)
+      - Estonia
+      - Greece
+      - Spain
+      - European Union - 15 countries (1995-2004)
+      - European Union - 27 countries (from 2020)
+      - European Union - 28 countries (2013-2020)
+      - Ireland
+      - Norway
+      - Poland
+      - Portugal
+      - Romania
+      - Sweden
+      - United Kingdom
