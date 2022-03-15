@@ -727,6 +727,7 @@ ptt_plot <- function(d,
 #' @importFrom dplyr slice_tail
 #' @importFrom plotly plot_ly add_lines
 #' @importFrom stringr str_replace
+#' @importFrom purrr reduce map_dfr
 #' @export
 ptt_plot_add_prediction <- function(p,
                                     pred_data,
@@ -753,8 +754,9 @@ ptt_plot_add_prediction <- function(p,
   zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
-  pred_groups <- pred_data[[as_name(grouping)]] |> unique()
-  if(!all(names(color_vector) %in% pred_groups)) {
+  pred_groups <- (pred_series %>% reduce(bind_rows))[[as_name(grouping)]] |> unique()
+  print(pred_groups)
+  if(!all(pred_groups %in% names(color_vector))) {
     stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
   }
   legend.items <- c()
