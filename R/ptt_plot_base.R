@@ -20,6 +20,7 @@ ptt_plot_set_defaults <- function(p) {
 #' @importFrom stringr str_c str_extract_all str_replace_all str_squish
 #' @importFrom htmlwidgets JS
 #' @importFrom plotly config
+#' @importFrom purrr pmap
 ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   if (reset == T) { p <- config(p, modeBarButtons = NULL) }
@@ -232,7 +233,6 @@ ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range =
 #' @importFrom stringr str_c
 #' @importFrom htmlwidgets onRender
 ptt_plot_rangeslider_responsive_y_scale <- function(p) {
-  print(p$elementId)
   p |>
     onRender(jsCode = str_c("
                         function (gd){
@@ -530,7 +530,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @examples
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
-#' @importFrom stringr str_extract_all
+#' @importFrom stringr str_extract_all str_replace_all
 #' @importFrom htmlwidgets saveWidget
 ptt_plot_create_widget <- function(p, title) {
   tofilename <- function(str) {
@@ -616,7 +616,8 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
 #' @importFrom plotly plot_ly add_trace
 #' @importFrom rlang enquo as_name set_names
 #' @importFrom dplyr group_split
-#' @importFrom stringr str_length
+#' @importFrom stringr str_length str_replace
+
 ptt_plot <- function(d,
                      grouping,
                      title,subtitle = "",
@@ -725,6 +726,8 @@ ptt_plot <- function(d,
 #' @importFrom tidyr uncount pivot_longer
 #' @importFrom dplyr slice_tail
 #' @importFrom plotly plot_ly add_lines
+#' @importFrom stringr str_replace
+#' @importFrom purrr reduce map_dfr
 #' @export
 ptt_plot_add_prediction <- function(p,
                                     pred_data,
@@ -751,8 +754,9 @@ ptt_plot_add_prediction <- function(p,
   zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
-  pred_groups <- pred_data[[as_name(grouping)]] |> unique()
-  if(!all(names(color_vector) %in% pred_groups)) {
+  pred_groups <- (pred_series %>% reduce(bind_rows))[[as_name(grouping)]] |> unique()
+  print(pred_groups)
+  if(!all(pred_groups %in% names(color_vector))) {
     stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
   }
   legend.items <- c()
@@ -812,6 +816,7 @@ ptt_plot_add_prediction <- function(p,
 #' @importFrom dplyr slice_tail
 #' @importFrom forcats fct_inorder
 #' @importFrom plotly plot_ly add_lines
+#' @importFrom stringr str_replace
 
 ptt_plot_add_secondary_traces <-
   function(p, secondary_data, relates_to, grouping,
