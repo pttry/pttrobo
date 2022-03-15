@@ -307,21 +307,25 @@ rbind(tyovoima, tyolliset) |>
 
 ## Työttömyys
 ```{r}
-tyottomyysaste_plot <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |> # työttömyysaste
+# työttömyysaste, jolle ennuste
+tyottomyysaste <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |> # työttömyysaste
   filter(
     tiedot == "Työttömyysaste, %, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työttömyysaste") |>
-# yhdistetään tem työttömyysaste dataan (tähän ei ole ennustetta)
-rbind(
-  ptt_data_robo_l("StatFin/tym/tyonv/kk/statfin_tyonv_pxt_12tf.px") |>
+  mutate(tiedot = "Työttömyysaste")
+
+# tem työttömyysaste, lisäksi tehdään trendimuutos
+tem_työttömyysaste <- ptt_data_robo_l("StatFin/tym/tyonv/kk/statfin_tyonv_pxt_12tf.px") |>
     filter(tiedot == "Työttömien työnhakijoiden %-osuus työvoimasta (%)",
            alue == "KOKO MAA",
            time >= "2014-01-01") |>
     mutate(tiedot = "Työttömyyysaste (TEM)") |>
-    select(tiedot, time, value)
-)  |>
+    select(tiedot, time, value) |>
+    mutate(value = statfitools::trend_series(value, time = time))
+
+# yhdistetään datasarjat ja plotataan
+rbind(tyottomyysaste, tem_työttömyysaste) |>
   ptt_plot(
     grouping = tiedot,
     title = "Työttömyysaste",
@@ -331,24 +335,6 @@ rbind(
     zeroline = T
   ) |>
   ptt_plot_add_prediction(ennuste_data)
-
-##  |>
-  ## ptt_plot_create_widget("")
-
-
-
-# yhdistetään
-rbind(tyottomyysaste, tyottomyysaste_tem) |>
-plotly::add_trace(data=palkansaajat, y = ~value,
-                  text = "Palkansaajat",
-                  type = "scatter", mode="lines",
-                  line = list(width = 4),
-                  color = "#C36B0D",
-                  hovertemplate = pttrobo:::ptt_plot_hovertemplate(
-                    list(rounding = 1, unit = "%", extra = "", timeformat = attributes(d)$frequency$en)),
-                  name="Työttömyysaste (TEM)")
-  
-
 ```
 
 ## Pitkät korot
