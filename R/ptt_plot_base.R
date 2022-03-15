@@ -61,7 +61,6 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
           gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
           gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
           gd.layout.title.font.size = ',layout$font_sizing$title,';
-          //alert(JSON.stringify((gd.layout.margin)));
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           }
    ')
@@ -435,6 +434,7 @@ ptt_plot_set_caption <- function(p, caption, offset = list(x = 0, y = 0), font) 
 }
 
 #' @importFrom plotly layout
+#' @importFrom htmltools tag HTML
 ptt_plot_set_title <- function(p, title, subtitle, font) {
   if (is.na(title)) {
     p
@@ -445,8 +445,8 @@ ptt_plot_set_title <- function(p, title, subtitle, font) {
       layout(
         title = list(
           text = paste0(
-            "<span><b>", title, "</b>", "<br>",
-            tags$sub(subtitle),"</span>"
+            "<span><b>", title, "</b>",
+            tags$span(HTML(str_c("<br>",subtitle)), style = "font-size: 75%"),"</span>"
           ),
           font = font,
           xanchor = "left",
