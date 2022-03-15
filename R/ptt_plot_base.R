@@ -489,7 +489,7 @@ ptt_plot_hovertemplate <- function(specs) {
              "Annual" = "%Y",
              "Quarterly" = "%YQ%q",
              "Monthly" = "%Y-%m-%d",
-             "Weekly" = "%YW%U",
+             "Weekly" = "%YW%V",
              "Daily" = "%d.%m.%Y"
       )
     }
@@ -519,6 +519,7 @@ ptt_plot_hovertemplate <- function(specs) {
       }
       specs_template[[spec.name]] <- specs[[spec.name]]
     }
+    message(specs_template$dateformat)
     paste0("%{text}<br>%{y:.",specs_template$rounding,"f} ",specs_template$unit,"<br>%{x|",specs_template$dateformat,"}",ifelse(specs_template$extra == "", "", paste0("<br>",str_c(specs_template$extra, collapse = " "))),"<extra></extra>")
   }
 }
@@ -641,7 +642,19 @@ ptt_plot <- function(d,
   }
 
   if(missing(hovertext)) {
-    hovertext <- list(rounding = 1, unit = "", extra = "", timeformat = attributes(d)$frequency$en)
+    d_attrs <- attributes(d)
+    tf <- if(is.null(d_attrs$frequency)) {
+      message("No frequency attribute detected for hovertext time format, resorting to default %Y/%m/%d.")
+      NULL
+    } else if (is.list(d_attrs$frequency)) {
+      if(is.null(d_attrs$frequency$en)) {
+        message("No frequency attribute detected for hovertext time format, resorting to default %Y/%m/%d.")
+        NULL
+        } else{ d_attrs$frequency$en }
+    } else {
+      d_attrs$frequency
+      }
+    hovertext <- list(rounding = 1, unit = "", extra = "", dateformat = tf)
   }
 
   grouping <- enquo(grouping)
@@ -755,7 +768,6 @@ ptt_plot_add_prediction <- function(p,
   pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   pred_groups <- (pred_series %>% reduce(bind_rows))[[as_name(grouping)]] |> unique()
-  print(pred_groups)
   if(!all(pred_groups %in% names(color_vector))) {
     stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
   }
