@@ -72,7 +72,7 @@ usa_bkt <- ptt_data_robo("fred/GDPC1") |>
 ) |> 
   indeksoi() |> 
   select(tiedot = series_id, time, value) |> 
-  mutate(tiedot = "USA BKT")
+  mutate(tiedot = "USA")
 
 suomi_bkt <- ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter(
@@ -81,7 +81,7 @@ suomi_bkt <- ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     time >= "2014-01-01"
   )  |> indeksoi() |> 
   select(tiedot, time, value) |> 
-  mutate(tiedot = "Suomi BKT")
+  mutate(tiedot = "Suomi")
 
 euroalue_bkt <- ptt_data_robo_l("eurostat/namq_10_gdp") %>% 
     filter(geo == "Euro area - 19 countries  (from 2015)",
@@ -91,7 +91,7 @@ euroalue_bkt <- ptt_data_robo_l("eurostat/namq_10_gdp") %>%
         time >= "2014-01-01") %>% 
   indeksoi() |>
   select(tiedot = na_item, time, value) |>
-  mutate(tiedot = "Euroalue GDP")
+  mutate(tiedot = "Euroalue")
 
 
 # yhdistetään
@@ -105,10 +105,11 @@ rbind(usa_bkt, suomi_bkt, euroalue_bkt) |>
     ## rangeslider = "2015-01-01",
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
-  ) #|>
+  ) |>
+  plotly::layout(
+    yaxis = list(range = c(85,115))
+  )
 #  ptt_plot_add_prediction(ennuste_data)
-  
-  
   
 
 
