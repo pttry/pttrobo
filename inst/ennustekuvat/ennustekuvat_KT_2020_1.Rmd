@@ -176,8 +176,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     title = "Työllisyysaste",
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
@@ -196,8 +195,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     title = "Työttömyysaste",
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
@@ -219,8 +217,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
     title = "Työvoima",
     subtitle = "1000 henkilöä",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))  ##  |>
@@ -240,8 +237,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     title = "Työlliset",
     subtitle = "1000 henkilöä, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))
@@ -299,11 +295,12 @@ p_tyovoima_tyolliset  %>%
                     line = list(width = 4),
                     color = "#C36B0D",
                     hovertemplate = pttrobo:::ptt_plot_hovertemplate(
-                      list(rounding = 2, unit = "(Miljoonaa henkilöä)", extra = "", timeformat = attributes(d)$frequency$en)),
+                      list(rounding = 2, unit = "(Miljoonaa henkilöä)", extra = "",
+                           timeformat = "Quarterly")),
                     name="Palkansaajat") |>
   plotly::layout(
     yaxis = list(range = c(1.9,3))
   )
 ```
 
-##
+## Pitkät korot
