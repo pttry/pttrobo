@@ -193,6 +193,28 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   ptt_plot_add_prediction(ennuste_data)
 ```
 
+## Julkinen velka
+```{r}
+ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
+  filter(time >= "2014-01-01",
+         tiedot == "Julkisyhteisöjen EDP-velan BKT-suhde, %"
+ ) |> 
+  mutate(tiedot = "Julkisen sektorin EDP-velan suhde BKT:hen") |>
+  select(tiedot, time, value) |>
+  ptt_plot(
+    grouping = tiedot,
+    title = "Julkisyhteisöjen velka",
+    subtitle = "Velan suhde BKT:hen, %",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
+  )  |>
+  plotly::layout(
+    yaxis = list(range = c(55,75))
+  )
+```
+
 ## Investoinnit
 
 ```{r}
