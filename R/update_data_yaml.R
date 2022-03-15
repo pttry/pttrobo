@@ -39,12 +39,13 @@ excel_files_ennustedata <- function(pattern = NULL){
 #'
 #' @param pattern A string to look in file names to update.
 #' @param start_year A first year of data
+#' @param transpose A logical to transpose data for excel.
 #'
 #' @export
-ptt_update_ennustedata <- function(pattern = NULL, start_year){
+ptt_update_ennustedata <- function(pattern = NULL, start_year, transpose = FALSE){
   files <- yaml_files_ennustedata(pattern = pattern)
   for (file in files) {
-    yaml_to_excel(file = file, start_year = start_year)
+    yaml_to_excel(file = file, start_year = start_year, transpose = transpose)
   }
 
 }

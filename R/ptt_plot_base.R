@@ -47,6 +47,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
           delete gd.layout.xaxis.rangeslider;
           gd.layout.margin.t = ',layout$margin_t,';
           gd.layout.margin.b = ',layout$margin_b,';
+          gd.layout.images[0].sizex = ',60/ht/1.5,'
           gd.layout.images[0].sizey = ',layout$logo_sizing,';
           gd.layout.images[0].y = ',layout$logo_offset,';
           gd.layout.annotations[0].y = ',layout$caption_offset,';
@@ -60,7 +61,6 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
           gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
           gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
           gd.layout.title.font.size = ',layout$font_sizing$title,';
-          //alert(JSON.stringify((gd.layout.margin)));
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           }
    ')
@@ -354,14 +354,14 @@ ptt_plot_config <- function(p,
     legend_ht_lg <- ifelse(legend_position %in% c("auto","bottom"), font_sizing_lg$main, 0)
     ht_sm <- small_ht-sum(ht_constants,tickfont_ht_sm,legend_ht_sm,margin_t_sm,margin_b_sm)
     ht_lg <- large_ht-sum(ht_constants,tickfont_ht_lg,legend_ht_lg,margin_t_lg,margin_b_lg)
-    legend_offset_sm <- -(30/ht_sm)
+    legend_offset_sm <- -(25/ht_sm)
     legend_offset_lg <- -(30/ht_lg)
-    caption_offset_sm <- -((tickfont_ht_sm+legend_ht_sm+(margin_b_sm*0.24))/ht_sm)
+    caption_offset_sm <- -((tickfont_ht_sm+legend_ht_sm+(margin_b_sm*0.22))/ht_sm)
     caption_offset_lg <- -((tickfont_ht_lg+legend_ht_lg+(margin_b_lg*0.24))/ht_lg)
     caption_ht_sm <- ifelse(!is.na(caption), round(font_sizing_sm$main*0.8), 0)
     caption_ht_lg <- ifelse(!is.na(caption), round(font_sizing_lg$main*0.8), 0)
     logo_offset_sm <- -((tickfont_ht+caption_ht_sm+legend_ht_sm+(margin_b_sm*0.24))/ht_sm)
-    logo_offset_lg <- -((tickfont_ht+caption_ht_lg+legend_ht_lg+(margin_b_lg*0.24))/ht_lg)
+    logo_offset_lg <- -((tickfont_ht+caption_ht_lg+legend_ht_lg+(margin_b_lg*0.32))/ht_lg)
     logo_sizing_sm <-  40 / ht_sm
     logo_sizing_lg <- 30 / ht_lg
     list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin_t = margin_t_sm, margin_b = margin_b_sm, font_sizing = font_sizing_sm),
@@ -434,6 +434,7 @@ ptt_plot_set_caption <- function(p, caption, offset = list(x = 0, y = 0), font) 
 }
 
 #' @importFrom plotly layout
+#' @importFrom htmltools tag HTML
 ptt_plot_set_title <- function(p, title, subtitle, font) {
   if (is.na(title)) {
     p
@@ -444,8 +445,8 @@ ptt_plot_set_title <- function(p, title, subtitle, font) {
       layout(
         title = list(
           text = paste0(
-            "<span><b>", title, "</b>", "<br>",
-            tags$sub(subtitle),"</span>"
+            "<span><b>", title, "</b>",
+            tags$span(HTML(str_c("<br>",subtitle)), style = "font-size: 75%"),"</span>"
           ),
           font = font,
           xanchor = "left",

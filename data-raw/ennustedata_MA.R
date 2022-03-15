@@ -36,8 +36,13 @@ purrr::map(id_puunkaytto, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/M
 purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/MAdata_puukaupp2_raw.yaml", append = TRUE))
 
 
-ptt_update_ennustedata("MAdata_", start_year = 2012)
+ptt_update_ennustedata("MAdata_", start_year = 2013)
 ptt_copy_ennustedata("MA")
+
+# Pysyvä alkuvuosi
+ptt_update_ennustedata("MAdata_Puuk", start_year = 2010, transpose = TRUE)
+ptt_copy_ennustedata("MA", path = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - MAdata_jatkuva")
+
 
 
 ma_tulli_cn8 <- c("44071110", "44071120", "44071190", "44071210", "44071220", "44071290", "44123900", "44129985", "44123300")
