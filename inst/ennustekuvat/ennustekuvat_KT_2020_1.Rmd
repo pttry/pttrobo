@@ -119,7 +119,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter(
     taloustoimi == "P3KS13 Julkiset kulutusmenot, menona",
-    tiedot == "Kausitasoitetun ja työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %",
+    ## tiedot == "Kausitasoitetun ja työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %",
+    tiedot == "Trendisarjan volyymin muutos vuodentakaisesta, %",
     time >= "2014-01-01"
   ) |>
   mutate(tiedot = "Julkinen kulutus") |>
@@ -171,14 +172,13 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     tiedot == "Työllisyysaste, 15-64-vuotiaat, %, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työllisyysaste") |> 
+  mutate(tiedot = "Työllisyysaste") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työllisyysaste",
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
@@ -191,14 +191,13 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     tiedot == "Työttömyysaste, %, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työttömyysaste") |> 
+  mutate(tiedot = "Työttömyysaste") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työttömyysaste",
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
@@ -211,19 +210,18 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   filter(
     tiedot == "Työvoima, 1000 henkilöä",
     time >= "2014-01-01",
-    sukupuoli == "Yhteensä", 
+    sukupuoli == "Yhteensä",
     ikaluokka == "15 - 74"
   ) |>
-  mutate(tiedot = "Työvoima") |> 
+  mutate(tiedot = "Työvoima") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työvoima",
     subtitle = "1000 henkilöä",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0, 
+  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))  ##  |>
   ## ptt_plot_create_widget("")
 ```
@@ -235,27 +233,27 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     tiedot == "Työlliset, 1000 henkilöä, trendi",
     time >= "2014-01-01"
   ) |>
-  mutate(tiedot = "Työlliset") |> 
+  mutate(tiedot = "Työlliset") |>
   ptt_plot(
     grouping = tiedot,
     title = "Työlliset",
     subtitle = "1000 henkilöä, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE,
-    zeroline = T
+    rangeslider = FALSE
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0, 
+  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))
 ```
 
 ## Työlliset ja työvoima
 
 ```{r}
+
 tyovoima <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   filter(
     tiedot == "Työvoima, 1000 henkilöä",
     time >= "2014-01-01",
-    sukupuoli == "Yhteensä", 
+    sukupuoli == "Yhteensä",
     ikaluokka == "15 - 74"
   ) |>
   mutate(tiedot = "Työvoima") |>
@@ -283,13 +281,12 @@ rbind(tyovoima, tyolliset) |>
     rangeslider = FALSE,
     zeroline = T
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2, 
+  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2,
         unit = "(Miljoonaa henkilöä)", extra = "(ennuste)"),
         value_multiplier = 0.001) |>
   plotly::layout(
     yaxis = list(range = c(2.2,3))
   )
-
 # Ei palkansaajoja käytössä
 # palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
 #     filter(
@@ -327,3 +324,5 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
 ```
+
+## Pitkät korot
