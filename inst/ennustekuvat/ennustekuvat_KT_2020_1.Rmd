@@ -27,15 +27,6 @@ ennuste_data <-
   read_ennuste_data(
     system.file("ennustekuvat", "ptt_ennusteet_KT_2022_1.xlsx", package="pttrobo")
   )
-
-## vuosimuutos <- function(d, groups) {
-##   d |>
-##     with_groups(
-##       .groups = {{ groups }},
-##       mutate,
-##       value = 100 * ((value / lag(value, 4, order_by = time)) -1)
-##     )
-## }
 ```
 
 ## BKT Suomi
