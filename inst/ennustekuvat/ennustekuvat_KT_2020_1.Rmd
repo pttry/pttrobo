@@ -328,4 +328,23 @@ rbind(tyottomyysaste, tem_työttömyysaste) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
 
+## Pitkät korot
 
+```{r}
+ptt_data_robo_l("tidy/10yield") |>
+  drop_na() |>
+  filter(time >= "2008-01-01") |>
+  select(maa, time, value) |> ## TODO bug in ptt_plot
+  ptt_plot(
+    grouping = maa,
+    title = "Työlliset ja työvoima",
+    subtitle = "Miljoonaa, trendi",
+    caption =  "Lähde: Suomen Pankki, Deutche Bundesbank, Fed ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 2),
+    zeroline = T
+  )##  |> ## TODO xlsx-tiedostossa eri nimi kuin mikä tulee legendiin
+  ## ptt_plot_add_prediction(
+  ##   ennuste_data
+  ## )
+```
