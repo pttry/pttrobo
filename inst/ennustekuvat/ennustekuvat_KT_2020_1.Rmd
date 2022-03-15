@@ -293,16 +293,7 @@ rbind(tyovoima, tyolliset) |>
 #     tiedot == "Palkansaajat, 1000 henkilöä",
 #     time >= "2014-01-01",
 #     toimiala == "Yhteensä"
-# ) |>
-#   mutate(value = value / 1000)
-  # plotly::add_trace(data=palkansaajat, y = ~value,
-  #                   text = "Palkansaajat",
-  #                   type = "scatter", mode="lines",
-  #                   line = list(width = 4),
-  #                   color = "#C36B0D",
-  #                   hovertemplate = pttrobo:::ptt_plot_hovertemplate(
-  #                     list(rounding = 2, unit = "(Miljoonaa henkilöä)", extra = "", timeformat = attributes(d)$frequency$en)),
-  #                   name="Palkansaajat") |>
+# )
 ```
 
 ## Työttömyys
@@ -329,7 +320,7 @@ rbind(tyottomyysaste, tem_työttömyysaste) |>
   ptt_plot(
     grouping = tiedot,
     title = "Työttömyysaste",
-    subtitle = "%",
+    subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     zeroline = T
