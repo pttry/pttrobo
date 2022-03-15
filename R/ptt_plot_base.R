@@ -519,7 +519,6 @@ ptt_plot_hovertemplate <- function(specs) {
       }
       specs_template[[spec.name]] <- specs[[spec.name]]
     }
-    message(specs_template$dateformat)
     paste0("%{text}<br>%{y:.",specs_template$rounding,"f} ",specs_template$unit,"<br>%{x|",specs_template$dateformat,"}",ifelse(specs_template$extra == "", "", paste0("<br>",str_c(specs_template$extra, collapse = " "))),"<extra></extra>")
   }
 }
