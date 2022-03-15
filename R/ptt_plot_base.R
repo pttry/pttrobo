@@ -21,6 +21,7 @@ ptt_plot_set_defaults <- function(p) {
 #' @importFrom htmlwidgets JS
 #' @importFrom plotly config
 #' @importFrom purrr pmap
+#' @importFrom tidyr drop_na
 ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   if (reset == T) { p <- config(p, modeBarButtons = NULL) }
@@ -101,7 +102,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
     click = JS(js_string(889,500,"pieni",png_layout$sm)))
 
   dl_string <- (function() {
-    row.data <- p$data |> pmap(function(...) {
+    row.data <- p$data |> drop_na() |> pmap(function(...) {
       as.character(list(...)) |> str_c(collapse = ";")
     }) |> unlist() |> str_c(collapse = "\\n")
     col.names <- names(p$data) |> str_c(collapse = ";")
@@ -666,7 +667,6 @@ ptt_plot <- function(d,
     tf <- ptt_plot_get_frequency(d)
     hovertext <- list(rounding = 1, unit = "", extra = "", dateformat = tf)
   } else if (!"dateformat" %in% names(hovertext)) {
-    print("jes")
     hovertext$dateformat <- ptt_plot_get_frequency(d)
   }
 

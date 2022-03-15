@@ -358,3 +358,24 @@ ptt_data_robo_l("tidy/10yield") |>
      value_multiplier = 100
   )
 ```
+
+## Raakaöljy
+
+```{r}
+ptt_data_robo("fred/DCOILBRENTEU") |>
+  drop_na() |>
+  filter(time >= "2012-01-01") |>
+  mutate(tieto = "Raakaöljy, Brent") |>
+  ptt_plot(
+    grouping = tieto,
+    title = "Raakaöljy",
+    subtitle = "$/barreli, Brent",
+    caption =  "Lähde: Energy Information Administration ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 2),
+    zeroline = T
+  ) |>
+  ptt_plot_add_prediction(
+    ennuste_data
+  )
+```
