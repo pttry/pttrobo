@@ -13,7 +13,8 @@ ptt_plot_add_prediction(
   isolate_primary = F,
   showlegend = F,
   hovertext = list(rounding = 1, unit = "\%", extra = "(ennuste)", dateformat =
-    "Annual")
+    "Annual"),
+  value_multiplier = 1
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ ptt_plot_add_prediction(
 \item{showlegend, with_labs}{Controls prediction trace legend. Hovertemplate takes labeling based on with_labs.}
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
+
+\item{value_multiplier}{A number. Value of 0.001 would cause values to be divided by 1000, value of 1000 would cause values to be multiplied by 1000 hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 }
 \value{
 plotly object
