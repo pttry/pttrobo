@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(pttrobo)
 library(tidyverse)
+library(statfitools)
 ```
 
 ```{r, include=FALSE, eval=FALSE}
@@ -250,7 +251,6 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
 ## Työlliset ja työvoima
 
 ```{r}
-# yhdistetään datasetit: 
 tyovoima <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   filter(
     tiedot == "Työvoima, 1000 henkilöä",
@@ -261,6 +261,10 @@ tyovoima <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   mutate(tiedot = "Työvoima") |>
   select(tiedot, time, value)
 
+# Lasketaan trendi työvoimalle
+tyovoima <- tyovoima |>
+  mutate(value = statfitools::trend_series(value, time = time))
+
 tyolliset <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
   filter(
     tiedot == "Työlliset, 1000 henkilöä, trendi",
@@ -268,7 +272,8 @@ tyolliset <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
   ) |>
   mutate(tiedot = "Työlliset")
 
-p_tyovoima_tyolliset <- rbind(tyovoima, tyolliset) |>
+# yhdistetään datasetit ja piirretään
+rbind(tyovoima, tyolliset) |>
     mutate(value = value / 1000) |>
     ptt_plot(
     grouping = tiedot,
@@ -280,29 +285,45 @@ p_tyovoima_tyolliset <- rbind(tyovoima, tyolliset) |>
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2, 
         unit = "(Miljoonaa henkilöä)", extra = "(ennuste)"),
-        value_multiplier = 0.001) 
-
-palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
-    filter(
-    tiedot == "Palkansaajat, 1000 henkilöä",
-    time >= "2014-01-01",
-    toimiala == "Yhteensä"
-) |>
-  mutate(value = value / 1000)
-
-
-# yhdistetään erikseen palkansaajat, koska tästä ei ennustetta. 
-p_tyovoima_tyolliset  %>% 
-  plotly::add_trace(data=palkansaajat, y = ~value,
-                    text = "Palkansaajat",
-                    type = "scatter", mode="lines",
-                    line = list(width = 4),
-                    color = "#C36B0D",
-                    hovertemplate = pttrobo:::ptt_plot_hovertemplate(
-                      list(rounding = 2, unit = "(Miljoonaa henkilöä)", extra = "", timeformat = attributes(d)$frequency$en)),
-                    name="Palkansaajat") |>
+        value_multiplier = 0.001) |>
   plotly::layout(
-    yaxis = list(range = c(1.9,3))
+    yaxis = list(range = c(2.2,3))
   )
+
+# Ei palkansaajoja käytössä
+# palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
+#     filter(
+#     tiedot == "Palkansaajat, 1000 henkilöä",
+#     time >= "2014-01-01",
+#     toimiala == "Yhteensä"
+# ) |>
+#   mutate(value = value / 1000)
+  # plotly::add_trace(data=palkansaajat, y = ~value,
+  #                   text = "Palkansaajat",
+  #                   type = "scatter", mode="lines",
+  #                   line = list(width = 4),
+  #                   color = "#C36B0D",
+  #                   hovertemplate = pttrobo:::ptt_plot_hovertemplate(
+  #                     list(rounding = 2, unit = "(Miljoonaa henkilöä)", extra = "", timeformat = attributes(d)$frequency$en)),
+  #                   name="Palkansaajat") |>
 ```
 
+## Työttömyys
+```{r}
+ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
+  filter(
+    tiedot == "Työttömyysaste, %, trendi",
+    time >= "2014-01-01"
+  ) |>
+  mutate(tiedot = "Työttömyysaste") |> 
+  ptt_plot(
+    grouping = tiedot,
+    title = "Työttömyysaste",
+    subtitle = "%, trendi",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T
+  ) |>
+  ptt_plot_add_prediction(ennuste_data)##  |>
+  ## ptt_plot_create_widget("")
+```
