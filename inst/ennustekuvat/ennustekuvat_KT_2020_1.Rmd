@@ -118,7 +118,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter(
     taloustoimi == "P3KS13 Julkiset kulutusmenot, menona",
-    tiedot == "Kausitasoitetun ja työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %",
+    ## tiedot == "Kausitasoitetun ja työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %",
+    tiedot == "Trendisarjan volyymin muutos vuodentakaisesta, %",
     time >= "2014-01-01"
   ) |>
   mutate(tiedot = "Julkinen kulutus") |>
