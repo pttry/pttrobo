@@ -46,7 +46,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     ## rangeslider = "2015-01-01",
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
@@ -73,7 +74,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     subtitle = "%, volyymin vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
@@ -97,7 +99,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     ## rangeslider = "2015-01-01",
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ## p |> ptt_plot_create_widget()
@@ -121,7 +124,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     subtitle = "Vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
@@ -150,7 +154,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     subtitle = "%, volyymin vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("investoinnit")
@@ -169,7 +174,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     title = "Työllisyysaste",
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE
+    rangeslider = FALSE,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
@@ -188,7 +194,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     title = "Työttömyysaste",
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE
+    rangeslider = FALSE,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("")
@@ -210,7 +217,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
     title = "Työvoima",
     subtitle = "1000 henkilöä",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE
+    rangeslider = FALSE,
+    hovertext =  list(rounding = 0, unit = "(1000 henkilöä)", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))  ##  |>
@@ -230,7 +238,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     title = "Työlliset",
     subtitle = "1000 henkilöä, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
-    rangeslider = FALSE
+    rangeslider = FALSE,
+    hovertext =  list(rounding = 0, unit = "(1000 henkilöä)", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
         unit = "(1000 henkilöä)", extra = "(ennuste)"))
@@ -270,10 +279,11 @@ rbind(tyovoima, tyolliset) |>
     subtitle = "Miljoonaa, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 2, unit = "(miljoonaa henkilöä)", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2,
-        unit = "(Miljoonaa henkilöä)", extra = "(ennuste)"),
+        unit = "(miljoonaa henkilöä)", extra = "(ennuste)"),
         value_multiplier = 0.001) |>
   plotly::layout(
     yaxis = list(range = c(2.2,3))
@@ -314,7 +324,8 @@ rbind(tyottomyysaste, tem_työttömyysaste) |>
     subtitle = "%, trendi",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
-    zeroline = T
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
