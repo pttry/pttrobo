@@ -18,7 +18,7 @@ library(tidyverse)
 library(statfitools)
 ```
 
-```{r, include=FALSE, eval=FALSE}
+```{r, include=FALSE}
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
