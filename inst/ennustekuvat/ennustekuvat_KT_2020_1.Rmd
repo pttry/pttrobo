@@ -52,6 +52,69 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   ptt_plot_add_prediction(ennuste_data)
 ```
 
+## BKT USA, euroalue, Suomi
+```{r}
+
+# luodaan bkt:t usa, suomi ja euroalue. indeksoidaan, perusvuodeksi 2020.
+
+# indeksointi apufunktio
+indeksoi <- function(d, vuosi = 2020){
+  bkt_avg_vuosi <- d |> 
+    filter(year(time) == vuosi) |> 
+    pull(value) |> 
+    mean()
+  d |> 
+    mutate(value = (value/bkt_avg_vuosi) * 100)
+} 
+
+usa_bkt <- ptt_data_robo("fred/GDPC1") |> 
+  filter(time >= "2014-01-01"
+) |> 
+  indeksoi() |> 
+  select(tiedot = series_id, time, value) |> 
+  mutate(tiedot = "USA")
+
+suomi_bkt <- ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter(
+    taloustoimi == "B1GMH Bruttokansantuote markkinahintaan",
+    tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa",
+    time >= "2014-01-01"
+  )  |> indeksoi() |> 
+  select(tiedot, time, value) |> 
+  mutate(tiedot = "Suomi")
+
+euroalue_bkt <- ptt_data_robo_l("eurostat/namq_10_gdp") %>% 
+    filter(geo == "Euro area - 19 countries  (from 2015)",
+        na_item == "Gross domestic product at market prices",
+        s_adj == "Seasonally and calendar adjusted data", 
+        unit == "Chain linked volumes, index 2015=100", 
+        time >= "2014-01-01") %>% 
+  indeksoi() |>
+  select(tiedot = na_item, time, value) |>
+  mutate(tiedot = "Euroalue")
+
+
+# yhdistetään
+rbind(usa_bkt, suomi_bkt, euroalue_bkt) |>
+  ptt_plot(
+    grouping = tiedot,
+    title = "Bruttokansantuote",
+    subtitle = "indeksi 2020 = 100",
+    caption =  "Lähde: Tilastokeskus, Fred, Eurostat ja PTT",
+    rangeslider = FALSE,
+    ## rangeslider = "2015-01-01",
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
+  ) |>
+  plotly::layout(
+    yaxis = list(range = c(85,115))
+  )
+#  ptt_plot_add_prediction(ennuste_data)
+  
+
+
+```
+
 ## Vienti ja tuonti
 
 ```{r}
@@ -348,7 +411,7 @@ ptt_data_robo_l("tidy/10yield") |>
   )  |> 
   ptt_plot_add_prediction(
      # tehdään ennustedatan halutuille sarjoille muunnos jotta vastaa maa -sarakkeen maita
-     ennuste_data %>% 
+     ennuste_data |> 
        mutate(sarja_nmi = case_when(
           sarja_nmi == "10V USA" ~ "USA",
           sarja_nmi == "10v Saksa" ~ "Saksa",
