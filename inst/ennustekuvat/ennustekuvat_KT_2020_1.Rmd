@@ -248,7 +248,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
 
 ```{r}
 # yhdistetään datasetit:
-tyovoima <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
+tyovoima <-
+  ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   filter(
     tiedot == "Työvoima, 1000 henkilöä",
     time >= "2014-01-01",
@@ -258,16 +259,18 @@ tyovoima <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
   mutate(tiedot = "Työvoima") |>
   select(tiedot, time, value)
 
-tyolliset <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
+tyolliset <-
+  ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
   filter(
     tiedot == "Työlliset, 1000 henkilöä, trendi",
     time >= "2014-01-01"
   ) |>
   mutate(tiedot = "Työlliset")
 
-p_tyovoima_tyolliset <- rbind(tyovoima, tyolliset) |>
-    mutate(value = value / 1000) |>
-    ptt_plot(
+p_tyovoima_tyolliset <-
+  rbind(tyovoima, tyolliset) |>
+  mutate(value = value / 1000) |>
+  ptt_plot(
     grouping = tiedot,
     title = "Työlliset ja työvoima",
     subtitle = "Miljoonaa, trendi",
@@ -275,21 +278,25 @@ p_tyovoima_tyolliset <- rbind(tyovoima, tyolliset) |>
     rangeslider = FALSE,
     zeroline = T
   ) |>
-  ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 2,
-        unit = "(Miljoonaa henkilöä)", extra = "(ennuste)"),
-        value_multiplier = 0.001)
+  ptt_plot_add_prediction(
+    ennuste_data,
+    hovertext = list(rounding = 2,
+                     unit = "(Miljoonaa henkilöä)",
+                     extra = "(ennuste)"),
+    value_multiplier = 0.001
+  )
 
-palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
-    filter(
+palkansaajat <-
+  ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
+  filter(
     tiedot == "Palkansaajat, 1000 henkilöä",
     time >= "2014-01-01",
     toimiala == "Yhteensä"
-) |>
+  ) |>
   mutate(value = value / 1000)
 
-
 # yhdistetään erikseen palkansaajat, koska tästä ei ennustetta.
-p_tyovoima_tyolliset  %>%
+p_tyovoima_tyolliset  |>
   plotly::add_trace(data=palkansaajat, y = ~value,
                     text = "Palkansaajat",
                     type = "scatter", mode="lines",
@@ -305,3 +312,22 @@ p_tyovoima_tyolliset  %>%
 ```
 
 ## Pitkät korot
+
+```{r}
+ptt_data_robo_l("tidy/10yield") |>
+  drop_na() |>
+  filter(time >= "2008-01-01") |>
+  select(maa, time, value) |> ## TODO bug in ptt_plot
+  ptt_plot(
+    grouping = maa,
+    title = "Työlliset ja työvoima",
+    subtitle = "Miljoonaa, trendi",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 2),
+    zeroline = T
+  )##  |> ## TODO xlsx-tiedostossa eri nimi kuin mikä tulee legendiin
+  ## ptt_plot_add_prediction(
+  ##   ennuste_data
+  ## )
+```
