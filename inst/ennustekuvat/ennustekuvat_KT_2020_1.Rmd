@@ -442,4 +442,22 @@ ptt_data_robo("fred/DCOILBRENTEU") |>
   )
 ```
 
+## Valuuttakurssi
 
+```{r}
+ptt_data_robo("ecb/EXR", dl_filter = "D.USD.EUR.SP00.A") |>
+  drop_na() |>
+  filter(time >= "2012-01-01") |>
+  mutate(tieto = "Euro/USD") |>
+  ptt_plot(
+    grouping = tieto,
+    title = "Valuuttakurssi",
+    subtitle = "Yhdysvaltain dollaria per euro",
+    caption =  "Lähde: Euroopan keskuspankki ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 2, unit = "$/€")
+  ) |>
+  ptt_plot_add_prediction(
+    ennuste_data
+  )
+```

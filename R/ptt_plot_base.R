@@ -105,7 +105,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
     row.data <- p$data |> drop_na() |> pmap(function(...) {
       as.character(list(...)) |> str_c(collapse = ";")
     }) |> unlist() |> str_c(collapse = "\\n")
-    col.names <- names(p$data) |> str_c(collapse = ";")
+    col.names <- names(p$data) |> str_replace("csv\\.data\\.tiedot","tiedot") |> str_c(collapse = ";")
     str_c(col.names,"\\n",row.data)
   })()
 
@@ -706,8 +706,8 @@ ptt_plot <- function(d,
       )
   }
 
-  p$data <- d |> rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
-    select(tiedot, time, value) |>
+  p$data <- d |> rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
+    select(csv.data.tiedot, time, value) |>
     mutate(
       across(everything(), ~ as.character(.x)),
       value = str_replace(value, "\\.",",")
@@ -804,11 +804,11 @@ ptt_plot_add_prediction <- function(p,
                 hovertemplate = ptt_plot_hovertemplate(hovertext))
   }
   pred_d <- pred_series |> map_dfr(~.x) |>
-    rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
-    select(tiedot, time, value) |>
-    distinct(tiedot, time, value) |>
+    rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
+    select(csv.data.tiedot, time, value) |>
+    distinct(csv.data.tiedot, time, value) |>
     mutate(
-      tiedot = str_c(tiedot, ", ennuste"),
+      tiedot = str_c(csv.data.tiedot, ", ennuste"),
       across(everything(), ~ as.character(.x)),
       value = str_replace(value, "\\.",",")
     )
@@ -893,14 +893,14 @@ ptt_plot_add_secondary_traces <-
     }
 
     sec_d <- map_dfr(split_d, ~ .x) |>
-      rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
-      select(tiedot, time, value) |>
+      rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
+      select(csv.data.tiedot, time, value) |>
       mutate(
-        tiedot = str_c(as_name(relates_to),", ",tiedot),
+        csv.data.tiedot = str_c(as_name(relates_to),", ",csv.data.tiedot),
         across(everything(), ~ as.character(.x)),
         value = str_replace(value, "\\.",",")
       )
-    p$data <- bind_rows(p$data, sec_d) |> arrange(time, tiedot)
+    p$data <- bind_rows(p$data, sec_d) |> arrange(time, csv.data.tiedot)
     p |> ptt_plot_set_modebar(p$title, p$png_attrs, T)
   }
 
