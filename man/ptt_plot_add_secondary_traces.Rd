@@ -22,7 +22,7 @@ ptt_plot_add_secondary_traces(
 
 \item{grouping}{Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.}
 
-\item{hovertext}{Uses parent ptt_plot specification if undefined. A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
+\item{hovertext}{Uses parent ptt_plot specification if undefined. A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)", dateformat = "\%Y-\%m-&d")".}
 
 \item{showlegend}{A locigal to show legend for secondary trace.}
 }

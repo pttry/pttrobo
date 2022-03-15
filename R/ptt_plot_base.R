@@ -484,13 +484,14 @@ ptt_plot_add_zeroline <- function(p, z) {
 ptt_plot_hovertemplate <- function(specs) {
 
   hovertemplate_freq <- function(f) {
-    if (is.null(f)) { "" } else {
+    if (is.null(f)) { "%Y-%m-%d" } else {
       switch(f,
              "Annual" = "%Y",
              "Quarterly" = "%YQ%q",
              "Monthly" = "%Y-%m-%d",
              "Weekly" = "%YW%V",
-             "Daily" = "%d.%m.%Y"
+             "Daily" = "%d.%m.%Y",
+             "%Y-%m-%d"
       )
     }
   }
@@ -507,7 +508,9 @@ ptt_plot_hovertemplate <- function(specs) {
       if(spec.name == "rounding") {
         if ((specs$rounding)%%1!=0) { stop("Hovertemplate rounding must be an integer.", call. = F) }
       } else if(spec.name == "dateformat") {
-        if (!is.character(specs$dateformat)) {
+        if (is.null(specs$dateformat)) {
+          specs$dateformat <- hovertemplate_freq(specs$dateformat)
+        } else if (!is.character(specs$dateformat)) {
           stop("Hovertemplate dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
         } else if (!(specs$dateformat %in% c("Annual", "Quarterly","Monthly","Weekly","Daily"))) {
           stop("Hovertemplate dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
@@ -583,6 +586,24 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
   cols# |> alter_color_for_accessibility() ## tähän tulee saavutettavuuskoodi
 }
 
+ptt_plot_get_frequency <- function(d) {
+  d_attrs <- attributes(d)
+  tf <- if(is.null(d_attrs$frequency)) {
+    message("No frequency attribute detected for hovertext time format, resorting to default %Y/%m/%d.")
+    NULL
+  } else if (is.list(d_attrs$frequency)) {
+    if(is.null(d_attrs$frequency$en)) {
+      message("No frequency attribute detected for hovertext time format, resorting to default %Y/%m/%d.")
+      NULL
+    } else{
+      as.character(d_attrs$frequency$en)
+    }
+  } else {
+    as.character(d_attrs$frequency)
+  }
+  tf
+}
+
 #' Creates a plotly object with visual specifications of ptt.
 #'
 #' Outputs a plotly object.
@@ -642,18 +663,11 @@ ptt_plot <- function(d,
 
   if(missing(hovertext)) {
     d_attrs <- attributes(d)
-    tf <- if(is.null(d_attrs$frequency)) {
-      message("No frequency attribute detected for hovertext time format, resorting to default %Y/%m/%d.")
-      NULL
-    } else if (is.list(d_attrs$frequency)) {
-      if(is.null(d_attrs$frequency$en)) {
-        message("No frequency attribute detected for hovertext time format, resorting to default %Y/%m/%d.")
-        NULL
-        } else{ d_attrs$frequency$en }
-    } else {
-      d_attrs$frequency
-      }
+    tf <- ptt_plot_get_frequency(d)
     hovertext <- list(rounding = 1, unit = "", extra = "", dateformat = tf)
+  } else if (!"dateformat" %in% names(hovertext)) {
+    print("jes")
+    hovertext$dateformat <- ptt_plot_get_frequency(d)
   }
 
   grouping <- enquo(grouping)
@@ -691,6 +705,7 @@ ptt_plot <- function(d,
                 color = I(color_vector[g.color]), type = "scatter", mode ='lines'
       )
   }
+
   p$data <- d |> rename(tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
     select(tiedot, time, value) |>
     mutate(
@@ -703,7 +718,6 @@ ptt_plot <- function(d,
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
   p$title <- title
-
 
   maxtime <- max(d$time)
 
@@ -816,7 +830,7 @@ ptt_plot_add_prediction <- function(p,
 #' @param secondary_data Tibble with secondary variables of one grouping in the parent ptt_plot object.
 #' @param relates_to The name of the grouping that the secondary data relates.
 #' @param grouping Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.
-#' @param hovertext Uses parent ptt_plot specification if undefined. A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
+#' @param hovertext Uses parent ptt_plot specification if undefined. A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "%Y-%m-&d")".
 #' @param showlegend A locigal to show legend for secondary trace.
 #' @return plotly object
 #' @examples
