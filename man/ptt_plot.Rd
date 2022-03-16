@@ -21,6 +21,7 @@ ptt_plot(
   font_size = 16,
   hovertext,
   axis_limits = list(x = c(NA, NA), y = c(NA, NA)),
+  plot_type = "scatter",
   height = 600,
   ...
 )
@@ -46,7 +47,9 @@ ptt_plot(
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 
-\item{axis_limits}{Determines the limits of the axes "list(x = c(NA,NA), y = c(NA,NA))".}
+\item{axis_limits}{Determines the limits of the axes (list(x = c(NA,NA), y = c(NA,NA)))".}
+
+\item{plot_type}{Determines the trace type for either the whole plot, or for all variables defined by grouping as name-value pairs (Character vector).}
 
 \item{height}{Height of the plot.}
 }
