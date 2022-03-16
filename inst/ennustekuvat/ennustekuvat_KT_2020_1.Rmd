@@ -342,6 +342,44 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("investoinnit")
 ```
+
+
+```{r}
+ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter(
+    taloustoimi %in% c(
+      "P51K Kiinteän pääoman bruttomuodostus, menona",
+      "P51KN111+N112 Rakennusinvestoinnit",
+      "P51KN113+N114 Kone-, laite- ja kuljetusvälineinvestoinnit: asejärjestelmät",
+      "P51KN115+N117 Kasvatettavat varat ja henkiset omaisuustuotteet"
+      ),
+    tiedot == "Trendisarjan volyymin muutos vuodentakaisesta, %",
+    time >= "2014-01-01"
+  ) |>
+  mutate(
+    tiedot = recode(taloustoimi,
+                    "P51K Kiinteän pääoman bruttomuodostus, menona" = "Yhteensä",
+                    "P51KN111+N112 Rakennusinvestoinnit" = "Rakennus",
+                    "P51KN113+N114 Kone-, laite- ja kuljetusvälineinvestoinnit: asejärjestelmät" = "Kone ja laite",
+                    "P51KN115+N117 Kasvatettavat varat ja henkiset omaisuustuotteet" = "Muut (aineettomat)",
+                    )
+  ) |>
+  ptt_plot(
+    grouping = tiedot,
+    title = "Investoinnit",
+    subtitle = "%, muutos, trendi",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
+  ) ## |>
+  ## ptt_plot_add_prediction(ennuste_data)##  |>
+  ## ptt_plot_create_widget("investoinnit")
+```
+
+
+
+
 ## Työllisyysaste
 
 ```{r}
