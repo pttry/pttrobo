@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 library(pttrobo)
 library(tidyverse)
 library(statfitools)
+library(lubridate)
 ```
 
 ```{r, include=FALSE}
