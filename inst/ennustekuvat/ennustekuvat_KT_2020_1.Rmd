@@ -96,10 +96,10 @@ yhdistetty_bkt_data <- rbind(usa_bkt, suomi_bkt, euroalue_bkt)
 
 # apufunktio indeksoinnin laskemiseen
 avg_value_2021 <- function(d, sarja){
-  d %>% 
-    filter(tiedot == sarja) %>% 
-    filter(year(time) == 2021) %>% 
-    pull(value) %>% mean()
+  d |> 
+    filter(tiedot == sarja) |> 
+    filter(year(time) == 2021) |> 
+    pull(value) |> mean()
 }
 
 #  Muokataan ennustedata. 
@@ -112,12 +112,12 @@ bkt_vertailu_ennusteet <- ennuste_data |>
   slice_tail(n = 2)
 
 #muokataan suomen BKT ennustedata indeksoituun muotoon
-ennuste_indeksoitu_2022 <- bkt_vertailu_ennusteet %>%
-  filter(year == "2022") %>% 
+ennuste_indeksoitu_2022 <- bkt_vertailu_ennusteet |>
+  filter(year == "2022") |> 
   mutate(value = avg_value_2021(yhdistetty_bkt_data, "Suomi") * (1 + value/100))
   
-ennuste_indeksoitu_2023 <- bkt_vertailu_ennusteet %>%
-  filter(year == "2023")  %>% 
+ennuste_indeksoitu_2023 <- bkt_vertailu_ennusteet |>
+  filter(year == "2023")  |> 
   mutate(value = (ennuste_indeksoitu_2022$value * (1 + value/100)))
 
 ennusteet_suomi_bkt <- rbind(ennuste_indeksoitu_2022, ennuste_indeksoitu_2023) |>
@@ -133,7 +133,8 @@ yhdistetty_bkt_data|>
     rangeslider = FALSE,
     ## rangeslider = "2015-01-01",
     zeroline = T,
-    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
+    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = ""),
+    axis_limits = list(y = c(89, 113))
   ) |>
   ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE)
 ```
@@ -168,36 +169,36 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 ## Kauppa- ja vaihtotase
 ```{r}
-vaihtotase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_114s.px") %>% 
+vaihtotase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_114s.px") |> 
   filter(maksutase_era == "CA Vaihtotase", 
          tiedot == "Netto, miljoonaa euroa",
         time >= "2014-01-01",
         time < "2022-01-01"
-) %>% 
+) |> 
   mutate(year = year(time)) 
 
 # tarkastetaan, että ei ole vajaita vuosia
-# vaihtotase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
+# vaihtotase |> group_by(year) |> count() # arvoja joka vuosi 12, ok.
 
-vaihtotase_summarized <- vaihtotase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
-  mutate(tiedot = "vaihtotase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value) 
+vaihtotase_summarized <- vaihtotase |> group_by(year) |> summarize(value = sum(value)) |> 
+  mutate(tiedot = "vaihtotase") |> mutate(time = as_date(paste0(year, "-07-01"))) |> select(tiedot, time, value) 
 
-kauppatase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") %>% 
+kauppatase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") |> 
   filter(tiedot == "Tulojen ja menojen erotus (netto), miljoonaa euroa",
          maksutase_era == "G Tavarat",
          time >= "2014-01-01",
-         time < "2022-01-01") %>% 
+         time < "2022-01-01") |> 
   mutate(year = year(time))
 
 # tarkastetaan että ei ole vajaita vuosia
-# kauppatase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
+# kauppatase |> group_by(year) |> count() # arvoja joka vuosi 12, ok.
 
-kauppatase_summarized <- kauppatase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
-  mutate(tiedot = "kauppatase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value)
+kauppatase_summarized <- kauppatase |> group_by(year) |> summarize(value = sum(value)) |> 
+  mutate(tiedot = "kauppatase") |> mutate(time = as_date(paste0(year, "-07-01"))) |> select(tiedot, time, value)
   
 
-rbind(vaihtotase_summarized, kauppatase_summarized) %>% 
-  mutate(value = value / 1000) %>% # muunnos miljardeihin
+rbind(vaihtotase_summarized, kauppatase_summarized) |> 
+  mutate(value = value / 1000) |> # muunnos miljardeihin
   ptt_plot(
     grouping=tiedot, 
     title = "Vaihtotase ja kauppatase", 
@@ -658,3 +659,27 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
   ##   ennuste_data
   ## )
 ```
+
+## Tulot ja kulutus
+```{r}
+ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
+  filter(time >= "2014-01-01") |>
+  filter(taloustoimi %in% c("B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto",
+                            "P31NCK Yksityiset kulutusmenot, menona"),
+         tiedot == "Volyymin muutokset, %") |>
+  mutate(taloustoimi = case_when(
+    taloustoimi == "B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto" ~ "Käytettävissä olevat tulot",
+    taloustoimi == "P31NCK Yksityiset kulutusmenot, menona" ~ "Yksityinen kulutus"
+  )) |>
+  ptt_plot(
+    grouping = taloustoimi,
+    title = "Tulot ja kulutus",
+    subtitle = "%-muutos, reaalinen",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
+  )
+  
+```
+
