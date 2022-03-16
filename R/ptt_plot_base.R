@@ -744,6 +744,7 @@ ptt_plot <- function(d,
 #' @param isolate_primary Separates the first factor in parent plot grouping by line width.
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param value_multiplier A number. Value of 0.001 would cause values to be divided by 1000, value of 1000 would cause values to be multiplied by 1000 hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
+#' @param custom_pred_data A boolean. If set to true, pred_data is required to be a dataframe/tibble with columns, year, sarja_nmi and value. With two prediction values per sarja_nmi.
 #' @return plotly object
 #' @examples
 #' e <- readxl::read_excel("ptt_ennusteet_KT.xlsx") |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
@@ -764,17 +765,26 @@ ptt_plot_add_prediction <- function(p,
                                     isolate_primary = F,
                                     showlegend = F,
                                     hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "Annual"),
-                                    value_multiplier = 1) {
+                                    value_multiplier = 1,
+                                    custom_pred_data = FALSE) {
   grouping <- enquo(grouping)
-  pred_series <- pred_data |>
-    filter(!!grouping %in% names(p$color_vector)) |>
-    mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
-    pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
-    select(year, !!grouping, value) |> group_by(!!grouping) |> slice_tail(n = n_obs) |>
-    mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |>
-    ungroup() |>
-    relocate(value, .after = time) |>
-    mutate(value = value * value_multiplier)
+  if (custom_pred_data == FALSE){
+    pred_series <- pred_data |>
+      filter(!!grouping %in% names(p$color_vector)) |>
+      mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
+      pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
+      select(year, !!grouping, value) |> group_by(!!grouping) |> slice_tail(n = n_obs) |>
+      mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |>
+      ungroup() |>
+      relocate(value, .after = time) |>
+      mutate(value = value * value_multiplier)
+  } else {
+    pred_series <- pred_data |>
+      mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |>
+      ungroup() |>
+      relocate(value, .after = time) |>
+      mutate(value = value * value_multiplier)
+  }
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
   zero.line <- p$add_zeroline

@@ -93,9 +93,39 @@ euroalue_bkt <- ptt_data_robo_l("eurostat/namq_10_gdp") %>%
   select(tiedot = na_item, time, value) |>
   mutate(tiedot = "Euroalue")
 
+yhdistetty_bkt_data <- rbind(usa_bkt, suomi_bkt, euroalue_bkt)
 
-# yhdistetään
-rbind(usa_bkt, suomi_bkt, euroalue_bkt) |>
+# apufunktio indeksoinnin laskemiseen
+avg_value_2021 <- function(d, sarja){
+  d %>% 
+    filter(tiedot == sarja) %>% 
+    filter(year(time) == 2021) %>% 
+    pull(value) %>% mean()
+}
+
+#  Muokataan ennustedata. 
+bkt_vertailu_ennusteet <- ennuste_data |>
+  filter(sarja_nmi %in% c("BKT")) |>
+  mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
+  pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
+  select(year, sarja_nmi, value) |> 
+  group_by(sarja_nmi) |> 
+  slice_tail(n = 2)
+
+#muokataan suomen BKT ennustedata indeksoituun muotoon
+ennuste_indeksoitu_2022 <- bkt_vertailu_ennusteet %>%
+  filter(year == "2022") %>% 
+  mutate(value = avg_value_2021(yhdistetty_bkt_data, "Suomi") * (1 + value/100))
+  
+ennuste_indeksoitu_2023 <- bkt_vertailu_ennusteet %>%
+  filter(year == "2023")  %>% 
+  mutate(value = (ennuste_indeksoitu_2022$value * (1 + value/100)))
+
+ennusteet_suomi_bkt <- rbind(ennuste_indeksoitu_2022, ennuste_indeksoitu_2023) |>
+  mutate(sarja_nmi = "Suomi")
+
+# luodaan kuvaaja käyttäen yhdistettyä bkt dataa sekä muodostettua ennustedataa
+yhdistetty_bkt_data|>
   ptt_plot(
     grouping = tiedot,
     title = "Bruttokansantuote",
@@ -106,10 +136,7 @@ rbind(usa_bkt, suomi_bkt, euroalue_bkt) |>
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
   ) |>
-  plotly::layout(
-    yaxis = list(range = c(85,115))
-  )
-#  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE)
   
 
 
@@ -138,11 +165,51 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     zeroline = T,
-    hovertext =  list(rounding = 1, unit = "%", extra = "")
+    hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
 
+## Kauppa- ja vaihtotase
+```{r}
+vaihtotase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_114s.px") %>% 
+  filter(maksutase_era == "CA Vaihtotase", 
+         tiedot == "Netto, miljoonaa euroa",
+        time >= "2014-01-01",
+        time < "2022-01-01"
+) %>% 
+  mutate(year = year(time)) 
+
+# tarkastetaan, että ei ole vajaita vuosia
+# vaihtotase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
+
+vaihtotase_summarized <- vaihtotase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
+  mutate(tiedot = "vaihtotase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value) 
+
+kauppatase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") %>% 
+  filter(tiedot == "Tulojen ja menojen erotus (netto), miljoonaa euroa",
+         maksutase_era == "G Tavarat",
+         time >= "2014-01-01",
+         time < "2022-01-01") %>% 
+  mutate(year = year(time))
+
+# tarkastetaan että ei ole vajaita vuosia
+# kauppatase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
+
+kauppatase_summarized <- kauppatase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
+  mutate(tiedot = "kauppatase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value)
+  
+
+rbind(vaihtotase_summarized, kauppatase_summarized) %>% 
+  mutate(value = value / 1000) %>% # muunnos miljardeihin
+  ptt_plot(
+    grouping=tiedot, 
+    title = "Vaihtotase ja kauppatase", 
+    subtitle = "Mrd. €", 
+    caption = "Tilastokeskus"
+  )
+
+```
 
 
 ## Yksityinen kulutus
