@@ -7,11 +7,13 @@ ptt_plot_set_grid <- function(p, grid_color) {
 }
 
 #' @importFrom plotly layout config
-ptt_plot_set_defaults <- function(p) {
+ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
+  if(!"x" %in% names(range)) {range$x <- c(NA,NA)}
+  if(!"y" %in% names(range)) {range$y <- c(NA,NA)}
   config(p, locale = "fi") |>
     layout(separators = ", ") |>
-    layout(xaxis = list(fixedrange = TRUE),
-           yaxis = list(fixedrange = T)) |>
+    layout(xaxis = list(fixedrange = T, range = range$x),
+           yaxis = list(fixedrange = T, range = range$y)) |>
     layout(hovermode = "compare") |>
     ptt_plot_set_axis_labels()
 
@@ -293,6 +295,7 @@ ptt_plot_config <- function(p,
                             height, width = 800,
                             margin = NA,
                             zeroline = F,
+                            axis_range = list(x = c(NA,NA), y = c(NA,NA)),
                             enable_rangeslider = list(rangeslider = F, max = as_date(today))) {
 
   if(missing(title) | missing(caption)) {
@@ -373,7 +376,7 @@ ptt_plot_config <- function(p,
   p$png_attrs <- png_attrs
 
   p |>
-    ptt_plot_set_defaults() |>
+    ptt_plot_set_defaults(axis_range) |>
     ptt_plot_rangeslider_responsive_y_scale() |>
     ptt_plot_set_grid(grid_color) |>
     ptt_plot_set_modebar(title, png_attrs) |>
@@ -501,26 +504,26 @@ ptt_plot_hovertemplate <- function(specs) {
   if (is.null(specs)) {
     NA
   } else if (!is.list(specs)) {
-    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", \"extra\" or \"dateformat\" or NULL", call. = F)
+    stop("Hovertext must be either a list with any of \"rounding\", \"unit\", \"extra\" or \"dateformat\", or NULL", call. = F)
   } else if (!any(c("rounding","unit","","extra", "dateformat") %in% names(specs))) {
-    stop("Hovertemplate must be a list with any of \"rounding\", \"unit\", \"extra\" or \"dateformat\" or NULL", call. = F)
+    stop("Hovertext must be either a list with any of \"rounding\", \"unit\", \"extra\" or \"dateformat\", or NULL", call. = F)
   } else {
-    specs_template <- list(rounding = 1, unit = "%", extra = "", dateformat = hovertemplate_freq("Monthly"))
+    specs_template <- list(rounding = 1, unit = "", extra = "", dateformat = hovertemplate_freq("Monthly"))
     for (spec.name in (names(specs) |> str_subset("^(rounding|unit|extra|dateformat)$"))) {
       if(spec.name == "rounding") {
-        if ((specs$rounding)%%1!=0) { stop("Hovertemplate rounding must be an integer.", call. = F) }
+        if ((specs$rounding)%%1!=0) { stop("Hovertext rounding must be an integer.", call. = F) }
       } else if(spec.name == "dateformat") {
         if (is.null(specs$dateformat)) {
           specs$dateformat <- hovertemplate_freq(specs$dateformat)
         } else if (!is.character(specs$dateformat)) {
-          stop("Hovertemplate dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
+          stop("Hovertext dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
         } else if (!(specs$dateformat %in% c("Annual", "Quarterly","Monthly","Weekly","Daily"))) {
-          stop("Hovertemplate dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
+          stop("Hovertext dateformat must be one of \"Annual\", \"Quarterly\", \"Monthly\", \"Weekly\" or \"Daily\", or NULL.", call. = F)
         } else {
           specs$dateformat <- hovertemplate_freq(specs$dateformat)
           }
       } else if (!is.character(specs[[spec.name]])) {
-        stop(str_c("Hovertemplate ",spec.name," must be a string.", call. = F))
+        stop(str_c("Hovertext ",spec.name," must be a string.", call. = F))
       }
       specs_template[[spec.name]] <- specs[[spec.name]]
     }
@@ -618,6 +621,7 @@ ptt_plot_get_frequency <- function(d) {
 #' @param font_color,grid_color,font_size Plot background element colors and font sizes.
 #' @param zeroline Determines zeroline inclusion (Logical or double).
 #' @param rangeslider Determines rangeslider inclusion (Logical).
+#' @param axis_limits Determines the limits of the axes (list(x = c(NA,NA), y = c(NA,NA)))".
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param isolate_primary Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.
 #' @param height Height of the plot.
@@ -655,6 +659,7 @@ ptt_plot <- function(d,
                      isolate_primary = F,
                      font_size = 16,
                      hovertext,
+                     axis_limits = list(x = c(NA,NA), y = c(NA,NA)),
                      height = 600,
                      ...
 ){
@@ -728,6 +733,7 @@ ptt_plot <- function(d,
                     legend_position = legend_position, legend_orientation = legend_orientation,
                     tick_color = font_color, grid_color = grid_color, margin = margin,
                     height = height,
+                    axis_range = axis_limits,
                     zeroline = list(zeroline = zeroline, xrange = list(min = min(d$time), max = maxtime)),
                     enable_rangeslider = list(rangeslider = rangeslider, max = maxtime))
 }

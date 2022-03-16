@@ -7,7 +7,8 @@
 yaml_to_excel(
   file,
   xlsx_path = system.file("ennustedata_xlsx", package = "pttrobo"),
-  start_year
+  start_year,
+  transpose = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ yaml_to_excel(
 \item{xlsx_path}{A path to save excel files.}
 
 \item{start_year}{A numeric. Year to start data}
+
+\item{transpose}{A logical to also transpose data for excel.}
 }
 \description{
 Read data yaml file, get data, and output xlxs files

@@ -20,6 +20,7 @@ ptt_plot(
   isolate_primary = F,
   font_size = 16,
   hovertext,
+  axis_limits = list(x = c(NA, NA), y = c(NA, NA)),
   height = 600,
   ...
 )
@@ -44,6 +45,8 @@ ptt_plot(
 \item{isolate_primary}{Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.}
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
+
+\item{axis_limits}{Determines the limits of the axes "list(x = c(NA,NA), y = c(NA,NA))".}
 
 \item{height}{Height of the plot.}
 }
