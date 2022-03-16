@@ -555,7 +555,8 @@ rbind(tyottomyysaste, tem_työttömyysaste) |>
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     zeroline = T,
-    hovertext =  list(rounding = 1, unit = "%", extra = "")
+    hovertext =  list(rounding = 1, unit = "%", extra = ""),
+    axis_limits = list(y = c(5,15))
   ) |>
   ptt_plot_add_prediction(ennuste_data)
 ```
