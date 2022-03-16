@@ -40,7 +40,7 @@ ptt_update_ennustedata("MAdata_", start_year = 2013)
 ptt_copy_ennustedata("MA")
 
 # Pysyvä alkuvuosi
-ptt_update_ennustedata("MAdata_Puuk", start_year = 2010, transpose = TRUE)
+ptt_update_ennustedata("MAdata_", start_year = 2010, transpose = TRUE)
 ptt_copy_ennustedata("MA", path = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - MAdata_jatkuva")
 
 
