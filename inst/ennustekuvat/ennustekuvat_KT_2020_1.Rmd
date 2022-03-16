@@ -518,3 +518,38 @@ bind_rows(cpi_es, cpi_us) |>
 
   
 ```
+
+## Ansiotasoindeksi
+
+Huom. reaalinen ansiotasoindeksi poikkeaa hieman edellisen ennusteen kalvosarjan kuviosta. Tarkista onko deflaattori ja indeksikaava sama. Tässä on käytetty kansallista kuluttajahintaindeksiä.
+
+```{r}
+
+khi_q <-
+  ptt_data_robo("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |>
+  filter(
+    hyodyke == "0 KULUTTAJAHINTAINDEKSI",
+    tiedot == "Pisteluku"
+  ) |>
+  mutate(time = floor_date(time, "quarter")) |>
+  with_groups(time, summarize, khi = mean(value))
+
+ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
+  inner_join(khi_q, by = "time") |>
+  transmute(time, Nimellinen = value, Reaalinen = value/khi) |>
+  pivot_longer(c(Nimellinen, Reaalinen), names_to = "tieto")|>
+  with_groups(tieto, mutate, value = 100 * (value/lag(value, 4, order_by = time) - 1)) |>
+  filter(time >= "2013-01-01") |>
+  ptt_plot(
+    grouping = tieto,
+    title = "Ansiotasoindeksi",
+    subtitle = "%, vuosimuutos",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 1),
+    zeroline = T
+  ) ## |>
+  ## ptt_plot_add_prediction(
+  ##   ennuste_data
+  ## )
+```
