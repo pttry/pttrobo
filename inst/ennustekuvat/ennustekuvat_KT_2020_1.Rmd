@@ -96,28 +96,28 @@ yhdistetty_bkt_data <- rbind(usa_bkt, suomi_bkt, euroalue_bkt)
 
 # apufunktio indeksoinnin laskemiseen
 avg_value_2021 <- function(d, sarja){
-  d %>% 
-    filter(tiedot == sarja) %>% 
-    filter(year(time) == 2021) %>% 
+  d %>%
+    filter(tiedot == sarja) %>%
+    filter(year(time) == 2021) %>%
     pull(value) %>% mean()
 }
 
-#  Muokataan ennustedata. 
+#  Muokataan ennustedata.
 bkt_vertailu_ennusteet <- ennuste_data |>
   filter(sarja_nmi %in% c("BKT")) |>
   mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
   pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
-  select(year, sarja_nmi, value) |> 
-  group_by(sarja_nmi) |> 
+  select(year, sarja_nmi, value) |>
+  group_by(sarja_nmi) |>
   slice_tail(n = 2)
 
 #muokataan suomen BKT ennustedata indeksoituun muotoon
 ennuste_indeksoitu_2022 <- bkt_vertailu_ennusteet %>%
-  filter(year == "2022") %>% 
+  filter(year == "2022") %>%
   mutate(value = avg_value_2021(yhdistetty_bkt_data, "Suomi") * (1 + value/100))
-  
+
 ennuste_indeksoitu_2023 <- bkt_vertailu_ennusteet %>%
-  filter(year == "2023")  %>% 
+  filter(year == "2023")  %>%
   mutate(value = (ennuste_indeksoitu_2022$value * (1 + value/100)))
 
 ennusteet_suomi_bkt <- rbind(ennuste_indeksoitu_2022, ennuste_indeksoitu_2023) |>
@@ -167,48 +167,33 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ```
 
 ## Kauppa- ja vaihtotase
-```{r}
-vaihtotase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_114s.px") %>% 
-  filter(maksutase_era == "CA Vaihtotase", 
-         tiedot == "Netto, miljoonaa euroa",
-        time >= "2014-01-01",
-        time < "2022-01-01"
-) %>% 
-  mutate(year = year(time)) 
 
-# tarkastetaan, että ei ole vajaita vuosia
-# vaihtotase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
-
-vaihtotase_summarized <- vaihtotase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
-  mutate(tiedot = "vaihtotase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value) 
-
-kauppatase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") %>% 
-  filter(tiedot == "Tulojen ja menojen erotus (netto), miljoonaa euroa",
-         maksutase_era == "G Tavarat",
-         time >= "2014-01-01",
-         time < "2022-01-01") %>% 
-  mutate(year = year(time))
-
-# tarkastetaan että ei ole vajaita vuosia
-# kauppatase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
-
-kauppatase_summarized <- kauppatase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
-  mutate(tiedot = "kauppatase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value)
-  
-
-rbind(vaihtotase_summarized, kauppatase_summarized) %>% 
-  mutate(value = value / 1000) %>% # muunnos miljardeihin
+```{r vaihtotase}
+ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") |>
+  filter(
+    tiedot == "Tulojen ja menojen erotus (netto), miljoonaa euroa",
+    maksutase_era %in% c("CA Vaihtotase", "G Tavarat"),
+    time >= "2014-01-01"
+  ) |>
+  mutate(time = year(time)) |>
+  with_groups(c(maksutase_era, time), filter, n() == 12) |>
+  with_groups(c(maksutase_era, time), summarize, value = sum(value)/1000) |>
+  mutate(
+    time = make_date(time, 7),
+    maksutase_era = recode(maksutase_era,
+                           "CA Vaihtotase" = "Vaihtotase",
+                           "G Tavarat" = "Kauppatase")
+  ) |>
   ptt_plot(
-    grouping=tiedot, 
-    title = "Vaihtotase ja kauppatase", 
-    subtitle = "Mrd. €", 
+    grouping = maksutase_era,
+    title = "Vaihtotase ja kauppatase",
+    subtitle = "Mrd. €",
     caption = "Tilastokeskus",
     rangeslider = F,
     axis_limits = list(x = c("2014-01-01","2021-12-30")),
     hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
-    plot_type = c("vaihtotase" = "bar", "kauppatase" = "scatter")
-  ) 
-
+    plot_type = c("Vaihtotase" = "bar", "Kauppatase" = "scatter")
+  )
 ```
 
 
@@ -261,7 +246,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 ## Julkinen velka
 
-```{r}
+```{r julkinen_velka}
 ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   filter(
     time >= "2014-01-01",
@@ -285,7 +270,7 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
 
 ## Julkisen sektorin tasapaino
 
-```{r}
+```{r julkinen_tasapaino}
 ptt_data_robo_l("StatFin/jul/jali/statfin_jali_pxt_122g.px") |>
   filter(
     sektori %in% c(
@@ -659,7 +644,7 @@ bind_rows(cpi_es, cpi_us) |>
   ##   ennuste_data
   ## )
 
-  
+
 ```
 
 ## Ansiotasoindeksi
