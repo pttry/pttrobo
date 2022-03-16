@@ -96,10 +96,10 @@ yhdistetty_bkt_data <- rbind(usa_bkt, suomi_bkt, euroalue_bkt)
 
 # apufunktio indeksoinnin laskemiseen
 avg_value_2021 <- function(d, sarja){
-  d %>%
-    filter(tiedot == sarja) %>%
-    filter(year(time) == 2021) %>%
-    pull(value) %>% mean()
+  d |> 
+    filter(tiedot == sarja) |> 
+    filter(year(time) == 2021) |> 
+    pull(value) |> mean()
 }
 
 #  Muokataan ennustedata.
@@ -112,12 +112,12 @@ bkt_vertailu_ennusteet <- ennuste_data |>
   slice_tail(n = 2)
 
 #muokataan suomen BKT ennustedata indeksoituun muotoon
-ennuste_indeksoitu_2022 <- bkt_vertailu_ennusteet %>%
-  filter(year == "2022") %>%
+ennuste_indeksoitu_2022 <- bkt_vertailu_ennusteet |>
+  filter(year == "2022") |> 
   mutate(value = avg_value_2021(yhdistetty_bkt_data, "Suomi") * (1 + value/100))
-
-ennuste_indeksoitu_2023 <- bkt_vertailu_ennusteet %>%
-  filter(year == "2023")  %>%
+  
+ennuste_indeksoitu_2023 <- bkt_vertailu_ennusteet |>
+  filter(year == "2023")  |> 
   mutate(value = (ennuste_indeksoitu_2022$value * (1 + value/100)))
 
 ennusteet_suomi_bkt <- rbind(ennuste_indeksoitu_2022, ennuste_indeksoitu_2023) |>
@@ -131,7 +131,10 @@ yhdistetty_bkt_data|>
     subtitle = "Indeksi 2020 = 100",
     caption =  "Lähde: Tilastokeskus, BEA, Eurostat ja PTT",
     rangeslider = FALSE,
-    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
+    ## rangeslider = "2015-01-01",
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = ""),
+    axis_limits = list(y = c(89, 113))
   ) |>
   ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE)
 ```
@@ -165,7 +168,6 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ```
 
 ## Kauppa- ja vaihtotase
-
 ```{r vaihtotase}
 ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") |>
   filter(
@@ -266,6 +268,29 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   )
 ```
 
+## Tulot ja kulutus
+```{r}
+ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
+  filter(time >= "2014-01-01") |>
+  filter(taloustoimi %in% c("B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto",
+                            "P31NCK Yksityiset kulutusmenot, menona"),
+         tiedot == "Volyymin muutokset, %") |>
+  mutate(taloustoimi = case_when(
+    taloustoimi == "B6NS14 Käytettävissä oleva tulo, kotitaloudet, netto" ~ "Käytettävissä olevat tulot",
+    taloustoimi == "P31NCK Yksityiset kulutusmenot, menona" ~ "Yksityinen kulutus"
+  )) |>
+  ptt_plot(
+    grouping = taloustoimi,
+    title = "Tulot ja kulutus",
+    subtitle = "%-muutos, reaalinen",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
+  )
+  
+```
+
 ## Julkisen sektorin tasapaino
 
 ```{r julkinen_tasapaino}
@@ -296,7 +321,6 @@ ptt_data_robo_l("StatFin/jul/jali/statfin_jali_pxt_122g.px") |>
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   )
 ```
-
 
 ## Investoinnit
 
@@ -679,3 +703,5 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
   ##   ennuste_data
   ## )
 ```
+
+
