@@ -136,7 +136,6 @@ yhdistetty_bkt_data|>
     hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
   ) |>
   ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE)
-  
 ```
 
 ## Vienti ja tuonti
@@ -203,8 +202,12 @@ rbind(vaihtotase_summarized, kauppatase_summarized) %>%
     grouping=tiedot, 
     title = "Vaihtotase ja kauppatase", 
     subtitle = "Mrd. €", 
-    caption = "Tilastokeskus"
-  )
+    caption = "Tilastokeskus",
+    rangeslider = F,
+    axis_limits = list(x = c("2014-01-01","2021-12-30")),
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
+    plot_type = c("vaihtotase" = "bar", "kauppatase" = "scatter")
+  ) 
 
 ```
 
