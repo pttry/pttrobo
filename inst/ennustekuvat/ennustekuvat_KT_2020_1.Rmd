@@ -58,12 +58,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 # indeksointi apufunktio
 indeksoi <- function(d, vuosi = 2020){
-  bkt_avg_vuosi <- d |>
-    filter(year(time) == vuosi) |>
-    pull(value) |>
-    mean()
-  d |>
-    mutate(value = (value/bkt_avg_vuosi) * 100)
+  d |> mutate(value = (value/mean(value[year(time) == vuosi])) * 100)
 }
 
 usa_bkt <-
@@ -98,12 +93,12 @@ euroalue_bkt <-
   mutate(tiedot = "Euroalue")
 
 # yhdistetään
-rbind(usa_bkt, suomi_bkt, euroalue_bkt) |>
+bind_rows(usa_bkt, suomi_bkt, euroalue_bkt) |>
   ptt_plot(
     grouping = tiedot,
     title = "Bruttokansantuote",
-    subtitle = "indeksi 2020 = 100",
-    caption =  "Lähde: Tilastokeskus, Fred, Eurostat ja PTT",
+    subtitle = "Indeksi 2020 = 100",
+    caption =  "Lähde: Tilastokeskus, BEA, Eurostat ja PTT",
     rangeslider = FALSE,
     ## rangeslider = "2015-01-01",
     zeroline = T,
