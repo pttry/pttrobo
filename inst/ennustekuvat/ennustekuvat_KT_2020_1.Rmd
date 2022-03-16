@@ -259,6 +259,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ```
 
 ## Julkinen velka
+
 ```{r}
 ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   filter(
@@ -280,6 +281,38 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
     yaxis = list(range = c(55,75))
   )
 ```
+
+## Julkisen sektorin tasapaino
+
+```{r}
+ptt_data_robo_l("StatFin/jul/jali/statfin_jali_pxt_122g.px") |>
+  filter(
+    sektori %in% c(
+      "S13 Julkisyhteisöt",
+      "S1311 Valtionhallinto",
+      "S1313 Paikallishallinto",
+      "S1314 Sosiaaliturvarahastot"
+    ),
+    tiedot == "EDP-alijäämä (-) / EDP-ylijäämä (+), suhde BKT:hen, %",
+    time >= "2013-01-01"
+  ) |>
+  mutate(sektori = recode(
+    sektori,
+    "S13 Julkisyhteisöt" = "Yhteensä",
+    "S1311 Valtionhallinto" = "Valtio",
+    "S1313 Paikallishallinto" = "Kunnat",
+    "S1314 Sosiaaliturvarahastot" = "Sosiaaliturvarahastot"
+  )) |>
+  ptt_plot(
+    grouping = sektori,
+    title = "Julkisen sektorin tasapaino",
+    subtitle = "Nettoluotonanto, % BKT:seen",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
+  )
+```
+
 
 ## Investoinnit
 

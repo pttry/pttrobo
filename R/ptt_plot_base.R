@@ -8,8 +8,12 @@ ptt_plot_set_grid <- function(p, grid_color) {
 
 #' @importFrom plotly layout config
 ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
-  if(!"x" %in% names(range)) {range$x <- c(NA,NA)}
-  if(!"y" %in% names(range)) {range$y <- c(NA,NA)}
+  if(!"x" %in% names(range)) { range$x <- c(NA,NA) }
+  if(!"y" %in% names(range)) { range$y <- c(NA,NA) }
+  ## if(!any(is.double(range$y))) { message("Provide axis limits for y as type double!") }
+  if(!all(is.na(range$y)) & any(is.na(range$y)) || !all(is.na(range$x)) & any(is.na(range$x))) {
+    message("Provide both ends for any axis limits!")
+    }
   config(p, locale = "fi") |>
     layout(separators = ", ") |>
     layout(xaxis = list(fixedrange = T, range = range$x),
@@ -624,6 +628,7 @@ ptt_plot_get_frequency <- function(d) {
 #' @param axis_limits Determines the limits of the axes (list(x = c(NA,NA), y = c(NA,NA)))".
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param isolate_primary Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.
+#' @param plot_type Determines the trace type for either the whole plot, or for all variables defined by grouping as name-value pairs (Character vector).
 #' @param height Height of the plot.
 #' @return plotly object
 #' @examples
@@ -643,7 +648,7 @@ ptt_plot_get_frequency <- function(d) {
 #' @importFrom plotly plot_ly add_trace
 #' @importFrom rlang enquo as_name set_names
 #' @importFrom dplyr group_split
-#' @importFrom stringr str_length str_replace
+#' @importFrom stringr str_length str_replace str_c
 
 ptt_plot <- function(d,
                      grouping,
@@ -660,6 +665,7 @@ ptt_plot <- function(d,
                      font_size = 16,
                      hovertext,
                      axis_limits = list(x = c(NA,NA), y = c(NA,NA)),
+                     plot_type = "scatter",
                      height = 600,
                      ...
 ){
@@ -682,6 +688,16 @@ ptt_plot <- function(d,
 
   unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
 
+  if(!all(plot_type %in% c("scatter","bar"))) {
+    stop("Plot type must be \"scatter\" or \"bar\", or a vector of name_value pairs!", call. = F)
+  } else if (length(plot_type) == 1 & is.null(names(plot_type))){
+    d <- d %>% mutate(plot.type = plot_type)
+  } else if (!all(unique_groups %in% names(plot_type))) {
+    stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding plot type!"), call. = F)
+    } else {
+    d <- mutate(d, plot.type = str_replace_all(!!grouping, plot_type))
+  }
+
   color_vector <- (function() {
     color_vector <- if (isolate_primary == T) {
       ptt_plot_set_colors(1) |> rep(length(unique_groups))
@@ -693,22 +709,25 @@ ptt_plot <- function(d,
 
   p <- plot_ly(d, x = ~ time, height = height)
 
-  split_d <- group_split(d, !!grouping) |> rev()
+  split_d <- group_split(d, !!grouping)
+  # split_d <- if(plot_type == "scatter") { rev(split_d) } else { split_d }
 
   for (g in split_d) {
     g.color <- unique(g[[as_name(grouping)]])
     g.name <- unique(g[[as_name(grouping)]])
     g.level <-  which(g.name == levels(g.name))
+    g.type <- unique(g$plot.type)
     lw <- if(!isolate_primary) { 4 } else {seq.int(4,1,length.out = length(levels(g.name)))[g.level]}
     legend.rank <- g.level * 100
     p <- p |>
       add_trace(data=g, y = ~value, text = g.name,
+                texttemplate = NA,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
-                line = list(width = lw),
+                line = if(g.type == "scatter") { list(width = lw) } else { NULL },
                 legendgroup = g.name,
                 legendrank = legend.rank,
                 name = g.name,
-                color = I(color_vector[g.color]), type = "scatter", mode ='lines'
+                color = I(color_vector[g.color]), type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
       )
   }
 
