@@ -180,7 +180,7 @@ vaihtotase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_114s.px") %>
 # vaihtotase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
 
 vaihtotase_summarized <- vaihtotase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
-  mutate(tiedot = "vaihtotase") %>% mutate(time = as_date(paste0(year, "-01-01"))) %>% select(tiedot, time, value) 
+  mutate(tiedot = "vaihtotase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value) 
 
 kauppatase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") %>% 
   filter(tiedot == "Tulojen ja menojen erotus (netto), miljoonaa euroa",
@@ -193,7 +193,7 @@ kauppatase <- ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") %>
 # kauppatase %>% group_by(year) %>% count() # arvoja joka vuosi 12, ok.
 
 kauppatase_summarized <- kauppatase %>% group_by(year) %>% summarize(value = sum(value)) %>% 
-  mutate(tiedot = "kauppatase") %>% mutate(time = as_date(paste0(year, "-01-01"))) %>% select(tiedot, time, value)
+  mutate(tiedot = "kauppatase") %>% mutate(time = as_date(paste0(year, "-07-01"))) %>% select(tiedot, time, value)
   
 
 rbind(vaihtotase_summarized, kauppatase_summarized) %>% 
@@ -204,8 +204,9 @@ rbind(vaihtotase_summarized, kauppatase_summarized) %>%
     subtitle = "Mrd. €", 
     caption = "Tilastokeskus",
     rangeslider = F,
+    axis_limits = list(x = c("2014-01-01","2021-12-30")),
     hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
-    axis_limits = list(time = c(as_date("2014-01-01"),as_date("2017-01-01")))
+    plot_type = c("vaihtotase" = "bar", "kauppatase" = "scatter")
   ) 
 
 ```
