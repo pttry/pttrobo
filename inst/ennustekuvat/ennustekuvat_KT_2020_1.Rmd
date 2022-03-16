@@ -482,3 +482,39 @@ ptt_data_robo("ecb/EXR", dl_filter = "D.USD.EUR.SP00.A") |>
     ennuste_data
   )
 ```
+
+## Kuluttajahintaindeksi
+
+```{r}
+cpi_es <-
+  ptt_data_robo("eurostat/prc_hicp_manr", geo_labels = "fi") |>
+  filter(
+    geo %in% c("Suomi", "EA"),
+    coicop == "All-items HICP"
+  ) |>
+  mutate(geo = recode(geo, EA = "Euroalue")) |>
+  select(geo, time, value)
+
+cpi_us <-
+  ptt_data_robo("fred/CPIAUCSL", units = "pc1") |>
+  mutate(geo = "USA") |>
+  select(geo, time, value)
+
+bind_rows(cpi_es, cpi_us) |>
+  filter(time >= "2013-01-01") |>
+  mutate(geo = fct_relevel(geo, "Suomi", "Euroalue", "USA")) |>
+  ptt_plot(
+    grouping = geo,
+    title = "Kuluttajahinnat",
+    subtitle = "%-muutos",
+    caption =  "Lähde: Tilastokeskus, Eurostat, BLS ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 1),
+    zeroline = T
+  ) ## |>
+  ## ptt_plot_add_prediction(
+  ##   ennuste_data
+  ## )
+
+  
+```
