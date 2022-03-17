@@ -53,6 +53,48 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   ptt_plot_add_prediction(ennuste_data)
 ```
 
+## Venäjän loppukysynnän osuus arvonlisästä
+
+```{r}
+
+pdat_tiva_va <- robonomistClient::data_get("oecd/TIVA_2021_C1", tidy_time = TRUE) |> 
+  filter(
+    Indicator %in% c("Value added", "Domestic value added embodied in foreign final demand"),
+                `Country / Region` %in% c("Finland", "Euro area (19 countries)", "China (People's Republic of)", "United States"),
+                # `Partner country / region` %in% c("Russian Federation", "World"),
+                Industry == "TOTAL"
+         ) |> 
+  collect() |> 
+  mutate(value = as.numeric(value)) |> 
+  statfitools::clean_names() |> 
+  mutate(across(where(is.character), as_factor))
+
+pdat_tiva_va |>
+  filter_recode(
+    country_region = c(
+    "Suomi" = "Finland",
+    "Euroalue" = "Euro area (19 countries)",
+    "Kiina" = "China (People's Republic of)",
+    "USA" = "United States"
+    )
+    # ,
+    # partner_country_region = c("Russian Federation")
+  ) |> 
+  group_by(time, country_region) |> 
+  summarise(value = 100*value[indicator == "Domestic value added embodied in foreign final demand" & 
+                              partner_country_region == "Russian Federation"] /
+              value[indicator == "Value added"]) |> 
+  ungroup() |> 
+  aplot_lines(colour = country_region,
+              title = "Venäjän loppukysynnän osuus BKT:sta",
+              subtitle ="%",
+              source = "OECD")
+
+
+
+```
+
+
 ## BKT USA, euroalue, Suomi
 ```{r}
 
