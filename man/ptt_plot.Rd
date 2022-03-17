@@ -16,7 +16,7 @@ ptt_plot(
   font_color = "#696969",
   grid_color = "#E8E8E8",
   zeroline = F,
-  rangeslider = T,
+  rangeslider = FALSE,
   isolate_primary = F,
   font_size = 16,
   hovertext,
