@@ -51,6 +51,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
     str_c('
           function(gd) {
           delete gd.layout.xaxis.rangeslider;
+          alert(JSON.stringify(gd.layout.bargap))
           gd.layout.margin.t = ',layout$margin_t,';
           gd.layout.margin.b = ',layout$margin_b,';
           gd.layout.images[0].sizex = ',60/ht/1.5,'
@@ -485,7 +486,13 @@ ptt_plot_add_zeroline <- function(p, z) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
+    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y")) |>
+      onRender(jsCode = "
+function(gd) {
+let zeroline_relayout = {'shapes[0].x0': gd.layout.xaxis.range[0], 'shapes[0].x1': gd.layout.xaxis.range[1]}
+Plotly.relayout(gd, zeroline_relayout)
+}
+                                                         ")
   }
 }
 
@@ -691,7 +698,7 @@ ptt_plot <- function(d,
   if(!all(plot_type %in% c("scatter","bar"))) {
     stop("Plot type must be \"scatter\" or \"bar\", or a vector of name_value pairs!", call. = F)
   } else if (length(plot_type) == 1 & is.null(names(plot_type))){
-    d <- d %>% mutate(plot.type = plot_type)
+    d <- d |> mutate(plot.type = plot_type)
   } else if (!all(unique_groups %in% names(plot_type))) {
     stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding plot type!"), call. = F)
     } else {
@@ -724,6 +731,7 @@ ptt_plot <- function(d,
                 texttemplate = NA,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
                 line = if(g.type == "scatter") { list(width = lw) } else { NULL },
+                offsetgroup = if(g.type == "bar") { g.name } else { NULL },
                 legendgroup = g.name,
                 legendrank = legend.rank,
                 name = g.name,
@@ -743,6 +751,10 @@ ptt_plot <- function(d,
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
   p$title <- title
+  p$trace_types <- (function() {
+    traces <- distinct(d, !!grouping, plot.type)
+    traces$plot.type |> set_names(traces[[as_name(grouping)]])
+  })()
 
   maxtime <- max(d$time)
 
@@ -781,6 +793,7 @@ ptt_plot <- function(d,
 #' @importFrom plotly plot_ly add_lines
 #' @importFrom stringr str_replace
 #' @importFrom purrr reduce map_dfr
+#' @importFrom lubridate floor_date years
 #' @export
 ptt_plot_add_prediction <- function(p,
                                     pred_data,
@@ -789,9 +802,10 @@ ptt_plot_add_prediction <- function(p,
                                     with_labs = T,
                                     isolate_primary = F,
                                     showlegend = F,
-                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "Annual"),
+                                    hovertext = list(rounding = 1, unit = "", extra = "(ennuste)", dateformat = "Annual"),
                                     value_multiplier = 1,
-                                    custom_pred_data = FALSE) {
+                                    custom_pred_data = FALSE
+                                    ) {
   grouping <- enquo(grouping)
   if (custom_pred_data == FALSE){
     pred_series <- pred_data |>
@@ -812,11 +826,11 @@ ptt_plot_add_prediction <- function(p,
   }
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
-  zero.line <- p$add_zeroline
-  zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
-  pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
+  # zero.line <- p$add_zeroline
+  # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
+  pred_series <- pred_series |> droplevels() |> mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
-  pred_groups <- (pred_series %>% reduce(bind_rows))[[as_name(grouping)]] |> unique()
+  pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
   if(!all(pred_groups %in% names(color_vector))) {
     stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
   }
@@ -828,16 +842,33 @@ ptt_plot_add_prediction <- function(p,
     show.legend <- ifelse(!s.name %in% legend.items, showlegend, F)
     legend.items <- c(legend.items, s.name) |> unique()
     legend.rank <- s.level * 1.1 + 1
+    s.type <- unique(s$plot.type)
+    # print(s %>% bind_rows(mutate(s, value = 0)) %>% arrange(time, value))
+    if(s.type == "bar") {
+      s <- s %>% mutate(count = 2) %>% uncount(count) %>% mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
+      template <- ptt_plot_hovertemplate(hovertext) %>% str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
+      p <- p |>
+        add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
+                  hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
+                  color = I(color_vector[s.name]),
+                  name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
+                  legendgroup = s.name,
+                  hoverinfo = text,
+                  legendrank = legend.rank,
+                  showlegend = show.legend,
+                  hovertemplate = template)
+  } else {
     p <- p |>
-      add_lines(data = s, y = ~value , x = ~time, text = s[[as_name(grouping)]],
-                type = "scatter", mode="lines",
+      add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "lines",
                 line = list(width = lw),
                 color = I(color_vector[s.name]),
                 name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
                 legendgroup = s.name,
+                hoverinfo = text,
                 legendrank = legend.rank,
                 showlegend = show.legend,
                 hovertemplate = ptt_plot_hovertemplate(hovertext))
+    }
   }
   pred_d <- pred_series |> map_dfr(~.x) |>
     rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
@@ -853,7 +884,7 @@ ptt_plot_add_prediction <- function(p,
     arrange(time, tiedot)
   p |>
     ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
-    ptt_plot_add_zeroline(zero.line) |>
+    # ptt_plot_add_zeroline(zero.line) |>
     ptt_plot_set_modebar(p$title, p$png_attrs, T)
 }
 

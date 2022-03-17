@@ -12,9 +12,9 @@ ptt_plot_add_prediction(
   with_labs = T,
   isolate_primary = F,
   showlegend = F,
-  hovertext = list(rounding = 1, unit = "\%", extra = "(ennuste)", dateformat =
-    "Annual"),
-  value_multiplier = 1
+  hovertext = list(rounding = 1, unit = "", extra = "(ennuste)", dateformat = "Annual"),
+  value_multiplier = 1,
+  custom_pred_data = FALSE
 )
 }
 \arguments{
@@ -33,6 +33,8 @@ ptt_plot_add_prediction(
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 
 \item{value_multiplier}{A number. Value of 0.001 would cause values to be divided by 1000, value of 1000 would cause values to be multiplied by 1000 hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
+
+\item{custom_pred_data}{A boolean. If set to true, pred_data is required to be a dataframe/tibble with columns, year, sarja_nmi and value. With two prediction values per sarja_nmi.}
 }
 \value{
 plotly object
