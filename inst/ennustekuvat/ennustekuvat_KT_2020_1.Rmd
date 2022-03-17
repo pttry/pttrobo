@@ -96,8 +96,8 @@ euroalue_bkt <-
 
 yhdistetty_bkt_data <- 
   rbind(usa_bkt, suomi_bkt, euroalue_bkt) |> 
-  group_by(across(!c(time, value))) |> 
-  mutate(value = rebase(value, time, 2019)) |> 
+  group_by(across(!c(time, value))) |>
+  mutate(value = rebase(value, time, 2019)) |>
   ungroup()
 
 # apufunktio indeksoinnin laskemiseen
@@ -135,13 +135,14 @@ yhdistetty_bkt_data|>
   ptt_plot(
     grouping = tiedot,
     title = "Bruttokansantuote",
-    subtitle = "Indeksi 2020 = 100",
+    subtitle = "Indeksi 2019 = 100",
     caption =  "Lähde: Tilastokeskus, BEA, Eurostat ja PTT",
     rangeslider = FALSE,
     ## rangeslider = "2015-01-01",
-    zeroline = T,
-    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = ""),
-    axis_limits = list(y = c(89, 113))
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "(indeksi 2020=100)", extra = "")
+    # ,
+    # axis_limits = list(y = c(89, 113))
   ) |>
   ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE)
 ```
