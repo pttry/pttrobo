@@ -17,6 +17,7 @@ library(pttrobo)
 library(tidyverse)
 library(statfitools)
 library(lubridate)
+library(pttdatahaku)
 ```
 
 ```{r, include=FALSE}
@@ -26,7 +27,7 @@ read_ennuste_data <- function(ennuste_data_file) {
 }
 ennuste_data <-
   read_ennuste_data(
-    system.file("ennustekuvat", "ptt_ennusteet_KT_2022_1.xlsx", package="pttrobo")
+    here::here("inst", "ennustekuvat", "ptt_ennusteet_KT_2022_1.xlsx")
   )
 ```
 
@@ -65,7 +66,7 @@ indeksoi <- function(d, vuosi = 2020){
 usa_bkt <-
   ptt_data_robo("fred/GDPC1") |>
   filter(time >= "2014-01-01") |>
-  indeksoi() |>
+  # indeksoi() |>
   select(tiedot = series_id, time, value) |>
   mutate(tiedot = "USA")
 
@@ -76,7 +77,7 @@ suomi_bkt <-
     tiedot == "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa",
     time >= "2014-01-01"
   ) |>
-  indeksoi() |>
+  # indeksoi() |>
   select(tiedot, time, value) |>
   mutate(tiedot = "Suomi")
 
@@ -89,11 +90,15 @@ euroalue_bkt <-
     unit == "Chain linked volumes, index 2015=100",
     time >= "2014-01-01"
   ) |>
-  indeksoi() |>
+  # indeksoi() |>
   select(tiedot = na_item, time, value) |>
   mutate(tiedot = "Euroalue")
 
-yhdistetty_bkt_data <- rbind(usa_bkt, suomi_bkt, euroalue_bkt)
+yhdistetty_bkt_data <- 
+  rbind(usa_bkt, suomi_bkt, euroalue_bkt) |> 
+  group_by(across(!c(time, value))) |> 
+  mutate(value = rebase(value, time, 2019)) |> 
+  ungroup()
 
 # apufunktio indeksoinnin laskemiseen
 avg_value_2021 <- function(d, sarja){
@@ -104,7 +109,8 @@ avg_value_2021 <- function(d, sarja){
 }
 
 #  Muokataan ennustedata.
-bkt_vertailu_ennusteet <- ennuste_data |>
+bkt_vertailu_ennusteet <- 
+  ennuste_data |>
   filter(sarja_nmi %in% c("BKT")) |>
   mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
   pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
