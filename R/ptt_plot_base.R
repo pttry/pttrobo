@@ -98,8 +98,8 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   dl_btn <- list(
     name = "Lataa kuva (kapea)",
-    icon = dl_icon("file-image", 0.025, c(4,2)),
-    click = JS(js_string(810,720,"kapea",png_layout$lg)))
+    icon = dl_icon("file-image", 0.025, c(3.5,2)),
+    click = JS(js_string(640,720,"kapea",png_layout$lg)))
 
   dl_twitter_btn <- list(
     name = "Lataa kuva (pieni)",
@@ -541,12 +541,15 @@ ptt_plot_hovertemplate <- function(specs) {
 #'
 #' @param p A plotly object.
 #' @param title The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.
+#' @param path The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.
 #' @examples
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
+#' @export
 #' @importFrom stringr str_extract_all str_replace_all
 #' @importFrom htmlwidgets saveWidget
-ptt_plot_create_widget <- function(p, title) {
+#' @importFrom here here
+ptt_plot_create_widget <- function(p, title, path) {
   tofilename <- function(str) {
     str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
       str_c(collapse = "") |>
@@ -562,10 +565,21 @@ ptt_plot_create_widget <- function(p, title) {
     title <- tofilename(title)
   }
 
+  path <- if(missing(path)) {
+    if(isTRUE(getOption('knitr.in.progress'))) {
+      cur_input <- knitr::current_input() %>% str_remove("\\.Rmd$") %>% str_replace_all("/","_") %>% str_c("_artefacts")
+      dir.create(cur_input,showWarnings = F)
+      ###
+      str_c(cur_input,"/")
+    } else { "" }
+  } else  { str_c(path,"/") }
+
+
   p |>
-    saveWidget(str_c(title,".html"), selfcontained = F, libdir = "plot_dependencies")
+    saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
   p
 }
+
 
 #' Gives a vector of desired length of colors.
 #'
