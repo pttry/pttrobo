@@ -97,7 +97,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
       path = png_icon,
       transform = "scale(0.14) translate(-4.5, 0.2)"
     ),
-    click = JS(js_string(640,720,"kapea",png_layout$lg)))
+    click = JS(js_string(810,720,"kapea",png_layout$lg)))
 
   dl_twitter_btn <- list(
     name = "Lataa kuva (pieni)",
