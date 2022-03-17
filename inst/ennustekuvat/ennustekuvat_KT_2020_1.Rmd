@@ -3,6 +3,9 @@ title: "Ennustekuviot"
 output:
   rmarkdown::html_document:
     code_folding: "hide"
+params:
+  filename: ""
+    
 ---
 
 ```{r, include = FALSE}
@@ -34,6 +37,7 @@ ennuste_data <-
 ## BKT Suomi
 
 ```{r}
+
 ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter(
     taloustoimi == "B1GMH Bruttokansantuote markkinahintaan",
@@ -43,14 +47,15 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   mutate(tiedot = "BKT") |>
   ptt_plot(
     grouping = tiedot,
-    title = "BKT Suomi",
+    title = str_c(params$filename, "BKT Suomi"),
     subtitle = "Vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
 ```
 
 ## Venäjän loppukysynnän osuus arvonlisästä
@@ -178,7 +183,8 @@ yhdistetty_bkt_data|>
     # ,
     # axis_limits = list(y = c(89, 113))
   ) |>
-  ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE)
+  ptt_plot_add_prediction(ennusteet_suomi_bkt, custom_pred_data = TRUE) |>
+  ptt_plot_create_widget()
 ```
 
 ## Vienti ja tuonti
@@ -206,7 +212,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
 ```
 
 ## Kauppa- ja vaihtotase
@@ -230,12 +237,13 @@ ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") |>
     grouping = maksutase_era,
     title = "Vaihtotase ja kauppatase",
     subtitle = "Mrd. €",
-    caption = "Tilastokeskus",
+    caption = "Lähde: Tilastokeskus",
     rangeslider = F,
     axis_limits = list(x = c("2014-01-01","2021-12-30")),
     hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
     plot_type = c("Vaihtotase" = "bar", "Kauppatase" = "scatter")
-  )
+  ) |>
+  ptt_plot_create_widget()
 ```
 
 
@@ -258,7 +266,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
       zeroline = T,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
 ```
 
 ## Julkinen kulutus
@@ -281,7 +290,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
 ```
 
 ## Julkinen velka
@@ -305,7 +315,8 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   )  |>
   plotly::layout(
     yaxis = list(range = c(55,75))
-  )
+  ) |>
+  ptt_plot_create_widget()
 ```
 
 ## Julkisen sektorin tasapaino
@@ -351,7 +362,8 @@ ptt_data_robo("StatFin/jul/jtume/statfin_jtume_pxt_11zf.px") |>
                                 "Nettoluotonanto Sosiaaliturvarahastot" = "Sosiaaliturvarahastot",
                                 "Nettoluotonanto Jukinen sektori" = "Yhteensä"
                                 ))
-  )
+  ) |>
+  ptt_plot_create_widget()
 ```
 
 ## Tulot ja kulutus
@@ -375,7 +387,8 @@ ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
     rangeslider = FALSE,
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
-  )
+  ) |>
+  ptt_plot_create_widget()
 
 ```
 
@@ -407,7 +420,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)##  |>
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()##  |>
   ## ptt_plot_create_widget("investoinnit")
 ```
 
@@ -440,7 +454,8 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     rangeslider = FALSE,
     zeroline = T,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
-  ) ## |>
+  ) |>
+  ptt_plot_create_widget() ## |>
   ## ptt_plot_add_prediction(ennuste_data)##  |>
   ## ptt_plot_create_widget("investoinnit")
 ```
@@ -462,7 +477,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     rangeslider = FALSE,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)##  |>
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()##  |>
   ## ptt_plot_create_widget("")
 ```
 ## Työttömyysaste
@@ -482,7 +498,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     rangeslider = FALSE,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
 ```
 
 ## Työvoima
@@ -505,7 +522,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135y.px") |>
     hovertext =  list(rounding = 0, unit = "(1000 henkilöä)", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
-        unit = "(1000 henkilöä)", extra = "(ennuste)"))  ##  |>
+        unit = "(1000 henkilöä)", extra = "(ennuste)")) |>
+  ptt_plot_create_widget()  ##  |>
   ## ptt_plot_create_widget("")
 ```
 ## Työlliset
@@ -526,7 +544,8 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
     hovertext =  list(rounding = 0, unit = "(1000 henkilöä)", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data, hovertext = list(rounding = 0,
-        unit = "(1000 henkilöä)", extra = "(ennuste)"))
+        unit = "(1000 henkilöä)", extra = "(ennuste)")) |>
+  ptt_plot_create_widget()
 ```
 
 ## Työlliset ja työvoima
@@ -574,7 +593,8 @@ bind_rows(tyovoima, tyolliset) |>
         value_multiplier = 0.001) |>
   plotly::layout(
     yaxis = list(range = c(2.2,3))
-  )
+  ) |>
+  ptt_plot_create_widget()
 # Ei palkansaajoja käytössä
 # palkansaajat <- ptt_data_robo_l("StatFin/tym/tyti/nj/statfin_tyti_pxt_137l.px") |>
 #     filter(
@@ -615,7 +635,8 @@ bind_rows(tyottomyysaste, tem_työttömyysaste) |>
     hovertext =  list(rounding = 1, unit = "%", extra = ""),
     axis_limits = list(y = c(5,15))
   ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
 ```
 
 ## Pitkät korot
@@ -643,7 +664,8 @@ ptt_data_robo_l("tidy/10yield") |>
                                  "10v Suomi" = "Suomi"
        )),
      value_multiplier = 100
-  )
+  ) |>
+  ptt_plot_create_widget()
 ```
 
 ## Raakaöljy
@@ -664,7 +686,8 @@ ptt_data_robo("fred/DCOILBRENTEU") |>
   ) |>
   ptt_plot_add_prediction(
     ennuste_data
-  )
+  ) |>
+  ptt_plot_create_widget()
 ```
 
 ## Valuuttakurssi
@@ -684,7 +707,8 @@ ptt_data_robo("ecb/EXR", dl_filter = "D.USD.EUR.SP00.A") |>
   ) |>
   ptt_plot_add_prediction(
     ennuste_data
-  )
+  ) |>
+  ptt_plot_create_widget()
 ```
 
 ## Kuluttajahintaindeksi
@@ -715,7 +739,8 @@ bind_rows(cpi_es, cpi_us) |>
     rangeslider = FALSE,
     hovertext = list(rounding = 1),
     zeroline = T
-  ) ## |>
+  ) |>
+  ptt_plot_create_widget() ## |>
   ## ptt_plot_add_prediction(
   ##   ennuste_data
   ## )
@@ -752,7 +777,8 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
     rangeslider = FALSE,
     hovertext = list(rounding = 1),
     zeroline = T
-  ) ## |>
+  ) |>
+  ptt_plot_create_widget() ## |>
   ## ptt_plot_add_prediction(
   ##   ennuste_data
   ## )

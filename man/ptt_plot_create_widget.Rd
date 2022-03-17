@@ -4,12 +4,14 @@
 \alias{ptt_plot_create_widget}
 \title{Writes an html element for embedding.}
 \usage{
-ptt_plot_create_widget(p, title)
+ptt_plot_create_widget(p, title, path)
 }
 \arguments{
 \item{p}{A plotly object.}
 
 \item{title}{The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.}
+
+\item{path}{The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.}
 }
 \value{
 The plotly object p.
