@@ -52,7 +52,6 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
     str_c('
           function(gd) {
           delete gd.layout.xaxis.rangeslider;
-          alert(JSON.stringify(gd.layout.bargap))
           gd.layout.margin.t = ',layout$margin_t,';
           gd.layout.margin.b = ',layout$margin_b,';
           gd.layout.images[0].sizex = ',60/ht/1.5,'
