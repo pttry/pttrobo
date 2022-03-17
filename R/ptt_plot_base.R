@@ -28,14 +28,15 @@ ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
 #' @importFrom plotly config
 #' @importFrom purrr pmap
 #' @importFrom tidyr drop_na
+#' @importFrom fontawesome fa
 ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   if (reset == T) { p <- config(p, modeBarButtons = NULL) }
 
-  data_dl_icon <- "M15.608,6.262h-2.338v0.935h2.338c0.516,0,0.934,0.418,0.934,0.935v8.879c0,0.517-0.418,0.935-0.934,0.935H4.392c-0.516,0-0.935-0.418-0.935-0.935V8.131c0-0.516,0.419-0.935,0.935-0.935h2.336V6.262H4.392c-1.032,0-1.869,0.837-1.869,1.869v8.879c0,1.031,0.837,1.869,1.869,1.869h11.216c1.031,0,1.869-0.838,1.869-1.869V8.131C17.478,7.099,16.64,6.262,15.608,6.262z M9.513,11.973c0.017,0.082,0.047,0.162,0.109,0.226c0.104,0.106,0.243,0.143,0.378,0.126c0.135,0.017,0.274-0.02,0.377-0.126c0.064-0.065,0.097-0.147,0.115-0.231l1.708-1.751c0.178-0.183,0.178-0.479,0-0.662c-0.178-0.182-0.467-0.182-0.645,0l-1.101,1.129V1.588c0-0.258-0.204-0.467-0.456-0.467c-0.252,0-0.456,0.209-0.456,0.467v9.094L8.443,9.553c-0.178-0.182-0.467-0.182-0.645,0c-0.178,0.184-0.178,0.479,0,0.662L9.513,11.973z"
-  chalkboard_icon <- "M69.53,91.55l13.23,13.23c3.2,0.09,5.77,2.72,5.77,5.95c0,3.29-2.66,5.95-5.95,5.95c-3.29,0-5.95-2.67-5.95-5.95 c0-0.36,0.03-0.72,0.09-1.07L65.21,98.16v8.46l-8.24,0v-8.23l-11.69,11.7c0.02,0.21,0.03,0.43,0.03,0.65c0,0,0,0,0,0 c0,3.29-2.66,5.95-5.96,5.95c-3.29,0-5.95-2.67-5.95-5.95c0-3.29,2.67-5.95,5.95-5.95c0.1,0,0.2,0,0.29,0.01l13.23-13.23L0,91.55 V15.71c0-0.05,0-0.09,0-0.14V7.52c0-0.87,0.72-1.57,1.61-1.57h55.36V0h8.24v5.95h56.06c0.89,0,1.61,0.71,1.61,1.57v8.05 c0,0.03,0,0.05,0,0.08v75.89H69.53L69.53,91.55z M26.89,62.71l23.26-22.74c5.76,5.76,11.46,11.46,17.28,17.21l15.41-15.6 l-7.15-7.15l20.12-0.18v20.29l-6.87-6.87c-7.16,7.25-14.29,14.48-21.47,21.67L50.03,52.12L32.99,68.81L26.89,62.71L26.89,62.71 L26.89,62.71z M113.79,21.73H8.92v60.64h104.87V21.73L113.79,21.73z"
-  twitter_icon <- "M640.012 121.513c-23.528 10.524-48.875 17.516-75.343 20.634 27.118-16.24 47.858-41.977 57.756-72.615-25.347 14.988-53.516 25.985-83.363 31.866-24-25.5-58.087-41.35-95.848-41.35-72.508 0-131.21 58.736-131.21 131.198 0 10.228 1.134 20.232 3.355 29.882-109.1-5.528-205.821-57.757-270.57-137.222a131.423 131.423 0 0 0-17.764 66c0 45.497 23.102 85.738 58.347 109.207-21.508-.638-41.74-6.638-59.505-16.359v1.642c0 63.627 45.225 116.718 105.32 128.718-11.008 2.988-22.63 4.642-34.606 4.642-8.48 0-16.654-.874-24.78-2.35 16.783 52.11 65.233 90.095 122.612 91.205-44.989 35.245-101.493 56.233-163.09 56.233-10.63 0-20.988-.65-31.334-1.89 58.229 37.359 127.206 58.997 201.31 58.997 241.42 0 373.552-200.069 373.552-373.54 0-5.764-.13-11.35-.366-16.996 25.642-18.343 47.87-41.493 65.469-67.844l.059-.059z"
-  png_icon <- "M7.5,0h107.9c4.1,0,7.5,3.4,7.5,7.5v70.6c0,4.1-3.4,7.5-7.5,7.5H7.5c-4.1,0-7.5-3.4-7.5-7.5V7.5 C0,3.4,3.4,0,7.5,0L7.5,0z M69.9,63.3h28.5v4H69.9V63.3L69.9,63.3z M69.9,53.1H109v4H69.9V53.1L69.9,53.1z M92.1,35h5.6 c0.3,0,0.5,0.2,0.5,0.5v11c0,0.3-0.2,0.5-0.5,0.5h-5.6c-0.3,0-0.5-0.2-0.5-0.5v-11C91.6,35.3,91.8,35,92.1,35L92.1,35L92.1,35z M70.5,28.3h5.6c0.3,0,0.5,0.2,0.5,0.5v17.8c0,0.3-0.2,0.5-0.5,0.5h-5.6c-0.3,0-0.5-0.2-0.5-0.5V28.8 C69.9,28.5,70.2,28.3,70.5,28.3L70.5,28.3L70.5,28.3L70.5,28.3z M81.3,24.5h5.6c0.3,0,0.5,0.2,0.5,0.5v21.6c0,0.3-0.2,0.5-0.5,0.5 h-5.6c-0.3,0-0.5-0.2-0.5-0.5V25C80.8,24.7,81,24.5,81.3,24.5L81.3,24.5L81.3,24.5z M39.3,48.2l17,0.3c0,6.1-3,11.7-8,15.1 L39.3,48.2L39.3,48.2L39.3,48.2z M37.6,45.3l-0.2-19.8l0-1.3l1.3,0.1h0h0c1.6,0.1,3.2,0.4,4.7,0.8c1.5,0.4,2.9,1,4.3,1.7 c6.9,3.6,11.7,10.8,12.1,19l0.1,1.3l-1.3,0l-19.7-0.6l-1.1,0L37.6,45.3L37.6,45.3L37.6,45.3z M39.8,26.7L40,44.1l17.3,0.5 c-0.7-6.8-4.9-12.7-10.7-15.8c-1.2-0.6-2.5-1.1-3.8-1.5C41.7,27.1,40.8,26.9,39.8,26.7L39.8,26.7L39.8,26.7z M35.9,47.2L45.6,64 c-3,1.7-6.3,2.6-9.7,2.6c-10.7,0-19.4-8.7-19.4-19.4c0-10.4,8.2-19,18.6-19.4L35.9,47.2L35.9,47.2L35.9,47.2z M115.6,14.1H7.2v64.4 h108.4V14.1L115.6,14.1L115.6,14.1z"
+  # data_dl_icon <- "M15.608,6.262h-2.338v0.935h2.338c0.516,0,0.934,0.418,0.934,0.935v8.879c0,0.517-0.418,0.935-0.934,0.935H4.392c-0.516,0-0.935-0.418-0.935-0.935V8.131c0-0.516,0.419-0.935,0.935-0.935h2.336V6.262H4.392c-1.032,0-1.869,0.837-1.869,1.869v8.879c0,1.031,0.837,1.869,1.869,1.869h11.216c1.031,0,1.869-0.838,1.869-1.869V8.131C17.478,7.099,16.64,6.262,15.608,6.262z M9.513,11.973c0.017,0.082,0.047,0.162,0.109,0.226c0.104,0.106,0.243,0.143,0.378,0.126c0.135,0.017,0.274-0.02,0.377-0.126c0.064-0.065,0.097-0.147,0.115-0.231l1.708-1.751c0.178-0.183,0.178-0.479,0-0.662c-0.178-0.182-0.467-0.182-0.645,0l-1.101,1.129V1.588c0-0.258-0.204-0.467-0.456-0.467c-0.252,0-0.456,0.209-0.456,0.467v9.094L8.443,9.553c-0.178-0.182-0.467-0.182-0.645,0c-0.178,0.184-0.178,0.479,0,0.662L9.513,11.973z"
+  # chalkboard_icon <- "M69.53,91.55l13.23,13.23c3.2,0.09,5.77,2.72,5.77,5.95c0,3.29-2.66,5.95-5.95,5.95c-3.29,0-5.95-2.67-5.95-5.95 c0-0.36,0.03-0.72,0.09-1.07L65.21,98.16v8.46l-8.24,0v-8.23l-11.69,11.7c0.02,0.21,0.03,0.43,0.03,0.65c0,0,0,0,0,0 c0,3.29-2.66,5.95-5.96,5.95c-3.29,0-5.95-2.67-5.95-5.95c0-3.29,2.67-5.95,5.95-5.95c0.1,0,0.2,0,0.29,0.01l13.23-13.23L0,91.55 V15.71c0-0.05,0-0.09,0-0.14V7.52c0-0.87,0.72-1.57,1.61-1.57h55.36V0h8.24v5.95h56.06c0.89,0,1.61,0.71,1.61,1.57v8.05 c0,0.03,0,0.05,0,0.08v75.89H69.53L69.53,91.55z M26.89,62.71l23.26-22.74c5.76,5.76,11.46,11.46,17.28,17.21l15.41-15.6 l-7.15-7.15l20.12-0.18v20.29l-6.87-6.87c-7.16,7.25-14.29,14.48-21.47,21.67L50.03,52.12L32.99,68.81L26.89,62.71L26.89,62.71 L26.89,62.71z M113.79,21.73H8.92v60.64h104.87V21.73L113.79,21.73z"
+  # twitter_icon <- "M640.012 121.513c-23.528 10.524-48.875 17.516-75.343 20.634 27.118-16.24 47.858-41.977 57.756-72.615-25.347 14.988-53.516 25.985-83.363 31.866-24-25.5-58.087-41.35-95.848-41.35-72.508 0-131.21 58.736-131.21 131.198 0 10.228 1.134 20.232 3.355 29.882-109.1-5.528-205.821-57.757-270.57-137.222a131.423 131.423 0 0 0-17.764 66c0 45.497 23.102 85.738 58.347 109.207-21.508-.638-41.74-6.638-59.505-16.359v1.642c0 63.627 45.225 116.718 105.32 128.718-11.008 2.988-22.63 4.642-34.606 4.642-8.48 0-16.654-.874-24.78-2.35 16.783 52.11 65.233 90.095 122.612 91.205-44.989 35.245-101.493 56.233-163.09 56.233-10.63 0-20.988-.65-31.334-1.89 58.229 37.359 127.206 58.997 201.31 58.997 241.42 0 373.552-200.069 373.552-373.54 0-5.764-.13-11.35-.366-16.996 25.642-18.343 47.87-41.493 65.469-67.844l.059-.059z"
+  # png_icon <- "M7.5,0h107.9c4.1,0,7.5,3.4,7.5,7.5v70.6c0,4.1-3.4,7.5-7.5,7.5H7.5c-4.1,0-7.5-3.4-7.5-7.5V7.5 C0,3.4,3.4,0,7.5,0L7.5,0z M69.9,63.3h28.5v4H69.9V63.3L69.9,63.3z M69.9,53.1H109v4H69.9V53.1L69.9,53.1z M92.1,35h5.6 c0.3,0,0.5,0.2,0.5,0.5v11c0,0.3-0.2,0.5-0.5,0.5h-5.6c-0.3,0-0.5-0.2-0.5-0.5v-11C91.6,35.3,91.8,35,92.1,35L92.1,35L92.1,35z M70.5,28.3h5.6c0.3,0,0.5,0.2,0.5,0.5v17.8c0,0.3-0.2,0.5-0.5,0.5h-5.6c-0.3,0-0.5-0.2-0.5-0.5V28.8 C69.9,28.5,70.2,28.3,70.5,28.3L70.5,28.3L70.5,28.3L70.5,28.3z M81.3,24.5h5.6c0.3,0,0.5,0.2,0.5,0.5v21.6c0,0.3-0.2,0.5-0.5,0.5 h-5.6c-0.3,0-0.5-0.2-0.5-0.5V25C80.8,24.7,81,24.5,81.3,24.5L81.3,24.5L81.3,24.5z M39.3,48.2l17,0.3c0,6.1-3,11.7-8,15.1 L39.3,48.2L39.3,48.2L39.3,48.2z M37.6,45.3l-0.2-19.8l0-1.3l1.3,0.1h0h0c1.6,0.1,3.2,0.4,4.7,0.8c1.5,0.4,2.9,1,4.3,1.7 c6.9,3.6,11.7,10.8,12.1,19l0.1,1.3l-1.3,0l-19.7-0.6l-1.1,0L37.6,45.3L37.6,45.3L37.6,45.3z M39.8,26.7L40,44.1l17.3,0.5 c-0.7-6.8-4.9-12.7-10.7-15.8c-1.2-0.6-2.5-1.1-3.8-1.5C41.7,27.1,40.8,26.9,39.8,26.7L39.8,26.7L39.8,26.7z M35.9,47.2L45.6,64 c-3,1.7-6.3,2.6-9.7,2.6c-10.7,0-19.4-8.7-19.4-19.4c0-10.4,8.2-19,18.6-19.4L35.9,47.2L35.9,47.2L35.9,47.2z M115.6,14.1H7.2v64.4 h108.4V14.1L115.6,14.1L115.6,14.1z"
 
   if(is.na(dl_title)) {
     dl_title <- "img"
@@ -51,6 +52,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
     str_c('
           function(gd) {
           delete gd.layout.xaxis.rangeslider;
+          alert(JSON.stringify(gd.layout.bargap))
           gd.layout.margin.t = ',layout$margin_t,';
           gd.layout.margin.b = ',layout$margin_b,';
           gd.layout.images[0].sizex = ',60/ht/1.5,'
@@ -82,29 +84,26 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
       click = JS("function(gd) {window.open(\"https://robonomist.com\")  }")
     )
 
+  dl_icon <- function(fa_icon, scale = 0.032, translate = c(0,0)) {
+    transform_string <- str_c("translate(",translate[1],",",translate[2],") scale(",scale,")")
+    list(path = fa(name = fa_icon) %>% as.character() %>% str_extract("(?<=d\\=\")[^\"]{1,}") %>% str_replace_all(" ",","),
+         transform = transform_string)
+  }
+
   dl_conference_btn <- list(
     name = "Lataa kuva (leveä)",
-    icon = list(
-      path = chalkboard_icon,
-      transform = "scale(0.14) translate(-4.5, 0.2)"
-    ),
+    icon = dl_icon("image"),
     click = JS(js_string(1280,720,"levea",png_layout$lg))
     )
 
   dl_btn <- list(
     name = "Lataa kuva (kapea)",
-    icon = list(
-      path = png_icon,
-      transform = "scale(0.14) translate(-4.5, 0.2)"
-    ),
+    icon = dl_icon("file-image", 0.025, c(4,2)),
     click = JS(js_string(810,720,"kapea",png_layout$lg)))
 
   dl_twitter_btn <- list(
     name = "Lataa kuva (pieni)",
-    icon = list(
-      path = twitter_icon,
-      transform = "scale(0.022) translate(0.2, 0.4)"
-    ),
+    icon = dl_icon("twitter-square"),
     click = JS(js_string(889,500,"pieni",png_layout$sm)))
 
   dl_string <- (function() {
@@ -117,10 +116,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   data_dl_btn <- list(
     name = "Lataa tiedot",
-    icon = list(
-      path = data_dl_icon,
-      transform = "scale(0.84) translate(-1, -1)"
-    ),
+    icon = dl_icon("file-csv"),
     click = JS(str_c("
           function(gd) {
             let text = '",dl_string,"';
@@ -147,8 +143,8 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
   p |> config(
     displaylogo = FALSE,
     modeBarButtons = list(list(
-      dl_btn,
       dl_twitter_btn,
+      dl_btn,
       dl_conference_btn,
       data_dl_btn,
       robonomist_btn
@@ -485,7 +481,13 @@ ptt_plot_add_zeroline <- function(p, z) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y"))
+    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y")) |>
+      onRender(jsCode = "
+function(gd) {
+let zeroline_relayout = {'shapes[0].x0': gd.layout.xaxis.range[0], 'shapes[0].x1': gd.layout.xaxis.range[1]}
+Plotly.relayout(gd, zeroline_relayout)
+}
+                                                         ")
   }
 }
 
@@ -660,7 +662,7 @@ ptt_plot <- function(d,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
                      zeroline = F,
-                     rangeslider = T,
+                     rangeslider = FALSE,
                      isolate_primary = F,
                      font_size = 16,
                      hovertext,
@@ -691,7 +693,7 @@ ptt_plot <- function(d,
   if(!all(plot_type %in% c("scatter","bar"))) {
     stop("Plot type must be \"scatter\" or \"bar\", or a vector of name_value pairs!", call. = F)
   } else if (length(plot_type) == 1 & is.null(names(plot_type))){
-    d <- d %>% mutate(plot.type = plot_type)
+    d <- d |> mutate(plot.type = plot_type)
   } else if (!all(unique_groups %in% names(plot_type))) {
     stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding plot type!"), call. = F)
     } else {
@@ -724,6 +726,7 @@ ptt_plot <- function(d,
                 texttemplate = NA,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
                 line = if(g.type == "scatter") { list(width = lw) } else { NULL },
+                offsetgroup = if(g.type == "bar") { g.name } else { NULL },
                 legendgroup = g.name,
                 legendrank = legend.rank,
                 name = g.name,
@@ -743,6 +746,10 @@ ptt_plot <- function(d,
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
   p$title <- title
+  p$trace_types <- (function() {
+    traces <- distinct(d, !!grouping, plot.type)
+    traces$plot.type |> set_names(traces[[as_name(grouping)]])
+  })()
 
   maxtime <- max(d$time)
 
@@ -781,6 +788,7 @@ ptt_plot <- function(d,
 #' @importFrom plotly plot_ly add_lines
 #' @importFrom stringr str_replace
 #' @importFrom purrr reduce map_dfr
+#' @importFrom lubridate floor_date years
 #' @export
 ptt_plot_add_prediction <- function(p,
                                     pred_data,
@@ -789,9 +797,10 @@ ptt_plot_add_prediction <- function(p,
                                     with_labs = T,
                                     isolate_primary = F,
                                     showlegend = F,
-                                    hovertext = list(rounding = 1, unit = "%", extra = "(ennuste)", dateformat = "Annual"),
+                                    hovertext = list(rounding = 1, unit = "", extra = "(ennuste)", dateformat = "Annual"),
                                     value_multiplier = 1,
-                                    custom_pred_data = FALSE) {
+                                    custom_pred_data = FALSE
+                                    ) {
   grouping <- enquo(grouping)
   if (custom_pred_data == FALSE){
     pred_series <- pred_data |>
@@ -812,11 +821,11 @@ ptt_plot_add_prediction <- function(p,
   }
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
-  zero.line <- p$add_zeroline
-  zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
-  pred_series <- pred_series |> group_by(year, !!grouping) |> group_split()
+  # zero.line <- p$add_zeroline
+  # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
+  pred_series <- pred_series |> droplevels() |> mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
-  pred_groups <- (pred_series %>% reduce(bind_rows))[[as_name(grouping)]] |> unique()
+  pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
   if(!all(pred_groups %in% names(color_vector))) {
     stop("All prediction traces must have a correspondingly named trace in original plot.", call. = F)
   }
@@ -828,16 +837,33 @@ ptt_plot_add_prediction <- function(p,
     show.legend <- ifelse(!s.name %in% legend.items, showlegend, F)
     legend.items <- c(legend.items, s.name) |> unique()
     legend.rank <- s.level * 1.1 + 1
+    s.type <- unique(s$plot.type)
+    # print(s %>% bind_rows(mutate(s, value = 0)) %>% arrange(time, value))
+    if(s.type == "bar") {
+      s <- s %>% mutate(count = 2) %>% uncount(count) %>% mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
+      template <- ptt_plot_hovertemplate(hovertext) %>% str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
+      p <- p |>
+        add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
+                  hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
+                  color = I(color_vector[s.name]),
+                  name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
+                  legendgroup = s.name,
+                  hoverinfo = text,
+                  legendrank = legend.rank,
+                  showlegend = show.legend,
+                  hovertemplate = template)
+  } else {
     p <- p |>
-      add_lines(data = s, y = ~value , x = ~time, text = s[[as_name(grouping)]],
-                type = "scatter", mode="lines",
+      add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "lines",
                 line = list(width = lw),
                 color = I(color_vector[s.name]),
                 name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
                 legendgroup = s.name,
+                hoverinfo = text,
                 legendrank = legend.rank,
                 showlegend = show.legend,
                 hovertemplate = ptt_plot_hovertemplate(hovertext))
+    }
   }
   pred_d <- pred_series |> map_dfr(~.x) |>
     rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
@@ -853,7 +879,7 @@ ptt_plot_add_prediction <- function(p,
     arrange(time, tiedot)
   p |>
     ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
-    ptt_plot_add_zeroline(zero.line) |>
+    # ptt_plot_add_zeroline(zero.line) |>
     ptt_plot_set_modebar(p$title, p$png_attrs, T)
 }
 
