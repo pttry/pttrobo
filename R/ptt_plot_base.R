@@ -480,7 +480,7 @@ ptt_plot_add_zeroline <- function(p, z) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y")) |>
+    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y", layer = "below")) |>
       onRender(jsCode = "
 function(gd) {
 let zeroline_relayout = {'shapes[0].x0': gd.layout.xaxis.range[0], 'shapes[0].x1': gd.layout.xaxis.range[1]}
@@ -545,9 +545,9 @@ ptt_plot_hovertemplate <- function(specs) {
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
 #' @export
-#' @importFrom stringr str_extract_all str_replace_all
+#' @importFrom stringr str_extract_all str_replace_all str_c str_squish
 #' @importFrom htmlwidgets saveWidget
-#' @importFrom here here
+#' @importFrom googleCloudStorageR gcs_get_global_bucket
 ptt_plot_create_widget <- function(p, title, path) {
   tofilename <- function(str) {
     str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
@@ -569,7 +569,14 @@ ptt_plot_create_widget <- function(p, title, path) {
       cur_input <- knitr::current_input() %>% str_remove("\\.Rmd$") %>% str_replace_all("/","_") %>% str_c("_artefacts")
       dir.create(cur_input,showWarnings = F)
       ###
-      str_c(cur_input,"/")
+      path <- str_c(cur_input,"/")
+      buc <- tryCatch(gcs_get_global_bucket(), error = function(e) { NULL })
+      if(is.null(buc)) {
+        cat("No google cloud storage bucket set, no iframe code generated.")
+      } else {
+        cat(str_c('\n<iframe src="https://storage.googleapis.com/',gcs_get_global_bucket(),'/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="600px"></iframe>\n'))
+        }
+      path
     } else { "" }
   } else  { str_c(path,"/") }
 
@@ -579,6 +586,49 @@ ptt_plot_create_widget <- function(p, title, path) {
   p
 }
 
+#' Uploads the html elements and dependencies to cloud storage.
+#'
+#' @param files_path The folder where the artefacts to be uploaded are located.
+#' @param upload_bucket The google cloud storage bucket where the artefacts are uploaded to.
+#' @export
+#' @importFrom knitr current_input
+#' @importFrom stringr str_remove str_replace_all str_c str_detect
+#' @importFrom dplyr case_when
+#' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket
+ptt_plot_upload_widgets <- function(files_path, upload_path, upload_bucket = gcs_get_global_bucket()) {
+  is_knitting <- isTRUE(getOption('knitr.in.progress'))
+  if(missing(files_path)) {
+    if(is_knitting == T) {
+      cur_input <- knitr::current_input()
+      files_path <- cur_input %>% str_remove("\\.Rmd$") %>% str_replace_all("/","_") %>% str_c("_artefacts")
+    } else {
+        stop("Give the path to the files you wish to upload. Careful! This will upload every .html, .css, .map, .scss, .txt and .js file in the given path!", call. = F)
+      }
+  }
+
+  if (missing(upload_path) & !is_knitting) {
+    stop("Give the path to the folder in the upload bucket where you wish to upload the files to.", call. = F)
+  }
+
+  artefact_files <- list.files(files_path, recursive = T, full.names = T) %>% str_subset("\\.(css|js|map|scss|html|txt)$")
+  purrr::walk(artefact_files, function(artefact_file) {
+    upload_file <- if(is_knitting) {
+      str_remove(artefact_file, str_c("^.{1,}?=(",cur_input,")")) %>% str_c("ennustekuvat/",.)
+    } else {
+        str_c(upload_path,str_remove(artefact_file, files_path))
+      }
+    message(str_c("Uploading ",upload_file))
+    upload_type <- dplyr::case_when(str_detect(upload_file, "css$") ~ "text/css",
+                                    str_detect(upload_file, "js$") ~ "text/javascript",
+                                    str_detect(upload_file, "txt$") ~ "text/plain",
+                                    str_detect(upload_file, "map$") ~ "application/json",
+                                    TRUE ~ as.character(NA))
+    if(is.na(upload_type)) { upload_type <- NULL}
+    meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
+    meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
+    gcs_upload(artefact_file, upload_bucket, name = upload_file, type = upload_type, object_metadata = meta)
+  })
+}
 
 #' Gives a vector of desired length of colors.
 #'

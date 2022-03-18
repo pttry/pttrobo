@@ -30,7 +30,8 @@ Imports:
     farver,
     forcats,
     openxlsx,
-    here
+    here,
+    googleCloudStorageR
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,

@@ -3,8 +3,6 @@ title: "Ennustekuviot"
 output:
   rmarkdown::html_document:
     code_folding: "hide"
-params:
-  filename: ""
     
 ---
 
@@ -21,6 +19,11 @@ library(tidyverse)
 library(statfitools)
 library(lubridate)
 library(pttdatahaku)
+```
+
+```{r storage_setup, include=FALSE, eval=FALSE}
+googleCloudStorageR::gcs_auth(Sys.glob(""))
+googleCloudStorageR::gcs_global_bucket()
 ```
 
 ```{r, include=FALSE}
@@ -47,7 +50,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   mutate(tiedot = "BKT") |>
   ptt_plot(
     grouping = tiedot,
-    title = str_c(params$filename, "BKT Suomi"),
+    title = "BKT Suomi",
     subtitle = "Vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
@@ -93,7 +96,8 @@ pdat_tiva_va |>
   aplot_lines(colour = country_region,
               title = "Venäjän loppukysynnän osuus BKT:sta",
               subtitle ="%",
-              source = "OECD")
+              source = "OECD") |>
+  ptt_plot_create_widget()
 
 
 
@@ -619,7 +623,7 @@ tem_työttömyysaste <- ptt_data_robo_l("StatFin/tym/tyonv/kk/statfin_tyonv_pxt_
     filter(tiedot == "Työttömien työnhakijoiden %-osuus työvoimasta (%)",
            alue == "KOKO MAA",
            time >= "2014-01-01") |>
-    mutate(tiedot = "Työttömyyysaste (TEM)") |>
+    mutate(tiedot = "Työttömyysaste (TEM)") |>
     select(tiedot, time, value) |>
     mutate(value = statfitools::trend_series(value, time = time))
 
@@ -782,4 +786,10 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
   ## ptt_plot_add_prediction(
   ##   ennuste_data
   ## )
+```
+
+```{r, eval = FALSE}
+
+ptt_plot_upload_widgets()
+
 ```
