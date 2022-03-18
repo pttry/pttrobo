@@ -605,6 +605,7 @@ bind_rows(tyovoima, tyolliset) |>
 ```
 
 ## Työttömyys
+
 ```{r}
 # työttömyysaste, jolle ennuste
 tyottomyysaste <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |> # työttömyysaste
@@ -638,6 +639,41 @@ bind_rows(tyottomyysaste, tem_työttömyysaste) |>
   ptt_plot_add_prediction(ennuste_data) |>
   ptt_plot_create_widget()
 ```
+
+## Lyhyet korot
+
+```{r}
+euribor <-
+  ptt_data_robo_l("tidy/euribor") |>
+  filter(korko %in% c("12 kk (tod.pv/360)",
+                      "12 kk (tod.pv/360)")) |>
+  mutate(tieto = "Euribor 12 kk")
+
+ohjauskorko <-
+  ptt_data_robo_l("tidy/ecb_rates") |>
+  filter(rate_type == "ECB Main refinancing operations") |>
+  mutate(tieto = "Ohjauskorko, EKP")
+
+bind_rows(euribor, ohjauskorko) |>
+  drop_na(value) |>
+  arrange(time) |>
+  filter(time >= "2008-01-01") |>
+  ptt_plot(
+    grouping = tieto,
+    title = "Lyhyet korot",
+    subtitle = "%",
+    caption =  "Lähde: Suomen Pankki, Euroopan keskuspankki ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 2),
+    zeroline = T
+  ) |>
+  ptt_plot_add_prediction(
+    ennuste_data |>
+      mutate(across(is.double, ~.x*100))
+  ) |>
+  ptt_plot_create_widget()
+```
+
 
 ## Pitkät korot
 
