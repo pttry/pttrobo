@@ -22,8 +22,8 @@ library(pttdatahaku)
 ```
 
 ```{r storage_setup, include=FALSE, eval=FALSE}
-googleCloudStorageR::gcs_auth(Sys.glob(""))
-googleCloudStorageR::gcs_global_bucket()
+googleCloudStorageR::gcs_auth(Sys.glob("robottiperhe-*.json"))
+googleCloudStorageR::gcs_global_bucket("pttry")
 ```
 
 ```{r, include=FALSE}

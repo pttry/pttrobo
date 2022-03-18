@@ -97,7 +97,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   dl_btn <- list(
     name = "Lataa kuva (kapea)",
-    icon = dl_icon("file-image", 0.025, c(3.5,2)),
+    icon = dl_icon("file-image", 0.025, c(2.7,2)),
     click = JS(js_string(810,720,"kapea",png_layout$lg)))
 
   dl_twitter_btn <- list(
@@ -158,6 +158,7 @@ ptt_plot_set_ticks <- function(p, font) {
                       mirror = TRUE,
                       ticks = 'outside',
                       type = "date",
+                      tickangle = 0,
                       tickformatstops = list(
                         list(
                           dtickrange = list(NULL, 604800000),
