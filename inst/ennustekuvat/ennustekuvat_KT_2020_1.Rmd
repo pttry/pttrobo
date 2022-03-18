@@ -21,9 +21,6 @@ library(tidyverse)
 library(statfitools)
 library(lubridate)
 library(pttdatahaku)
-```
-
-```{r, include=FALSE}
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
@@ -213,6 +210,31 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
     hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()
+```
+
+```{r}
+ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+filter_recode(
+  taloustoimi = c(
+    "Tavaroiden vienti" = "P61K Tavaroiden vienti, menona",
+    "Palvelujen vienti" = "P62K Palvelujen vienti, menona",
+    "Tavaroiden tuonti" = "P71R Tavaroiden tuonti, tulona",
+    "Palvelujen tuonti" = "P72R Palvelujen tuonti, tulona"),
+  tiedot = "Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa") |>
+  filter(time >= "2019-01-01") |> 
+  group_by(across(!c(time, value))) |> 
+  mutate(value = rebase(value, time, 2019)) |> 
+  ungroup() |> 
+  ptt_plot(
+    grouping = taloustoimi,
+    title = "Tavaroiden ja palveluiden vienti ja tuonti",
+    subtitle = "indeksi 2019 = 100, volyymi",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
   ptt_plot_create_widget()
 ```
 
