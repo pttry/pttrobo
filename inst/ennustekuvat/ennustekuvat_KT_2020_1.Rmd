@@ -19,14 +19,9 @@ library(tidyverse)
 library(statfitools)
 library(lubridate)
 library(pttdatahaku)
-```
 
-```{r storage_setup, include=FALSE, eval=FALSE}
-googleCloudStorageR::gcs_auth(Sys.glob("robottiperhe-*.json"))
-googleCloudStorageR::gcs_global_bucket("pttry")
-```
+start_time <- "2014-01-01"
 
-```{r, include=FALSE}
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
 }
@@ -34,7 +29,14 @@ ennuste_data <-
   read_ennuste_data(
     here::here("inst", "ennustekuvat", "ptt_ennusteet_KT_2022_1.xlsx")
   )
+
 ```
+
+```{r storage_setup, include=FALSE, eval=FALSE}
+googleCloudStorageR::gcs_auth(Sys.glob("robottiperhe-*.json"))
+googleCloudStorageR::gcs_global_bucket("pttry")
+```
+
 
 ## BKT Suomi
 
@@ -781,7 +783,7 @@ ptt_data_robo_l("tidy/10yield") |>
 ```{r}
 ptt_data_robo("fred/DCOILBRENTEU") |>
   drop_na() |>
-  filter(time >= "2012-01-01") |>
+  filter(time >= start_time) |>
   mutate(tieto = "Raakaöljy, Brent") |>
   ptt_plot(
     grouping = tieto,
@@ -837,7 +839,7 @@ cpi_us <-
   select(geo, time, value)
 
 bind_rows(cpi_es, cpi_us) |>
-  filter(time >= "2013-01-01") |>
+  filter(time >= start_time) |>
   mutate(geo = fct_relevel(geo, "Suomi", "Euroalue", "USA")) |>
   ptt_plot(
     grouping = geo,
@@ -848,10 +850,12 @@ bind_rows(cpi_es, cpi_us) |>
     hovertext = list(rounding = 1),
     zeroline = T
   ) |>
+    ptt_plot_add_prediction(
+    filter_recode(ennuste_data,
+                  sarja_nmi = c(Suomi = "Inflaatio"))
+  ) |> 
   ptt_plot_create_widget() ## |>
-  ## ptt_plot_add_prediction(
-  ##   ennuste_data
-  ## )
+
 
 
 ```
