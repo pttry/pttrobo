@@ -1,0 +1,8 @@
+KTdata_Julkinen:
+  EDP_velka:
+  - id: StatFin/jul/jyev/statfin_jyev_pxt_12sy.px
+    muunnos: viimeinen
+    tiedot:
+      Tiedot:
+      - EDP-velka, miljoonaa euroa
+      - Julkisyhteisöjen EDP-velan BKT-suhde, %

@@ -238,6 +238,45 @@ filter_recode(
   ptt_plot_create_widget()
 ```
 
+## Venäjän osuus kaupasta
+
+
+```{r}
+
+ptt_data_robo("StatFin/kan/tpulk/statfin_tpulk_pxt_12gq.px") |>
+  filter_recode(
+    alue = c(
+      RU = "Venäjä",
+      YHT = "Ulkomaat yhteensä"
+    ),
+    tiedot = c(
+      "Vienti" = "Vienti, miljoonaa euroa",
+      "Tuonti" = "Alkuperämaittainen tuonti, miljoonaa euroa"
+    ),
+    palveluera = c(
+      "GS Tavarat ja palvelut"
+      # "G Tavarat",
+      # "S Palvelut",
+    )
+  ) |> 
+  filter(time >= "2014-01-01") |> 
+  spread(alue, value) |> 
+  mutate(value = 100 * RU / YHT) |> mutate(year = lubridate::year(time)) |> select(-time) |> group_by(year, tiedot, palveluera) |> summarise(value = mean(value)) |> arrange(year) 
+    ptt_plot(
+    grouping = tiedot,
+    title = "Venäjän osuus viennistä ja tuonnista",
+    subtitle = "%, tavara ja palvelukaupan arvosta",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_create_widget()
+
+
+```
+
+
 ## Kauppa- ja vaihtotase
 ```{r vaihtotase}
 ptt_data_robo_l("StatFin/kan/mata/kk/statfin_mata_pxt_12gf.px") |>
@@ -324,7 +363,7 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
     time >= "2014-01-01",
     tiedot == "Julkisyhteisöjen EDP-velan BKT-suhde, %"
   ) |>
-  mutate(tiedot = "Julkisen sektorin EDP-velan suhde BKT:hen") |>
+  mutate(tiedot = "Velkasuhde") |>
   select(tiedot, time, value) |>
   ptt_plot(
     grouping = tiedot,
@@ -332,12 +371,13 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
     subtitle = "Velan suhde BKT:hen, %",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
-    zeroline = T,
+    zeroline = F,
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   )  |>
-  plotly::layout(
-    yaxis = list(range = c(55,75))
-  ) |>
+  # plotly::layout(
+  #   yaxis = list(range = c(55,75))
+  # ) |>
+  ptt_plot_add_prediction(ennuste_data)
   ptt_plot_create_widget()
 ```
 
@@ -383,9 +423,12 @@ ptt_data_robo("StatFin/jul/jtume/statfin_jtume_pxt_11zf.px") |>
                                 "Nettoluotonanto Paikallishallinto" = "Kunnat",
                                 "Nettoluotonanto Sosiaaliturvarahastot" = "Sosiaaliturvarahastot",
                                 "Nettoluotonanto Jukinen sektori" = "Yhteensä"
-                                ))
+                                )) 
+    |>
+    filter(sarja_nmi == "Valtio")
   ) |>
   ptt_plot_create_widget()
+
 ```
 
 ## Tulot ja kulutus

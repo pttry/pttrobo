@@ -1,0 +1,20 @@
+KTdata_Julkinen:
+  EDP_velka:
+  - id: StatFin/jul/jyev/statfin_jyev_pxt_12sy.px
+    muunnos: viimeinen
+    tiedot:
+      Tiedot:
+      - EDP-velka, miljoonaa euroa
+      - Julkisyhteisöjen EDP-velan BKT-suhde, %
+  EDP_Velka_sektorit:
+  - id: StatFin/jul/jyev/statfin_jyev_pxt_11yv.px
+    muunnos: viimeinen
+    tiedot:
+      Velallissektori:
+      - S13_C Julkisyhteisöt, sulautettu
+      - S1311 Valtionhallinto
+      - S1313 Paikallishallinto
+      - S1314 Sosiaaliturvarahastot
+      Vara:
+      - F2-F4 Käteisraha, talletukset, velkapaperit ja lainat
+      Tiedot: EDP-velka, miljoonaa euroa

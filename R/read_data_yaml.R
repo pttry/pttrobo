@@ -99,7 +99,10 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
       rename(d, Vuosi = time)
 
   } else {
-    fun <- switch(x$muunnos, "vuosisumma" = sum, "vuosikeskiarvo" = mean)
+    fun <- switch(x$muunnos,
+                  "vuosisumma" = sum,
+                  "vuosikeskiarvo" = mean,
+                  "viimeinen" = dplyr::last)
 
 
     if (!is.null(x$ajanjakso) && x$ajanjakso == "satovuosi") {
