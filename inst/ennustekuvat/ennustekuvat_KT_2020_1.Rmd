@@ -267,7 +267,7 @@ ptt_data_robo("StatFin/kan/tpulk/statfin_tpulk_pxt_12gq.px") |>
   ) |> 
   filter(time >= "2014-01-01") |> 
   spread(alue, value) |> 
-  mutate(value = 100 * RU / YHT) |> mutate(year = lubridate::year(time)) |> select(-time) |> group_by(year, tiedot, palveluera) |> summarise(value = mean(value)) |> arrange(year) 
+  mutate(value = 100 * RU / YHT) |>  
     ptt_plot(
     grouping = tiedot,
     title = "Venäjän osuus viennistä ja tuonnista",
@@ -364,6 +364,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ## Julkinen velka
 
 ```{r julkinen_velka}
+
 ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   filter(
     time >= "2014-01-01",
@@ -383,7 +384,7 @@ ptt_data_robo_l("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   # plotly::layout(
   #   yaxis = list(range = c(55,75))
   # ) |>
-  ptt_plot_add_prediction(ennuste_data)
+  ptt_plot_add_prediction(ennuste_data) |> 
   ptt_plot_create_widget()
 ```
 
