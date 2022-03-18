@@ -3,8 +3,6 @@ title: "Ennustekuviot"
 output:
   rmarkdown::html_document:
     code_folding: "hide"
-params:
-  filename: ""
     
 ---
 
@@ -21,7 +19,14 @@ library(tidyverse)
 library(statfitools)
 library(lubridate)
 library(pttdatahaku)
+```
 
+```{r storage_setup, include=FALSE, eval=FALSE}
+googleCloudStorageR::gcs_auth(Sys.glob("robottiperhe-*.json"))
+googleCloudStorageR::gcs_global_bucket("pttry")
+```
+
+```{r, include=FALSE}
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
 }
@@ -44,7 +49,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   mutate(tiedot = "BKT") |>
   ptt_plot(
     grouping = tiedot,
-    title = str_c(params$filename, "BKT Suomi"),
+    title = "BKT Suomi",
     subtitle = "Vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
@@ -90,7 +95,8 @@ pdat_tiva_va |>
   aplot_lines(colour = country_region,
               title = "Venäjän loppukysynnän osuus BKT:sta",
               subtitle ="%",
-              source = "OECD")
+              source = "OECD") |>
+  ptt_plot_create_widget()
 
 
 
@@ -670,6 +676,7 @@ bind_rows(tyovoima, tyolliset) |>
 ```
 
 ## Työttömyys
+
 ```{r}
 # työttömyysaste, jolle ennuste
 tyottomyysaste <- ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |> # työttömyysaste
@@ -684,7 +691,7 @@ tem_työttömyysaste <- ptt_data_robo_l("StatFin/tym/tyonv/kk/statfin_tyonv_pxt_
     filter(tiedot == "Työttömien työnhakijoiden %-osuus työvoimasta (%)",
            alue == "KOKO MAA",
            time >= "2014-01-01") |>
-    mutate(tiedot = "Työttömyyysaste (TEM)") |>
+    mutate(tiedot = "Työttömyysaste (TEM)") |>
     select(tiedot, time, value) |>
     mutate(value = statfitools::trend_series(value, time = time))
 
@@ -703,6 +710,41 @@ bind_rows(tyottomyysaste, tem_työttömyysaste) |>
   ptt_plot_add_prediction(ennuste_data) |>
   ptt_plot_create_widget()
 ```
+
+## Lyhyet korot
+
+```{r}
+euribor <-
+  ptt_data_robo_l("tidy/euribor") |>
+  filter(korko %in% c("12 kk (tod.pv/360)",
+                      "12 kk (tod.pv/360)")) |>
+  mutate(tieto = "Euribor 12 kk")
+
+ohjauskorko <-
+  ptt_data_robo_l("tidy/ecb_rates") |>
+  filter(rate_type == "ECB Main refinancing operations") |>
+  mutate(tieto = "Ohjauskorko, EKP")
+
+bind_rows(euribor, ohjauskorko) |>
+  drop_na(value) |>
+  arrange(time) |>
+  filter(time >= "2008-01-01") |>
+  ptt_plot(
+    grouping = tieto,
+    title = "Lyhyet korot",
+    subtitle = "%",
+    caption =  "Lähde: Suomen Pankki, Euroopan keskuspankki ja PTT",
+    rangeslider = FALSE,
+    hovertext = list(rounding = 2),
+    zeroline = T
+  ) |>
+  ptt_plot_add_prediction(
+    ennuste_data |>
+      mutate(across(is.double, ~.x*100))
+  ) |>
+  ptt_plot_create_widget()
+```
+
 
 ## Pitkät korot
 
@@ -847,4 +889,10 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
   ## ptt_plot_add_prediction(
   ##   ennuste_data
   ## )
+```
+
+```{r, eval = FALSE}
+
+ptt_plot_upload_widgets()
+
 ```
