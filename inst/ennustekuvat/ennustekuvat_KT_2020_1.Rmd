@@ -4,8 +4,7 @@ output:
   rmarkdown::html_document:
     code_folding: "hide"
 params:
-  upload_widgets: true
-    
+  upload_widgets: false ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
 ---
 
 ```{r, include = FALSE}
