@@ -434,7 +434,7 @@ ptt_data_robo("StatFin/jul/jtume/statfin_jtume_pxt_11zf.px") |>
                                 "Nettoluotonanto Jukinen sektori" = "Yhteensä"
                                 )) 
     |>
-    filter(sarja_nmi == "Valtio")
+    filter(sarja_nmi == "Yhteensä")
   ) |>
   ptt_plot_create_widget()
 
