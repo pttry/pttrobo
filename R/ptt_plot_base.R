@@ -640,7 +640,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
     if(is.na(upload_type)) { upload_type <- NULL}
     meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
     meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
-    gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta)
+    gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel")
   })
 }
 
