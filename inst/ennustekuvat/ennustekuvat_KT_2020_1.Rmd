@@ -21,7 +21,7 @@ library(tidyverse)
 library(statfitools)
 library(lubridate)
 library(pttdatahaku)
-
+devtools::load_all()
 start_time <- "2014-01-01"
 
 read_ennuste_data <- function(ennuste_data_file) {

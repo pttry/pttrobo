@@ -571,7 +571,7 @@ ptt_plot_create_widget <- function(p, title, path) {
       dir.create(cur_input,showWarnings = F)
       ###
       path <- str_c(cur_input,"/")
-      buc <- tryCatch(gcs_get_global_bucket(), error = function(e) { NULL })
+      # buc <- tryCatch(gcs_get_global_bucket(), error = function(e) { NULL })
       # if(is.null(buc)) {
       #   cat("No google cloud storage bucket set, no iframe code generated.")
       # } else {
@@ -598,7 +598,7 @@ ptt_plot_create_widget <- function(p, title, path) {
 #' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket gcs_auth gcs_global_bucket
 ptt_plot_upload_widgets <- function(files_path, upload_path) {
 
-  tryCatch(gcs_auth(Sys.glob("robottiperhe-*.json")), error = function(e) {
+  tryCatch(gcs_auth(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))), error = function(e) {
     str <- paste0("Do you have the proper authorisation file in the directory?\n")
     stop(str, call. = F)
     })
