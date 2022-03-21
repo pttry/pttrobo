@@ -4,16 +4,12 @@
 \alias{ptt_plot_upload_widgets}
 \title{Uploads the html elements and dependencies to cloud storage.}
 \usage{
-ptt_plot_upload_widgets(
-  files_path,
-  upload_path,
-  upload_bucket = gcs_get_global_bucket()
-)
+ptt_plot_upload_widgets(files_path, upload_path)
 }
 \arguments{
 \item{files_path}{The folder where the artefacts to be uploaded are located.}
 
-\item{upload_bucket}{The google cloud storage bucket where the artefacts are uploaded to.}
+\item{upload_path}{The gcs folder where the artefacts will be uploaded to.}
 }
 \description{
 Uploads the html elements and dependencies to cloud storage.

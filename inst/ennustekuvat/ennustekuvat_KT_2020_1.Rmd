@@ -3,6 +3,8 @@ title: "Ennustekuviot"
 output:
   rmarkdown::html_document:
     code_folding: "hide"
+params:
+  upload_widgets: true
     
 ---
 
@@ -31,12 +33,6 @@ ennuste_data <-
   )
 
 ```
-
-```{r storage_setup, include=FALSE, eval=FALSE}
-googleCloudStorageR::gcs_auth(Sys.glob("robottiperhe-*.json"))
-googleCloudStorageR::gcs_global_bucket("pttry")
-```
-
 
 ## BKT Suomi
 
@@ -896,8 +892,7 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
   ## )
 ```
 
-```{r, eval = FALSE}
-
+```{r, eval = params$upload_widgets}
 ptt_plot_upload_widgets()
 
 ```

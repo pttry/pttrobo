@@ -572,11 +572,11 @@ ptt_plot_create_widget <- function(p, title, path) {
       ###
       path <- str_c(cur_input,"/")
       buc <- tryCatch(gcs_get_global_bucket(), error = function(e) { NULL })
-      if(is.null(buc)) {
-        cat("No google cloud storage bucket set, no iframe code generated.")
-      } else {
-        cat(str_c('\n<iframe src="https://storage.googleapis.com/',gcs_get_global_bucket(),'/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="600px"></iframe>\n'))
-        }
+      # if(is.null(buc)) {
+      #   cat("No google cloud storage bucket set, no iframe code generated.")
+      # } else {
+      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="600px"></iframe>\n'))
+        # }
       path
     } else { "" }
   } else  { str_c(path,"/") }
@@ -590,14 +590,22 @@ ptt_plot_create_widget <- function(p, title, path) {
 #' Uploads the html elements and dependencies to cloud storage.
 #'
 #' @param files_path The folder where the artefacts to be uploaded are located.
-#' @param upload_bucket The google cloud storage bucket where the artefacts are uploaded to.
+#' @param upload_path The gcs folder where the artefacts will be uploaded to.
 #' @export
 #' @importFrom knitr current_input
 #' @importFrom stringr str_remove str_replace_all str_c str_detect
 #' @importFrom dplyr case_when
-#' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket
-ptt_plot_upload_widgets <- function(files_path, upload_path, upload_bucket = gcs_get_global_bucket()) {
+#' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket gcs_auth gcs_global_bucket
+ptt_plot_upload_widgets <- function(files_path, upload_path) {
+
+  tryCatch(gcs_auth(Sys.glob("robottiperhe-*.json")), error = function(e) {
+    str <- paste0("Do you have the proper authorisation file in the directory?\n")
+    stop(str, call. = F)
+    })
+  suppressMessages(gcs_global_bucket("pttry"))
+
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
+  
   if(missing(files_path)) {
     if(is_knitting == T) {
       cur_input <- knitr::current_input()
@@ -605,6 +613,11 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, upload_bucket = gcs
     } else {
         stop("Give the path to the files you wish to upload. Careful! This will upload every .html, .css, .map, .scss, .txt and .js file in the given path!", call. = F)
       }
+  } else {
+    upl_files <-  list.files(path = files_path, recursive = T, full.names = T) %>% str_subset("\\.(css|js|map|scss|html|txt)$") %>% str_c(collapse = ", ")
+      message(str_c("Give the path to the files you wish to upload. Careful! This will upload all of ",upl_files,"!\nType \"upload\" to continue:"))
+      ans <- readline(" ")
+      if (ans != "upload") { stop("Canceled", call. = F) }
   }
 
   if (missing(upload_path) & !is_knitting) {
@@ -627,7 +640,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, upload_bucket = gcs
     if(is.na(upload_type)) { upload_type <- NULL}
     meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
     meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
-    gcs_upload(artefact_file, upload_bucket, name = upload_file, type = upload_type, object_metadata = meta)
+    gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta)
   })
 }
 
