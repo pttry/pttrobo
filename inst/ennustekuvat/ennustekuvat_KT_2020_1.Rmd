@@ -483,6 +483,28 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   ) |>
   ptt_plot(
     grouping = tiedot,
+    title = "Investoinnit, julkinen ja yksityinen",
+    subtitle = "%, volyymin vuosimuutos",
+    caption =  "Lähde: Tilastokeskus ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
+  ) |>
+  ptt_plot_add_prediction(ennuste_data) |>
+  ptt_plot_create_widget()##  |>
+  ## ptt_plot_create_widget("investoinnit")
+```
+
+```{r}
+ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+  filter_recode(
+    taloustoimi = c("Investoinnit" = "P51K Kiinteän pääoman bruttomuodostus, menona"),
+    tiedot = "Kausitasoitetun ja työpäiväkorjatun sarjan volyymin muutos vuodentakaisesta, %"
+    
+  ) |>
+filter(time >= "2014-01-01") |> 
+  ptt_plot(
+    grouping = taloustoimi,
     title = "Investoinnit",
     subtitle = "%, volyymin vuosimuutos",
     caption =  "Lähde: Tilastokeskus ja PTT",
@@ -533,7 +555,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ## Työllisyysaste
 
 ```{r}
-ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
+ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px", hash = Sys.time()) |>
   filter(
     tiedot == "Työllisyysaste, 15-64-vuotiaat, %, trendi",
     time >= "2014-01-01"
@@ -554,7 +576,7 @@ ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
 ## Työttömyysaste
 
 ```{r}
-ptt_data_robo_l("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px") |>
+ptt_data_robo("StatFin/tym/tyti/kk/statfin_tyti_pxt_135z.px", hash = Sys.time()) |>
   filter(
     tiedot == "Työttömyysaste, %, trendi",
     time >= "2014-01-01"
@@ -890,6 +912,7 @@ ptt_data_robo("StatFin/pal/ati/nj/statfin_ati_pxt_11zt.px") |>
   ## ptt_plot_add_prediction(
   ##   ennuste_data
   ## )
+
 ```
 
 ```{r, eval = params$upload_widgets}
