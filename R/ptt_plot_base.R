@@ -947,13 +947,13 @@ ptt_plot_add_prediction <- function(p,
     select(csv.data.tiedot, time, value) |>
     distinct(csv.data.tiedot, time, value) |>
     mutate(
-      tiedot = str_c(csv.data.tiedot, ", ennuste"),
+      csv.data.tiedot = str_c(csv.data.tiedot, ", ennuste"),
       across(everything(), ~ as.character(.x)),
       value = str_replace(value, "\\.",",")
     )
-  p$data <- p$data |>
+  p$data <- p$data |> 
     bind_rows(pred_d) |>
-    arrange(time, tiedot)
+    arrange(time, csv.data.tiedot)
   p |>
     ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
     # ptt_plot_add_zeroline(zero.line) |>
