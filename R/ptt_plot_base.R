@@ -329,6 +329,7 @@ ptt_plot_config <- function(p,
 
   main_font <- list(size = font_size, family = "sans-serif", color = font_color)
   title_font <- list(size = round(font_size*1.3), family = "sans-serif", color = font_color)
+  caption_font <- list(size = round(font_size*1), family = "sans-serif", color = font_color)
 
   rangeslider_size <- 0.1#round(1-((height/1000)^(1/2)),2)
 
@@ -386,7 +387,7 @@ ptt_plot_config <- function(p,
     ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
-    ptt_plot_set_caption(caption, offset = caption_offset, main_font) |>
+    ptt_plot_set_caption(caption, offset = caption_offset, caption_font) |>
     ptt_plot_add_zeroline(zeroline)
 }
 
@@ -605,7 +606,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
   suppressMessages(gcs_global_bucket("pttry"))
 
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
-  
+
   if(missing(files_path)) {
     if(is_knitting == T) {
       cur_input <- knitr::current_input()
