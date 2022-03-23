@@ -55,6 +55,7 @@ ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   ) |>
   ptt_plot_add_prediction(ennuste_data) |>
   ptt_plot_create_widget()
+
 ```
 
 ## Venäjän loppukysynnän osuus arvonlisästä
