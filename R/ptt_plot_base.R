@@ -127,7 +127,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
               //text = text + gd.data[i].name + ';' + gd.data[i].x + '\\n';
               //text = text + gd.data[i].name + ';' + gd.data[i].y + '\\n';
             //};
-            var blob = new Blob([text], {type: 'text/plain'});
+            var blob = new Blob([text], {type: 'text/plain;charset=UTF-8'});
             var a = document.createElement('a');
             const object_URL = URL.createObjectURL(blob);
             a.href = object_URL;
