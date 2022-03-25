@@ -7,7 +7,7 @@ data_get("eurostat/aact_eaa01") |>
   # filter(indic_ag == "Production value at basic price",
   #        geo == "Finland",
   #        unit == "Million euro") |>
-  data_to_yaml(välilehti = "eaa")
+  data_to_yaml()
 
 data_get("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
   data_to_yaml(välilehti = "taloustili")

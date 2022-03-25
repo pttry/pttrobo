@@ -23,7 +23,7 @@ MEdata_Lihamarkkinat:
       - Siipikarjanliha keskimäärin 1)
   liha_kulutus:
   - id: StatFin/vrm/vamuu/statfin_vamuu_pxt_11ll.px
-    muunnos: vuosisumma
+    muunnos: vuosikeskiarvo
     tiedot:
       Tiedot:
       - Väkiluku

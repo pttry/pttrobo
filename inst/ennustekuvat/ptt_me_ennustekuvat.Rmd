@@ -1,10 +1,18 @@
 ---
-title: "ptt_me_ennustekuvat"
-output: html_document
+title: "ME ennustekuviot"
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: false ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 
 
 library(robonomistClient)
@@ -14,7 +22,8 @@ library(lubridate)
 library(pttdatahaku)
 
 
-devtools::load_all(path = '../pttrobo/')
+# devtools::load_all(path = '../pttrobo/')
+devtools::load_all()
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
@@ -22,7 +31,8 @@ read_ennuste_data <- function(ennuste_data_file) {
 
 
 ennuste_data <-
-  read_ennuste_data("/Documents and Settings/PekkaKinnunen/OneDrive - Pellervon Taloustutkimus PTT ry/ME/Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
+  read_ennuste_data(here::here("inst", "ennustekuvat", "Ennuste kokoomataulukko_kevät_2022.xlsx"))
+
   
 colnames(ennuste_data)
 start_time <- "2014-01-01"
@@ -49,8 +59,7 @@ ptt_data_robo_l("tidy/usda_psd") |>
   mutate( 
     tiedot = commodity_description, 
     time = lubridate::ymd(paste(market_year, "7", "1", sep = "-"))) |> 
-  filter(time >= start_time) 
-
+  filter(time >= start_time) |> 
   ptt_plot(
     title=  "Maailman viljantuotanto",
     grouping = tiedot,
