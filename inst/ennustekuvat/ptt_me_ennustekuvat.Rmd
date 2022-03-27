@@ -1,18 +1,10 @@
 ---
-title: "ME ennustekuviot"
-output:
-  rmarkdown::html_document:
-    code_folding: "hide"
-params:
-  upload_widgets: false ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
+title: "ptt_me_ennustekuvat"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+knitr::opts_chunk$set(echo = TRUE)
 
 
 library(robonomistClient)
@@ -22,8 +14,7 @@ library(lubridate)
 library(pttdatahaku)
 
 
-# devtools::load_all(path = '../pttrobo/')
-devtools::load_all()
+devtools::load_all(path = '../pttrobo/')
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
@@ -31,8 +22,7 @@ read_ennuste_data <- function(ennuste_data_file) {
 
 
 ennuste_data <-
-  read_ennuste_data(here::here("inst", "ennustekuvat", "Ennuste kokoomataulukko_kevät_2022.xlsx"))
-
+  read_ennuste_data("/Documents and Settings/PekkaKinnunen/OneDrive - Pellervon Taloustutkimus PTT ry/ME/Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
   
 colnames(ennuste_data)
 start_time <- "2014-01-01"
@@ -57,19 +47,21 @@ ptt_data_robo_l("tidy/usda_psd") |>
   summarise(value = sum(value, na.rm = T)/1000) |> 
   ungroup() |> 
   mutate( 
-    tiedot = commodity_description, 
-    time = lubridate::ymd(paste(market_year, "7", "1", sep = "-"))) |> 
+    tiedot = "Vehnä", 
+    time = lubridate::ymd(paste(market_year, "7", "1", sep = "-"))    ) |> 
   filter(time >= start_time) |> 
+
   ptt_plot(
     title=  "Maailman viljantuotanto",
     grouping = tiedot,
     subtitle = "milj. tonnia",
-    caption =  "Lähde: Luke ja PTT",
+    caption =  "Lähde: USDA ja PTT",
     rangeslider = FALSE,
     zeroline = F,
+    axis_limits = list(y = c(700, 800)),
     hovertext =  list(rounding = 1, unit = "milj. tonnia", extra = "")
   ) |> 
-  ptt_plot_add_prediction(pred_data = ennuste_data) |>
+  ptt_plot_add_prediction(pred_data = ennuste_data |> filter(luokka == "Maailman viljantuotanto")) |>
   ptt_plot_create_widget()
            
 
@@ -83,14 +75,15 @@ ptt_data_robo("StatFin/maa/satot/statfin_satot_pxt_001.px") |>
   filter(viljelykasvi %in% c("Vehnä","Ruis","Ohra", "Kaura")) |>
   mutate(tiedot = viljelykasvi) |>
   filter(time >= start_time) |>
+  mutate(time = time + months(6)) |> 
    ptt_plot(
     grouping = tiedot,
     title = "Viljan tuotanto Suomessa",
-    subtitle = "milj. tonnia",
+    subtitle = "tuhatta tonnia",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "milj. tonnia", extra = "")
+    hovertext =  list(rounding = 1, unit = "tuhatta tonnia", extra = "")
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
                             filter(luokka == "Viljan tuotanto Suomessa")) |>
@@ -123,24 +116,61 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
 # Maidon tuotanto
 ``` {r}
 # Maidon tuotanto 
+# 
+# ptt_data_robo("luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/02_Kuukausitilastot/02_Meijerimaidon_tuotanto_kk.px") |>
+#   mutate(year = lubridate::year(time)) |> 
+#   filter_recode(
+#   tieto = c("Vastaanotettu maitomäärä" = "VASTAANOTETTU MAITOMÄÄRÄ YHTEENSÄ (l) 2)")) |> 
+#   group_by(tieto,year) |> 
+#   summarise(value = sum(value, na.rm = T), .groups = "drop") |> 
+#   ungroup() |> 
+#   filter(year >= 2014, year < 2022) |> 
+#   mutate(tiedot = tieto,
+#          time = as.Date(paste(year, "1", "1", sep = "-"))) |> 
+#   ptt_plot(
+#   grouping = tiedot, 
+#   title ="Maidon tuotanto Suomessa",subtitle = "Litraa",
+#     caption  = "Lähde: Luke ja PTT",
+#    rangeslider = FALSE,
+#     zeroline = F,
+#     hovertext =  list(rounding = 1, unit = "litraa", extra = "")
+#   ) |> 
+#   ptt_plot_add_prediction(pred_data = ennuste_data |> 
+#                             filter(luokka == "Maidon tuotanto")) |>
+#   ptt_plot_create_widget()
 
-ptt_data_robo("luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/02_Kuukausitilastot/02_Meijerimaidon_tuotanto_kk.px") |>
+ptt_data_robo_l("luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/04_Vuositilastot/04_Maidon_kokonaistuotanto.px") |> 
   filter_recode(
-  tieto = c("Vastaanotettu maitomäärä" = "VASTAANOTETTU MAITOMÄÄRÄ YHTEENSÄ (l) 2)")) |>
-  filter(time >= as.Date("2013-1-1")) |> 
-  aplot_trends(colour = tieto,
-               title = "Maidon tuotanto Suomessa",
-               subtitle = "Litraa kuukaudessa, trendi ja alkuperäinen",
-               source = "Luke")
+  tuotanto_kaytto = c( "Maito yhteensä" = "MAITO YHTEENSÄ")) |> 
+  mutate(tiedot = tuotanto_kaytto,
+         time = time + months(6)) |> 
+  filter(time >= start_time)  |> 
+  ptt_plot(
+  grouping = tiedot, 
+  title ="Maidon tuotanto Suomessa",subtitle = "milj. litraa",
+    caption  = "Lähde: Luke ja PTT",
+   rangeslider = FALSE,
+    zeroline = F, axis_limits = list(y = c(2000,2400)),
+    hovertext =  list(rounding = 0, unit = "milj. litraa", extra = "")
+  ) |> 
+  ptt_plot_add_prediction(pred_data = ennuste_data |> 
+                            filter(luokka == "Maidon tuotanto")) |>
+  ptt_plot_create_widget()
+
+
+  
 
 # Maidon tuottajahinnat suomi ja eu
 milk_countries <-
   c(
     Suomi = "FI",
     EU = "EU",
-    Saksa = "DE",
-    Tanska = "DK"
+    
+    Tanska = "DK",
+    Saksa = "DE"
   )
+
+# TODO: Suomi jää muiden viivojen alle mutta factor-levelit kääntämällä Suomi tulee keltaisella viivalla mikä näkyy vähän huonosti. 
 
 ptt_data_robo_l("tidy/dg_agri") |>
   filter(product_desc %in% "Raw Milk",
@@ -150,7 +180,7 @@ ptt_data_robo_l("tidy/dg_agri") |>
 
   ptt_plot(
   grouping = tiedot, 
-  title ="Maidon tuottajahinta",subtitle = "€ / 100 kg",
+  title ="Maidon tuottajahinta",subtitle = "€ / 100kg",
     caption  = "DG Agri ja PTT",
    rangeslider = FALSE,
     zeroline = F,
@@ -177,62 +207,82 @@ ptt_data_robo_l("tidy/dg_agri") |>
                "Siipikarjanliha" = "115000 Siipikarja"),
            tiedot = "Maatalouden tuottajahintaindeksi (2015=100)") |> 
   group_by(across(where(is.factor))) |> 
-    mutate(value = pc(value, 12, order_by = time)) |>
+    mutate(value = pc(value, 12, order_by = time),
+           luokka = "Lihan tuottajahinnat Suomessa",
+           tiedot =  maatalouden_tuottajahintaindeksin_luokitus    ) |>
+  ungroup() |> 
   filter(time >= start_time) |> 
-  aplot_lines(
-    colour = maatalouden_tuottajahintaindeksin_luokitus,
-    title = "Lihan tuottajahinnat",
-    subtitle = "%, muutos vuoden takaa",
-    source = "Tilastokeskus")
-
-# Lihan kulutus ja tuotanto
-
-liha_kulutus <-
-  ptt_data_robo("luke/02_Maatalous/08_Muut/02_Ravintotase/02_Ravintotase.px") |>
-  filter_recode(
-    tieto = c(
-      Tuotanto = "Tuotanto",
-      "Kokonaiskulutus" = "KOTIMAINEN KÄYTTÖ YHTEENSÄ"
-    ),
-    elintarvike = c(
-      "Naudanliha" = "Naudanliha 4)",
-      "Sianliha" = "Sianliha 4)",
-      "Siipikarjanliha" = "Siipikarjanliha 4)")
-  ) |>
-  rename(laji = elintarvike) |>
-  mutate(tiedot = paste(laji, "n ",  tolower(tieto), sep = ""),
-         time = time + months(6)) |>
-  filter(time >= start_time) 
-  
-
-
-liha_kulutus|>
-  filter(laji == "Sianliha") |>
-   ptt_plot(
-    title=  "Sianlihan kulutus ja tuotanto Suomessa",
+  ptt_plot(
+    title=  "Lihan tuottajahinnat",
     grouping = tiedot,
-    subtitle = "milj. kg",
-    caption =  "Lähde: Luke ja PTT",
+    subtitle = "%, muutos vuoden takaa",
+    caption =  "Lähde: Tilastokeskus ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "milj. kg", extra = "")
+    hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data) |>
   ptt_plot_create_widget()
 
 
-liha_kulutus|>
-  filter(laji == "Naudanliha") |>
-  aplot_lines(colour = tiedot, title = "Naudanlihan kulutus ja tuotanto Suomessa",
-              subtitle = "milj. kg",
-              source= "Luke")
-
-liha_kulutus|>
-  filter(laji == "Siipikarjanliha") |>
-  filter(time >= start_time) |>
-  aplot_lines(colour = tieto, title = "Siipikarjanlihan kulutus ja tuotanto Suomessa",
-              subtitle = "milj. kg",
-              source = "Luke")
+# # Lihan kulutus ja tuotanto
+# 
+# liha_kulutus <-
+#   ptt_data_robo("luke/02_Maatalous/08_Muut/02_Ravintotase/02_Ravintotase.px") |>
+#   filter_recode(
+#     tieto = c(
+#       Tuotanto = "Tuotanto",
+#       "Kokonaiskulutus" = "KOTIMAINEN KÄYTTÖ YHTEENSÄ"
+#     ),
+#     elintarvike = c(
+#       "Naudanliha" = "Naudanliha 4)",
+#       "Sianliha" = "Sianliha 4)",
+#       "Siipikarjanliha" = "Siipikarjanliha 4)")
+#   ) |>
+#   rename(laji = elintarvike) |>
+#   mutate(tiedot = paste(laji, "n ",  tolower(tieto), sep = ""),
+#          time = time + months(6)) |>
+#   filter(time >= start_time) 
+#   
+# ptt_data_robo_l("StatFin/vrm/kuol/statfin_kuol_pxt_12at.px")
+# 
+# 
+# liha_kulutus|>
+#   filter(laji == "Sianliha") |>
+#    ptt_plot(
+#     title=  "Sianlihan kulutus ja tuotanto Suomessa",
+#     grouping = tiedot,
+#     subtitle = "milj. kg",
+#     caption =  "Lähde: Luke ja PTT",
+#     rangeslider = FALSE,
+#     zeroline = F,
+#     hovertext =  list(rounding = 1, unit = "milj. kg", extra = "")
+#   ) |> 
+#   ptt_plot_add_prediction(pred_data = ennuste_data) |>
+#   ptt_plot_create_widget()
+# 
+# 
+# liha_kulutus|>
+#   filter(laji == "Naudanliha") |>
+#   ptt_plot(
+#     title = "Naudanlihan kulutus ja tuotanto Suomessa",
+#     subtitle = "milj. kg",
+#     grouping = tiedot,
+#     subtitle = "milj. kg",
+#     caption =  "Lähde: Luke ja PTT",
+#     rangeslider = FALSE,
+#     zeroline = F,
+#     hovertext =  list(rounding = 1, unit = "milj. kg", extra = "")
+#   ) |> 
+#   ptt_plot_add_prediction(pred_data = ennuste_data |> filter(luokka %in% )) |>
+#   ptt_plot_create_widget()
+# 
+# liha_kulutus|>
+#   filter(laji == "Siipikarjanliha") |>
+#   filter(time >= start_time) |>
+#   aplot_lines(colour = tieto, title = "Siipikarjanlihan kulutus ja tuotanto Suomessa",
+#               subtitle = "milj. kg",
+#               source = "Luke")
 
 ```
 
@@ -263,7 +313,7 @@ ptt_data_robo_l("StatFin/hin/ttohi/statfin_ttohi_pxt_11gv.px") |>
   ptt_plot_add_prediction(pred_data = ennuste_data) |>
   ptt_plot_create_widget()
 
-  
+
 
 
 ```
@@ -302,6 +352,7 @@ taloustilit <- ptt_data_robo_l("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
                                        "maatalous_tuet" = "Maataloustuet yhteensä",
                                        "kulut_yht"= "Kulut yhteensä")))
 
+
   
  ptt_plot(taloustilit,
   grouping = tiedot, 
@@ -312,7 +363,7 @@ taloustilit <- ptt_data_robo_l("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
     zeroline = T,
     hovertext =  list(rounding = 0, unit = "milj. €", extra = "")
   ) |> 
-  ptt_plot_add_prediction(pred_data = ennuste_data) |>
+  ptt_plot_add_prediction(pred_data = ennuste_data ) |>
   ptt_plot_create_widget()
 
  
@@ -330,27 +381,26 @@ elintarvike_vol <- ptt_data_robo_l("StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px") 
   filter_recode(toimiala_tol_2008 =
                   c("Volyymi" = "10-11 Elintarviketeollisuus"  )) |>
   filter(tiedot == "Työpäiväkorjattu indeksisarja") |>
-  mutate(tiedot = "Elintarviketeollisuus, tuotannon volyymi",
-         value = 100* (value/lag(value, 12) -1))
+  mutate(tiedot = "Elintarviketeollisuus, tuotannon volyymi")
 
 elintarvike_lv <-ptt_data_robo_l("StatFin/teo/tlv/statfin_tlv_pxt_112c.px") |>
   filter_recode(toimiala =c("Liikevaihto" = "10-11 Elintarviketeollisuus"  )) |>
   filter(tiedot == "Työpäiväkorjattu indeksisarja",
          muuttuja == "Liikevaihto") |>
-  mutate(tiedot = "Elintarviketeollisuus, liikevaihto",
-    value = 100* (value/lag(value, 12) -1))
+  mutate(tiedot = "Elintarviketeollisuus, liikevaihto")
 
 bind_rows(elintarvike_vol, elintarvike_lv) |>
   filter(time >= start_time) |>
- ptt_plot(
-  grouping = tiedot, 
+  group_by(tiedot) |> 
+  mutate(value = statfitools::trend_series(value, time = time, x11="")) |> 
+  mutate(value= 100*(value / lag(value, n = 12, order_by = time)-1)) |>
+  ungroup() |> 
+  ptt_plot( grouping = tiedot, 
   title = "Elintarviketeollisuus",
   subtitle = "%, vuosimuutos",
     caption  = "Lähde: Tilastokeskus ja PTT",
-   rangeslider = FALSE,
-    zeroline = F,
-    hovertext =  list(rounding = 0, unit = "milj. €", extra = "") )|> 
-  ptt_plot_add_prediction(pred_data = ennuste_data) |>
+       hovertext =  list(rounding = 1, unit = "%", extra = "") )|> 
+  ptt_plot_add_prediction(pred_data = ennuste_data ) |>
   ptt_plot_create_widget()
 
 
@@ -375,18 +425,19 @@ dat_me_sitc <- ptt_data_robo(
 dat_me_sitc |>
   filter(time >= start_time) |>
   group_by(maa, suunta, indikaattorit, time) |>
-  summarise(value = 12 * sum(value)) |>
-  mutate(tiedot = suunta) |> 
-  ungroup() |>
+  summarise(value = 12 * sum(value)/1e6) |>
+  mutate(tiedot = suunta,
+         value = statfitools::trend_series(value, time = time, x11="")) |> 
+  ungroup() |> 
   ptt_plot(
   grouping = tiedot, 
   title = "Elintarvikkeiden vienti ja tuonti",
-  subtitle = "milj. euroa vuositasolle korotettuna, trendi ja alkuperäinen",
+  subtitle = "milj. euroa vuositasolle korotettuna",
     caption  = "Lähde: Tulli ja PTT",
    rangeslider = FALSE,
     zeroline = F,
     hovertext =  list(rounding = 0, unit = "milj. €", extra = "") )|> 
-  ptt_plot_add_prediction(pred_data = ennuste_data) |>
+  ptt_plot_add_prediction(pred_data = ennuste_data ) |>
   ptt_plot_create_widget()
   
   
@@ -408,13 +459,20 @@ ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
   select(!c(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
   mutate(tiedot = str_to_sentence(hyodyke)) |> 
   mutate(tiedot = fct_recode(tiedot, Kuluttajahinnat = "Kuluttajahintaindeksi")) |>
-  aplot_lines(
-    title = "Elintarvikkeiden ja yleinen hintojen muutos Suomessa",
-    subtitle = "%, muutos vuoden takaa",
-    source = "Tilastokeskus"
-  ) 
+  ptt_plot(
+  grouping = tiedot, 
+  title = "Elintarvikkeiden hinnat",
+  subtitle =  "%, muutos vuoden takaa",
+    caption  = "", #Lähde: Tilastokeskus ja PTT",
+   rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "%", extra = "") )|> 
+  ptt_plot_add_prediction(pred_data = ennuste_data |> 
+                            filter()) |>
+  ptt_plot_create_widget()
+  
+  
 
-       
 
 # Elintarvikeryhmien hinnan muutos
 
@@ -427,15 +485,26 @@ ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |>
     ),
          tiedot = c("Vuosimuutos (%)")
   ) |> 
+  mutate(tiedot = hyodyke) |> 
   filter(time >= start_time) |> 
-  aplot_lines(colour = hyodyke,
-    title = "Elintarvikkeiden hintojen muutos Suomessa",
+  ptt_plot(
+  grouping = tiedot, 
+  title = "Elintarvikkeryhmien hinnat",
     subtitle = "%, muutos vuoden takaa",
-    source = "Tilastokeskus")
-
-
+    caption  = "", # Lähde: Tilastokeskus ja PTT",
+   rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 0, unit = "milj. €", extra = "") )|> 
+  ptt_plot_add_prediction(pred_data = ennuste_data |> 
+                            filter(luokka == "Elintarvikkeiden hintojen muutos")) |>
+  ptt_plot_create_widget()
 
 
 
 ```
 
+## Upload
+```{r}
+ptt_plot_upload_widgets()
+
+```
