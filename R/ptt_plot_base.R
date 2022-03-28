@@ -51,6 +51,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
   js_string <- function(wd, ht, suffix, layout, ttl = dl_title) {
     str_c('
           function(gd) {
+          let oldlayout = JSON.parse(JSON.stringify(gd.layout))
           delete gd.layout.xaxis.rangeslider;
           gd.layout.margin.t = ',layout$margin_t,';
           gd.layout.margin.b = ',layout$margin_b,';
@@ -69,6 +70,8 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
           gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
           gd.layout.title.font.size = ',layout$font_sizing$title,';
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
+          gd.layout = oldlayout
+          delete oldlayout
           }
    ')
   }
