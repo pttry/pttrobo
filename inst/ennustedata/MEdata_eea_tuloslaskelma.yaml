@@ -1,5 +1,5 @@
 MEdata_eea_tuloslaskelma:
-  eaa:
+  eaa_th_arvo:
   - id: eurostat/aact_eaa01
     muunnos: alkuperäinen
     tiedot:
@@ -35,6 +35,144 @@ MEdata_eea_tuloslaskelma:
       - OTHER SUBSIDIES ON PRODUCTION
       - FACTOR INCOME
       - OPERATING SURPLUS/MIXED INCOME
+      - RENTS AND OTHER REAL ESTATE RENTAL CHARGES TO BE PAID
+      - INTEREST PAID
+      - INTEREST RECEIVED
+      - ENTREPRENEURIAL INCOME
+      - GROSS FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      - NET FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      indic_ag: Production value at producer price
+      unit: Million euro
+      geo: Finland
+  eaa_ph_arvo:
+  - id: eurostat/aact_eaa01
+    muunnos: alkuperäinen
+    tiedot:
+      itm_newa:
+      - Cereals (including seeds)
+      - Wheat and spelt
+      - Rye and meslin
+      - Barley
+      - Oats and summer cereal mixtures
+      - INDUSTRIAL CROPS
+      - CROP OUTPUT
+      - ANIMALS
+      - Cattle
+      - Pigs
+      - Poultry
+      - ANIMAL PRODUCTS
+      - Milk
+      - ANIMAL OUTPUT
+      - AGRICULTURAL GOODS OUTPUT
+      - AGRICULTURAL SERVICES OUTPUT
+      - AGRICULTURAL SERVICES
+      - OUTPUT OF THE AGRICULTURAL 'INDUSTRY'
+      - TOTAL INTERMEDIATE CONSUMPTION
+      - SEEDS AND PLANTING STOCK (INTERMEDIATE CONSUMPTION)
+      - ENERGY; LUBRICANTS
+      - FERTILISERS AND SOIL IMPROVERS
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION)
+      - GROSS VALUE ADDED AT BASIC PRICES
+      - FIXED CAPITAL CONSUMPTION
+      - NET VALUE ADDED AT BASIC PRICES
+      - COMPENSATION OF EMPLOYEES
+      - OTHER TAXES ON PRODUCTION
+      - OTHER SUBSIDIES ON PRODUCTION
+      - FACTOR INCOME
+      - OPERATING SURPLUS/MIXED INCOME
+      - RENTS AND OTHER REAL ESTATE RENTAL CHARGES TO BE PAID
+      - INTEREST PAID
+      - INTEREST RECEIVED
+      - ENTREPRENEURIAL INCOME
+      - GROSS FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      - NET FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      indic_ag: Production value at basic price
+      unit: Million euro
+      geo: Finland
+  eaa_th_evh:
+  - id: eurostat/aact_eaa02
+    muunnos: alkuperäinen
+    tiedot:
+      itm_newa:
+      - Cereals (including seeds)
+      - Wheat and spelt
+      - Rye and meslin
+      - Barley
+      - Oats and summer cereal mixtures
+      - INDUSTRIAL CROPS
+      - CROP OUTPUT
+      - ANIMALS
+      - Cattle
+      - Pigs
+      - Poultry
+      - ANIMAL PRODUCTS
+      - Milk
+      - ANIMAL OUTPUT
+      - AGRICULTURAL GOODS OUTPUT
+      - AGRICULTURAL SERVICES OUTPUT
+      - AGRICULTURAL SERVICES
+      - OUTPUT OF THE AGRICULTURAL 'INDUSTRY'
+      - TOTAL INTERMEDIATE CONSUMPTION
+      - SEEDS AND PLANTING STOCK (INTERMEDIATE CONSUMPTION)
+      - ENERGY; LUBRICANTS
+      - FERTILISERS AND SOIL IMPROVERS
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION)
+      - GROSS VALUE ADDED AT BASIC PRICES
+      - FIXED CAPITAL CONSUMPTION
+      - NET VALUE ADDED AT BASIC PRICES
+      - COMPENSATION OF EMPLOYEES
+      - OTHER TAXES ON PRODUCTION
+      - OTHER SUBSIDIES ON PRODUCTION
+      - FACTOR INCOME
+      - OPERATING SURPLUS/MIXED INCOME
+      - RENTS AND OTHER REAL ESTATE RENTAL CHARGES TO BE PAID
+      - INTEREST PAID
+      - INTEREST RECEIVED
+      - ENTREPRENEURIAL INCOME
+      - GROSS FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      - NET FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
+      indic_ag: Production value at producer price
+      unit: Million euro
+      geo: Finland
+  eaa_ph_evh:
+  - id: eurostat/aact_eaa02
+    muunnos: alkuperäinen
+    tiedot:
+      itm_newa:
+      - Cereals (including seeds)
+      - Wheat and spelt
+      - Rye and meslin
+      - Barley
+      - Oats and summer cereal mixtures
+      - INDUSTRIAL CROPS
+      - CROP OUTPUT
+      - ANIMALS
+      - Cattle
+      - Pigs
+      - Poultry
+      - ANIMAL PRODUCTS
+      - Milk
+      - ANIMAL OUTPUT
+      - AGRICULTURAL GOODS OUTPUT
+      - AGRICULTURAL SERVICES OUTPUT
+      - AGRICULTURAL SERVICES
+      - OUTPUT OF THE AGRICULTURAL 'INDUSTRY'
+      - TOTAL INTERMEDIATE CONSUMPTION
+      - SEEDS AND PLANTING STOCK (INTERMEDIATE CONSUMPTION)
+      - ENERGY; LUBRICANTS
+      - FERTILISERS AND SOIL IMPROVERS
+      - FEEDINGSTUFFS (INTERMEDIATE CONSUMPTION)
+      - GROSS VALUE ADDED AT BASIC PRICES
+      - FIXED CAPITAL CONSUMPTION
+      - NET VALUE ADDED AT BASIC PRICES
+      - COMPENSATION OF EMPLOYEES
+      - OTHER TAXES ON PRODUCTION
+      - OTHER SUBSIDIES ON PRODUCTION
+      - FACTOR INCOME
+      - OPERATING SURPLUS/MIXED INCOME
+      - RENTS AND OTHER REAL ESTATE RENTAL CHARGES TO BE PAID
+      - INTEREST PAID
+      - INTEREST RECEIVED
       - ENTREPRENEURIAL INCOME
       - GROSS FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
       - NET FIXED CAPITAL FORMATION (EXCLUDING DEDUCTIBLE VAT)
