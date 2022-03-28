@@ -1,6 +1,10 @@
 ---
 title: "ptt_me_ennustekuvat"
-output: html_document
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: true ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
 ---
 
 ```{r setup, include=FALSE}
@@ -87,14 +91,20 @@ ptt_data_robo("StatFin/maa/satot/statfin_satot_pxt_001.px") |>
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "tuhatta tonnia", extra = "")
+    hovertext =  list(rounding = 1, unit = "tuhatta tonnia", extra = ""),
+    axis_limits = list(x = c(start_time, "2023-12-01"))
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
-                            filter(luokka == "Viljan tuotanto Suomessa")) |>
+                            filter(luokka == "Viljan tuotanto Suomessa"),
+                          satovuosi = TRUE) |>
   ptt_plot_create_widget()
 
 
+
+```
+
 # viljan tuottajahinta
+```{r}
 ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px") |>
   filter(hinta == "Perushinta 1)") |>
   filter_recode( laji = c("Vehnä" = "VEHNÄ YHTEENSÄ 2)",
@@ -109,12 +119,44 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "€/tn", extra = "")
+    hovertext =  list(rounding = 1, unit = "€/tn", extra = ""),
+    axis_limits = list(x = c(start_time, "2023-12-01"))
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
-                            filter(luokka == "Viljan tuottajahinnat Suomessa")) |>
+                            filter(luokka == "Viljan tuottajahinnat Suomessa"),
+                          satovuosi = TRUE) |>
   ptt_plot_create_widget()
            
+```
+
+# Viljan hintanoteeraukset
+
+```{r}
+
+fi_hinta <- c( "Lahti (3)", 
+"Loviisa (6)", "Naantali (6)", "Raisio (3)", "Seinäjoki (3)", 
+"Turku (3)", "Utajärvi (3)", "Vaasa (6)", "Varkaus (3)", "Ylivieska (3)"
+)
+
+ptt_data_robo_l("luke/02_Maatalous/06_Talous/04_Maataloustuotteiden_EU-hintaseuranta/02_Viljan_hinnat_EU.px") |> 
+  # filter(paikkakunta_hintapiste_1 %in% c("Matif (10)", "Hampuri (6)", "Albecete (459)", "Loviisa (6)", "Vaasa (6)", "Lahti (3)")) |> 
+  filter(viljalaji %in% c("Leipävehnä", "Rehuohra", "Rehukaura")) |> 
+  # filter(time >= start_time_hinta) |>
+  filter(time >= "2014-01-01") |> 
+  mutate(geo = if_else(paikkakunta_hintapiste_1 %in% fi_hinta, "Suomi", "Muu EU")) |> 
+  group_by(viljalaji, paikkakunta_hintapiste_1) |> 
+  mutate(w = 10*var(coalesce(value, mean(value, na.rm = TRUE)-200))) |> 
+  group_by(time, viljalaji, geo) |> 
+  summarise(value = weighted.mean(value, w = 1/w, na.rm = TRUE)) |>
+  # summarise(value = mean(value, na.rm = TRUE)) |> 
+  ungroup() |> 
+  filter(geo == "Suomi") |> 
+  aplot_lines(colour = viljalaji,
+              title = "Viljan hintanoteeraukset Suomessa",
+              subtitle = "e/1000 kg, keskimäärin",
+              source = "Luke")|>
+  ptt_plot_create_widget()
+
 ```
 
 # Maidon tuotanto
@@ -377,8 +419,6 @@ taloustilit <- ptt_data_robo_l("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
 
 ## Elintarviketeollisuus
 ```{r}
-
-
 ## Elintarviketeollisuus volyymi, liikevaihto
 
 # volyymi
@@ -408,11 +448,12 @@ bind_rows(elintarvike_vol, elintarvike_lv) |>
        hovertext =  list(rounding = 1, unit = "%", extra = "") )|> 
   ptt_plot_add_prediction(pred_data = ennuste_data ) |>
   ptt_plot_create_widget()
-
-
-
+```
 
 # Elintarvikkeiden tuonti ja vienti
+
+```{r}
+
 dat_me_sitc <- ptt_data_robo(
   "tulli/uljas_sitc",
   dl_filter = list(
@@ -452,7 +493,6 @@ dat_me_sitc |>
 ## Ruuanhinta
 
 ```{r}
-
 # Elintarvikkeet
 ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |> 
   filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
@@ -476,11 +516,53 @@ ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
                             filter()) |>
   ptt_plot_create_widget()
-  
-  
+```
+
+# Ruuan hinta kv
+
+```{r}
+us_food_b <- 
+  ptt_data_robo("fred/CPIFABSL") |> 
+  select(time, value) |> 
+  mutate(geo = "USA")
+fi_food_b <- 
+  ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |>  
+  filter(hyodyke %in% c("01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT"),
+         tiedot %in% c("Pisteluku")) |> 
+  select(time, value) |> 
+  mutate(geo = "Suomi")
+eu_food_b <- ptt_data_robo_c("eurostat/prc_hicp_midx") |> 
+  filter_recode(
+    coicop = "CP01",
+    unit = "I15",
+    geo = c(
+      "EU",
+      "Ruotsi" = "SE")) |>    
+  select(geo, time, value) 
+bind_rows(
+  us_food_b,
+  fi_food_b,
+  eu_food_b
+) |> 
+  mutate(geo = fct_relevel(geo, "Suomi")) |> 
+  group_by(geo) |> 
+  mutate(value = pc(value, 12, time)) |> 
+  ungroup() |> 
+  filter(time >= start_time) |>
+  # aplot_lines(colour = geo)
+  aplot_lines(
+    colour = geo,
+    title = "Elintarvikkeet ja alkoholittomat juomat",
+    subtitle = "%, muutos vuoden takaa",
+    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT") |> 
+  ptt_plot_create_widget()
+```
 
 
 # Elintarvikeryhmien hinnan muutos
+
+```{r}
+
 
 ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |> 
   filter_recode(hyodyke = 
