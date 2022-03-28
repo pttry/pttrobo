@@ -576,12 +576,13 @@ ptt_plot_create_widget <- function(p, title, path) {
       # if(is.null(buc)) {
       #   cat("No google cloud storage bucket set, no iframe code generated.")
       # } else {
-      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="600px"></iframe>\n'))
+      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
         # }
       path
     } else { "" }
   } else  { str_c(path,"/") }
 
+  # cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'), "\n", file = "ifames.txt", append = TRUE)
 
   p |>
     saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
@@ -742,11 +743,11 @@ ptt_plot <- function(d,
                      zeroline = F,
                      rangeslider = FALSE,
                      isolate_primary = F,
-                     font_size = 16,
+                     font_size = 14,
                      hovertext,
                      axis_limits = list(x = c(NA,NA), y = c(NA,NA)),
                      plot_type = "scatter",
-                     height = 600,
+                     height = 550,
                      ...
 ){
 
@@ -952,7 +953,7 @@ ptt_plot_add_prediction <- function(p,
       across(everything(), ~ as.character(.x)),
       value = str_replace(value, "\\.",",")
     )
-  p$data <- p$data |> 
+  p$data <- p$data |>
     bind_rows(pred_d) |>
     arrange(time, csv.data.tiedot)
   p |>

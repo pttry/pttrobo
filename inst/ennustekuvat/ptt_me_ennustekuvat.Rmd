@@ -14,15 +14,19 @@ library(lubridate)
 library(pttdatahaku)
 
 
-devtools::load_all(path = '../pttrobo/')
+# devtools::load_all(path = '../pttrobo/')
+devtools::load_all()
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
 }
 
 
+# ennuste_data <-
+#   read_ennuste_data("/Documents and Settings/PekkaKinnunen/OneDrive - Pellervon Taloustutkimus PTT ry/ME/Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
+
 ennuste_data <-
-  read_ennuste_data("/Documents and Settings/PekkaKinnunen/OneDrive - Pellervon Taloustutkimus PTT ry/ME/Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
+  read_ennuste_data("~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
   
 colnames(ennuste_data)
 start_time <- "2014-01-01"
@@ -345,6 +349,8 @@ taloustilit <- ptt_data_robo_l("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
          maatalous_tuet = maatal_yht + ph_25,
          markkinatulot = th_18) |>
   filter(time >= start_time) |> 
+  # siirretään keskell vuotta
+  mutate(time = time + months(6)) |> 
   select(maatalous_tuet, kulut_yht, yrittajatulo, markkinatulot, time) |>
   pivot_longer(cols = maatalous_tuet:markkinatulot, names_to ="tiedot") |>
   mutate(tiedot = recode(tiedot, !!! c("yrittajatulo"= "Yrittäjätulo",
