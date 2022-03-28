@@ -493,7 +493,6 @@ dat_me_sitc |>
 ## Ruuanhinta
 
 ```{r}
-
 # Elintarvikkeet
 ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |> 
   filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
@@ -517,11 +516,53 @@ ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
                             filter()) |>
   ptt_plot_create_widget()
-  
-  
+```
+
+# Ruuan hinta kv
+
+```{r}
+us_food_b <- 
+  ptt_data_robo("fred/CPIFABSL") |> 
+  select(time, value) |> 
+  mutate(geo = "USA")
+fi_food_b <- 
+  ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |>  
+  filter(hyodyke %in% c("01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT"),
+         tiedot %in% c("Pisteluku")) |> 
+  select(time, value) |> 
+  mutate(geo = "Suomi")
+eu_food_b <- ptt_data_robo_c("eurostat/prc_hicp_midx") |> 
+  filter_recode(
+    coicop = "CP01",
+    unit = "I15",
+    geo = c(
+      "EU",
+      "Ruotsi" = "SE")) |>    
+  select(geo, time, value) 
+bind_rows(
+  us_food_b,
+  fi_food_b,
+  eu_food_b
+) |> 
+  mutate(geo = fct_relevel(geo, "Suomi")) |> 
+  group_by(geo) |> 
+  mutate(value = pc(value, 12, time)) |> 
+  ungroup() |> 
+  filter(time >= start_time) |>
+  # aplot_lines(colour = geo)
+  aplot_lines(
+    colour = geo,
+    title = "Elintarvikkeet ja alkoholittomat juomat",
+    subtitle = "%, muutos vuoden takaa",
+    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT") |> 
+  ptt_plot_create_widget()
+```
 
 
 # Elintarvikeryhmien hinnan muutos
+
+```{r}
+
 
 ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |> 
   filter_recode(hyodyke = 
