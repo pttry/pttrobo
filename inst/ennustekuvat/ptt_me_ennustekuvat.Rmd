@@ -1,6 +1,10 @@
 ---
 title: "ptt_me_ennustekuvat"
-output: html_document
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: true ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
 ---
 
 ```{r setup, include=FALSE}
@@ -123,6 +127,36 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
                           satovuosi = TRUE) |>
   ptt_plot_create_widget()
            
+```
+
+# Viljan hintanoteeraukset
+
+```{r}
+
+fi_hinta <- c( "Lahti (3)", 
+"Loviisa (6)", "Naantali (6)", "Raisio (3)", "Seinäjoki (3)", 
+"Turku (3)", "Utajärvi (3)", "Vaasa (6)", "Varkaus (3)", "Ylivieska (3)"
+)
+
+ptt_data_robo_l("luke/02_Maatalous/06_Talous/04_Maataloustuotteiden_EU-hintaseuranta/02_Viljan_hinnat_EU.px") |> 
+  # filter(paikkakunta_hintapiste_1 %in% c("Matif (10)", "Hampuri (6)", "Albecete (459)", "Loviisa (6)", "Vaasa (6)", "Lahti (3)")) |> 
+  filter(viljalaji %in% c("Leipävehnä", "Rehuohra", "Rehukaura")) |> 
+  # filter(time >= start_time_hinta) |>
+  filter(time >= "2014-01-01") |> 
+  mutate(geo = if_else(paikkakunta_hintapiste_1 %in% fi_hinta, "Suomi", "Muu EU")) |> 
+  group_by(viljalaji, paikkakunta_hintapiste_1) |> 
+  mutate(w = 10*var(coalesce(value, mean(value, na.rm = TRUE)-200))) |> 
+  group_by(time, viljalaji, geo) |> 
+  summarise(value = weighted.mean(value, w = 1/w, na.rm = TRUE)) |>
+  # summarise(value = mean(value, na.rm = TRUE)) |> 
+  ungroup() |> 
+  filter(geo == "Suomi") |> 
+  aplot_lines(colour = viljalaji,
+              title = "Viljan hintanoteeraukset Suomessa",
+              subtitle = "e/1000 kg, keskimäärin",
+              source = "Luke")|>
+  ptt_plot_create_widget()
+
 ```
 
 # Maidon tuotanto
@@ -385,8 +419,6 @@ taloustilit <- ptt_data_robo_l("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
 
 ## Elintarviketeollisuus
 ```{r}
-
-
 ## Elintarviketeollisuus volyymi, liikevaihto
 
 # volyymi
@@ -416,11 +448,12 @@ bind_rows(elintarvike_vol, elintarvike_lv) |>
        hovertext =  list(rounding = 1, unit = "%", extra = "") )|> 
   ptt_plot_add_prediction(pred_data = ennuste_data ) |>
   ptt_plot_create_widget()
-
-
-
+```
 
 # Elintarvikkeiden tuonti ja vienti
+
+```{r}
+
 dat_me_sitc <- ptt_data_robo(
   "tulli/uljas_sitc",
   dl_filter = list(
