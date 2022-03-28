@@ -179,7 +179,7 @@ ptt_plot_set_ticks <- function(p, font) {
                       ),
                       showline = TRUE),
            yaxis=list(tickfont = font,
-                      tickformat = ",.2~r",
+                      tickformat = ",.3~r",
                       ticksuffix = " ",
                       mirror = TRUE,
                       ticks = 'outside',
