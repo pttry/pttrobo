@@ -87,14 +87,20 @@ ptt_data_robo("StatFin/maa/satot/statfin_satot_pxt_001.px") |>
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "tuhatta tonnia", extra = "")
+    hovertext =  list(rounding = 1, unit = "tuhatta tonnia", extra = ""),
+    axis_limits = list(x = c(start_time, "2023-12-01"))
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
-                            filter(luokka == "Viljan tuotanto Suomessa")) |>
+                            filter(luokka == "Viljan tuotanto Suomessa"),
+                          satovuosi = TRUE) |>
   ptt_plot_create_widget()
 
 
+
+```
+
 # viljan tuottajahinta
+```{r}
 ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px") |>
   filter(hinta == "Perushinta 1)") |>
   filter_recode( laji = c("Vehnä" = "VEHNÄ YHTEENSÄ 2)",
@@ -109,10 +115,12 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "€/tn", extra = "")
+    hovertext =  list(rounding = 1, unit = "€/tn", extra = ""),
+    axis_limits = list(x = c(start_time, "2023-12-01"))
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
-                            filter(luokka == "Viljan tuottajahinnat Suomessa")) |>
+                            filter(luokka == "Viljan tuottajahinnat Suomessa"),
+                          satovuosi = TRUE) |>
   ptt_plot_create_widget()
            
 ```
