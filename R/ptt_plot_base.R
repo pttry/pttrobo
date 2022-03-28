@@ -390,7 +390,7 @@ ptt_plot_config <- function(p,
     ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
-    ptt_plot_set_caption(caption, offset = caption_offset, caption_font) |>
+    # ptt_plot_set_caption(caption, offset = caption_offset, caption_font) |>
     ptt_plot_add_zeroline(zeroline)
 }
 
