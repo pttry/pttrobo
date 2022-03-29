@@ -14,7 +14,8 @@ ptt_plot_add_prediction(
   showlegend = F,
   hovertext = list(rounding = 1, unit = "", extra = "(ennuste)", dateformat = "Annual"),
   value_multiplier = 1,
-  custom_pred_data = FALSE
+  custom_pred_data = FALSE,
+  satovuosi = FALSE
 )
 }
 \arguments{

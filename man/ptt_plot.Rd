@@ -18,11 +18,11 @@ ptt_plot(
   zeroline = F,
   rangeslider = FALSE,
   isolate_primary = F,
-  font_size = 16,
+  font_size = 14,
   hovertext,
   axis_limits = list(x = c(NA, NA), y = c(NA, NA)),
   plot_type = "scatter",
-  height = 600,
+  height = 550,
   ...
 )
 }
