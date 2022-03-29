@@ -88,7 +88,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
 
   dl_icon <- function(fa_icon, scale = 0.032, translate = c(0,0)) {
     transform_string <- str_c("translate(",translate[1],",",translate[2],") scale(",scale,")")
-    list(path = fa(name = fa_icon) %>% as.character() %>% str_extract("(?<=d\\=\")[^\"]{1,}") %>% str_replace_all(" ",","),
+    list(path = fa(name = fa_icon) |> as.character() |> str_extract("(?<=d\\=\")[^\"]{1,}") |> str_replace_all(" ",","),
          transform = transform_string)
   }
 
@@ -232,7 +232,7 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range = NULL) {
   if(enable == T) {
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
-    p |> rangeslider(slider_range[1],slider_range[2], thickness = height)
+    p |> rangeslider(thickness = height, range = slider_range)
   } else { p }
 }
 
@@ -381,17 +381,17 @@ ptt_plot_config <- function(p,
 
   p |>
     ptt_plot_set_defaults(axis_range) |>
-    ptt_plot_rangeslider_responsive_y_scale() |>
     ptt_plot_set_grid(grid_color) |>
     ptt_plot_set_modebar(title, png_attrs) |>
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo(logo_offset, plot_ht) |>
-    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
     ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
-    # ptt_plot_set_caption(caption, offset = caption_offset, caption_font) |>
-    ptt_plot_add_zeroline(zeroline)
+    ptt_plot_set_caption(caption, offset = caption_offset, caption_font) |>
+    ptt_plot_add_zeroline(zeroline) |>
+    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
+    ptt_plot_rangeslider_responsive_y_scale()
 }
 
 
@@ -571,7 +571,7 @@ ptt_plot_create_widget <- function(p, title, path) {
 
   path <- if(missing(path)) {
     if(isTRUE(getOption('knitr.in.progress'))) {
-      cur_input <- knitr::current_input() %>% str_remove("\\.Rmd$") %>% str_replace_all("/","_") %>% str_c("_artefacts")
+      cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
       dir.create(cur_input,showWarnings = F)
       ###
       path <- str_c(cur_input,"/")
@@ -614,12 +614,12 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
   if(missing(files_path)) {
     if(is_knitting == T) {
       cur_input <- knitr::current_input()
-      files_path <- cur_input %>% str_remove("\\.Rmd$") %>% str_replace_all("/","_") %>% str_c("_artefacts")
+      files_path <- cur_input |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
     } else {
         stop("Give the path to the files you wish to upload. Careful! This will upload every .html, .css, .map, .scss, .txt and .js file in the given path!", call. = F)
       }
   } else {
-    upl_files <-  list.files(path = files_path, recursive = T, full.names = T) %>% str_subset("\\.(css|js|map|scss|html|txt)$") %>% str_c(collapse = ", ")
+    upl_files <-  list.files(path = files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$") |> str_c(collapse = ", ")
       message(str_c("Give the path to the files you wish to upload. Careful! This will upload all of ",upl_files,"!\nType \"upload\" to continue:"))
       ans <- readline(" ")
       if (ans != "upload") { stop("Canceled", call. = F) }
@@ -629,10 +629,10 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
     stop("Give the path to the folder in the upload bucket where you wish to upload the files to.", call. = F)
   }
 
-  artefact_files <- list.files(files_path, recursive = T, full.names = T) %>% str_subset("\\.(css|js|map|scss|html|txt)$")
+  artefact_files <- list.files(files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
   purrr::walk(artefact_files, function(artefact_file) {
     upload_file <- if(is_knitting) {
-      str_remove(artefact_file, str_c("^.{1,}?=(",cur_input,")")) %>% str_c("ennustekuvat/",.)
+      str_remove(artefact_file, str_c("^.{1,}?=(",cur_input,")")) |> str_c("ennustekuvat/",.)
     } else {
         str_c(upload_path,str_remove(artefact_file, files_path))
       }
@@ -924,10 +924,10 @@ ptt_plot_add_prediction <- function(p,
     legend.items <- c(legend.items, s.name) |> unique()
     legend.rank <- s.level * 1.1 + 1
     s.type <- unique(s$plot.type)
-    # print(s %>% bind_rows(mutate(s, value = 0)) %>% arrange(time, value))
+    # print(s |> bind_rows(mutate(s, value = 0)) |> arrange(time, value))
     if(s.type == "bar") {
-      s <- s %>% mutate(count = 2) %>% uncount(count) %>% mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
-      template <- ptt_plot_hovertemplate(hovertext) %>% str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
+      s <- s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
+      template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
       p <- p |>
         add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
                   hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
