@@ -35,6 +35,8 @@ purrr::map(id_tuotanto_ulkomaank, ~data_to_yaml(data_get(.x), file = "inst/ennus
 purrr::map(id_puunkaytto, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/MAdata_puunkaytto_raw.yaml", append = TRUE))
 purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/MAdata_puukaupp2_raw.yaml", append = TRUE))
 
+data_get("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |>
+  data_to_yaml()
 
 ptt_update_ennustedata("MAdata_", start_year = 2013)
 ptt_copy_ennustedata("MA")
