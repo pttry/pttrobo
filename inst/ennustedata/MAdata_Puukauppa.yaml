@@ -148,3 +148,17 @@ MAdata_Puukauppa:
       - Hakkuut yhteensä
       - Yksityismetsät
       - Yhtiöiden ja valtion metsät
+  Teollisuuspuun_hakkuut2_v:
+  - id: luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/04_Vuositilastot/01a_Teollisuuspuun_hakkuut_maak_v.px
+    muunnos: alkuperäinen
+    tiedot:
+      Maakunta:
+      - KOKO MAA
+      Omistajaryhmä:
+      - KAIKKI YHTEENSÄ
+      - .Yksityismetsät, yhteensä
+      - ..Yksityismetsät, pystykaupat
+      - ..Yksityismetsät, hankintakaupat
+      - .Metsäteollisuus ja valtio
+      Puutavaralaji:
+      - KAIKKI PUUTAVARALAJIT YHTEENSÄ
