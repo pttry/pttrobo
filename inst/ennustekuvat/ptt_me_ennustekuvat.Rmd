@@ -457,7 +457,6 @@ dat_me_sitc |>
 ## Ruuanhinta
 
 ```{r}
-
 # Elintarvikkeet
 ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |> 
   filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
@@ -496,9 +495,12 @@ ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
   mutate(year = lubridate::year(time)) |> 
   group_by(year, hyodyke) |> 
   summarise(value = mean(value, na.rm=T)) |> filter(hyodyke == "Elintarvikkeet") |>  view()
-  
+```
 
 # Elintarvikeryhmien hinnan muutos
+
+```{r}
+
 
 ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px") |> 
   filter_recode(hyodyke = 

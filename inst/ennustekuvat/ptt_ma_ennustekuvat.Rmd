@@ -1,0 +1,266 @@
+---
+title: "Ennustekuviot"
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: false ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library(robonomistClient)
+library(pttrobo)
+library(tidyverse)
+library(lubridate)
+library(pttdatahaku)
+library(statfitools)
+
+
+# devtools::load_all(path = '../pttrobo/')
+devtools::load_all()
+
+read_ennuste_data <- function(ennuste_data_file) {
+  readxl::read_excel(ennuste_data_file)
+}
+
+# ennuste_data <-
+  # read_ennuste_data("/Documents and Settings/PekkaKinnunen/OneDrive - Pellervon Taloustutkimus PTT ry/ME/Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
+ennuste_data <-
+  read_ennuste_data("~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut Metsä/ptt_ennusteet_MA_2022_1.xlsx")|> 
+  separate(col = sarja_nmi, sep = "_", into = c("sarja_nmi", "luokka"))
+  
+# colnames(ennuste_data)
+start_time <- "2014-01-01"
+
+
+```
+
+## PTT Kevät 2022 ennustekuvat 
+
+### Metsäteollisuuden viennin arvo
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |> 
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Arvo, milj. e",
+    nimike = c(
+      "Massa" = "....Massa",
+      "Paperi" = "....Paperi",
+      "Kartonki" = "....Kartonki",
+      "Puutuotteet" = "...PUUTUOTETEOLLISUUS"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  mutate(value = 12 * trend_series(value, time, x11="") / 1000) |>
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Metsäteollisuuden viennin arvo",
+    subtitle = "Mrd. euroa, trendi vuositasolle korottettuna",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientiarvo")) |>
+  ptt_plot_create_widget()
+
+```
+
+## Kemiallisen hinnat
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |> 
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Yksikköarvo, e/yksikkö",
+    nimike = c(
+      "Massa" = "....Massa",
+      "Paperi" = "....Paperi",
+      "Kartonki" = "....Kartonki"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  # mutate(value = 12 * trend_series(value, time, x11="") / 1000) |> 
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Kemiallisen metsäteollisuuden vientihinnat",
+    subtitle = "euroa / tonni",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientihinta")) |>
+  ptt_plot_create_widget()
+
+```
+
+## Kemiallisen metsäteollisuuden vientimäärä
+
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |> 
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Määrä, yksikköä",
+    nimike = c(
+      "Massa" = "....Massa",
+      "Paperi" = "....Paperi",
+      "Kartonki" = "....Kartonki"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  mutate(value = 12 * trend_series(value, time, x11="") ) |>
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Kemiallisen metsäteollisuuden vientimäärä",
+    subtitle = "1000 tonni",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientimaara")) |>
+  ptt_plot_create_widget()
+
+```
+
+## Mekaaninen metsäteollisuus
+
+### Sahatavaran vientimäärä
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |>
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Määrä, yksikköä",
+    nimike = c(
+      "Sahatavara" = "....Sahatavara", 
+      "Mäntysahatavara" = ".....Mäntysahatavara", 
+      "Kuusisahatavara" = ".....Kuusisahatavara"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  mutate(value = 12 * trend_series(value, time, x11="") ) |>
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Sahatavaran vientimäärä",
+    subtitle = "1000 tonni, trendi vuositasolle korotettuna",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientimaara")) |>
+  ptt_plot_create_widget()
+
+```
+
+### Sahatavaran vientihinta
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |>
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Yksikköarvo, e/yksikkö",
+    nimike = c(
+      "Mäntysahatavara" = ".....Mäntysahatavara", 
+      "Kuusisahatavara" = ".....Kuusisahatavara"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Sahatavaran vientihinta",
+    subtitle = "euroa / tonni",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientihinta")) |>
+  ptt_plot_create_widget()
+
+```
+
+## Vaneerin vientihinta
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |>
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Yksikköarvo, e/yksikkö",
+    nimike = c(
+      "Havuvaneri" = ".....Havuvaneri", 
+      "Lehtivaneri" = ".....Lehtivaneri"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Vaneerin vientihinnat",
+    subtitle = "euroa / tonni",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientihinta")) |>
+  ptt_plot_create_widget()
+
+```
+
+## Metsätalous
+
+### Puun käyttö
+
+```{r}
+
+ptt_data_robo_l("luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/04_metsateol_puunk_tavaralajeittain_1860.px") |>
+    filter(time >= start_time) |> 
+  filter_recode(
+    alkupera = c("Kotimainen" = "Kotimainen puu",
+                 "Ulkomainen" = "Tuontipuu"), 
+    puutavaralaji = c("Raakapuu yhteensä") 
+  ) |> 
+  ptt_plot(
+    grouping = alkupera,
+    title = "Metsäteollisuuden puunkäyttö",
+    subtitle = "Milj. m3",
+    caption = "Lähde: Tilastokeskus",
+    rangeslider = F,
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
+    plot_type = c("bar")
+  ) |>
+  ptt_plot_create_widget()
+
+```
+
+
+## Upload
+```{r}
+ptt_plot_upload_widgets()
+
+```
