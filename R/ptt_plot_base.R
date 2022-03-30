@@ -907,7 +907,7 @@ ptt_plot_add_prediction <- function(p,
   }
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
-  # zero.line <- p$add_zeroline
+  zero.line <- p$add_zeroline
   # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   pred_series <- pred_series |> droplevels() |> mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
