@@ -16,7 +16,7 @@ ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
     }
   config(p, locale = "fi") |>
     layout(separators = ", ") |>
-    layout(xaxis = list(fixedrange = T, range = range$x),
+    layout(xaxis = if(all(is.na(range$x))) { list(fixedrange = T) } else { list(fixedrange = T, range = range$x) },
            yaxis = list(fixedrange = T, range = range$y)) |>
     layout(hovermode = "compare") |>
     ptt_plot_set_axis_labels()
@@ -232,7 +232,7 @@ ptt_plot_add_logo <- function(p, offset, plot_height){
 ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range = NULL) {
   if(enable == T) {
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
-    p |> rangeslider(thickness = height, range = slider_range)
+    p |> rangeslider(slider_range[1], slider_range[2], thickness = height)
   } else { p }
 }
 
@@ -965,7 +965,7 @@ ptt_plot_add_prediction <- function(p,
     arrange(time, csv.data.tiedot)
   p |>
     ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
-    # ptt_plot_add_zeroline(zero.line) |>
+    ptt_plot_add_zeroline(zero.line) |>
     ptt_plot_set_modebar(p$title, p$png_attrs, T)
 }
 
