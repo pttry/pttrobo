@@ -20,7 +20,7 @@ library(statfitools)
 
 
 # devtools::load_all(path = '../pttrobo/')
-# devtools::load_all()
+devtools::load_all()
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
@@ -255,8 +255,10 @@ ptt_data_robo_l("luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/04_mets
     caption = "Lähde: Tilastokeskus",
     rangeslider = F,
     hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
-    plot_type = c("bar")
+    plot_type = c("bar"),
+    plot_mode = "stack"
   ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "puunkaytto"), n_obs = 3) |>
   ptt_plot_create_widget()
 
 ```
