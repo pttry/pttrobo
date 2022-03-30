@@ -20,7 +20,7 @@ library(statfitools)
 
 
 # devtools::load_all(path = '../pttrobo/')
-# devtools::load_all()
+devtools::load_all()
 
 read_ennuste_data <- function(ennuste_data_file) {
   readxl::read_excel(ennuste_data_file)
@@ -39,6 +39,39 @@ start_time <- "2014-01-01"
 ```
 
 ## PTT Kevät 2022 ennustekuvat 
+
+```{r}
+
+ptt_data_robo(
+  "tulli/uljas_sitc",
+  dl_filter = list(
+    "Tavaraluokitus SITC2" = c("25", "63", "64"),
+    "Maa" = c("AA", "RU"),
+    "Suunta" = c("Vienti määrämaittain"),
+    "Indikaattorit" = "Tilastoarvo (euro)"
+  )
+) |> 
+  filter(time >= start_time) |> 
+  filter_recode(
+    suunta = c("Vieni" = "Vienti määrämaittain"),
+    tavaraluokitus_sitc2 = c(
+     "Massa" = "25 (2002--.) Paperimassa",
+     "Puutuotteet" = "63 (2002--.) Puu- ja korkkituotteet",
+     "Paperi, kartonki ja tuotteet" = "64 (2002--.) Paperi ja pahvi sekä tuotteet niistä"
+    )
+  ) |> 
+  mutate(maa = statfitools::extract_code(maa)) |> 
+  spread(maa, value) |> 
+  mutate(value = 100 * RU / AA) |> 
+  ptt_plot(
+    grouping = tavaraluokitus_sitc2,
+              title = "Venäjän osuus viennistä",
+              subtitle = "%",
+              caption = "Lähde: Tulli, PTT") |> 
+   ptt_plot_create_widget()
+
+```
+
 
 ### Metsäteollisuuden viennin arvo
 
@@ -255,8 +288,10 @@ ptt_data_robo_l("luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/04_mets
     caption = "Lähde: Tilastokeskus",
     rangeslider = F,
     hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
-    plot_type = c("bar")
+    plot_type = c("bar"),
+    plot_mode = "stack"
   ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "puunkaytto"), n_obs = 3) |>
   ptt_plot_create_widget()
 
 ```
@@ -354,6 +389,7 @@ ptt_data_robo(
 
 ## Upload
 ```{r}
-# ptt_plot_upload_widgets()
+
+ptt_plot_upload_widgets()
 
 ```
