@@ -921,8 +921,8 @@ ptt_plot_add_prediction <- function(p,
   zero.line <- p$add_zeroline
   # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   plot.mode <- p$plot_mode
-  pred_series <- pred_series |> droplevels() %>% 
-  arrange(year) %>% group_by(year, time) %>% mutate(barmax = cumsum(value), barmin = lag(value) %>% replace_na(0)) %>% ungroup %>% arrange(!!grouping) %>% 
+  pred_series <- pred_series |> droplevels() |> 
+  arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(value),0)) |> ungroup() |> arrange(!!grouping) %>% 
   mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
