@@ -713,6 +713,7 @@ ptt_plot_get_frequency <- function(d) {
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param isolate_primary Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.
 #' @param plot_type Determines the trace type for either the whole plot, or for all variables defined by grouping as name-value pairs (Character vector).
+#' @param plot_mode Determines the barmode for a barplot. Disregarded for scatterplots. (Character).
 #' @param height Height of the plot.
 #' @return plotly object
 #' @examples
@@ -750,6 +751,7 @@ ptt_plot <- function(d,
                      hovertext,
                      axis_limits = list(x = c(NA,NA), y = c(NA,NA)),
                      plot_type = "scatter",
+                     plot_mode = "dodge",
                      height = 550,
                      ...
 ){
@@ -780,7 +782,7 @@ ptt_plot <- function(d,
     stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding plot type!"), call. = F)
     } else {
     d <- mutate(d, plot.type = str_replace_all(!!grouping, plot_type))
-  }
+    }
 
   color_vector <- (function() {
     color_vector <- if (isolate_primary == T) {
@@ -792,7 +794,7 @@ ptt_plot <- function(d,
   })()
 
   p <- plot_ly(d, x = ~ time, height = height)
-
+  
   split_d <- group_split(d, !!grouping)
   # split_d <- if(plot_type == "scatter") { rev(split_d) } else { split_d }
 
@@ -812,8 +814,16 @@ ptt_plot <- function(d,
                 legendgroup = g.name,
                 legendrank = legend.rank,
                 name = g.name,
-                color = I(color_vector[g.color]), type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
+                color = I(color_vector[g.color]),
+                type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
       )
+  }
+  
+  if(!plot_mode %in% c("dodge","stack")) {
+    stop("Plot mode must be \"dodge\" or \"stack\"!", call. = F)
+  } else {
+    plot_mode <- str_replace_all(plot_mode, c("dodge" = "group", "stack" = "relative"))
+    p  <- layout(p, barmode = plot_mode)
   }
 
   p$data <- d |> rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
@@ -832,6 +842,7 @@ ptt_plot <- function(d,
     traces <- distinct(d, !!grouping, plot.type)
     traces$plot.type |> set_names(traces[[as_name(grouping)]])
   })()
+  p$plot_mode <- plot_mode
 
   maxtime <- max(d$time)
 
@@ -909,7 +920,10 @@ ptt_plot_add_prediction <- function(p,
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
   zero.line <- p$add_zeroline
   # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
-  pred_series <- pred_series |> droplevels() |> mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
+  plot.mode <- p$plot_mode
+  pred_series <- pred_series |> droplevels() %>% 
+  arrange(year) %>% group_by(year, time) %>% mutate(barmax = cumsum(value), barmin = lag(value) %>% replace_na(0)) %>% ungroup %>% arrange(!!grouping) %>% 
+  mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
   if(!all(pred_groups %in% names(color_vector))) {
@@ -926,8 +940,13 @@ ptt_plot_add_prediction <- function(p,
     s.type <- unique(s$plot.type)
     # print(s |> bind_rows(mutate(s, value = 0)) |> arrange(time, value))
     if(s.type == "bar") {
-      s <- s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
       template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
+      s <- if(plot.mode == "relative") { 
+        s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax)) 
+      } else {
+        s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
+        
+        }
       p <- p |>
         add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
                   hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),

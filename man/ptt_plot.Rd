@@ -22,6 +22,7 @@ ptt_plot(
   hovertext,
   axis_limits = list(x = c(NA, NA), y = c(NA, NA)),
   plot_type = "scatter",
+  plot_mode = "dodge",
   height = 550,
   ...
 )
@@ -50,6 +51,8 @@ ptt_plot(
 \item{axis_limits}{Determines the limits of the axes (list(x = c(NA,NA), y = c(NA,NA)))".}
 
 \item{plot_type}{Determines the trace type for either the whole plot, or for all variables defined by grouping as name-value pairs (Character vector).}
+
+\item{plot_mode}{Determines the barmode for a barplot. Disregarded for scatterplots. (Character).}
 
 \item{height}{Height of the plot.}
 }
