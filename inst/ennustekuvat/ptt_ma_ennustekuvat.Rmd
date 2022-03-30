@@ -40,6 +40,39 @@ start_time <- "2014-01-01"
 
 ## PTT Kevät 2022 ennustekuvat 
 
+```{r}
+
+ptt_data_robo(
+  "tulli/uljas_sitc",
+  dl_filter = list(
+    "Tavaraluokitus SITC2" = c("25", "63", "64"),
+    "Maa" = c("AA", "RU"),
+    "Suunta" = c("Vienti määrämaittain"),
+    "Indikaattorit" = "Tilastoarvo (euro)"
+  )
+) |> 
+  filter(time >= start_time) |> 
+  filter_recode(
+    suunta = c("Vieni" = "Vienti määrämaittain"),
+    tavaraluokitus_sitc2 = c(
+     "Massa" = "25 (2002--.) Paperimassa",
+     "Puutuotteet" = "63 (2002--.) Puu- ja korkkituotteet",
+     "Paperi, kartonki ja tuotteet" = "64 (2002--.) Paperi ja pahvi sekä tuotteet niistä"
+    )
+  ) |> 
+  mutate(maa = statfitools::extract_code(maa)) |> 
+  spread(maa, value) |> 
+  mutate(value = 100 * RU / AA) |> 
+  ptt_plot(
+    grouping = tavaraluokitus_sitc2,
+              title = "Venäjän osuus viennistä",
+              subtitle = "%",
+              caption = "Lähde: Tulli, PTT") |> 
+   ptt_plot_create_widget()
+
+```
+
+
 ### Metsäteollisuuden viennin arvo
 
 ```{r}
@@ -356,6 +389,7 @@ ptt_data_robo(
 
 ## Upload
 ```{r}
-# ptt_plot_upload_widgets()
+
+ptt_plot_upload_widgets()
 
 ```
