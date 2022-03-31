@@ -942,11 +942,12 @@ ptt_plot_add_prediction <- function(p,
     if(s.type == "bar") {
       template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
       s <- if(plot.mode == "relative") { 
-        s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax)) 
+        s |> mutate(time = time-days(165), count = 2) |> uncount(count) |> 
+          mutate(value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax))
       } else {
         s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
         
-        }
+      }
       p <- p |>
         add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
                   hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
