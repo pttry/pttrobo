@@ -25,7 +25,7 @@ library(pttdatahaku)
 library(statfitools)
 
 
-# devtools::load_all(path = '../pttrobo/')
+devtools::load_all()
 
   
 # colnames(ennuste_data)
