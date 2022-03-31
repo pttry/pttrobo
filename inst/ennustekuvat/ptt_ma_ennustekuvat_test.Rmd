@@ -1,0 +1,94 @@
+---
+title: "Ennustekuviot"
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: true ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+
+
+library(robonomistClient)
+library(pttrobo)
+library(tidyverse)
+library(lubridate)
+library(pttdatahaku)
+library(statfitools)
+
+
+# devtools::load_all(path = '../pttrobo/')
+devtools::load_all()
+
+read_ennuste_data <- function(ennuste_data_file) {
+  readxl::read_excel(ennuste_data_file)
+}
+
+# ennuste_data <-
+  # read_ennuste_data("/Documents and Settings/PekkaKinnunen/OneDrive - Pellervon Taloustutkimus PTT ry/ME/Taulut ME/Ennuste kokoomataulukko_kevät_2022.xlsx")
+ennuste_data <-
+  read_ennuste_data("~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut Metsä/ptt_ennusteet_MA_2022_1.xlsx")|> 
+  separate(col = sarja_nmi, sep = "_", into = c("sarja_nmi", "luokka"))
+  
+# colnames(ennuste_data)
+start_time <- "2014-01-01"
+
+
+```
+
+## PTT Kevät 2022 ennustekuvat 
+
+### Venäjän osuus
+
+
+
+
+### Metsäteollisuuden viennin arvo
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |> 
+  filter(time >= start_time) |> 
+  filter_recode(
+    kauppasuunta = "Vienti",
+    muuttuja = "Arvo, milj. e",
+    nimike = c(
+      "Massa" = "....Massa",
+      "Paperi" = "....Paperi",
+      "Kartonki" = "....Kartonki",
+      "Puutuotteet" = "...PUUTUOTETEOLLISUUS"
+    )
+  )|>
+  group_by(across(!c(time, value))) |> 
+  mutate(value = 12 * trend_series(value, time, x11="") / 1000) |>
+  ungroup() |> 
+  ptt_plot(
+    grouping = nimike,
+    title = "Metsäteollisuuden viennin arvo",
+    subtitle = "Mrd. euroa, trendi vuositasolle korottettuna",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientiarvo")) |>
+  ptt_plot_create_widget()
+
+```
+
+
+
+```{r, eval = params$upload_widgets}
+
+ptt_plot_upload_widgets()
+
+```
+
