@@ -632,7 +632,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
   artefact_files <- list.files(files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
   purrr::walk(artefact_files, function(artefact_file) {
     upload_file <- if(is_knitting) {
-      str_remove(artefact_file, str_c("^.{1,}?=(",cur_input,")")) |> str_c("ennustekuvat/",.)
+      str_c("ennustekuvat/",str_remove(artefact_file, str_c("^.{1,}?=(",cur_input,")")))
     } else {
         str_c(upload_path,str_remove(artefact_file, files_path))
       }
