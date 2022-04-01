@@ -35,6 +35,10 @@ ennuste_data <-
 # colnames(ennuste_data)
 start_time <- "2014-01-01"
 
+data_kv_hinta <- map(set_names(c("kuusitukki", "mäntykuitu", "kuusikuitu", "mäntytukki")), 
+                     ~readxl::read_xlsx("~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut Metsä/kv_puunhinta.xlsx", skip = 1)|> 
+  mutate(time = lubridate::ym(time)) |> 
+    gather(geo, value, -time))
 
 ```
 
@@ -99,7 +103,7 @@ ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tu
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = T,
-    hovertext =  list(rounding = 1, unit = "", extra = "")
+    hovertext =  list(rounding = 1, unit = "mrd €", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientiarvo")) |>
   ptt_plot_create_widget()
@@ -134,7 +138,7 @@ ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tu
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "", extra = "")
+    hovertext =  list(rounding = 1, unit = "€/t", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientihinta")) |>
   ptt_plot_create_widget()
@@ -287,7 +291,7 @@ ptt_data_robo_l("luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/04_mets
     subtitle = "Milj. m3",
     caption = "Lähde: Tilastokeskus",
     rangeslider = F,
-    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "milj. m3", extra = ""),
     plot_type = c("bar"),
     plot_mode = "stack"
   ) |>
@@ -319,7 +323,7 @@ ptt_data_robo("luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/02_K
     subtitle = "Milj. tonnia",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
-    zeroline = F,
+    zeroline = T,
     hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "hakkuut")) |>
@@ -386,6 +390,55 @@ ptt_data_robo(
   ptt_plot_create_widget()
 
 ```
+
+## Kantorahatulot
+
+```{r}
+
+ptt_data_robo_l("luke/04_Metsa/04_Talous/16_Kantorahatulot/01_Bruttokantorahat_v_omistajaryhma.px") |> 
+  filter_recode(
+    omistajaryhma = c("Kaikki yhteensä"), 
+    puutavaralaji = c("Bruttokantorahatulot" = "Kaikkiaan"), 
+    metsakeskusalue = c("KOKO MAA")
+  ) |> 
+  mutate(value = value / 1000) |> 
+  filter(time >= start_time) |> 
+    ptt_plot(
+    grouping = puutavaralaji,
+    title = "Bruttokantorahatulot",
+    subtitle = "miljoonaa euroa, nimellinen",
+    caption = "Lähde: Luke",
+    rangeslider = F,
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Milj. €", extra = ""),
+    plot_type = c("bar"),
+    plot_mode = "stack"
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data), n_obs = 3) |>
+  ptt_plot_create_widget()
+
+
+```
+
+## Kv-hinnat
+
+### Kuusitukki
+
+```{r}
+
+data_kv_hinta[["kuusitukki"]] |> 
+  ptt_plot(
+    grouping = geo,
+    title = "Kuusitukin hinnat kansainvälisesti",
+    subtitle = "Indeksi, 2015 = 100",
+    caption =  "Lähde: ... ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_create_widget()
+
+```
+
 
 ## Upload
 ```{r}
