@@ -35,6 +35,10 @@ ennuste_data <-
 # colnames(ennuste_data)
 start_time <- "2014-01-01"
 
+data_kv_hinta <- map(set_names(c("kuusitukki", "mäntykuitu", "kuusikuitu", "mäntytukki")), 
+                     ~readxl::read_xlsx("~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut Metsä/kv_puunhinta.xlsx", skip = 1)|> 
+  mutate(time = lubridate::ym(time)) |> 
+    gather(geo, value, -time))
 
 ```
 
@@ -99,7 +103,7 @@ ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tu
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = T,
-    hovertext =  list(rounding = 1, unit = "", extra = "")
+    hovertext =  list(rounding = 1, unit = "mrd €", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientiarvo")) |>
   ptt_plot_create_widget()
@@ -134,7 +138,7 @@ ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tu
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
-    hovertext =  list(rounding = 1, unit = "", extra = "")
+    hovertext =  list(rounding = 1, unit = "€/t", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "vientihinta")) |>
   ptt_plot_create_widget()
@@ -227,7 +231,7 @@ ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tu
   ptt_plot(
     grouping = nimike,
     title = "Sahatavaran vientihinta",
-    subtitle = "euroa / tonni",
+    subtitle = "€/m3",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
@@ -256,8 +260,8 @@ ptt_data_robo("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tu
   ungroup() |> 
   ptt_plot(
     grouping = nimike,
-    title = "Vaneerin vientihinnat",
-    subtitle = "euroa / tonni",
+    title = "Vanerin vientihinnat",
+    subtitle = "€/m3",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
     zeroline = F,
@@ -284,10 +288,10 @@ ptt_data_robo_l("luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/04_mets
   ptt_plot(
     grouping = alkupera,
     title = "Metsäteollisuuden puunkäyttö",
-    subtitle = "Milj. m3",
-    caption = "Lähde: Tilastokeskus",
+    subtitle = "Milj. m3, vuosi 2021 arvio",
+    caption = "Lähde: Luke ja PTT",
     rangeslider = F,
-    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Mrd. €", extra = ""),
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "milj. m3", extra = ""),
     plot_type = c("bar"),
     plot_mode = "stack"
   ) |>
@@ -297,6 +301,44 @@ ptt_data_robo_l("luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/04_mets
 ```
 
 ### Hakkuut
+
+
+```{r}
+
+
+
+data("luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/04_Vuositilastot/01a_Teollisuuspuun_hakkuut_maak_v.px") |> 
+  mutate(time = as.Date(paste0(str_extract(Vuosi, "[0-9]*"), "-01-01"))) |>
+  statfitools::clean_names() |> 
+  filter(time >= start_time) |> 
+    filter_recode(
+  maakunta = c("KOKO MAA"),
+  omistajaryhma = c(
+   "Yhteensä" = "KAIKKI YHTEENSÄ",
+    "Yksityiset" = ".Yksityismetsät, yhteensä",
+    "Yhtiöt ja valtio" = ".Metsäteollisuus ja valtio"
+  ),
+  puutavaralaji = c("KAIKKI PUUTAVARALAJIT YHTEENSÄ")
+  ) |> 
+  mutate(value = value / 1000) |> 
+  ptt_plot(
+    grouping = omistajaryhma,
+    title = "Markkinahakkuut",
+    subtitle = "Milj. m3, valtion hakkuut puuttuvat",
+    caption =  "Lähde: Luke ja PTT",
+    rangeslider = FALSE,
+    zeroline = T,
+    hovertext =  list(rounding = 1, unit = "", extra = ""),
+    plot_type = c("bar"),
+    plot_mode = "stack"
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "hakkuut")) |>
+  ptt_plot_create_widget()
+
+
+  
+```
+
 
 ```{r}
 
@@ -315,14 +357,13 @@ ptt_data_robo("luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/02_K
   ungroup() |>
     ptt_plot(
     grouping = omistajaryhma,
-    title = "Markkinahakkuut",
-    subtitle = "Milj. tonnia",
+    title = "Markkinahakkuut kuukausittain",
+    subtitle = "Milj. m3, valtion hakkuut puuttuvat",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
-    zeroline = F,
+    zeroline = T,
     hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
-  ptt_plot_add_prediction(filter(ennuste_data, luokka == "hakkuut")) |>
   ptt_plot_create_widget()
 
 ```
@@ -345,11 +386,11 @@ ptt_data_robo(
   )  |> 
     ptt_plot(
     grouping = puutavaralaji,
-    title = "Kantohinnat",
+    title = "Tukkipuunk antohinnat",
     subtitle = "euroa / m3",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
-    zeroline = F,
+    zeroline = T,
     hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "kantohinta")) |>
@@ -375,17 +416,92 @@ ptt_data_robo(
   )  |> 
     ptt_plot(
     grouping = puutavaralaji,
-    title = "Kantohinnat",
+    title = "Kuitupuun kantohinnat",
     subtitle = "euroa / m3",
     caption =  "Lähde: Luke ja PTT",
     rangeslider = FALSE,
-    zeroline = F,
+    zeroline = T,
     hovertext =  list(rounding = 1, unit = "", extra = "")
   ) |>
   ptt_plot_add_prediction(filter(ennuste_data, luokka == "kantohinta")) |>
   ptt_plot_create_widget()
 
 ```
+
+## Kantorahatulot
+
+```{r}
+
+ptt_data_robo_l("luke/04_Metsa/04_Talous/16_Kantorahatulot/01_Bruttokantorahat_v_omistajaryhma.px") |> 
+  filter_recode(
+    omistajaryhma = c("Kaikki yhteensä"), 
+    puutavaralaji = c("Bruttokantorahatulot" = "Kaikkiaan"), 
+    metsakeskusalue = c("KOKO MAA")
+  ) |> 
+  mutate(value = value / 1000) |> 
+  filter(time >= start_time) |> 
+    ptt_plot(
+    grouping = puutavaralaji,
+    title = "Bruttokantorahatulot",
+    subtitle = "miljoonaa euroa, nimellinen",
+    caption = "Lähde: Luke ja PTT",
+    rangeslider = F,
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Milj. €", extra = ""),
+    plot_type = c("bar"),
+    plot_mode = "stack"
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data)) |>
+  ptt_plot_create_widget()
+
+
+```
+
+## Kv-hinnat
+
+### Kuusitukki
+
+```{r}
+
+data_kv_hinta[["kuusitukki"]] |> 
+  ptt_plot(
+    grouping = geo,
+    title = "Kuusitukin hinnat kansainvälisesti",
+    subtitle = "Indeksi, 2015 = 100",
+    caption =  "Lähde: Luke, Skogsstyrelsen, RMK, ČSÚ, Statistik Austria, Destatis ja PTT",
+    rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "", extra = "")
+  ) |>
+  ptt_plot_create_widget()
+
+```
+
+## Hakkeen energiankäyttö
+
+```{r}
+
+ptt_data_robo("luke/04_Metsa/04_Talous/10_Puun_energiakaytto/01b_metsahakkeen_kokkaytto_maak.px") |> 
+  filter_recode(
+  maakunta = c("KOKO MAA"),
+  metsahake = c(
+    "Lämpö- ja voimalaitokset" = ".Lämpö- ja voimalaitokset", 
+    "Pientalot" = ".Pientalot")
+  ) |> 
+  filter(time >= start_time) |> 
+    ptt_plot(
+    grouping = metsahake,
+    title = "Metsähakkeen energiankäyttö",
+    subtitle = "Milj. m3",
+    caption = "Lähde: Luke ja PTT",
+    rangeslider = F,
+    hovertext =  list(dateformat="Annual", rounding = 2, unit = "Milj. €", extra = ""),
+    plot_type = c("bar"),
+    plot_mode = "stack"
+  ) |>
+  ptt_plot_add_prediction(filter(ennuste_data, luokka == "metsähake")) |>
+  ptt_plot_create_widget()
+```
+
 
 ## Upload
 ```{r}

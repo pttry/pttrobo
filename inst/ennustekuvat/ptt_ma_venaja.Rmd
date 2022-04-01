@@ -56,7 +56,7 @@ ptt_data_robo(
     tavaraluokitus_sitc2 = c(
      "Massa" = "25 (2002--.) Paperimassa",
      "Puutuotteet" = "63 (2002--.) Puu- ja korkkituotteet",
-     "Paperi, kartonki ja tuotteet" = "64 (2002--.) Paperi ja pahvi sekä tuotteet niistä"
+     "Paperi ja kartonki" = "64 (2002--.) Paperi ja pahvi sekä tuotteet niistä"
     )
   ) |> 
   mutate(maa = statfitools::extract_code(maa)) |> 
