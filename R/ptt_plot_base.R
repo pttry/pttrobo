@@ -921,8 +921,9 @@ ptt_plot_add_prediction <- function(p,
   zero.line <- p$add_zeroline
   # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   plot.mode <- p$plot_mode
+  test_series <<- pred_series
   pred_series <- pred_series |> droplevels() |> 
-  arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(value),0)) |> ungroup() |> arrange(!!grouping) %>% 
+  arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> arrange(!!grouping) %>% 
   mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
@@ -943,16 +944,16 @@ ptt_plot_add_prediction <- function(p,
       template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
       s <- if(plot.mode == "relative") { 
         s |> mutate(time = time-days(165), count = 2) |> uncount(count) |> 
-          mutate(value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax))
+          mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax))
       } else {
-        s |> mutate(count = 2) |> uncount(count) |> mutate(value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
+        s |> mutate(count = 2) |> uncount(count) |> mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
         
       }
       p <- p |>
         add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
                   hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
                   color = I(color_vector[s.name]),
-                  name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
+                  name = str_c(s.name, "<br>", str_c(round(max(s$valtext), digits = hovertext$rounding)),"<br>",unique(s$year),"<br>(ennuste)"),
                   legendgroup = s.name,
                   hoverinfo = text,
                   legendrank = legend.rank,
