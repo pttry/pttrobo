@@ -258,14 +258,14 @@ ptt_plot_rangeslider_responsive_y_scale <- function(p) {
                           var x = trace.x[i]
                           var y = trace.y[i]
 
-                          if(x > xRange[0] && x < xRange[1]) {
+                          if(x >= xRange[0] && x <= xRange[1]) {
                             //xInside.push(x)
                             yInside.push(y)
                           }
                           }}
                         )
                         var update = {
-                          'yaxis.range': [Math.min(...yInside)*1.1,Math.max(...yInside)*1.1]     // updates the end of the yaxis range
+                          'yaxis.range': [Math.min(...yInside)*1.05,Math.max(...yInside)*1.05]     // updates the end of the yaxis range
                         };
                         Plotly.relayout(gd, update);
                         if(timerId>=0){
