@@ -10,7 +10,6 @@ ptt_plot_set_grid <- function(p, grid_color) {
 ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
   if(!"x" %in% names(range)) { range$x <- c(NA,NA) }
   if(!"y" %in% names(range)) { range$y <- c(NA,NA) }
-  ## if(!any(is.double(range$y))) { message("Provide axis limits for y as type double!") }
   if(!all(is.na(range$y)) & any(is.na(range$y)) || !all(is.na(range$x)) & any(is.na(range$x))) {
     message("Provide both ends for any axis limits!")
     }
@@ -53,24 +52,17 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
           function(gd) {
           let oldlayout = JSON.parse(JSON.stringify(gd.layout))
           delete gd.layout.xaxis.rangeslider;
-          gd.layout.margin.t = ',layout$margin_t,';
-          gd.layout.margin.b = ',layout$margin_b,';
-          gd.layout.images[0].sizex = ',60/ht/1.5,'
-          gd.layout.images[0].sizey = ',layout$logo_sizing,';
-          gd.layout.images[0].y = ',layout$logo_offset,';
-          gd.layout.annotations[0].y = ',layout$caption_offset,';
-          gd.layout.annotations[1].y = ',layout$caption_offset,';
-          gd.layout.annotations[2].y = ',layout$caption_offset,';
-          gd.layout.legend.y = ',layout$legend_offset,';
-          gd.layout.legend.font.size = ',layout$font_sizing$main,';
-          gd.layout.xaxis.tickfont.size = ',layout$font_sizing$main,';
-          gd.layout.yaxis.tickfont.size = ',layout$font_sizing$main,';
-          gd.layout.annotations[0].font.size = ',layout$font_sizing$caption,';
-          gd.layout.annotations[1].font.size = ',layout$font_sizing$caption,';
-          gd.layout.annotations[2].font.size = ',layout$font_sizing$caption,';
-          gd.layout.title.font.size = ',layout$font_sizing$title,';
+          delete gd.layout.height
+          Plotly.relayout(gd, {height: ',ht,', width: ',wd,',
+          "annotations[0].y": ',layout$font_sizing$caption,',
+          "annotations[1].y": ',layout$font_sizing$caption,',
+          "annotations[2].y": ',layout$font_sizing$caption,',
+          "xaxis.tickfont.size": ',layout$font_sizing$main,',
+          "yaxis.tickfont.size": ',layout$font_sizing$main,',
+          "title.font.size": ',layout$font_sizing$title,'})
+          setVerticalLayout({"width": true}, gd, ',layout$font_sizing$main,')
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
-          gd.layout = oldlayout
+          Plotly.relayout(gd, oldlayout)
           delete oldlayout
           }
    ')
@@ -189,11 +181,11 @@ ptt_plot_set_ticks <- function(p, font) {
 
 #' @importFrom plotly layout
 ptt_plot_set_margin <-function(p, margin) {
-
+  
   if (!is.list(margin)) {
-    stop("Insert plot margins as list (default is list(t,r,b,l,pad))")
+    stop("Insert plot margins as list (default is list(t,r,b,l,pad))\nNote that top and bottom margins will be currently ignored but programmatically set instead.", call. = F)
   } else if (any(!names(margin) %in% c("t","r","b","l","pad")) | any(!is.double(unlist(margin)))) {
-    stop("All plot margins must be of double type, and named one or more of t, r, b, l or pad.")
+    stop("All plot margins must be of double type, and named one or more of t, r, b, l or pad.\nNote that top and bottom margins will be currently ignored but programmatically set instead.", call. = F)
   } else {
     p |>
       layout(
@@ -207,20 +199,18 @@ ptt_plot_set_margin <-function(p, margin) {
 
 #' @importFrom plotly layout
 #' @importFrom RCurl base64Encode
-ptt_plot_add_logo <- function(p, offset, plot_height){
+ptt_plot_add_logo <- function(p){
 
   image_file <- system.file("image", "ptt-logo.png", package = "pttrobo")
   txt <- base64Encode(readBin(image_file, "raw", file.info(image_file)[1, "size"]), "txt")
-  img_size <- 20 / plot_height
   p |> plotly::layout(
     images = list(
       source = paste('data:image/png;base64', txt, sep=','),
       xref = "paper",
       yref = "paper",
       x = 1,
-      y = offset$y,
       sizex = 1,
-      sizey = img_size,
+      sizey = 1,
       xanchor="right",
       yanchor = "bottom"
     )
@@ -234,55 +224,6 @@ ptt_plot_add_rangeslider <- function(p, enable = F, height = 0.1, slider_range =
     height <- case_when(height > 0.5 ~ 0.5, height < 0.1 ~ 0.1, TRUE ~ height)
     p |> rangeslider(slider_range[1], slider_range[2], thickness = height)
   } else { p }
-}
-
-#' @importFrom stringr str_c
-#' @importFrom htmlwidgets onRender
-ptt_plot_rangeslider_responsive_y_scale <- function(p) {
-  p |>
-    onRender(jsCode = str_c("
-                        function (gd){
-                        var timerId=0;
-                        var plotlyRelayoutEventFunction=function(eventdata){
-                        if( Object.prototype.toString.call(eventdata[\"xaxis.range\"]) === '[object Array]' ) {
-                        //console.log(\"rangeslider event!!\");
-                        var xRange = gd.layout.xaxis.range
-                        var yRange = gd.layout.yaxis.range
-                        var yInside = []
-                        var visdata = gd.data.filter(trace => trace.visible === true || !(trace.hasOwnProperty('visible')))
-                        visdata.forEach(trace => {
-                        var len = Math.min(trace.x.length, trace.y.length)
-                        var xInside = []
-
-                        for (var i = 0; i < len; i++) {
-                          var x = trace.x[i]
-                          var y = trace.y[i]
-
-                          if(x >= xRange[0] && x <= xRange[1]) {
-                            //xInside.push(x)
-                            yInside.push(y)
-                          }
-                          }}
-                        )
-                        var update = {
-                          'yaxis.range': [Math.min(...yInside)*1.05,Math.max(...yInside)*1.05]     // updates the end of the yaxis range
-                        };
-                        Plotly.relayout(gd, update);
-                        if(timerId>=0){
-                          //timer is running: stop it
-                          window.clearTimeout(timerId);
-                          }
-                        timerId = window.setTimeout(function(){
-                          //fire end event
-                          console.log(\"rangeslider event ENDS\");
-                          //reset timer to undefined
-                          timerId = -1;
-                          }, 800);
-  }
-}
-
-                  document.getElementById('",p$elementId,"').on('plotly_relayout', plotlyRelayoutEventFunction);
-                        }"))
 }
 
 #' @importFrom dplyr case_when
@@ -321,14 +262,9 @@ ptt_plot_config <- function(p,
 
   if(!is.list(margin)) {
     if(is.na(margin)) {
-      margin <- list(t = round(font_size*1.3)+20, r = 20, b = 0, l = 0, pad = 0)
-      margin$t <- case_when(str_length(subtitle) > 0 ~ margin$t + font_size+30, TRUE ~ margin$t)
-      margin$b <- case_when(!is.na(caption) || enable_rangeslider ~ margin$b + round(0.35*height),
-                            TRUE ~ margin$b)
+      margin <- list(t = 0, r = 20, b = 0)
     }
   }
-
-
 
   main_font <- list(size = font_size, family = "sans-serif", color = font_color)
   title_font <- list(size = round(font_size*1.3), family = "sans-serif", color = font_color)
@@ -340,64 +276,37 @@ ptt_plot_config <- function(p,
   tickfont_ht <- round((font_size+2)*1.4)#20#+max(0,ceiling(main_font$size-7)) #20+tickfontin korkeus mikä ylittää tämän: fontti 14 = 3 ei ole täysin johdonmukainen y-akselin yläreunan vuoksi. -Suunnilleen - +1.6 / piste yli fontti 12
   rangeslider_ht <- ifelse(enable_rangeslider, round((height * rangeslider_size)+15-(margin$t*rangeslider_size)-(margin$b*rangeslider_size)),0)
   legend_ht <- ifelse(legend_position %in% c("auto","bottom"), font_size, 0)
-  plot_ht <- height-sum(ht_constants,rangeslider_ht,tickfont_ht,legend_ht,margin$t,ifelse(enable_rangeslider, margin$b, margin$b-25))
-  caption_ht <- ifelse(!is.na(caption), round(font_size*0.8), 0)
-  legend_offset <- list(x = 0,#-((38)/plot_wd),
-                        y = -((rangeslider_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
-  caption_offset <- list(x = 0,#-((36)/plot_wd),
-                         y = -((tickfont_ht+4+rangeslider_ht+legend_ht+(margin$b*ifelse(enable_rangeslider, 0.12, 0.24)))/plot_ht))
-  logo_offset <- list(x = 0, y = -((tickfont_ht+4+rangeslider_ht+caption_ht+legend_ht+margin$b*ifelse(enable_rangeslider, 0.12, 0.24))/plot_ht))
-
+  
   png_attrs <- (function(small_ht = 500, large_ht = 720) {
     font_sizing_lg <- list(title = 31, main = 24, caption = 19)
     font_sizing_sm <- list(title = 23, main = 18, caption = 14)
-    tickfont_ht_lg <- round((font_sizing_lg$main+2)*1.4)
-    tickfont_ht_sm <- round((font_sizing_sm$main+2)*1.4)
-    margin_t_sm <-  font_sizing_sm$title+20 + ifelse(str_length(subtitle) > 0, font_sizing_sm$main+30, 0)
-    margin_t_lg <- font_sizing_lg$title+20 + ifelse(str_length(subtitle) > 0, font_sizing_lg$main+30, 0)
-    margin_b_sm <- max(0, ifelse(!is.na(caption), round(0.2*small_ht), 0))
-    margin_b_lg <- max(0, ifelse(!is.na(caption), round(0.2*large_ht), 0))
-    legend_ht_sm <- ifelse(legend_position %in% c("auto","bottom"), font_sizing_sm$main, 0)
-    legend_ht_lg <- ifelse(legend_position %in% c("auto","bottom"), font_sizing_lg$main, 0)
-    ht_sm <- small_ht-sum(ht_constants,tickfont_ht_sm,legend_ht_sm,margin_t_sm,margin_b_sm)
-    ht_lg <- large_ht-sum(ht_constants,tickfont_ht_lg,legend_ht_lg,margin_t_lg,margin_b_lg)
-    legend_offset_sm <- -(25/ht_sm)
-    legend_offset_lg <- -(30/ht_lg)
-    caption_offset_sm <- -((tickfont_ht_sm+legend_ht_sm+(margin_b_sm*0.22))/ht_sm)
-    caption_offset_lg <- -((tickfont_ht_lg+legend_ht_lg+(margin_b_lg*0.24))/ht_lg)
-    caption_ht_sm <- ifelse(!is.na(caption), round(font_sizing_sm$main*0.8), 0)
-    caption_ht_lg <- ifelse(!is.na(caption), round(font_sizing_lg$main*0.8), 0)
-    logo_offset_sm <- -((tickfont_ht+caption_ht_sm+legend_ht_sm+(margin_b_sm*0.24))/ht_sm)
-    logo_offset_lg <- -((tickfont_ht+caption_ht_lg+legend_ht_lg+(margin_b_lg*0.32))/ht_lg)
-    logo_sizing_sm <-  40 / ht_sm
-    logo_sizing_lg <- 30 / ht_lg
-    list(sm = list(legend_offset = legend_offset_sm, caption_offset = caption_offset_sm, logo_offset = logo_offset_sm, logo_sizing = logo_sizing_sm, margin_t = margin_t_sm, margin_b = margin_b_sm, font_sizing = font_sizing_sm),
-         lg = list(legend_offset = legend_offset_lg, caption_offset = caption_offset_lg, logo_offset = logo_offset_lg, logo_sizing = logo_sizing_lg, margin_t = margin_t_lg, margin_b = margin_b_lg, font_sizing = font_sizing_lg))
+    list(sm = list(font_sizing = font_sizing_sm),
+         lg = list(font_sizing = font_sizing_lg))
   })()
-
+  
   p$enable_rangeslider <- list(enable = enable_rangeslider, size = rangeslider_size, range = slider_range)
   p$add_zeroline <- zeroline
   p$png_attrs <- png_attrs
 
   p |>
+    ptt_plot_attach_js() |>
     ptt_plot_set_defaults(axis_range) |>
     ptt_plot_set_grid(grid_color) |>
     ptt_plot_set_modebar(title, png_attrs) |>
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
-    ptt_plot_add_logo(logo_offset, plot_ht) |>
-    ptt_plot_set_legend(legend_position, legend_orientation, offset = legend_offset, main_font) |>
+    ptt_plot_add_logo() |>
+    ptt_plot_set_legend(legend_position, legend_orientation, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
-    ptt_plot_set_caption(caption, offset = caption_offset, caption_font) |>
+    ptt_plot_set_caption(caption, caption_font) |>
     ptt_plot_add_zeroline(zeroline) |>
-    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range) |>
-    ptt_plot_rangeslider_responsive_y_scale()
+    ptt_plot_add_rangeslider(enable_rangeslider, rangeslider_size, slider_range = slider_range)
 }
 
 
 #' @importFrom plotly layout
 #' @importFrom stringr str_extract
-ptt_plot_set_legend <- function(p, position, orientation, offset, font) {
+ptt_plot_set_legend <- function(p, position, orientation, font) {
   if (is.na(position)) {
     p |> layout(showlegend = F)
   } else if (!position %in% c("right","bottom")) {
@@ -405,23 +314,24 @@ ptt_plot_set_legend <- function(p, position, orientation, offset, font) {
   } else if (!orientation %in% c("vertical","horizontal","auto")) {
     stop("Orientation must be one of \"horizontal\", \"vertical\", or \"auto\"")
   } else {
-    x.pos <- ifelse(position == "right", 100, offset$x)
-    y.pos <- ifelse(position == "right", 1, offset$y) #-0.05
+    x.pos <- ifelse(position == "right", 100, 0)
+    y.pos <- ifelse(position == "right", 1, 0) #-0.05
     orientation <- case_when(orientation == "auto" ~ ifelse(position == "right", "v","h"), TRUE ~ str_extract(orientation, "^(v|h)"))
     p |> layout(
       showlegend = T,
       legend = list(font = font,
+                    bgcolor = 'rgba(0,0,0,0)',
                     x = x.pos, y = y.pos,
                     traceorder = "normal",
                     orientation = orientation,
                     xanchor = "left",
-                    yanchor = "top"))
+                    yanchor = "bottom"))
   }
 }
 
 
 #' @importFrom plotly layout
-ptt_plot_set_caption <- function(p, caption, offset = list(x = 0, y = 0), font) {
+ptt_plot_set_caption <- function(p, caption, font) {
   if(is.na(caption)) {
     p
   } else if (!is.character(caption)) {
@@ -431,9 +341,9 @@ ptt_plot_set_caption <- function(p, caption, offset = list(x = 0, y = 0), font) 
     p |>
       layout(
         annotations = list(
-          x = offset$x, y = offset$y, text = caption, align = "left",
+          x = 0, text = caption, align = "left",
           showarrow = F, xref = 'paper', yref = "paper",
-          xanchor='left', yanchor = 'top', xshift=0, yshift=0,
+          xanchor='left', yanchor = 'bottom', xshift=0, yshift=0,
           font = font
         )
       )
@@ -480,12 +390,12 @@ ptt_plot_set_axis_labels <- function(p, label_x = NA, label_y = NA) {
 #' @importFrom plotly layout
 ptt_plot_add_zeroline <- function(p, z) {
   if(!is.logical(z$zeroline) & !is.double(z$zeroline)) {
-    stop("Zeroline must be TRUE, FALSE or of type double.")
-  } else if (z$zeroline == F) {
+    stop("Zeroline must be TRUE, FALSE or of type double.", call. = F)
+  } else if (z$zeroline == F & !is.numeric(z$zeroline)) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y", layer = "below")) |>
+    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y", layer = "above", line = list(width = 2))) |>
       onRender(jsCode = "
 function(gd) {
 let zeroline_relayout = {'shapes[0].x0': gd.layout.xaxis.range[0], 'shapes[0].x1': gd.layout.xaxis.range[1]}
@@ -493,6 +403,25 @@ Plotly.relayout(gd, zeroline_relayout)
 }
                                                          ")
   }
+}
+
+#' @importFrom htmltools tags
+#' @importFrom htmlwidgets appendContent onRender
+#' @importFrom RCurl base64Encode
+ptt_plot_attach_js <- function(p) {
+  js_file <- system.file("relayout", "relayout.js",package = "pttrobo")
+  base_string <- base64Encode(readBin(js_file, "raw", file.info(js_file)[1, "size"]), "txt")
+  appendContent(
+    p,
+    tags$script(src = str_c('data:application/javascript;base64', base_string, sep=','))) %>% 
+    onRender(jsCode = str_c("
+                        function (gd, params, data){
+                        let legendFontsize = gd.layout.legend.font.size;
+                        setVerticalLayout({'width': true}, gd, legendFontsize);
+                        gd.on('plotly_relayout',function(eventdata, lf = legendFontsize) {
+                        plotlyRelayoutEventFunction(eventdata, gd, lf);
+                        });
+                        }"), data = list(legendFontsize = 14))
 }
 
 #' @importFrom stringr str_subset
@@ -587,7 +516,7 @@ ptt_plot_create_widget <- function(p, title, path) {
 
   # cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'), "\n", file = "ifames.txt", append = TRUE)
 
-  p |>
+  p |> 
     saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
   p
 }
@@ -796,7 +725,7 @@ ptt_plot <- function(d,
   p <- plot_ly(d, x = ~ time, height = height)
   
   split_d <- group_split(d, !!grouping)
-  # split_d <- if(plot_type == "scatter") { rev(split_d) } else { split_d }
+  split_d <- if(plot_type == "scatter") { rev(split_d) } else { split_d }
 
   for (g in split_d) {
     g.color <- unique(g[[as_name(grouping)]])
@@ -918,8 +847,6 @@ ptt_plot_add_prediction <- function(p,
   }
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
-  zero.line <- p$add_zeroline
-  # zero.line$xrange$max <- max(zero.line$xrange$max,pred_series$time)
   plot.mode <- p$plot_mode
   test_series <<- pred_series
   pred_series <- pred_series |> droplevels() |> 
@@ -986,7 +913,6 @@ ptt_plot_add_prediction <- function(p,
     arrange(time, csv.data.tiedot)
   p |>
     ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
-    ptt_plot_add_zeroline(zero.line) |>
     ptt_plot_set_modebar(p$title, p$png_attrs, T)
 }
 
