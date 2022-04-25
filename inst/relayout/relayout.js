@@ -93,6 +93,7 @@ function yrangeRelayout(eventdata, gd, timerId) {
 		var yRange = gd.layout.yaxis.range;
 		var yInside = [];
 		var xInside = [];
+		console.log('yrange min: ' + Math.min(...yRange))
 		var visdata = gd.data.filter(trace => trace.visible === true || !(trace.hasOwnProperty('visible')));
 		visdata.forEach(trace => {
 			var len = Math.min(trace.x.length, trace.y.length);
@@ -107,8 +108,13 @@ function yrangeRelayout(eventdata, gd, timerId) {
 				}
 			}
 		});
+		console.log('yinside min: ' + Math.min(...yInside))
+		let yMax = Math.max(...yInside);
+		yMax = yMax < 0 ? yMax * 0.95 : yMax * 1.05;
+		let yMin = Math.min(...yInside);
+		yMin = yMin < 0 ? yMin * 1.05 : yMin * 0.95;
 		var update = {
-			'yaxis.range': [Math.min(...yInside) * 0.95, Math.max(...yInside) * 1.05], 'shapes[0].x0': xRange[0]  // updates the end of the yaxis range
+			'yaxis.range': [yMin,yMax], 'shapes[0].x0': xRange[0]  // updates the end of the yaxis range
 		};
 		Plotly.relayout(gd, update);
 		if (timerId >= 0) {
