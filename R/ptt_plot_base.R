@@ -153,7 +153,6 @@ ptt_plot_set_ticks <- function(p, font) {
                       mirror = TRUE,
                       ticks = 'outside',
                       type = "date",
-                      tickangle = 0,
                       tickformatstops = list(
                         list(
                           dtickrange = list(NULL, 604800000),
@@ -395,13 +394,39 @@ ptt_plot_add_zeroline <- function(p, z) {
     p
   } else {
     zero_line <- ifelse(z$zeroline == T, 0, z$zeroline)
-    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y", layer = "above", line = list(width = 2))) |>
+    p |> layout(shapes= list(type = "line", x0 = z$xrange$min, x1 = z$xrange$max, xref = "x", y0 = zero_line, y1 = zero_line, yref = "y", layer = "below", line = list(width = 2))) |>
       onRender(jsCode = "
-function(gd) {
+function(gd, params, data) {
 let zeroline_relayout = {'shapes[0].x0': gd.layout.xaxis.range[0], 'shapes[0].x1': gd.layout.xaxis.range[1]}
 Plotly.relayout(gd, zeroline_relayout)
+
+gd.on('plotly_afterplot', function() {
+  var line_label = data.zeroline
+  let yticks = $(gd).find('g.ytick text')
+  let zeroline = $(gd).find('path.zl')
+  if(line_label == 0) {
+    if (zeroline.length > 0) {
+    zeroline[0].style['stroke'] = 'black'
+    }
+  } else {
+  let label_translate
+  if (zeroline.length > 0) { zeroline[0].style['stroke'] = 'rgb(232, 232, 232)' };
+  yticks.filter(function(d, i) {
+  if(this.textContent.trim().replace(',','.').replace('−','-').replace(' ','') == line_label) {
+  label_translate = i.getAttribute('transform')
+    let lines = $(gd).find('path.ygrid')
+    lines.filter(function(d, i) {
+    if(i.getAttribute('transform') == label_translate) {
+      i.style['stroke'] = 'black'
+    }
+    })
+  }
+  })
+  }
+  
+})
 }
-                                                         ")
+                                                         ", data = list(zeroline = zero_line))
   }
 }
 

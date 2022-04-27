@@ -113,9 +113,13 @@ function yrangeRelayout(eventdata, gd, timerId) {
 		yMax = yMax < 0 ? yMax * 0.95 : yMax * 1.05;
 		let yMin = Math.min(...yInside);
 		yMin = yMin < 0 ? yMin * 1.05 : yMin * 0.95;
-		var update = {
-			'yaxis.range': [yMin,yMax], 'shapes[0].x0': xRange[0]  // updates the end of the yaxis range
-		};
+		if ('shapes' in gd.layout) {
+		 var update = {
+			'yaxis.range': [yMin,yMax], 'shapes[0].x0': xRange[0], 'shapes[0].x1': xRange[xRange.length-1]  // updates the end of the yaxis range
+		}; 
+		} else {
+		  var update = { 'yaxis.range': [yMin,yMax] };
+		}
 		Plotly.relayout(gd, update);
 		if (timerId >= 0) {
 			//timer is running: stop it
