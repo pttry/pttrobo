@@ -19,7 +19,7 @@ devtools::install_github("pttry/pttrobo")
 
 ## Tietojen haku ja käyttö Robonomist-tietokannasta
 
-Tietojen hakuun käytetään `ptt_data_ropo()` -funktiota ja robonomist
+Tietojen hakuun käytetään `ptt_data_robo()` -funktiota ja robonomist
 id:tä.
 
 ``` r
