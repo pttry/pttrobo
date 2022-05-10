@@ -780,7 +780,7 @@ ptt_plot <- function(d,
   } else if (!all(unique_groups %in% names(line_width)) & !(".other" %in% names(line_width)) ) {
     stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding line width, or key \".other\" must be included!"), call. = F)
   } else {
-    d <- mutate(d, line.width = line_width[!!grouping] %>% dplyr::coalesce(line_width[".other"]))
+    d <- mutate(d, line.width = line_width[as.character(!!grouping)] %>% dplyr::coalesce(line_width[".other"]))
   }
   
   if(!is.null(highlight)) {
@@ -930,8 +930,7 @@ ptt_plot_add_prediction <- function(p,
   }
   
   line_width <- p$line_width
-  print(line_width)
-  pred_series <- mutate(pred_series, line.width = (if(length(line_width) == 1) { line_width} else { line_width[!!grouping] }) %>% dplyr::coalesce(line_width[".other"]))
+  pred_series <- mutate(pred_series, line.width = (if(length(line_width) == 1) { line_width} else { line_width[as.character(!!grouping)] }) %>% dplyr::coalesce(line_width[".other"]))
   
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
