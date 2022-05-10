@@ -288,7 +288,7 @@ ptt_plot_config <- function(p,
   p$png_attrs <- png_attrs
 
   p |>
-    ptt_plot_attach_js() |>
+    ptt_plot_attach_js(title, subtitle) |>
     ptt_plot_set_defaults(axis_range) |>
     ptt_plot_set_grid(grid_color) |>
     ptt_plot_set_modebar(title, png_attrs) |>
@@ -433,21 +433,34 @@ gd.on('plotly_afterplot', function() {
 #' @importFrom htmltools tags
 #' @importFrom htmlwidgets appendContent onRender
 #' @importFrom RCurl base64Encode
-ptt_plot_attach_js <- function(p) {
-  js_file <- system.file("relayout", "relayout.js",package = "pttrobo")
-  base_string <- base64Encode(readBin(js_file, "raw", file.info(js_file)[1, "size"]), "txt")
-  appendContent(
-    p,
-    tags$script(src = str_c('data:application/javascript;base64', base_string, sep=','))) %>% 
+ptt_plot_attach_js <- function(p, title, subtitle) {
+  split_title <- list(
+    str_c("<span><b>",title,"</b><span style=\"font-size: 75%\"><br>",subtitle,"</span></span>"),
+    str_c("<span><b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2)),"\n","<br>"),"</b><span style=\"font-size: 75%\"><br>",subtitle,"</span></span>"))
+  # dep <- htmltools::htmlDependency("relayout", "0.1", src = c(href= system.file("www/js", package = "panoshinta")),  script = "relayout.js")
+  # p$dependencies <- c(p$dependencies, list(dep))
+  if(!shiny::isRunning()) {
+    js_file <- system.file("www", "js", "relayout.js", package = "pttrobo")
+    base_string <- base64Encode(readBin(js_file, "raw", file.info(js_file)[1, "size"]), "txt")
+    p <- appendContent(
+      p,
+      tags$script(src = str_c('data:application/javascript;base64', base_string, sep=',')))
+  }
+  rangeslider_sums <- F
+  if(p$plot_mode == "relative" && any(p$trace_types == "bar")) { rangeslider_sums = T }
+  p %>%
     onRender(jsCode = str_c("
                         function (gd, params, data){
-                        let legendFontsize = gd.layout.legend.font.size;
-                        setVerticalLayout({'width': true}, gd, legendFontsize);
+                        let legendFontsize = 0;
+                        if ('legend' in gd.layout) { legendFontsize = gd.layout.legend.font.size };
+                        let alt_title = data.splitTitle;
+                        setVerticalLayout({'width': true}, gd, legendFontsize, alt_title);
                         gd.on('plotly_relayout',function(eventdata, lf = legendFontsize) {
-                        plotlyRelayoutEventFunction(eventdata, gd, lf);
+                        plotlyRelayoutEventFunction(eventdata, gd, lf, alt_title, data.rangesliderSums);
                         });
-                        }"), data = list(legendFontsize = 14))
+                        }"), data = list(splitTitle = split_title, rangesliderSums = rangeslider_sums))
 }
+
 
 #' @importFrom stringr str_subset
 ptt_plot_hovertemplate <- function(specs) {
@@ -651,6 +664,22 @@ ptt_plot_get_frequency <- function(d) {
   tf
 }
 
+ptt_plot_set_highlight <- function(highlight, df) {
+  if(is.null(highlight)) { 
+    T 
+  } else if (is.double(highlight)) { 
+    max(df$value, na.rm = T) >= highlight
+  } else if (is.list(highlight)) {
+    if (!all(c("value",".fun") %in% names(highlight))) {
+      stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
+    } else {
+      highlight$.fun(df$value, na.rm = T) >= highlight$value
+    }
+  } else {
+    stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
+  } 
+}
+
 #' Creates a plotly object with visual specifications of ptt.
 #'
 #' Outputs a plotly object.
@@ -665,9 +694,10 @@ ptt_plot_get_frequency <- function(d) {
 #' @param rangeslider Determines rangeslider inclusion (Logical).
 #' @param axis_limits Determines the limits of the axes (list(x = c(NA,NA), y = c(NA,NA)))".
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
-#' @param isolate_primary Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.
+#' @param highlight Either NULL, a double that limits, or a function that returns a logical determining if a given trace is included in legend and assigned a color.
 #' @param plot_type Determines the trace type for either the whole plot, or for all variables defined by grouping as name-value pairs (Character vector).
 #' @param plot_mode Determines the barmode for a barplot. Disregarded for scatterplots. (Character).
+#' @param line_width Line width for line plots. Either a double or a double vector of name-value pairs (Double vector).
 #' @param height Height of the plot.
 #' @return plotly object
 #' @examples
@@ -698,9 +728,10 @@ ptt_plot <- function(d,
                      margin = NA,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
+                     highlight = NULL,
                      zeroline = F,
                      rangeslider = FALSE,
-                     isolate_primary = F,
+                     line_width = 4,
                      font_size = 14,
                      hovertext,
                      axis_limits = list(x = c(NA,NA), y = c(NA,NA)),
@@ -723,8 +754,12 @@ ptt_plot <- function(d,
   }
 
   grouping <- enquo(grouping)
-
-  d <- droplevels(d)
+  
+  if(!is.factor(d[[as_name(grouping)]])) {
+    d[[as_name(grouping)]] <- fct_inorder(d[[as_name(grouping)]])
+  }
+  
+  d <- d|> group_by(!!grouping) %>% filter(!all(is.na(value))) |> ungroup() |> droplevels()
 
   unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
 
@@ -738,37 +773,61 @@ ptt_plot <- function(d,
     d <- mutate(d, plot.type = str_replace_all(!!grouping, plot_type))
     }
 
-  color_vector <- (function() {
-    color_vector <- if (isolate_primary == T) {
-      ptt_plot_set_colors(1) |> rep(length(unique_groups))
+  if(!all(typeof(line_width) == "double")) {
+    stop("Line width must be a double, or a double vector of name_value pairs!", call. = F)
+  } else if (length(line_width) == 1 & is.null(names(line_width))){
+    d <- d |> mutate(line.width = line_width)
+  } else if (!all(unique_groups %in% names(line_width)) & !(".other" %in% names(line_width)) ) {
+    stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding line width, or key \".other\" must be included!"), call. = F)
+  } else {
+    d <- mutate(d, line.width = line_width[!!grouping] %>% dplyr::coalesce(line_width[".other"]))
+  }
+  
+  if(!is.null(highlight)) {
+    if (is.double(highlight)) { 
+      un_groups <- d %>% group_by(!!grouping) %>% summarize(value = max(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight) %>% pull(!!grouping)
+    } else if (is.list(highlight)) {
+      if (!all(c("value",".fun") %in% names(highlight))) {
+        stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
+      } else {
+        un_groups <- d %>% group_by(!!grouping) %>% summarize(value = highlight$.fun(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight$value) %>% pull(!!grouping)
+      }
     } else {
-      ptt_plot_set_colors(length(unique_groups))
-    }
-    color_vector |> set_names(unique_groups)
-  })()
+      stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
+    } 
+    un_groups <- unique_groups %>% subset(unique_groups %in% un_groups) |> droplevels()
+    color_vector <- ptt_plot_set_colors(length(un_groups)) %>% set_names(un_groups)
+    d[[as_name(grouping)]] <- fct_relevel(d[[as_name(grouping)]], levels(un_groups))
+  } else {
+    color_vector <- ptt_plot_set_colors(length(unique_groups)) |> set_names(unique_groups)
+  }
 
   p <- plot_ly(d, x = ~ time, height = height)
   
   split_d <- group_split(d, !!grouping)
-  split_d <- if(plot_type == "scatter") { rev(split_d) } else { split_d }
+  split_d <- if(any(plot_type == "scatter")) { rev(split_d) } else { split_d }
 
   for (g in split_d) {
     g.color <- unique(g[[as_name(grouping)]])
     g.name <- unique(g[[as_name(grouping)]])
     g.level <-  which(g.name == levels(g.name))
     g.type <- unique(g$plot.type)
-    lw <- if(!isolate_primary) { 4 } else {seq.int(4,1,length.out = length(levels(g.name)))[g.level]}
+    g.linewidth <- unique(g$line.width)
     legend.rank <- g.level * 100
+    show.legend <- ptt_plot_set_highlight(highlight, g)
+    trace.color <- I(color_vector[as.character(g.color)])
+    if(is.na(trace.color)) {trace.color <- I(grid_color)}
     p <- p |>
       add_trace(data=g, y = ~value, text = g.name,
                 texttemplate = NA,
                 hovertemplate = ptt_plot_hovertemplate(hovertext),
-                line = if(g.type == "scatter") { list(width = lw) } else { NULL },
+                line = if(g.type == "scatter") { list(width = g.linewidth) } else { NULL },
                 offsetgroup = if(g.type == "bar") { g.name } else { NULL },
                 legendgroup = g.name,
                 legendrank = legend.rank,
+                showlegend = show.legend,
                 name = g.name,
-                color = I(color_vector[g.color]),
+                color = trace.color,
                 type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
       )
   }
@@ -797,6 +856,7 @@ ptt_plot <- function(d,
     traces$plot.type |> set_names(traces[[as_name(grouping)]])
   })()
   p$plot_mode <- plot_mode
+  p$line_width <- line_width
 
   maxtime <- max(d$time)
 
@@ -820,7 +880,6 @@ ptt_plot <- function(d,
 #' @param grouping Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.
 #' @param n_obs Number of observations (counted from the latest) used from the prediction set pred_data.
 #' @param showlegend,with_labs Controls prediction trace legend. Hovertemplate takes labeling based on with_labs.
-#' @param isolate_primary Separates the first factor in parent plot grouping by line width.
 #' @param hovertext A list describing hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param value_multiplier A number. Value of 0.001 would cause values to be divided by 1000, value of 1000 would cause values to be multiplied by 1000 hovertext items "list(rounding = 1, unit = "%", extra = "(ennuste)")".
 #' @param custom_pred_data A boolean. If set to true, pred_data is required to be a dataframe/tibble with columns, year, sarja_nmi and value. With two prediction values per sarja_nmi.
@@ -842,7 +901,6 @@ ptt_plot_add_prediction <- function(p,
                                     grouping = sarja_nmi,
                                     n_obs = 2,
                                     with_labs = T,
-                                    isolate_primary = F,
                                     showlegend = F,
                                     hovertext = list(rounding = 1, unit = "", extra = "(ennuste)", dateformat = "Annual"),
                                     value_multiplier = 1,
@@ -870,6 +928,11 @@ ptt_plot_add_prediction <- function(p,
       relocate(value, .after = time) |>
       mutate(value = value * value_multiplier)
   }
+  
+  line_width <- p$line_width
+  print(line_width)
+  pred_series <- mutate(pred_series, line.width = (if(length(line_width) == 1) { line_width} else { line_width[!!grouping] }) %>% dplyr::coalesce(line_width[".other"]))
+  
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
   plot.mode <- p$plot_mode
@@ -886,7 +949,7 @@ ptt_plot_add_prediction <- function(p,
   for (s in pred_series) {
     s.name <- unique(s[[as_name(grouping)]])
     s.level <- p$legend_ranks[s.name]
-    lw <- if(!isolate_primary) { 4 } else {ifelse(s.level == 100, 4, 2)}
+    s.linewidth <- unique(s$line.width)
     show.legend <- ifelse(!s.name %in% legend.items, showlegend, F)
     legend.items <- c(legend.items, s.name) |> unique()
     legend.rank <- s.level * 1.1 + 1
@@ -914,7 +977,7 @@ ptt_plot_add_prediction <- function(p,
   } else {
     p <- p |>
       add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "lines",
-                line = list(width = lw),
+                line = if(s.type == "scatter") { list(width = s.linewidth) } else { NULL },
                 color = I(color_vector[s.name]),
                 name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
                 legendgroup = s.name,
