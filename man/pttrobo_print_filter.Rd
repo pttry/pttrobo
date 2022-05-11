@@ -5,14 +5,16 @@
 \alias{pttrobo_print_filter_recode}
 \title{Print full filtering for Robonomist id or data}
 \usage{
-pttrobo_print_filter(x, conc = TRUE)
+pttrobo_print_filter(x, conc = TRUE, print = TRUE)
 
-pttrobo_print_filter_recode(x, conc = TRUE)
+pttrobo_print_filter_recode(x, conc = TRUE, print = TRUE)
 }
 \arguments{
 \item{x}{A Robonomist id or robonomist_data}
 
 \item{conc}{A locigal whether to copy in clipboard}
+
+\item{print}{A locigal whether to print output (to only return invisibly)}
 }
 \description{
 In ptt-format
