@@ -1,5 +1,10 @@
 #' Print get code and full filtering for Robonomist id or url
 #'
+#' @param x robonomist id or url that robonomist undestands (statfi).
+#' @param conc A locigal to copy to clipboard.
+#'
+#' @export
+#'
 #' @examples
 #'   pttrobo_print_code("https://pxweb2.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__vaerak/statfin_vaerak_pxt_11ra.px/", conc = FALSE)
 #'   pttrobo_print_code("StatFin/vaerak/statfin_vaerak_pxt_11ra.px", conc = FALSE)
