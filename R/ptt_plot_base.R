@@ -604,7 +604,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
     } else {
         str_c(upload_path,str_remove(artefact_file, files_path))
     }
-    obj.existence <- gcs_list_objects(prefix = upload_file) %>% nrow() %>% as.logical()
+    obj.existence <- suppressMessages(gcs_list_objects(prefix = upload_file) %>% nrow() %>% as.logical())
     if(obj.existence == TRUE & overwrite == FALSE) {
       message(str_c("The file ",upload_file, " already exists!"))
     } else {
