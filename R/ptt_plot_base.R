@@ -691,7 +691,8 @@ ptt_plot_set_highlight <- function(highlight, df) {
   } 
 }
 
-areColors <- function(x) {
+#' @importFrom stringr str_length
+ptt_plot_are_colors <- function(x) {
   (str_detect(x, "#[0-9A-F]{6}") | x %in% colors()) %>% replace_na(F)
 }
 
@@ -802,7 +803,7 @@ ptt_plot <- function(d,
   
   if(!is.null(trace_color)) {
     
-    if(!all(areColors(trace_color))) {
+    if(!all(ptt_plot_are_colors(trace_color))) {
       stop("Trace colors must be 6-character hexadecimal colors or among strings provided by grDevices::colors!", call. = F)
     } else if (length(trace_color) == 1 & is.null(names(trace_color))){
       color_vector <- rep(trace_color, length(unique_groups)) %>% set_names(unique_groups)
