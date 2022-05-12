@@ -28,7 +28,7 @@ ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
 #' @importFrom purrr pmap
 #' @importFrom tidyr drop_na
 #' @importFrom fontawesome fa
-ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
+ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
 
   if (reset == T) { p <- config(p, modeBarButtons = NULL) }
 
@@ -37,10 +37,10 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
   # twitter_icon <- "M640.012 121.513c-23.528 10.524-48.875 17.516-75.343 20.634 27.118-16.24 47.858-41.977 57.756-72.615-25.347 14.988-53.516 25.985-83.363 31.866-24-25.5-58.087-41.35-95.848-41.35-72.508 0-131.21 58.736-131.21 131.198 0 10.228 1.134 20.232 3.355 29.882-109.1-5.528-205.821-57.757-270.57-137.222a131.423 131.423 0 0 0-17.764 66c0 45.497 23.102 85.738 58.347 109.207-21.508-.638-41.74-6.638-59.505-16.359v1.642c0 63.627 45.225 116.718 105.32 128.718-11.008 2.988-22.63 4.642-34.606 4.642-8.48 0-16.654-.874-24.78-2.35 16.783 52.11 65.233 90.095 122.612 91.205-44.989 35.245-101.493 56.233-163.09 56.233-10.63 0-20.988-.65-31.334-1.89 58.229 37.359 127.206 58.997 201.31 58.997 241.42 0 373.552-200.069 373.552-373.54 0-5.764-.13-11.35-.366-16.996 25.642-18.343 47.87-41.493 65.469-67.844l.059-.059z"
   # png_icon <- "M7.5,0h107.9c4.1,0,7.5,3.4,7.5,7.5v70.6c0,4.1-3.4,7.5-7.5,7.5H7.5c-4.1,0-7.5-3.4-7.5-7.5V7.5 C0,3.4,3.4,0,7.5,0L7.5,0z M69.9,63.3h28.5v4H69.9V63.3L69.9,63.3z M69.9,53.1H109v4H69.9V53.1L69.9,53.1z M92.1,35h5.6 c0.3,0,0.5,0.2,0.5,0.5v11c0,0.3-0.2,0.5-0.5,0.5h-5.6c-0.3,0-0.5-0.2-0.5-0.5v-11C91.6,35.3,91.8,35,92.1,35L92.1,35L92.1,35z M70.5,28.3h5.6c0.3,0,0.5,0.2,0.5,0.5v17.8c0,0.3-0.2,0.5-0.5,0.5h-5.6c-0.3,0-0.5-0.2-0.5-0.5V28.8 C69.9,28.5,70.2,28.3,70.5,28.3L70.5,28.3L70.5,28.3L70.5,28.3z M81.3,24.5h5.6c0.3,0,0.5,0.2,0.5,0.5v21.6c0,0.3-0.2,0.5-0.5,0.5 h-5.6c-0.3,0-0.5-0.2-0.5-0.5V25C80.8,24.7,81,24.5,81.3,24.5L81.3,24.5L81.3,24.5z M39.3,48.2l17,0.3c0,6.1-3,11.7-8,15.1 L39.3,48.2L39.3,48.2L39.3,48.2z M37.6,45.3l-0.2-19.8l0-1.3l1.3,0.1h0h0c1.6,0.1,3.2,0.4,4.7,0.8c1.5,0.4,2.9,1,4.3,1.7 c6.9,3.6,11.7,10.8,12.1,19l0.1,1.3l-1.3,0l-19.7-0.6l-1.1,0L37.6,45.3L37.6,45.3L37.6,45.3z M39.8,26.7L40,44.1l17.3,0.5 c-0.7-6.8-4.9-12.7-10.7-15.8c-1.2-0.6-2.5-1.1-3.8-1.5C41.7,27.1,40.8,26.9,39.8,26.7L39.8,26.7L39.8,26.7z M35.9,47.2L45.6,64 c-3,1.7-6.3,2.6-9.7,2.6c-10.7,0-19.4-8.7-19.4-19.4c0-10.4,8.2-19,18.6-19.4L35.9,47.2L35.9,47.2L35.9,47.2z M115.6,14.1H7.2v64.4 h108.4V14.1L115.6,14.1L115.6,14.1z"
 
-  if(is.na(dl_title)) {
+  if(is.na(title)) {
     dl_title <- "img"
   } else {
-    dl_title <- str_extract_all(dl_title, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
+    dl_title <- str_extract_all(title, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
       str_c(collapse = "") |>
       str_squish() |>
       tolower() |>
@@ -48,6 +48,11 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
   }
 
   js_string <- function(wd, ht, suffix, layout, ttl = dl_title) {
+    split_title <- list(
+      str_c("\\<span>\\<b>",p$title,"\\</b><span style='font-size: 75%'><br>",p$subtitle,"\\</span>\\</span>"),
+      str_c("\\<span>\\<b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2)),"\n","\\<br>"),"\\</b>\\<span style='font-size: 75%'>\\<br>",p$subtitle,"\\</span>\\</span>"))
+      
+      
     str_c('
           function(gd) {
           let oldlayout = JSON.parse(JSON.stringify(gd.layout))
@@ -60,7 +65,7 @@ ptt_plot_set_modebar <- function(p, dl_title,png_layout, reset = F) {
           "xaxis.tickfont.size": ',layout$font_sizing$main,',
           "yaxis.tickfont.size": ',layout$font_sizing$main,',
           "title.font.size": ',layout$font_sizing$title,'})
-          setVerticalLayout({"width": true}, gd, ',layout$font_sizing$main,')
+          setVerticalLayout({"width": true}, gd, ',layout$font_sizing$main,', ["',split_title[[1]],'","nokitja muusi"])
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           Plotly.relayout(gd, oldlayout)
           delete oldlayout
@@ -291,7 +296,7 @@ ptt_plot_config <- function(p,
     ptt_plot_attach_js(title, subtitle) |>
     ptt_plot_set_defaults(axis_range) |>
     ptt_plot_set_grid(grid_color) |>
-    ptt_plot_set_modebar(title, png_attrs) |>
+    ptt_plot_set_modebar(title, p$subtitle, png_attrs) |>
     ptt_plot_set_ticks(main_font) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo() |>
@@ -539,21 +544,15 @@ ptt_plot_create_widget <- function(p, title, path) {
   path <- if(missing(path)) {
     if(isTRUE(getOption('knitr.in.progress'))) {
       cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
-      dir.create(cur_input,showWarnings = F)
+      #dir.create(cur_input,showWarnings = F)
       ###
-      path <- str_c(cur_input,"/")
-      # buc <- tryCatch(gcs_get_global_bucket(), error = function(e) { NULL })
-      # if(is.null(buc)) {
-      #   cat("No google cloud storage bucket set, no iframe code generated.")
-      # } else {
-      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
+      pth <- str_c(cur_input,"/")
+      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',pth,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
         # }
-      path
+      str_c(tempdir(),"/")
     } else { "" }
   } else  { str_c(path,"/") }
-
-  # cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',path,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'), "\n", file = "ifames.txt", append = TRUE)
-
+  # cat(str_c(path,title,".html"))
   p |> 
     saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
   p
@@ -567,8 +566,8 @@ ptt_plot_create_widget <- function(p, title, path) {
 #' @importFrom knitr current_input
 #' @importFrom stringr str_remove str_replace_all str_c str_detect
 #' @importFrom dplyr case_when
-#' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket gcs_auth gcs_global_bucket
-ptt_plot_upload_widgets <- function(files_path, upload_path) {
+#' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket gcs_auth gcs_global_bucket gcs_list_objects
+ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) {
 
   tryCatch(gcs_auth(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))), error = function(e) {
     str <- paste0("Do you have the proper authorisation file in the directory?\n")
@@ -577,11 +576,11 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
   suppressMessages(gcs_global_bucket("pttry"))
 
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
-
+  
   if(missing(files_path)) {
     if(is_knitting == T) {
       cur_input <- knitr::current_input()
-      files_path <- cur_input |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
+      files_path <- tempdir()#cur_input |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
     } else {
         stop("Give the path to the files you wish to upload. Careful! This will upload every .html, .css, .map, .scss, .txt and .js file in the given path!", call. = F)
       }
@@ -597,22 +596,34 @@ ptt_plot_upload_widgets <- function(files_path, upload_path) {
   }
 
   artefact_files <- list.files(files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
+  if(overwrite == FALSE) { message("Overwrite is set to false, set overwrite = T in ptt_plot_upload_widgets if you want to overwrite existing uploads.") }
   purrr::walk(artefact_files, function(artefact_file) {
     upload_file <- if(is_knitting) {
-      str_c("ennustekuvat/",str_remove(artefact_file, str_c("^.{1,}?=(",cur_input,")")))
+      prefix <- cur_input %>% str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
+      str_c("ennustekuvat/",prefix,str_remove(artefact_file,tempdir()))
     } else {
         str_c(upload_path,str_remove(artefact_file, files_path))
+    }
+    obj.existence <- gcs_list_objects(prefix = upload_file) %>% nrow() %>% as.logical()
+    if(obj.existence == TRUE & overwrite == FALSE) {
+      message(str_c("The file ",upload_file, " already exists!"))
+    } else {
+      if(obj.existence == TRUE) {
+        message(str_c("Overwriting previous upload of ",upload_file))
+      } else {
+        message(str_c("Uploading ",upload_file))
       }
-    message(str_c("Uploading ",upload_file))
-    upload_type <- dplyr::case_when(str_detect(upload_file, "css$") ~ "text/css",
-                                    str_detect(upload_file, "js$") ~ "text/javascript",
-                                    str_detect(upload_file, "txt$") ~ "text/plain",
-                                    str_detect(upload_file, "map$") ~ "application/json",
-                                    TRUE ~ as.character(NA))
-    if(is.na(upload_type)) { upload_type <- NULL}
-    meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
-    meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
-    gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel")
+      upload_type <- dplyr::case_when(str_detect(upload_file, "css$") ~ "text/css",
+                                      str_detect(upload_file, "js$") ~ "text/javascript",
+                                      str_detect(upload_file, "txt$") ~ "text/plain",
+                                      str_detect(upload_file, "map$") ~ "application/json",
+                                      TRUE ~ as.character(NA))
+      if(is.na(upload_type)) { upload_type <- NULL}
+      meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
+      meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
+      gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel") 
+    }
+
   })
 }
 
@@ -680,6 +691,10 @@ ptt_plot_set_highlight <- function(highlight, df) {
   } 
 }
 
+areColors <- function(x) {
+  (str_detect(x, "#[0-9A-F]{6}") | x %in% colors()) %>% replace_na(F)
+}
+
 #' Creates a plotly object with visual specifications of ptt.
 #'
 #' Outputs a plotly object.
@@ -697,6 +712,7 @@ ptt_plot_set_highlight <- function(highlight, df) {
 #' @param highlight Either NULL, a double that limits, or a function that returns a logical determining if a given trace is included in legend and assigned a color.
 #' @param plot_type Determines the trace type for either the whole plot, or for all variables defined by grouping as name-value pairs (Character vector).
 #' @param plot_mode Determines the barmode for a barplot. Disregarded for scatterplots. (Character).
+#' @param trace_color Trace color for all traces. Either a character string or a character vector of name-value pairs interpretable as colors (Character vector).
 #' @param line_width Line width for line plots. Either a double or a double vector of name-value pairs (Double vector).
 #' @param height Height of the plot.
 #' @return plotly object
@@ -728,6 +744,7 @@ ptt_plot <- function(d,
                      margin = NA,
                      font_color = "#696969",
                      grid_color = "#E8E8E8",
+                     trace_color = NULL,
                      highlight = NULL,
                      zeroline = F,
                      rangeslider = FALSE,
@@ -783,7 +800,23 @@ ptt_plot <- function(d,
     d <- mutate(d, line.width = line_width[as.character(!!grouping)] %>% dplyr::coalesce(line_width[".other"]))
   }
   
-  if(!is.null(highlight)) {
+  if(!is.null(trace_color)) {
+    
+    if(!all(areColors(trace_color))) {
+      stop("Trace colors must be 6-character hexadecimal colors or among strings provided by grDevices::colors!", call. = F)
+    } else if (length(trace_color) == 1 & is.null(names(trace_color))){
+      color_vector <- rep(trace_color, length(unique_groups)) %>% set_names(unique_groups)
+    } else if (!all(unique_groups %in% names(trace_color)) & !(".other" %in% names(trace_color)) ) {
+      stop(str_c("Either trace color must be a single color string, or all variables in column \"",as_name(grouping),"\" must have a corresponding trace color, or key \".other\" must be included, or trace_color must be NULL!"), call. = F)
+    } else {
+      ug <- as.character(unique_groups)
+      color_vector <- c(trace_color[ug[ug %in% names(trace_color)]],
+                        ug[!ug %in% names(trace_color)] %>% length() %>% rep(trace_color[".other"], .) %>% 
+                          set_names(ug[!ug %in% names(trace_color)]))
+    }
+    if(!is.null(highlight)) {message("Highlight is ignored when providing trace colors.")}
+    
+  } else if(!is.null(highlight)) {
     if (is.double(highlight)) { 
       un_groups <- d %>% group_by(!!grouping) %>% summarize(value = max(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight) %>% pull(!!grouping)
     } else if (is.list(highlight)) {
@@ -796,6 +829,7 @@ ptt_plot <- function(d,
       stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
     } 
     un_groups <- unique_groups %>% subset(unique_groups %in% un_groups) |> droplevels()
+    if(length(un_groups) == 0) { stop(str_c("No trace in \"",as_name(grouping),"\" fulfill the highlight requirements."), call. = F) }
     color_vector <- ptt_plot_set_colors(length(un_groups)) %>% set_names(un_groups)
     d[[as_name(grouping)]] <- fct_relevel(d[[as_name(grouping)]], levels(un_groups))
   } else {
@@ -814,7 +848,7 @@ ptt_plot <- function(d,
     g.type <- unique(g$plot.type)
     g.linewidth <- unique(g$line.width)
     legend.rank <- g.level * 100
-    show.legend <- ptt_plot_set_highlight(highlight, g)
+    show.legend <- if(!is.null(trace_color)) { T } else { ptt_plot_set_highlight(highlight, g) }
     trace.color <- I(color_vector[as.character(g.color)])
     if(is.na(trace.color)) {trace.color <- I(grid_color)}
     p <- p |>
@@ -851,6 +885,7 @@ ptt_plot <- function(d,
   p$hover_template <- hovertext
   p$legend_ranks <- ((levels(unique_groups) |> factor() |> as.numeric())*100) |> set_names(as.character(levels(unique_groups)))
   p$title <- title
+  p$subtitle <- subtitle
   p$trace_types <- (function() {
     traces <- distinct(d, !!grouping, plot.type)
     traces$plot.type |> set_names(traces[[as_name(grouping)]])
@@ -930,8 +965,7 @@ ptt_plot_add_prediction <- function(p,
   }
   
   line_width <- p$line_width
-  pred_series <- mutate(pred_series, line.width = (if(length(line_width) == 1) { line_width} else { line_width[as.character(!!grouping)] }) %>% dplyr::coalesce(line_width[".other"]))
-  
+  pred_series <- mutate(pred_series, line.width = (if(length(line_width) == 1) { line_width } else { line_width[as.character(!!grouping)] }) %>% dplyr::coalesce(line_width[".other"]))
   range.slider <- p$enable_rangeslider
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
   plot.mode <- p$plot_mode
@@ -1000,7 +1034,7 @@ ptt_plot_add_prediction <- function(p,
     arrange(time, csv.data.tiedot)
   p |>
     ptt_plot_add_rangeslider(enable = range.slider$enable, height = range.slider$size, slider_range = range.slider$range) |>
-    ptt_plot_set_modebar(p$title, p$png_attrs, T)
+    ptt_plot_set_modebar(p$title, p$subtitle, p$png_attrs, T)
 }
 
 

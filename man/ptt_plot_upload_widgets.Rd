@@ -4,7 +4,7 @@
 \alias{ptt_plot_upload_widgets}
 \title{Uploads the html elements and dependencies to cloud storage.}
 \usage{
-ptt_plot_upload_widgets(files_path, upload_path)
+ptt_plot_upload_widgets(files_path, upload_path, overwrite = FALSE)
 }
 \arguments{
 \item{files_path}{The folder where the artefacts to be uploaded are located.}

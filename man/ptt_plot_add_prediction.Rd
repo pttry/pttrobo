@@ -10,7 +10,6 @@ ptt_plot_add_prediction(
   grouping = sarja_nmi,
   n_obs = 2,
   with_labs = T,
-  isolate_primary = F,
   showlegend = F,
   hovertext = list(rounding = 1, unit = "", extra = "(ennuste)", dateformat = "Annual"),
   value_multiplier = 1,
@@ -26,8 +25,6 @@ ptt_plot_add_prediction(
 \item{grouping}{Tibble column used for grouping in plot, should be labeled the same as data used for parent ptt_plot.}
 
 \item{n_obs}{Number of observations (counted from the latest) used from the prediction set pred_data.}
-
-\item{isolate_primary}{Separates the first factor in parent plot grouping by line width.}
 
 \item{showlegend, with_labs}{Controls prediction trace legend. Hovertemplate takes labeling based on with_labs.}
 

@@ -15,9 +15,11 @@ ptt_plot(
   margin = NA,
   font_color = "#696969",
   grid_color = "#E8E8E8",
+  trace_color = NULL,
+  highlight = NULL,
   zeroline = F,
   rangeslider = FALSE,
-  isolate_primary = F,
+  line_width = 4,
   font_size = 14,
   hovertext,
   axis_limits = list(x = c(NA, NA), y = c(NA, NA)),
@@ -40,11 +42,15 @@ ptt_plot(
 
 \item{font_color, grid_color, font_size}{Plot background element colors and font sizes.}
 
+\item{trace_color}{Trace color for all traces. Either a character string or a character vector of name-value pairs interpretable as colors (Character vector).}
+
+\item{highlight}{Either NULL, a double that limits, or a function that returns a logical determining if a given trace is included in legend and assigned a color.}
+
 \item{zeroline}{Determines zeroline inclusion (Logical or double).}
 
 \item{rangeslider}{Determines rangeslider inclusion (Logical).}
 
-\item{isolate_primary}{Separates the first factor in grouping by line width. Use ptt_add_secondary_traces for multiple series with multiple secondary traces.}
+\item{line_width}{Line width for line plots. Either a double or a double vector of name-value pairs (Double vector).}
 
 \item{hovertext}{A list describing hovertext items "list(rounding = 1, unit = "\%", extra = "(ennuste)")".}
 
