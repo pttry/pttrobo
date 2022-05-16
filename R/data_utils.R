@@ -28,7 +28,7 @@ pttrobo_print_code <-
     }
 
     out <- paste0(
-      "ptt_data_robo(", id, ") |>\n  ",
+      "ptt_data_robo(\"", id, "\") |>\n  ",
       pttrobo_print_filter_recode(id, conc = FALSE, print = FALSE)
 
     )
