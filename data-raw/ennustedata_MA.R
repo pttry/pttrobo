@@ -38,11 +38,11 @@ purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/M
 data_get("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("MAdata_", start_year = 2013)
+ptt_update_ennustedata(pattern = "MAdata_", start_year = 2013)
 ptt_copy_ennustedata("MA")
 
 # Pysyvä alkuvuosi
-ptt_update_ennustedata("MAdata_", start_year = 2010, transpose = TRUE)
+ptt_update_ennustedata(pattern = "MAdata_", start_year = 2010, transpose = TRUE)
 ptt_copy_ennustedata("MA", path = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - MAdata_jatkuva")
 
 
@@ -53,10 +53,10 @@ ma_tulli_cn4 <- c("4407", "4412")
 # Tilastoarvo (euro) Paljous
 
 dat_ma_vienti <-
-  data("tulli/uljas_cn",
-     dl_filter = list("Tavaraluokitus CN4" = ma_tulli_cn4,
+  data_get("tulli/uljas_cn",
+     dl_filter = list("Tavaraluokitus CN8" = ma_tulli_cn8,
                       "Maa" = "AA",
                       "Suunta" = "Vienti määrämaittain",
                       "Indikaattorit" = "Tilastoarvo (euro)"))
 
-data_to_yaml(dat_ma_vienti)
+data_to_yaml(dat_ma_vienti, file = "inst/ennustedata/test_raw.yaml")
