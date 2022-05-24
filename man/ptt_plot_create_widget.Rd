@@ -4,7 +4,7 @@
 \alias{ptt_plot_create_widget}
 \title{Writes an html element for embedding.}
 \usage{
-ptt_plot_create_widget(p, title, path)
+ptt_plot_create_widget(p, title, path, artefact = "html")
 }
 \arguments{
 \item{p}{A plotly object.}
@@ -12,6 +12,8 @@ ptt_plot_create_widget(p, title, path)
 \item{title}{The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.}
 
 \item{path}{The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.}
+
+\item{artefact}{A character vector for the types of artefacts to be created. Accepts \"small\", \"narrow\" or \"wide\" (or \"s\", \"n\" or \"w\") for .png files of specified size, and / or \"html\" for a html widget (the default).}
 }
 \value{
 The plotly object p.

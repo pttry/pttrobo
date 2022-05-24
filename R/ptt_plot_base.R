@@ -50,9 +50,8 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
   js_string <- function(wd, ht, suffix, layout, ttl = dl_title) {
     split_title <- list(
       str_c("\\<span>\\<b>",p$title,"\\</b><span style='font-size: 75%'><br>",p$subtitle,"\\</span>\\</span>"),
-      str_c("\\<span>\\<b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2)),"\n","\\<br>"),"\\</b>\\<span style='font-size: 75%'>\\<br>",p$subtitle,"\\</span>\\</span>"))
-      
-      
+      str_c("\\<span>\\<b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2))%>% str_replace_all(c("\n" = " ")),"\n","\\<br>"),"\\</b>\\<span style='font-size: 75%'>\\<br>",p$subtitle,"\\</span>\\</span>"))
+    
     str_c('
           function(gd) {
           let oldlayout = JSON.parse(JSON.stringify(gd.layout))
@@ -65,7 +64,7 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
           "xaxis.tickfont.size": ',layout$font_sizing$main,',
           "yaxis.tickfont.size": ',layout$font_sizing$main,',
           "title.font.size": ',layout$font_sizing$title,'})
-          setVerticalLayout({"width": true}, gd, ',layout$font_sizing$main,', ["',split_title[[1]],'","nokitja muusi"])
+          setVerticalLayout({"width": true}, gd, ',layout$font_sizing$main,', ["',split_title[[1]],'","',split_title[[2]],'"])
           Plotly.downloadImage(gd, {format: "png", width: ',wd,', height: ',ht,', filename: "',ttl,'_',suffix,'"});
           Plotly.relayout(gd, oldlayout)
           delete oldlayout
@@ -518,6 +517,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @param p A plotly object.
 #' @param title The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.
 #' @param path The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.
+#' @param artefact A character vector for the types of artefacts to be created. Accepts \"small\", \"narrow\" or \"wide\" (or \"s\", \"n\" or \"w\") for .png files of specified size, and / or \"html\" for a html widget (the default).
 #' @examples
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
@@ -525,37 +525,66 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom stringr str_extract_all str_replace_all str_c str_squish
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom googleCloudStorageR gcs_get_global_bucket
-ptt_plot_create_widget <- function(p, title, path) {
-  tofilename <- function(str) {
-    str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
-      str_c(collapse = "") |>
-      str_squish() |>
-      tolower() |>
-      str_replace_all(c("ä" = "a", "å" = "o", "ö" = "o", " |\\." = "_"))
-  }
-  if (missing(title)) {
-    title <- (p$x$layoutAttrs |> unlist())[grep("title.text", names((p$x$layoutAttrs |> unlist())))] |>
-      str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)") |> unlist() |> first() |> str_c(collapse = "_") |> tofilename()
-    message(str_c("Using \"",title,"\" for htmlwidget filename.."))
-  } else {
-    title <- tofilename(title)
-  }
-
-  path <- if(missing(path)) {
-    if(isTRUE(getOption('knitr.in.progress'))) {
-      cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
-      #dir.create(cur_input,showWarnings = F)
-      ###
-      pth <- str_c(cur_input,"/")
-      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',pth,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
+ptt_plot_create_widget <- function(p, title, path, artefact = "html") {
+  
+  if(!any(artefact %in% c("html","s","small","w","wide","n","narrow"))) {
+    stop("Artefact must be \"html\", or one or more of s(mall), n(arrow) or w(ide) for a .png file", call. = F)
+  } 
+  
+  if("html" %in% artefact) {
+    tofilename <- function(str) {
+      str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
+        str_c(collapse = "") |>
+        str_squish() |>
+        tolower() |>
+        str_replace_all(c("ä" = "a", "å" = "o", "ö" = "o", " |\\." = "_"))
+    }
+    if (missing(title)) {
+      title <- (p$x$layoutAttrs |> unlist())[grep("title.text", names((p$x$layoutAttrs |> unlist())))] |>
+        str_extract_all("(?<=\\>)[^\\<\\>]{2,}(?=\\<)") |> unlist() |> first() |> str_c(collapse = "_") |> tofilename()
+      message(str_c("Using \"",title,"\" for htmlwidget filename.."))
+    } else {
+      title <- tofilename(title)
+    }
+    
+    path <- if(missing(path)) {
+      if(isTRUE(getOption('knitr.in.progress'))) {
+        cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
+        #dir.create(cur_input,showWarnings = F)
+        ###
+        pth <- str_c(cur_input,"/")
+        cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',pth,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
         # }
-      str_c(tempdir(),"/")
-    } else { "" }
-  } else  { str_c(path,"/") }
-  # cat(str_c(path,title,".html"))
-  p |> 
-    saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
-  p
+        str_c(tempdir(),"/")
+      } else { "" }
+    } else  { str_c(path,"/") }
+    # cat(str_c(path,title,".html"))
+    p |> 
+      saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
+    p 
+  }
+  
+  if (any(artefact %in% c("s","small","w","wide","n","narrow"))) {
+    artefact <- str_replace_all(artefact, c("^s(|mall)$" = "pieni", "^w(|ide)$" = "leveä", "^n(|arrow)$" = "kapea")) |> as.list()
+    print(p %>% htmlwidgets::onRender(jsCode = str_c("function(gd,params,data) {
+            if(data.includes('leveä')) {
+              dlBtn = $(gd).find('[data-title=\"Lataa kuva (leveä)\"]')[0];
+              dlBtn.click();
+            };
+            if(data.includes('kapea')) {
+              dlBtn = $(gd).find('[data-title=\"Lataa kuva (kapea)\"]')[0];
+              dlBtn.click();
+            };
+            if(data.includes('pieni')) {
+              dlBtn = $(gd).find('[data-title=\"Lataa kuva (pieni)\"]')[0];
+              dlBtn.click();
+            };
+    }"),  data = artefact)
+    )
+    invisible(p)
+  }
+  
+
 }
 
 #' Uploads the html elements and dependencies to cloud storage.
