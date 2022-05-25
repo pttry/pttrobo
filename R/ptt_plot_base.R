@@ -443,13 +443,13 @@ ptt_plot_attach_js <- function(p, title, subtitle) {
     str_c("<span><b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2)),"\n","<br>"),"</b><span style=\"font-size: 75%\"><br>",subtitle,"</span></span>"))
   # dep <- htmltools::htmlDependency("relayout", "0.1", src = c(href= system.file("www/js", package = "panoshinta")),  script = "relayout.js")
   # p$dependencies <- c(p$dependencies, list(dep))
-  if(!shiny::isRunning()) {
-    js_file <- system.file("www", "js", "relayout.js", package = "pttrobo")
-    base_string <- base64Encode(readBin(js_file, "raw", file.info(js_file)[1, "size"]), "txt")
-    p <- appendContent(
-      p,
-      tags$script(src = str_c('data:application/javascript;base64', base_string, sep=',')))
-  }
+  # if(!shiny::isRunning()) {
+  #   js_file <- system.file("www", "js", "relayout.js", package = "pttrobo")
+  #   base_string <- base64Encode(readBin(js_file, "raw", file.info(js_file)[1, "size"]), "txt")
+  #   p <- appendContent(
+  #     p,
+  #     tags$script(src = str_c('data:application/javascript;base64', base_string, sep=',')))
+  # }
   rangeslider_sums <- F
   if(p$plot_mode == "relative" && any(p$trace_types == "bar")) { rangeslider_sums = T }
   p %>%
