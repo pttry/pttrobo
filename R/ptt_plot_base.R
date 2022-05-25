@@ -561,7 +561,6 @@ ptt_plot_create_widget <- function(p, title, path, artefact = "html") {
     # cat(str_c(path,title,".html"))
     p |> 
       saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
-    p 
   }
   
   if (any(artefact %in% c("s","small","w","wide","n","narrow"))) {
@@ -581,10 +580,11 @@ ptt_plot_create_widget <- function(p, title, path, artefact = "html") {
             };
     }"),  data = artefact)
     )
-    invisible(p)
   }
   
-
+  if (any(artefact %in% c("s","small","w","wide","n","narrow"))) { 
+    invisible(p)
+    } else { p }
 }
 
 #' Uploads the html elements and dependencies to cloud storage.
