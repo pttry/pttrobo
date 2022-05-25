@@ -36,7 +36,7 @@ aplot_lines <- function(dat, x = time, y = value,
 
 
   if ((is.null(caption) || caption == "" ) & !is.null(source)){
-    caption <- paste0("Lähde: ", source, ", PTT")
+    caption <- paste0("L\u00e4hde: ", source, ", PTT")
   }
 
 
@@ -75,7 +75,7 @@ aplot_trends <- function(dat, x = time, y = value,
                          ...){
 
   if ((is.null(caption) || caption == "" ) & !is.null(source)){
-    caption <- paste0("Lähde: ", source, ", PTT")
+    caption <- paste0("L\u00e4hde: ", source, ", PTT")
   }
 
   dat <-
@@ -99,7 +99,7 @@ aplot_trends <- function(dat, x = time, y = value,
     # print(as_name(tiedot_name))
     # print(var)
     sec.dat <- dat %>% filter(!!tiedot_name == var) %>% mutate(value = alk) %>%
-      mutate(alk.sarja = "Alkuperäinen sarja")
+      mutate(alk.sarja = "Alkuper\u00e4inen sarja")
     rel <- unique(sec.dat[[as_name(tiedot_name)]]) %>% as.character()
     p <- p|>
       ptt_plot_add_secondary_traces(sec.dat, !!rel, alk.sarja,
