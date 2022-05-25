@@ -867,7 +867,7 @@ ptt_plot <- function(d,
   }
 
   p <- plot_ly(d, x = ~ time, height = height)
-  
+
   split_d <- group_split(d, !!grouping)
   split_d <- if(any(plot_type == "scatter")) { rev(split_d) } else { split_d }
 
@@ -895,7 +895,7 @@ ptt_plot <- function(d,
                 type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
       )
   }
-  
+
   if(!plot_mode %in% c("dodge","stack")) {
     stop("Plot mode must be \"dodge\" or \"stack\"!", call. = F)
   } else {
@@ -1000,8 +1000,8 @@ ptt_plot_add_prediction <- function(p,
   range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
   plot.mode <- p$plot_mode
   test_series <<- pred_series
-  pred_series <- pred_series |> droplevels() |> 
-  arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> arrange(!!grouping) %>% 
+  pred_series <- pred_series |> droplevels() |>
+  arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> arrange(!!grouping) %>%
   mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
   color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
   pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
@@ -1020,12 +1020,12 @@ ptt_plot_add_prediction <- function(p,
     # print(s |> bind_rows(mutate(s, value = 0)) |> arrange(time, value))
     if(s.type == "bar") {
       template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
-      s <- if(plot.mode == "relative") { 
-        s |> mutate(time = time-days(165), count = 2) |> uncount(count) |> 
+      s <- if(plot.mode == "relative") {
+        s |> mutate(time = time-days(165), count = 2) |> uncount(count) |>
           mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax))
       } else {
         s |> mutate(count = 2) |> uncount(count) |> mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
-        
+
       }
       p <- p |>
         add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",

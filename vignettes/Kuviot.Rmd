@@ -144,7 +144,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 Älä käytä vielä
 
-```{r}
+```{r, eval=FALSE}
 
 e <- readxl::read_excel(here::here("ptt_ennusteet_KT.xlsx")) |> dplyr::filter(stringr::str_detect(filter, "B1GMH|P3KS14"))
 
@@ -168,7 +168,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 ### ÄLÄ KÄYTÄ ALLA OLEVIA
 
 
-```{r}
+```{r, eval=FALSE}
 
 
 ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
@@ -212,7 +212,7 @@ ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
 
 ```
 
-```{r}
+```{r, eval=FALSE}
 
 ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
   filter_recode(
