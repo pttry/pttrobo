@@ -6,3 +6,9 @@ KTdata_Markkinat:
       Series: Europe Brent Spot Price FOB, Monthly
       Units: Dollars per Barrel
       Frequency: Monthly
+  Euribor:
+  - id: ecb/FM
+    muunnos: alkuperäinen
+    frequency: Monthly
+    tiedot:
+    - M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA

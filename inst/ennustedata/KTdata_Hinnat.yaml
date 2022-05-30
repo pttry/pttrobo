@@ -89,5 +89,15 @@ KTdata_Hinnat:
       - Sweden
       - United Kingdom
       - United States
+  Bensa:
+  - id: StatFin/khi/statfin_khi_pxt_11xx.px
+    muunnos: alkuperäinen
+    tiedot:
+      Hyödyke:
+      - Kevyt polttoöljy, 1 l
+      - Diesel, 1 l
+      - Bensiini 95 E 10, 1 l
+      - Bensiini 98 E 5, 1 l
+      Tiedot: Keskihinta
 
 

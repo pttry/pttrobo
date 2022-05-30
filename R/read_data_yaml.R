@@ -61,7 +61,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
 
   ## Hae ja suodata
   d <-
-    if (stringr::str_starts(x$id, "tulli/")) {
+    if (stringr::str_starts(x$id, "tulli/")|stringr::str_starts(x$id, "ecb/")) {
       data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
         tidyr::replace_na(list(value = 0))
   } else if (!is.null(x$tiedot)) {
@@ -81,7 +81,10 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
 
   x$muunnos <- x$muunnos %||% "alkuperäinen"
 
-  freq <- switch(unlist(attr(d, "frequency"))[1],
+  frequ <- unlist(attr(d, "frequency"))
+  if (is.null(frequ)) frequ <- x$frequency
+
+  freq <- switch(frequ[1],
                  "Annual" = 1,
                  "Quarterly" = 4,
                  "Monthly" = 12)

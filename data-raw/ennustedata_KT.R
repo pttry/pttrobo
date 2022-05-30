@@ -57,12 +57,15 @@ data_get("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
 data_get("eurostat/prc_hicp_midx") |>
   data_to_yaml()
 
+data_get("StatFin/khi/statfin_khi_pxt_11xx.px") |>
+  data_to_yaml()
+
 # Julkinen
 data_get("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
   data_to_yaml()
 data_get("StatFin/jul/jyev/statfin_jyev_pxt_11yv.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Julk", start_year = 2013)
+ptt_update_ennustedata("KTdata_Mar", start_year = 2013)
 ptt_copy_ennustedata("KT")
 
