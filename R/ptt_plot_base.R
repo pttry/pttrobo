@@ -512,12 +512,14 @@ ptt_plot_hovertemplate <- function(specs) {
   }
 }
 
-#' Writes an html element for embedding.
+#' Writes an html element for embedding, and optionally png files.
 #'
 #' @param p A plotly object.
 #' @param title The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.
 #' @param path The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.
-#' @param artefact A character vector for the types of artefacts to be created. Accepts \"small\", \"narrow\" or \"wide\" (or \"s\", \"n\" or \"w\") for .png files of specified size, and / or \"html\" for a html widget (the default).
+#' @param render Logical. Is the plot rendered to viewer after saving the widget (default true). Returns the plot object nonetheless.
+#' @param self_contained Logical. Will the html artefact have self-contained dependencies, increasing size. Default false.
+#' @param png_artefacts Optional character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.
 #' @examples
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
@@ -525,13 +527,8 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom stringr str_extract_all str_replace_all str_c str_squish
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom googleCloudStorageR gcs_get_global_bucket
-ptt_plot_create_widget <- function(p, title, path, artefact = "html") {
+ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = F, png_artefacts) {
   
-  if(!any(artefact %in% c("html","s","small","w","wide","n","narrow"))) {
-    stop("Artefact must be \"html\", or one or more of s(mall), n(arrow) or w(ide) for a .png file", call. = F)
-  } 
-  
-  if("html" %in% artefact) {
     tofilename <- function(str) {
       str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
         str_c(collapse = "") |>
@@ -556,16 +553,40 @@ ptt_plot_create_widget <- function(p, title, path, artefact = "html") {
         cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',pth,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
         # }
         str_c(tempdir(),"/")
-      } else { "" }
+      } else { str_c(getwd(),"/") }
     } else  { str_c(path,"/") }
     # cat(str_c(path,title,".html"))
     p |> 
-      saveWidget(str_c(path,title,".html"), selfcontained = F, libdir = "plot_dependencies")
-  }
+      saveWidget(str_c(path,title,".html"), selfcontained = self_contained, libdir = "plot_dependencies")
+    
+    if(!missing(png_artefacts)) {
+      p %>% ptt_plot_automate_png(png_artefacts, path)
+    }
   
-  if (any(artefact %in% c("s","small","w","wide","n","narrow"))) {
-    artefact <- str_replace_all(artefact, c("^s(|mall)$" = "pieni", "^w(|ide)$" = "leveä", "^n(|arrow)$" = "kapea")) |> as.list()
-    print(p %>% htmlwidgets::onRender(jsCode = str_c("function(gd,params,data) {
+    if(render == T) {
+      p
+    } else { invisible(p) }
+}
+
+#' Uses a headless browser to render the png files.
+#'
+#' @param p A plotly object.
+#' @param artefacts A character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.
+#' @param dl_path The path where the .png files will be downloaded to. Default is current working directory.
+#' @return The plotly object p.
+#' @importFrom htmlwidgets onRender
+#' @importFrom chromote ChromoteSession
+#' @importFrom knitr combine_words
+#' @importFrom stringr str_replace_all str_c
+#' @importFrom lubridate now as_datetime seconds
+ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
+  
+  if(!any(artefacts %in% c("html","s","small","w","wide","n","narrow"))) {
+    stop("\"png_artefacts\" must consist of one or more of s(mall), n(arrow) or w(ide), corresponding to desired .png size(s).", call. = F)
+  } 
+  artefacts <- as.list(str_replace_all(artefacts, c("^s(|mall)$" = "pieni", "^w(|ide)$" = "leveä", "^n(|arrow)$" = "kapea")))
+  
+  p %>% onRender(jsCode = str_c("function(gd,params,data) {
             if(data.includes('leveä')) {
               dlBtn = $(gd).find('[data-title=\"Lataa kuva (leveä)\"]')[0];
               dlBtn.click();
@@ -575,13 +596,28 @@ ptt_plot_create_widget <- function(p, title, path, artefact = "html") {
               dlBtn.click();
             };
             if(data.includes('pieni')) {
+              console.log('pieni')
               dlBtn = $(gd).find('[data-title=\"Lataa kuva (pieni)\"]')[0];
               dlBtn.click();
             };
-    }"),  data = artefact)
-    )
-    return(invisible(p))
-  } else { p }
+    }"),  data = artefacts) %>% 
+    ptt_plot_create_widget(title = "pngdl", path = tempdir(), self_contained = T, render = F)
+  
+  b <- ChromoteSession$new()
+  b$Browser$setDownloadBehavior(behavior = "allow", downloadPath = dl_path)
+  b$Page$navigate(str_c("file://",tempdir(),"/pngdl.html"))
+  Sys.sleep(2)
+  b$close()
+  
+  invisible(file.remove(str_c(tempdir(),"/pngdl.html")))
+  recent_files <- list.files(dl_path) %>% map(~ {
+    if (file.info(.x)$ctime %>% as_datetime(tz = "UTC") >= now(tz = "UTC") - seconds(5)) { .x }
+    }) %>% compact()
+  recent_length <- length(recent_files)
+  if(recent_length > 0) { 
+    message(str_c("\nThe file",ifelse(recent_length > 1, "s",""),"\n", combine_words(recent_files,sep = ",\n", and = ", and\n"),"\n",
+                  ifelse(recent_length > 1, "are","is")," in ",dl_path,".")) 
+    }
   
 }
 

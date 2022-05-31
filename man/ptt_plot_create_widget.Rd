@@ -2,9 +2,16 @@
 % Please edit documentation in R/ptt_plot_base.R
 \name{ptt_plot_create_widget}
 \alias{ptt_plot_create_widget}
-\title{Writes an html element for embedding.}
+\title{Writes an html element for embedding, and optionally png files.}
 \usage{
-ptt_plot_create_widget(p, title, path, artefact = "html")
+ptt_plot_create_widget(
+  p,
+  title,
+  path,
+  render = T,
+  self_contained = F,
+  png_artefacts
+)
 }
 \arguments{
 \item{p}{A plotly object.}
@@ -13,13 +20,17 @@ ptt_plot_create_widget(p, title, path, artefact = "html")
 
 \item{path}{The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.}
 
-\item{artefact}{A character vector for the types of artefacts to be created. Accepts \"small\", \"narrow\" or \"wide\" (or \"s\", \"n\" or \"w\") for .png files of specified size, and / or \"html\" for a html widget (the default).}
+\item{render}{Logical. Is the plot rendered to viewer after saving the widget (default true). Returns the plot object nonetheless.}
+
+\item{self_contained}{Logical. Will the html artefact have self-contained dependencies, increasing size. Default false.}
+
+\item{png_artefacts}{Optional character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.}
 }
 \value{
 The plotly object p.
 }
 \description{
-Writes an html element for embedding.
+Writes an html element for embedding, and optionally png files.
 }
 \examples{
 p |> ptt_plot_create_widget()
