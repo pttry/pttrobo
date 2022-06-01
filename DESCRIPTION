@@ -32,7 +32,8 @@ Imports:
     openxlsx,
     here,
     googleCloudStorageR,
-    fontawesome
+    fontawesome,
+    chromote
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,
