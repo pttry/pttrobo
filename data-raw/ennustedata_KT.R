@@ -41,6 +41,9 @@ data_get("StatFin/tym/tyti/vv/statfin_tyti_pxt_13aj.px") |>
 data_get("StatFin/vrm/vaenn/statfin_vaenn_pxt_128t.px") |>
   data_to_yaml()
 
+data_get("StatFin/tyti/statfin_tyti_pxt_135z.px") |>
+  data_to_yaml()
+
 # Tulot
 
 data_get("StatFin/pal/ati/nj/statfin_ati_pxt_13dy.px") |>
@@ -66,6 +69,6 @@ data_get("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
 data_get("StatFin/jul/jyev/statfin_jyev_pxt_11yv.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Mar", start_year = 2013)
+ptt_update_ennustedata("KTdata_Ty", start_year = 2013)
 ptt_copy_ennustedata("KT")
 

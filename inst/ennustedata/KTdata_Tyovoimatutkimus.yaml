@@ -1,6 +1,6 @@
 KTdata_Tyovoimatutkimus:
   Vaesto_v:
-  - id: StatFin/tym/tyti/vv/statfin_tyti_pxt_13aj.px
+  - id: StatFin/tyti/statfin_tyti_pxt_13aj.px
     muunnos: alkuperäinen
     tiedot:
       Sukupuoli:
@@ -14,3 +14,20 @@ KTdata_Tyovoimatutkimus:
       - Työlliset, 1000 henkilöä
       - Työttömät, 1000 henkilöä
       - Työvoiman ulkopuolella olevat, 1000 henkilöä
+  Tyo_kk:
+  - id: StatFin/tyti/statfin_tyti_pxt_135z.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tiedot:
+      - Työllisyysaste, 15-64-vuotiaat, %
+      - Työllisyysaste, 15-64-vuotiaat, %, trendi
+      - Työllisyysaste, 15-64-vuotiaat, %, kausitasoitettu sarja
+      - Työlliset, 1000 henkilöä
+      - Työlliset, 1000 henkilöä, trendi
+      - Työlliset, 1000 henkilöä, kausitasoitettu sarja
+      - Työttömät, 1000 henkilöä
+      - Työttömät, 1000 henkilöä, trendi
+      - Työttömät, 1000 henkilöä, kausitasoitettu sarja
+      - Työttömyysaste, %
+      - Työttömyysaste, %, trendi
+      - Työttömyysaste, %, kausitasoitettu sarja

@@ -1,11 +1,11 @@
 KTdata_QNA:
   Huoltotase_cp:
-  - id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+  - id: StatFin/ntp/statfin_ntp_pxt_132h.px
     muunnos: vuosisumma
     tiedot:
       Taloustoimi:
       - B1GMH Bruttokansantuote markkinahintaan
-      - P51CK Kiinteän pääoman kuluminen, tulona
+      - P51CK Kiinteän pääoman kuluminen, menona
       - D1K Palkansaajakorvaukset, menona
       - P7R Tavaroiden ja palvelujen tuonti, tulona
       - P71R Tavaroiden tuonti, tulona
@@ -33,8 +33,8 @@ KTdata_QNA:
       - P31KCSD Kotitalouksien kulutusmenot, puolikestävät tavarat, menona
       - P31KDC Kotitalouksien kulutusmenot Suomessa, menona
       - P31KNC Kotitalouksien kulutusmenot (kansallinen), menona
-      - P3KS13 Julkiset kulutusmenot, menona
-      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS13 Julkiset kulutusmenot (S13), menona
+      - P3KS14_S15 S15 Yksityiset kulutusmenot (S14+S15), menona
       - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
       - B8N Säästö, netto
       - D9R Pääomansiirrot, tulona
@@ -64,12 +64,12 @@ KTdata_QNA:
       Tiedot:
       - Alkuperäinen sarja käypiin hintoihin, miljoonaa euroa
   Huoltotase_vol:
-  - id: StatFin/kan/ntp/statfin_ntp_pxt_132h.px
+  - id: StatFin/ntp/statfin_ntp_pxt_132h.px
     muunnos: vuosisumma
     tiedot:
       Taloustoimi:
       - B1GMH Bruttokansantuote markkinahintaan
-      - P51CK Kiinteän pääoman kuluminen, tulona
+      - P51CK Kiinteän pääoman kuluminen, menona
       - D1K Palkansaajakorvaukset, menona
       - P7R Tavaroiden ja palvelujen tuonti, tulona
       - P71R Tavaroiden tuonti, tulona
@@ -97,8 +97,8 @@ KTdata_QNA:
       - P31KCSD Kotitalouksien kulutusmenot, puolikestävät tavarat, menona
       - P31KDC Kotitalouksien kulutusmenot Suomessa, menona
       - P31KNC Kotitalouksien kulutusmenot (kansallinen), menona
-      - P3KS13 Julkiset kulutusmenot, menona
-      - P3KS14_S15 Yksityiset kulutusmenot, menona
+      - P3KS13 Julkiset kulutusmenot (S13), menona
+      - P3KS14_S15 S15 Yksityiset kulutusmenot (S14+S15), menona
       - P3KS15 Kulutusmenot, voittoa tavoittelemattomat yhteisöt, menona
       - B8N Säästö, netto
       - D9R Pääomansiirrot, tulona
@@ -128,7 +128,7 @@ KTdata_QNA:
       Tiedot:
       - Alkuperäinen sarja, viitevuosi 2015, miljoonaa euroa
   Työlliset:
-  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+  - id: StatFin/ntp/statfin_ntp_pxt_11tj.px
     muunnos: vuosikeskiarvo
     tiedot:
       Taloustoimi:
@@ -144,7 +144,7 @@ KTdata_QNA:
       Tiedot:
       - Alkuperäinen sarja
   Tunnit:
-  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+  - id: StatFin/ntp/statfin_ntp_pxt_11tj.px
     muunnos: vuosisumma
     tiedot:
       Taloustoimi:
@@ -156,7 +156,7 @@ KTdata_QNA:
       Tiedot:
       - Alkuperäinen sarja
   Työlliset_tol:
-  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+  - id: StatFin/ntp/statfin_ntp_pxt_11tj.px
     muunnos: vuosikeskiarvo
     tiedot:
       Toimiala:
@@ -180,7 +180,7 @@ KTdata_QNA:
       Tiedot:
       - Alkuperäinen sarja
   Tunnit_tol:
-  - id: StatFin/kan/ntp/statfin_ntp_pxt_11tj.px
+  - id: StatFin/ntp/statfin_ntp_pxt_11tj.px
     muunnos: vuosisumma
     tiedot:
       Toimiala:
