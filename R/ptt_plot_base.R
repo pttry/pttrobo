@@ -22,7 +22,7 @@ ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
 
 }
 
-#' @importFrom stringr str_c str_extract_all str_replace_all str_squish
+#' @importFrom stringr str_c str_extract_all str_replace_all str_squish str_wrap
 #' @importFrom htmlwidgets JS
 #' @importFrom plotly config
 #' @importFrom purrr pmap
@@ -51,7 +51,7 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
     split_title <- list(
       str_c("\\<span>\\<b>",p$title,"\\</b><span style='font-size: 75%'><br>",p$subtitle,"\\</span>\\</span>"),
       str_c("\\<span>\\<b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2))%>% str_replace_all(c("\n" = " ")),"\n","\\<br>"),"\\</b>\\<span style='font-size: 75%'>\\<br>",p$subtitle,"\\</span>\\</span>"))
-    
+
     str_c('
           function(gd) {
           let oldlayout = JSON.parse(JSON.stringify(gd.layout))
@@ -184,7 +184,7 @@ ptt_plot_set_ticks <- function(p, font) {
 
 #' @importFrom plotly layout
 ptt_plot_set_margin <-function(p, margin) {
-  
+
   if (!is.list(margin)) {
     stop("Insert plot margins as list (default is list(t,r,b,l,pad))\nNote that top and bottom margins will be currently ignored but programmatically set instead.", call. = F)
   } else if (any(!names(margin) %in% c("t","r","b","l","pad")) | any(!is.double(unlist(margin)))) {
@@ -279,14 +279,14 @@ ptt_plot_config <- function(p,
   tickfont_ht <- round((font_size+2)*1.4)#20#+max(0,ceiling(main_font$size-7)) #20+tickfontin korkeus mikä ylittää tämän: fontti 14 = 3 ei ole täysin johdonmukainen y-akselin yläreunan vuoksi. -Suunnilleen - +1.6 / piste yli fontti 12
   rangeslider_ht <- ifelse(enable_rangeslider, round((height * rangeslider_size)+15-(margin$t*rangeslider_size)-(margin$b*rangeslider_size)),0)
   legend_ht <- ifelse(legend_position %in% c("auto","bottom"), font_size, 0)
-  
+
   png_attrs <- (function(small_ht = 500, large_ht = 720) {
     font_sizing_lg <- list(title = 31, main = 24, caption = 19)
     font_sizing_sm <- list(title = 23, main = 18, caption = 14)
     list(sm = list(font_sizing = font_sizing_sm),
          lg = list(font_sizing = font_sizing_lg))
   })()
-  
+
   p$enable_rangeslider <- list(enable = enable_rangeslider, size = rangeslider_size, range = slider_range)
   p$add_zeroline <- zeroline
   p$png_attrs <- png_attrs
@@ -427,7 +427,7 @@ gd.on('plotly_afterplot', function() {
   }
   })
   }
-  
+
 })
 }
                                                          ", data = list(zeroline = zero_line))
@@ -437,6 +437,7 @@ gd.on('plotly_afterplot', function() {
 #' @importFrom htmltools tags
 #' @importFrom htmlwidgets appendContent onRender
 #' @importFrom RCurl base64Encode
+#' @importFrom stringr str_c str_extract_all str_replace_all str_squish str_wrap
 ptt_plot_attach_js <- function(p, title, subtitle) {
   split_title <- list(
     str_c("<span><b>",title,"</b><span style=\"font-size: 75%\"><br>",subtitle,"</span></span>"),
@@ -528,7 +529,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom googleCloudStorageR gcs_get_global_bucket
 ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = F, png_artefacts) {
-  
+
     tofilename <- function(str) {
       str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
         str_c(collapse = "") |>
@@ -543,7 +544,7 @@ ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = 
     } else {
       title <- tofilename(title)
     }
-    
+
     path <- if(missing(path)) {
       if(isTRUE(getOption('knitr.in.progress'))) {
         cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
@@ -556,13 +557,13 @@ ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = 
       } else { str_c(getwd(),"/") }
     } else  { str_c(path,"/") }
     # cat(str_c(path,title,".html"))
-    p |> 
+    p |>
       saveWidget(str_c(path,title,".html"), selfcontained = self_contained, libdir = "plot_dependencies")
-    
+
     if(!missing(png_artefacts)) {
       p %>% ptt_plot_automate_png(png_artefacts, path)
     }
-  
+
     if(render == T) {
       p
     } else { invisible(p) }
@@ -580,12 +581,12 @@ ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = 
 #' @importFrom stringr str_replace_all str_c
 #' @importFrom lubridate now as_datetime seconds
 ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
-  
+
   if(!any(artefacts %in% c("html","s","small","w","wide","n","narrow"))) {
     stop("\"png_artefacts\" must consist of one or more of s(mall), n(arrow) or w(ide), corresponding to desired .png size(s).", call. = F)
-  } 
+  }
   artefacts <- as.list(str_replace_all(artefacts, c("^s(|mall)$" = "pieni", "^w(|ide)$" = "leveä", "^n(|arrow)$" = "kapea")))
-  
+
   p %>% onRender(jsCode = str_c("function(gd,params,data) {
             if(data.includes('leveä')) {
               dlBtn = $(gd).find('[data-title=\"Lataa kuva (leveä)\"]')[0];
@@ -600,25 +601,25 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
               dlBtn = $(gd).find('[data-title=\"Lataa kuva (pieni)\"]')[0];
               dlBtn.click();
             };
-    }"),  data = artefacts) %>% 
+    }"),  data = artefacts) %>%
     ptt_plot_create_widget(title = "pngdl", path = tempdir(), self_contained = T, render = F)
-  
+
   b <- ChromoteSession$new()
   b$Browser$setDownloadBehavior(behavior = "allow", downloadPath = dl_path)
   b$Page$navigate(str_c("file://",tempdir(),"/pngdl.html"))
   Sys.sleep(2)
   b$close()
-  
+
   invisible(file.remove(str_c(tempdir(),"/pngdl.html")))
   recent_files <- list.files(dl_path) %>% map(~ {
     if (file.info(.x)$ctime %>% as_datetime(tz = "UTC") >= now(tz = "UTC") - seconds(5)) { .x }
     }) %>% compact()
   recent_length <- length(recent_files)
-  if(recent_length > 0) { 
+  if(recent_length > 0) {
     message(str_c("\nThe file",ifelse(recent_length > 1, "s",""),"\n", combine_words(recent_files,sep = ",\n", and = ", and\n"),"\n",
-                  ifelse(recent_length > 1, "are","is")," in ",dl_path,".")) 
+                  ifelse(recent_length > 1, "are","is")," in ",dl_path,"."))
     }
-  
+
 }
 
 #' Uploads the html elements and dependencies to cloud storage.
@@ -639,7 +640,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
   suppressMessages(gcs_global_bucket("pttry"))
 
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
-  
+
   if(missing(files_path)) {
     if(is_knitting == T) {
       cur_input <- knitr::current_input()
@@ -684,7 +685,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
       if(is.na(upload_type)) { upload_type <- NULL}
       meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
       meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
-      gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel") 
+      gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel")
     }
 
   })
@@ -739,9 +740,9 @@ ptt_plot_get_frequency <- function(d) {
 }
 
 ptt_plot_set_highlight <- function(highlight, df) {
-  if(is.null(highlight)) { 
-    T 
-  } else if (is.double(highlight)) { 
+  if(is.null(highlight)) {
+    T
+  } else if (is.double(highlight)) {
     max(df$value, na.rm = T) >= highlight
   } else if (is.list(highlight)) {
     if (!all(c("value",".fun") %in% names(highlight))) {
@@ -751,7 +752,7 @@ ptt_plot_set_highlight <- function(highlight, df) {
     }
   } else {
     stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
-  } 
+  }
 }
 
 #' @importFrom stringr str_length
@@ -835,11 +836,11 @@ ptt_plot <- function(d,
   }
 
   grouping <- enquo(grouping)
-  
+
   if(!is.factor(d[[as_name(grouping)]])) {
     d[[as_name(grouping)]] <- fct_inorder(d[[as_name(grouping)]])
   }
-  
+
   d <- d|> group_by(!!grouping) %>% filter(!all(is.na(value))) |> ungroup() |> droplevels()
 
   unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
@@ -863,9 +864,9 @@ ptt_plot <- function(d,
   } else {
     d <- mutate(d, line.width = line_width[as.character(!!grouping)] %>% dplyr::coalesce(line_width[".other"]))
   }
-  
+
   if(!is.null(trace_color)) {
-    
+
     if(!all(ptt_plot_are_colors(trace_color))) {
       stop("Trace colors must be 6-character hexadecimal colors or among strings provided by grDevices::colors!", call. = F)
     } else if (length(trace_color) == 1 & is.null(names(trace_color))){
@@ -875,13 +876,13 @@ ptt_plot <- function(d,
     } else {
       ug <- as.character(unique_groups)
       color_vector <- c(trace_color[ug[ug %in% names(trace_color)]],
-                        ug[!ug %in% names(trace_color)] %>% length() %>% rep(trace_color[".other"], .) %>% 
+                        ug[!ug %in% names(trace_color)] %>% length() %>% rep(trace_color[".other"], .) %>%
                           set_names(ug[!ug %in% names(trace_color)]))
     }
     if(!is.null(highlight)) {message("Highlight is ignored when providing trace colors.")}
-    
+
   } else if(!is.null(highlight)) {
-    if (is.double(highlight)) { 
+    if (is.double(highlight)) {
       un_groups <- d %>% group_by(!!grouping) %>% summarize(value = max(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight) %>% pull(!!grouping)
     } else if (is.list(highlight)) {
       if (!all(c("value",".fun") %in% names(highlight))) {
@@ -891,7 +892,7 @@ ptt_plot <- function(d,
       }
     } else {
       stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
-    } 
+    }
     un_groups <- unique_groups %>% subset(unique_groups %in% un_groups) |> droplevels()
     if(length(un_groups) == 0) { stop(str_c("No trace in \"",as_name(grouping),"\" fulfill the highlight requirements."), call. = F) }
     color_vector <- ptt_plot_set_colors(length(un_groups)) %>% set_names(un_groups)
@@ -1027,7 +1028,7 @@ ptt_plot_add_prediction <- function(p,
       relocate(value, .after = time) |>
       mutate(value = value * value_multiplier)
   }
-  
+
   line_width <- p$line_width
   pred_series <- mutate(pred_series, line.width = (if(length(line_width) == 1) { line_width } else { line_width[as.character(!!grouping)] }) %>% dplyr::coalesce(line_width[".other"]))
   range.slider <- p$enable_rangeslider
