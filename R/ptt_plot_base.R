@@ -1182,7 +1182,7 @@ ptt_plot_add_secondary_traces <-
         value = str_replace(value, "\\.",",")
       )
     p$data <- bind_rows(p$data, sec_d) |> arrange(time, csv.data.tiedot)
-    p |> ptt_plot_set_modebar(p$title, p$png_attrs, T)
+    p |> ptt_plot_set_modebar(p$title, p$subtitle, p$png_attrs, T)
   }
 
 ptt_plot_add_distinct_trace <- function(){
