@@ -1,6 +1,6 @@
 MEdata_Tuotanto:
   teollisuus_vol_2015_kk:
-  - id: StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px
+  - id: StatFin/ttvi/statfin_ttvi_pxt_13bh.px
     muunnos: alkuperäinen
     tiedot:
       Toimiala (TOL 2008):
@@ -13,7 +13,7 @@ MEdata_Tuotanto:
       - Kausitasoitettu indeksisarja
       - Trendisarja
   teollisuus_vol_2015_v:
-  - id: StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px
+  - id: StatFin/ttvi/statfin_ttvi_pxt_13bh.px
     muunnos: vuosikeskiarvo
     tiedot:
       Toimiala (TOL 2008):
@@ -24,7 +24,7 @@ MEdata_Tuotanto:
       - Alkuperäinen indeksisarja
       - Työpäiväkorjattu indeksisarja
   teollisuus_liikevaihto_2015_kk:
-  - id: StatFin/teo/tlv/statfin_tlv_pxt_112c.px
+  - id: StatFin/tlv/statfin_tlv_pxt_112c.px
     muunnos: alkuperäinen
     tiedot:
       Toimiala:
@@ -39,7 +39,7 @@ MEdata_Tuotanto:
       - Kausitasoitettu indeksisarja
       - Trendisarja
   teollisuus_liikevaihto_2015_v:
-  - id: StatFin/teo/tlv/statfin_tlv_pxt_112c.px
+  - id: StatFin/tlv/statfin_tlv_pxt_112c.px
     muunnos: vuosikeskiarvo
     tiedot:
       Toimiala:
