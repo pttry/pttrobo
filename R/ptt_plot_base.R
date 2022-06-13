@@ -624,6 +624,8 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
 
 #' Uploads the html elements and dependencies to cloud storage.
 #'
+#' The cloud storage authentication file have to in working folder or in Tiedosto/Documents folder.
+#'
 #' @param files_path The folder where the artefacts to be uploaded are located.
 #' @param upload_path The gcs folder where the artefacts will be uploaded to.
 #' @export
@@ -633,7 +635,13 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
 #' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket gcs_auth gcs_global_bucket gcs_list_objects
 ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) {
 
-  tryCatch(gcs_auth(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))), error = function(e) {
+  if (length(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))) != 0){
+    aut_file <- Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))
+  } else {
+    aut_file <- Sys.glob(file.path("~" |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))
+  }
+
+  tryCatch(gcs_auth(aut_file), error = function(e) {
     str <- paste0("Do you have the proper authorisation file in the directory?\n")
     stop(str, call. = F)
     })
