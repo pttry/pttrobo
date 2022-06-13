@@ -26,6 +26,7 @@ ptt_plot(
   plot_type = "scatter",
   plot_mode = "dodge",
   height = 550,
+  facet_split,
   ...
 )
 }

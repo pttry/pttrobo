@@ -7,7 +7,7 @@
 ptt_plot_create_widget(
   p,
   title,
-  path,
+  filepath,
   render = T,
   self_contained = F,
   png_artefacts
@@ -18,13 +18,13 @@ ptt_plot_create_widget(
 
 \item{title}{The filename of the html element (without file format). The function will clean the name up, or try to extract it from param p if missing.}
 
-\item{path}{The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.}
-
 \item{render}{Logical. Is the plot rendered to viewer after saving the widget (default true). Returns the plot object nonetheless.}
 
 \item{self_contained}{Logical. Will the html artefact have self-contained dependencies, increasing size. Default false.}
 
 \item{png_artefacts}{Optional character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.}
+
+\item{path}{The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.}
 }
 \value{
 The plotly object p.

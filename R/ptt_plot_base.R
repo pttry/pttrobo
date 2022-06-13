@@ -12,7 +12,7 @@ ptt_plot_set_defaults <- function(p, range = list(x = c(NA,NA), y = c(NA,NA))) {
   if(!"y" %in% names(range)) { range$y <- c(NA,NA) }
   if(!all(is.na(range$y)) & any(is.na(range$y)) || !all(is.na(range$x)) & any(is.na(range$x))) {
     message("Provide both ends for any axis limits!")
-    }
+  }
   config(p, locale = "fi") |>
     layout(separators = ", ") |>
     layout(xaxis = if(all(is.na(range$x))) { list(fixedrange = T) } else { list(fixedrange = T, range = range$x) },
@@ -151,34 +151,81 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
 }
 
 #' @importFrom plotly layout
-ptt_plot_set_ticks <- function(p, font) {
+# ptt_plot_set_ticks <- function(p, font,ticktypes) {
+#   p |>
+#     layout(xaxis=list(tickfont = font,
+#                       mirror = TRUE,
+#                       ticks = 'outside',
+#                       type = "date",
+#                       tickformatstops = list(
+#                         list(
+#                           dtickrange = list(NULL, 604800000),
+#                           value = "%d.%m.%Y"
+#                         ),
+#                         list(
+#                           # end is year in milliseconds
+#                           dtickrange = list(604800000, 3.15e10),
+#                           value = "%m/%Y"
+#                         ),
+#                         list(
+#                           dtickrange = list(3.15e10, NULL),
+#                           value = "%Y"
+#                         )
+#                       ),
+#                       showline = TRUE),
+#            yaxis=list(tickfont = font,
+#                       tickformat = ",.3~r",
+#                       ticksuffix = " ",
+#                       mirror = TRUE,
+#                       ticks = 'outside',
+#                       showline = TRUE))
+#   
+# }
+ptt_plot_set_ticks <- function(p, font, ticktypes) {
+  set_ticks <- function(ticktype) {
+    if (ticktype == "date") {
+      list(tickfont = font,
+           mirror = TRUE,
+           ticks = 'outside',
+           type = "date",
+           tickformatstops = list(
+             list(
+               dtickrange = list(NULL, 604800000),
+               value = "%d.%m.%Y"
+             ),
+             list(
+               # end is year in milliseconds
+               dtickrange = list(604800000, 3.15e10),
+               value = "%m/%Y"
+             ),
+             list(
+               dtickrange = list(3.15e10, NULL),
+               value = "%Y"
+             )
+           ),
+           showline = TRUE)
+    } else if (ticktype == "double") {
+      list(tickfont = font,
+           tickformat = ",.3~r",
+           ticksuffix = " ",
+           mirror = TRUE,
+           ticks = 'outside',
+           showline = TRUE)
+    } else if (ticktype == "character") {
+      font$size <- font$size - 4
+      list(tickfont = font,
+           ticksuffix = " ",
+           tickmode = "linear",
+           mirror = TRUE,
+           type = "category",
+           ticks = 'outside',
+           showline = TRUE)
+    }
+
+  }
   p |>
-    layout(xaxis=list(tickfont = font,
-                      mirror = TRUE,
-                      ticks = 'outside',
-                      type = "date",
-                      tickformatstops = list(
-                        list(
-                          dtickrange = list(NULL, 604800000),
-                          value = "%d.%m.%Y"
-                        ),
-                        list(
-                          # end is year in milliseconds
-                          dtickrange = list(604800000, 3.15e10),
-                          value = "%m/%Y"
-                        ),
-                        list(
-                          dtickrange = list(3.15e10, NULL),
-                          value = "%Y"
-                        )
-                      ),
-                      showline = TRUE),
-           yaxis=list(tickfont = font,
-                      tickformat = ",.3~r",
-                      ticksuffix = " ",
-                      mirror = TRUE,
-                      ticks = 'outside',
-                      showline = TRUE))
+    layout(xaxis= set_ticks(ticktypes$x),
+           yaxis= set_ticks(ticktypes$y))
 
 }
 
@@ -243,7 +290,8 @@ ptt_plot_config <- function(p,
                             margin = NA,
                             zeroline = F,
                             axis_range = list(x = c(NA,NA), y = c(NA,NA)),
-                            enable_rangeslider = list(rangeslider = F, max = as_date(today))) {
+                            enable_rangeslider = list(rangeslider = F, max = as_date(today)),
+                            ticktypes = list(x = "time", y = "double")) {
 
   if(missing(title) | missing(caption)) {
     stop("Title and caption must be strings, or NA for no plot title or plot caption.", call. = F)
@@ -296,7 +344,7 @@ ptt_plot_config <- function(p,
     ptt_plot_set_defaults(axis_range) |>
     ptt_plot_set_grid(grid_color) |>
     ptt_plot_set_modebar(title, p$subtitle, png_attrs) |>
-    ptt_plot_set_ticks(main_font) |>
+    ptt_plot_set_ticks(main_font, ticktypes) |>
     ptt_plot_set_margin(margin) |>
     ptt_plot_add_logo() |>
     ptt_plot_set_legend(legend_position, legend_orientation, main_font) |>
@@ -527,7 +575,8 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom stringr str_extract_all str_replace_all str_c str_squish
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom googleCloudStorageR gcs_get_global_bucket
-ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = F, png_artefacts) {
+#' @importFrom fs path
+ptt_plot_create_widget <- function(p, title, filepath, render = T, self_contained = F, png_artefacts) {
   
     tofilename <- function(str) {
       str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
@@ -543,24 +592,24 @@ ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = 
     } else {
       title <- tofilename(title)
     }
-    
-    path <- if(missing(path)) {
+    filepath <- if(missing(filepath)) {
       if(isTRUE(getOption('knitr.in.progress'))) {
         cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
         #dir.create(cur_input,showWarnings = F)
         ###
-        pth <- str_c(cur_input,"/")
-        cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',pth,title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
+        cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',cur_input,"/",title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
         # }
-        str_c(tempdir(),"/")
-      } else { str_c(getwd(),"/") }
-    } else  { str_c(path,"/") }
-    # cat(str_c(path,title,".html"))
+        tempdir()
+      } else { getwd() }
+    } else  { filepath }
+    
+    print(path(filepath,title,ext = "html"))
+    
     p |> 
-      saveWidget(str_c(path,title,".html"), selfcontained = self_contained, libdir = "plot_dependencies")
+      saveWidget(path(filepath,title,ext = "html"), selfcontained = self_contained, libdir = "plot_dependencies")
     
     if(!missing(png_artefacts)) {
-      p %>% ptt_plot_automate_png(png_artefacts, path)
+      p %>% ptt_plot_automate_png(png_artefacts, filepath)
     }
   
     if(render == T) {
@@ -579,6 +628,7 @@ ptt_plot_create_widget <- function(p, title, path, render = T, self_contained = 
 #' @importFrom knitr combine_words
 #' @importFrom stringr str_replace_all str_c
 #' @importFrom lubridate now as_datetime seconds
+#' @importFrom fs path
 ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
   
   if(!any(artefacts %in% c("html","s","small","w","wide","n","narrow"))) {
@@ -605,11 +655,11 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
   
   b <- ChromoteSession$new()
   b$Browser$setDownloadBehavior(behavior = "allow", downloadPath = dl_path)
-  b$Page$navigate(str_c("file://",tempdir(),"/pngdl.html"))
+  b$Page$navigate(str_c("file://",path(tempdir(),"pngdl.html")))
   Sys.sleep(2)
   b$close()
   
-  invisible(file.remove(str_c(tempdir(),"/pngdl.html")))
+  invisible(file.remove(path(tempdir(),"pngdl", ext = "html")))
   recent_files <- list.files(dl_path) %>% map(~ {
     if (file.info(.x)$ctime %>% as_datetime(tz = "UTC") >= now(tz = "UTC") - seconds(5)) { .x }
     }) %>% compact()
@@ -630,6 +680,8 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
 #' @importFrom stringr str_remove str_replace_all str_c str_detect
 #' @importFrom dplyr case_when
 #' @importFrom googleCloudStorageR gcs_metadata_object gcs_upload gcs_get_global_bucket gcs_auth gcs_global_bucket gcs_list_objects
+#' @importFrom fs path
+#' @importFrom purrr walk
 ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) {
 
   tryCatch(gcs_auth(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))), error = function(e) {
@@ -658,16 +710,18 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
     stop("Give the path to the folder in the upload bucket where you wish to upload the files to.", call. = F)
   }
 
-  artefact_files <- list.files(files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
+  artefact_files <- list.files(files_path, recursive = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
   if(overwrite == FALSE) { message("Overwrite is set to false, set overwrite = T in ptt_plot_upload_widgets if you want to overwrite existing uploads.") }
-  purrr::walk(artefact_files, function(artefact_file) {
+  walk(artefact_files, function(artefact_file) {
     upload_file <- if(is_knitting) {
       prefix <- cur_input %>% str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
-      str_c("ennustekuvat/",prefix,str_remove(artefact_file,tempdir()))
+      path("ennustekuvat",prefix,artefact_file)
     } else {
-        str_c(upload_path,str_remove(artefact_file, files_path))
+        path(upload_path,artefact_file)
     }
     obj.existence <- suppressMessages(gcs_list_objects(prefix = upload_file) %>% nrow() %>% as.logical())
+    print(artefact_file)
+    print(upload_file)
     if(obj.existence == TRUE & overwrite == FALSE) {
       message(str_c("The file ",upload_file, " already exists!"))
     } else {
@@ -684,7 +738,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
       if(is.na(upload_type)) { upload_type <- NULL}
       meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
       meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
-      gcs_upload(artefact_file, gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel") 
+      gcs_upload(path(files_path,artefact_file), gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel")
     }
 
   })
@@ -756,7 +810,7 @@ ptt_plot_set_highlight <- function(highlight, df) {
 
 #' @importFrom stringr str_length
 ptt_plot_are_colors <- function(x) {
-  (str_detect(x, "#[0-9A-F]{6}") | x %in% colors()) %>% replace_na(F)
+  (str_detect(toupper(x), "#[0-9A-F]{6}") | x %in% colors()) %>% replace_na(F)
 }
 
 #' Creates a plotly object with visual specifications of ptt.
@@ -799,6 +853,7 @@ ptt_plot_are_colors <- function(x) {
 #' @importFrom dplyr group_split
 #' @importFrom stringr str_length str_replace str_c
 
+
 ptt_plot <- function(d,
                      grouping,
                      title,subtitle = "",
@@ -819,13 +874,15 @@ ptt_plot <- function(d,
                      plot_type = "scatter",
                      plot_mode = "dodge",
                      height = 550,
+                     facet_split,
                      ...
 ){
-
+  
+  
   if(missing(d) || missing(grouping)){
     stop("Data and unquoted grouping variable are needed!\nFor example: ptt_plot(a_tibble, grouping=tiedot)", call. = F)
   }
-
+  
   if(missing(hovertext)) {
     d_attrs <- attributes(d)
     tf <- ptt_plot_get_frequency(d)
@@ -833,27 +890,52 @@ ptt_plot <- function(d,
   } else if (!"dateformat" %in% names(hovertext)) {
     hovertext$dateformat <- ptt_plot_get_frequency(d)
   }
-
+  
+  if(!missing(facet_split)) {
+    facet_split <- enquo(facet_split)
+    message("PREDICTION TRACES AND SECONDARY TRACES WILL NOT WORK PROPERLY WITH FACETED PLOTS!")
+    if(rangeslider == T | zeroline == T | any(!is.na(axis_limits$y))) message("Rangeslider, zeroline and y-axis range are not currently enabled for faceted plots.")
+    rangeslider <- F
+    zeroline <- F
+    ymin <- min(d$value)
+    ymax <- max(d$value)
+    axdif <- diff(c(ymin, ymax)) * 0.04
+    ymin <- ymin - axdif
+    ymax <- ymax + axdif
+    axis_limits$y <- c(ymin, ymax)
+  }
+  
   grouping <- enquo(grouping)
+  
+  if(plot_mode == "horizontal") {
+    if(is.null(names(plot_mode))) { stop("Horizontal plot mode needs the name of the y-axis categorial variable as the name of plot mode (ie. \"(c('tavara' = 'horizontal'\")", call. = F) }
+    xaxis <- "value"
+    yaxis <- names(plot_mode)
+    ticktypes <- list(x="double", y = "character")
+  } else {
+    xaxis <- "time"
+    yaxis <- "value"
+    ticktypes <- list(x="date",y = "double")
+  }
   
   if(!is.factor(d[[as_name(grouping)]])) {
     d[[as_name(grouping)]] <- fct_inorder(d[[as_name(grouping)]])
   }
   
   d <- d|> group_by(!!grouping) %>% filter(!all(is.na(value))) |> ungroup() |> droplevels()
-
+  
   unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
-
+  
   if(!all(plot_type %in% c("scatter","bar"))) {
     stop("Plot type must be \"scatter\" or \"bar\", or a vector of name_value pairs!", call. = F)
   } else if (length(plot_type) == 1 & is.null(names(plot_type))){
     d <- d |> mutate(plot.type = plot_type)
   } else if (!all(unique_groups %in% names(plot_type))) {
     stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding plot type!"), call. = F)
-    } else {
+  } else {
     d <- mutate(d, plot.type = str_replace_all(!!grouping, plot_type))
-    }
-
+  }
+  
   if(!all(typeof(line_width) == "double")) {
     stop("Line width must be a double, or a double vector of name_value pairs!", call. = F)
   } else if (length(line_width) == 1 & is.null(names(line_width))){
@@ -864,86 +946,16 @@ ptt_plot <- function(d,
     d <- mutate(d, line.width = line_width[as.character(!!grouping)] %>% dplyr::coalesce(line_width[".other"]))
   }
   
-  if(!is.null(trace_color)) {
-    
-    if(!all(ptt_plot_are_colors(trace_color))) {
-      stop("Trace colors must be 6-character hexadecimal colors or among strings provided by grDevices::colors!", call. = F)
-    } else if (length(trace_color) == 1 & is.null(names(trace_color))){
-      color_vector <- rep(trace_color, length(unique_groups)) %>% set_names(unique_groups)
-    } else if (!all(unique_groups %in% names(trace_color)) & !(".other" %in% names(trace_color)) ) {
-      stop(str_c("Either trace color must be a single color string, or all variables in column \"",as_name(grouping),"\" must have a corresponding trace color, or key \".other\" must be included, or trace_color must be NULL!"), call. = F)
-    } else {
-      ug <- as.character(unique_groups)
-      color_vector <- c(trace_color[ug[ug %in% names(trace_color)]],
-                        ug[!ug %in% names(trace_color)] %>% length() %>% rep(trace_color[".other"], .) %>% 
-                          set_names(ug[!ug %in% names(trace_color)]))
-    }
-    if(!is.null(highlight)) {message("Highlight is ignored when providing trace colors.")}
-    
-  } else if(!is.null(highlight)) {
-    if (is.double(highlight)) { 
-      un_groups <- d %>% group_by(!!grouping) %>% summarize(value = max(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight) %>% pull(!!grouping)
-    } else if (is.list(highlight)) {
-      if (!all(c("value",".fun") %in% names(highlight))) {
-        stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
-      } else {
-        un_groups <- d %>% group_by(!!grouping) %>% summarize(value = highlight$.fun(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight$value) %>% pull(!!grouping)
-      }
-    } else {
-      stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
-    } 
-    un_groups <- unique_groups %>% subset(unique_groups %in% un_groups) |> droplevels()
-    if(length(un_groups) == 0) { stop(str_c("No trace in \"",as_name(grouping),"\" fulfill the highlight requirements."), call. = F) }
-    color_vector <- ptt_plot_set_colors(length(un_groups)) %>% set_names(un_groups)
-    d[[as_name(grouping)]] <- fct_relevel(d[[as_name(grouping)]], levels(un_groups))
+  color_vector <- ptt_plot_get_color_vector(trace_color, unique_groups, highlight)
+  
+  if(!missing(facet_split)) {
+    p <- ptt_plot_get_facet_plot(d, facet_split, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode, font_size, font_color, ticktypes, axis_limits)
   } else {
-    color_vector <- ptt_plot_set_colors(length(unique_groups)) |> set_names(unique_groups)
+    p <- ptt_plot_get_plot(d, xaxis, yaxis, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode)
   }
-
-  p <- plot_ly(d, x = ~ time, height = height)
-
-  split_d <- group_split(d, !!grouping)
-  split_d <- if(any(plot_type == "scatter")) { rev(split_d) } else { split_d }
-
-  for (g in split_d) {
-    g.color <- unique(g[[as_name(grouping)]])
-    g.name <- unique(g[[as_name(grouping)]])
-    g.level <-  which(g.name == levels(g.name))
-    g.type <- unique(g$plot.type)
-    g.linewidth <- unique(g$line.width)
-    legend.rank <- g.level * 100
-    show.legend <- if(!is.null(trace_color)) { T } else { ptt_plot_set_highlight(highlight, g) }
-    trace.color <- I(color_vector[as.character(g.color)])
-    if(is.na(trace.color)) {trace.color <- I(grid_color)}
-    p <- p |>
-      add_trace(data=g, y = ~value, text = g.name,
-                texttemplate = NA,
-                hovertemplate = ptt_plot_hovertemplate(hovertext),
-                line = if(g.type == "scatter") { list(width = g.linewidth) } else { NULL },
-                offsetgroup = if(g.type == "bar") { g.name } else { NULL },
-                legendgroup = g.name,
-                legendrank = legend.rank,
-                showlegend = show.legend,
-                name = g.name,
-                color = trace.color,
-                type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
-      )
-  }
-
-  if(!plot_mode %in% c("dodge","stack")) {
-    stop("Plot mode must be \"dodge\" or \"stack\"!", call. = F)
-  } else {
-    plot_mode <- str_replace_all(plot_mode, c("dodge" = "group", "stack" = "relative"))
-    p  <- layout(p, barmode = plot_mode)
-  }
-
-  p$data <- d |> rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
-    select(csv.data.tiedot, time, value) |>
-    mutate(
-      across(everything(), ~ as.character(.x)),
-      value = str_replace(value, "\\.",",")
-    )
-
+  
+  p$data <- ptt_plot_transform_data_for_download(d, grouping, facet_split)
+  
   p$elementId <- str_c("widget",runif(1)) |> str_replace("0\\.","-")
   p$color_vector <- color_vector
   p$hover_template <- hovertext
@@ -956,10 +968,10 @@ ptt_plot <- function(d,
   })()
   p$plot_mode <- plot_mode
   p$line_width <- line_width
-
+  
   maxtime <- max(d$time)
-
-  p |>
+  
+  p <- p |>
     ptt_plot_config(title = title, subtitle = subtitle, caption = caption,
                     font_color = font_color, font_size = font_size,
                     legend_position = legend_position, legend_orientation = legend_orientation,
@@ -967,8 +979,26 @@ ptt_plot <- function(d,
                     height = height,
                     axis_range = axis_limits,
                     zeroline = list(zeroline = zeroline, xrange = list(min = min(d$time), max = maxtime)),
-                    enable_rangeslider = list(rangeslider = rangeslider, max = maxtime))
+                    enable_rangeslider = list(rangeslider = rangeslider, max = maxtime),
+                    ticktypes = ticktypes)
+  
+  ## add labels for facet plot. Has to be done here for the relayout js to work properly for captions.
+  if(!missing(facet_split)) {
+    yloc <- max(d$value)
+    split_facet <- group_split(d,!!facet_split)
+    for(i in seq(length(split_facet))) {
+      xloc <- split_facet[[i]]$time %>% unique() %>% sort() %>% median
+      ann_text <- split_facet[[i]][[as_name(facet_split)]] %>% unique() %>% str_pad(width = 10, side = "both", pad = " ")
+      p <- p %>% 
+        layout(annotations = 
+                 list(text = ann_text, yref = str_c("y",i), xref = str_c("x",i), showarrow = F, y = yloc, x = xloc, bgcolor = "white", borderwidth = 1, borderpad = 4, bordercolor = "black"))
+    }
+  }
+  
+  p
+  
 }
+
 
 #' Add prediction traces to an existing ptt_plot.
 #'
@@ -1129,16 +1159,14 @@ ptt_plot_add_secondary_traces <-
 
     grouping <- enquo(grouping)
 
-    if (missing(relates_to) | missing(secondary_data)) {
-      message("Define the relation to parent ptt_plot by providing both the data with the secondary data and the relates_to variable.")
-      stop()
+      if (missing(relates_to) | missing(secondary_data)) {
+      stop("Define the relation to parent ptt_plot by providing both the data with the secondary data and the relates_to variable.", call. = F)
     }
 
     relates_to <- as_name(enquo(relates_to))
 
-    if(!relates_to %in% names(p$color_vector)) {
-      message("Provided relates_to not in parent ptt_plot variables!")
-      stop()
+      if(!relates_to %in% names(p$color_vector)) {
+      stop("Provided relates_to not in parent ptt_plot variables!", call. = F)
     }
 
     if (missing(hovertext)) { hovertext <- p$hover_template }
@@ -1181,9 +1209,193 @@ ptt_plot_add_secondary_traces <-
         value = str_replace(value, "\\.",",")
       )
     p$data <- bind_rows(p$data, sec_d) |> arrange(time, csv.data.tiedot)
-    p |> ptt_plot_set_modebar(p$title, p$png_attrs, T)
+    p |> ptt_plot_set_modebar(p$title, p$subtitle, p$png_attrs, T)
   }
 
-ptt_plot_add_distinct_trace <- function(){
+#' @importFrom dplyr group_split
+#' @importFrom purrr map
+#' @importFrom plotly plot_ly add_trace layout subplot
+#' @importFrom stringr str_replace_all
+ptt_plot_get_facet_plot <- function(d, facet_split, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode, font_size, font_color, ticktypes, axis_limits) {
+  
+  split_facet <- d %>% group_split(!!facet_split)
+  
+  p <- map2(split_facet,seq(length(split_facet)), function(facet, i) {
+    
+    p <- plot_ly(facet, x = ~time, height = height)
+    
+    split_d <- group_split(facet, !!grouping)
+    split_d <- if(any(plot_type == "scatter")) { rev(split_d) } else { split_d }
+    
+    for (g in split_d) {
+      g.color <- unique(g[[as_name(grouping)]])
+      g.name <- unique(g[[as_name(grouping)]])
+      g.level <-  which(g.name == levels(g.name))
+      g.type <- unique(g$plot.type)
+      g.linewidth <- unique(g$line.width)
+      legend.rank <- g.level * 100
+      show.legend <- if (i > 1) {F} else if(!is.null(trace_color)) { T } else { ptt_plot_set_highlight(highlight, g) }
+      trace.color <- I(color_vector[as.character(g.color)])
+      if(is.na(trace.color)) {trace.color <- I(grid_color)}
+      p <- p |>
+        add_trace(data=g, y = ~value, text = g.name,
+                  texttemplate = NA,
+                  hovertemplate = ptt_plot_hovertemplate(hovertext),
+                  line = if(g.type == "scatter") { list(width = g.linewidth) } else { NULL },
+                  offsetgroup = if(g.type == "bar") { g.name } else { NULL },
+                  legendgroup = g.name,
+                  legendrank = legend.rank,
+                  showlegend = show.legend,
+                  name = g.name,
+                  color = trace.color,
+                  type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
+        )
+    }
+    
+    if(!plot_mode %in% c("dodge","stack","horizontal")) {
+      stop("Plot mode must be \"dodge\", \"stack\" or \"horizontal\"!", call. = F)
+    } else {
+      p_mode <- str_replace_all(plot_mode, c("dodge|horizontal" = "group", "stack" = "relative"))
+      p  <- layout(p, barmode = p_mode)
+    }
+    if(i > 1) { 
+      p <- p %>% 
+        ptt_plot_set_ticks(list(size = font_size, family = "sans-serif", color = font_color), ticktypes = ticktypes) %>% 
+        layout(yaxis = list(range = axis_limits$y, showticklabels = F, showline = T))
+    }
+    
+    p
+    
+  })
+  
+  subplot(p)
+}
 
+#' @importFrom rlang sym
+#' @importFrom dplyr mutate group_by ungroup
+get_bar_widths <- function(df, width_col) {
+  get_offset <- function(the_count) {
+    seq(-0.45, length.out = the_count, by = 1/the_count)
+  }
+  df %>% 
+    add_count((!!sym(width_col)) , name = "bar_width") %>% 
+    group_by((!!sym(width_col)) ) %>% 
+    mutate(bar_offset = get_offset(max(bar_width)),
+           bar_width = ifelse(row_number() == last(row_number()), 1/bar_width*0.9, 1/bar_width)) %>%
+    ungroup()
+  
+}
+
+#' @importFrom dplyr group_split
+#' @importFrom plotly plot_ly add_trace layout subplot
+#' @importFrom stringr str_replace_all
+#' @importFrom stats as.formula
+ptt_plot_get_plot <- function(d, xaxis, yaxis, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode) {
+  
+  # print(plot_mode)
+  if(plot_mode == "horizontal") {
+    d <- get_bar_widths(d, yaxis)
+  }
+  
+  p <- plot_ly(d, x = as.formula(str_c("~",xaxis)), height = height)
+  
+  split_d <- group_split(d, !!grouping)
+  split_d <- if(any(plot_type == "scatter")) { rev(split_d) } else { split_d }
+  
+  for (g in split_d) {
+    g.color <- unique(g[[as_name(grouping)]])
+    g.name <- unique(g[[as_name(grouping)]])
+    g.level <-  which(g.name == levels(g.name))
+    g.type <- unique(g$plot.type)
+    g.linewidth <- unique(g$line.width)
+    legend.rank <- g.level * 100
+    show.legend <- if(!is.null(trace_color)) { T } else { ptt_plot_set_highlight(highlight, g) }
+    trace.color <- I(color_vector[as.character(g.color)])
+    if(is.na(trace.color)) {trace.color <- I(grid_color)}
+    p <- p |>
+      add_trace(data=g, y = as.formula(str_c("~",yaxis)), text = g.name,
+                texttemplate = NA,
+                hovertemplate = ptt_plot_hovertemplate(hovertext),
+                line = if(g.type == "scatter") { list(width = g.linewidth) } else { NULL },
+                offsetgroup = if(g.type == "bar") { g.name } else { NULL },
+                legendgroup = g.name,
+                legendrank = legend.rank,
+                showlegend = show.legend,
+                orientation = "h",
+                offset = if(plot_mode == "horizontal") { ~bar_offset } else { NULL },
+                width = if(plot_mode == "horizontal") { ~bar_width } else { NULL },
+                name = g.name,
+                color = trace.color,
+                type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
+      )
+  }
+  
+  if(!plot_mode %in% c("dodge","stack","horizontal")) {
+    stop("Plot mode must be \"dodge\", \"stack\" or \"horizontal\"!", call. = F)
+  } else {
+    plot_mode <- str_replace_all(plot_mode, c("dodge|horizontal" = "group", "stack" = "relative"))
+    p  <- layout(p, barmode = plot_mode)
+  }
+  
+  p
+  
+}
+
+
+#' @importFrom rlang as_name
+#' @importFrom dplyr summarize filter pull
+ptt_plot_get_color_vector <- function(trace_color, unique_groups, highlight) {
+  if(!is.null(trace_color)) {
+    
+    if(!all(ptt_plot_are_colors(trace_color))) {
+      stop("Trace colors must be 6-character hexadecimal colors or among strings provided by grDevices::colors!", call. = F)
+    } else if (length(trace_color) == 1 & is.null(names(trace_color))){
+      color_vector <- rep(trace_color, length(unique_groups)) %>% set_names(unique_groups)
+    } else if (!all(unique_groups %in% names(trace_color)) & !(".other" %in% names(trace_color)) ) {
+      stop(str_c("Either trace color must be a single color string, or all variables in column \"",as_name(grouping),"\" must have a corresponding trace color, or key \".other\" must be included, or trace_color must be NULL!"), call. = F)
+    } else {
+      ug <- as.character(unique_groups)
+      color_vector <- c(trace_color[ug[ug %in% names(trace_color)]],
+                        ug[!ug %in% names(trace_color)] %>% length() %>% rep(trace_color[".other"], .) %>% 
+                          set_names(ug[!ug %in% names(trace_color)]))
+    }
+    if(!is.null(highlight)) {message("Highlight is ignored when providing trace colors.")}
+    
+  } else if(!is.null(highlight)) {
+    if (is.double(highlight)) { 
+      un_groups <- d %>% group_by(!!grouping) %>% summarize(value = max(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight) %>% pull(!!grouping)
+    } else if (is.list(highlight)) {
+      if (!all(c("value",".fun") %in% names(highlight))) {
+        stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
+      } else {
+        un_groups <- d %>% group_by(!!grouping) %>% summarize(value = highlight$.fun(value, na.rm = T), .groups = "drop") %>% filter(value >= highlight$value) %>% pull(!!grouping)
+      }
+    } else {
+      stop("Highlight must be NA, double, or a list with \"value\" and \".fun\"!\n Value limits what is shown in legend and given a color, .fun is the function used (default is max).")
+    } 
+    un_groups <- unique_groups %>% subset(unique_groups %in% un_groups) |> droplevels()
+    if(length(un_groups) == 0) { stop(str_c("No trace in \"",as_name(grouping),"\" fulfill the highlight requirements."), call. = F) }
+    color_vector <- ptt_plot_set_colors(length(un_groups)) %>% set_names(un_groups)
+    d[[as_name(grouping)]] <- fct_relevel(d[[as_name(grouping)]], levels(un_groups))
+  } else {
+    color_vector <- ptt_plot_set_colors(length(unique_groups)) |> set_names(unique_groups)
+  }
+  
+  color_vector
+}
+
+
+#' @importFrom rlang sym quo_name
+#' @importFrom tidyr unite
+#' @importFrom dplyr select mutate across everything rename
+#' @importFrom stringr str_replace
+ptt_plot_transform_data_for_download <- function(d, grouping, facet_split) {
+  d <- d |> rename(csv.data.tiedot = !! sym(quo_name(grouping)))
+  if(!missing(facet_split)) { d <- unite(d, csv.data.tiedot, csv.data.tiedot, !!facet_split, sep = ", ")}
+  d |> 
+    select(csv.data.tiedot, time, value) |>
+    mutate(
+      across(everything(), ~ as.character(.x)),
+      value = str_replace(value, "\\.",",")
+    )
 }
