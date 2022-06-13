@@ -224,6 +224,7 @@ ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |>
     source = "Tilastokeskus"
   ) |> 
    ptt_plot_create_widget()
+
 ```
 
 
