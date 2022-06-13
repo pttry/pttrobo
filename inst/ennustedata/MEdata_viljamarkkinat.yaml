@@ -38,10 +38,10 @@ MEdata_Viljamarkkinat:
       - Rehukaura
       - RYPSI JA RAPSI
   vilja_tuotanto:
-  - id: StatFin/maa/satot/statfin_satot_pxt_001.px
+  - id: luke/02_Maatalous/04_Tuotanto/14_Satotilasto/03_Vilja-_ja_perunasato_1920-.px
     muunnos: alkuperäinen
     tiedot:
-      Viljelykasvi:
+      Laji:
       - Vehnä
       - Ruis
       - Ohra

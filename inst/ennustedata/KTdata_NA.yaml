@@ -1,6 +1,6 @@
 KTdata_NA:
   Huoltotase_cp:
-  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+  - id: StatFin/vtp/statfin_vtp_pxt_11sf.px
     muunnos: alkuperäinen
     tiedot:
       Taloustoimi:
@@ -9,7 +9,7 @@ KTdata_NA:
       - P1R Tuotos perushintaan, tulona
       - P2K Välituotekäyttö, menona
       - B1GPH Bruttoarvonlisäys perushintaan
-      - P51CK Kiinteän pääoman kuluminen, tulona
+      - P51CK Kiinteän pääoman kuluminen, menona
       - D11K Palkat ja palkkiot, menona
       - D12K Työnantajan sosiaaliturvamaksut, menona
       - B13N Toimintaylijäämä / sekatulo, netto
@@ -69,7 +69,7 @@ KTdata_NA:
       Tiedot:
       - Käypiin hintoihin, miljoonaa euroa
   Huoltotase_vol:
-  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+  - id: StatFin/vtp/statfin_vtp_pxt_11sf.px
     muunnos: alkuperäinen
     tiedot:
       Taloustoimi:
@@ -78,7 +78,7 @@ KTdata_NA:
       - P1R Tuotos perushintaan, tulona
       - P2K Välituotekäyttö, menona
       - B1GPH Bruttoarvonlisäys perushintaan
-      - P51CK Kiinteän pääoman kuluminen, tulona
+      - P51CK Kiinteän pääoman kuluminen, menona
       - D11K Palkat ja palkkiot, menona
       - D12K Työnantajan sosiaaliturvamaksut, menona
       - B13N Toimintaylijäämä / sekatulo, netto
@@ -138,7 +138,7 @@ KTdata_NA:
       Tiedot:
       - Volyymisarja, viitevuosi 2015
   Huoltotase_pp:
-  - id: StatFin/kan/vtp/statfin_vtp_pxt_11sf.px
+  - id: StatFin/vtp/statfin_vtp_pxt_11sf.px
     muunnos: alkuperäinen
     tiedot:
       Taloustoimi:
@@ -147,7 +147,7 @@ KTdata_NA:
       - P1R Tuotos perushintaan, tulona
       - P2K Välituotekäyttö, menona
       - B1GPH Bruttoarvonlisäys perushintaan
-      - P51CK Kiinteän pääoman kuluminen, tulona
+      - P51CK Kiinteän pääoman kuluminen, menona
       - D11K Palkat ja palkkiot, menona
       - D12K Työnantajan sosiaaliturvamaksut, menona
       - B13N Toimintaylijäämä / sekatulo, netto
@@ -207,7 +207,7 @@ KTdata_NA:
       Tiedot:
       - Edellisen vuoden hinnoin, miljoonaa euroa
   Julkinen_kulutus:
-  - id: StatFin/kan/vtp/statfin_vtp_pxt_11t4.px
+  - id: StatFin/vtp/statfin_vtp_pxt_11t4.px
     muunnos: alkuperäinen
     tiedot:
       Taloustoimi:

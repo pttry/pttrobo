@@ -4,7 +4,7 @@
 \alias{ptt_copy_ennustedata}
 \title{Copy ennustedata to teams}
 \usage{
-ptt_copy_ennustedata(ennuste = c("ME", "KT", "MA"), path = NULL)
+ptt_copy_ennustedata(ennuste = c("ME", "KT", "MA", "POP"), path = NULL)
 }
 \arguments{
 \item{ennuste}{A character of ennuste. One of "ME", "KT", "MA".}

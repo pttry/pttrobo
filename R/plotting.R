@@ -53,7 +53,7 @@ aplot_lines <- function(dat, x = time, y = value,
 #' @param trends_only A logical to have only trends in plot.
 #' @export
 #' @examples
-#' ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+#' ptt_data_robo_l("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
 #' dplyr::filter(
 #'     taloustoimi %in% c("P7R Tavaroiden ja palvelujen tuonti, tulona",
 #'     "P6K Tavaroiden ja palvelujen vienti, menona"),
@@ -78,12 +78,17 @@ aplot_trends <- function(dat, x = time, y = value,
     caption <- paste0("L\u00e4hde: ", source, ", PTT")
   }
 
+  # Fix to filter ... for trend_series
+  lst <- list(...)
+  trend_lst <- lst[c("x11")]
+
   dat <-
     dat |>
     droplevels() |>
     mutate(alk = {{y}}) |>
     group_by({{colour}}) |>
-    mutate(value = statfitools::trend_series({{y}}, time, ...)) |>
+    # see fix above
+    mutate(value = do.call(statfitools::trend_series , args = purrr::discard(c(quote({{y}}), quote({{x}}), trend_lst), is.null))) |>
     ungroup()
 
   tiedot_name <- rlang::enquo(colour)

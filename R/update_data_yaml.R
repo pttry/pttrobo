@@ -59,12 +59,13 @@ ptt_update_ennustedata <- function(pattern = NULL, start_year, transpose = FALSE
 #'
 #'
 
-ptt_copy_ennustedata <- function(ennuste = c("ME", "KT", "MA"), path = NULL){
+ptt_copy_ennustedata <- function(ennuste = c("ME", "KT", "MA", "POP"), path = NULL){
 
   paths <-
-    c(ME = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - Taulut ME/data",
+    c(ME = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - data",
       MA = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - MAdata",
-      KT = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - KTdata")
+      KT = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - KTdata",
+      POP = "~/../Pellervon Taloustutkimus PTT ry/Ennuste - KTdata")
 
   if (is.null(path)){
     path <- paths[ennuste]

@@ -1,0 +1,298 @@
+---
+title: "ME ennustepäivtys 2022 kesäkuu"
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: true ## Päivitä widgetit pilveen ajamalla `ptt_plot_upload_widgets()` viimeisessä chunkissa, ja eval = params$upload_widgets.
+  overwrite_uploads: false ## ptt_upload_widgets ei normaalisti yliaja cloud storagesta tiedostoja. aseta ptt_plot_upload_widgets(overwrite = params$overwrite_uploads)
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+library(pttrobo)
+library(tidyverse)
+library(statfitools)
+library(lubridate)
+library(pttdatahaku)
+
+start_time <- "2014-01-01"
+
+
+
+```
+
+
+## Kuluttaja-, tuottaja- ja panoshinnat
+
+```{r}
+
+bind_rows(
+  ptt_data_robo_l("StatFin/ttohi/statfin_ttohi_pxt_11gv.px") |> 
+    filter(maatalouden_tuotantovalineiden_ostohintaindeksin_luokitus == 
+             "200000 MAATALOUDEN TUOTANTOTARVIKKEET JA PALVELUT (Panos 1)",
+           tiedot == "Maatalouden tuotantovälineiden ostohintaindeksi (2015=100)") |> 
+    mutate(tiedot = "Tuotantopanokset"),
+  
+  ptt_data_robo_l("StatFin/mthi/statfin_mthi_pxt_11fp.px") |> 
+    filter(maatalouden_tuottajahintaindeksin_luokitus == 
+             "140000 MAATALOUDEN TUOTTAJAHINTAINDEKSI YHTEENSÄ (100000+130000), sis. hedelmät (060000) ja vihannekset (040000)",
+           tiedot == "Maatalouden tuottajahintaindeksi (2015=100)") |> 
+    mutate(tiedot = "Tuottajahinnat"),
+  
+  ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |> 
+    filter(hyodyke %in% c("Elintarvikkeet"),
+           indeksisarja == "KHI 2015=100") |> 
+    mutate(tiedot = "Elintarvikkeet")
+) |> 
+  filter(time >= start_time) |>
+  group_by(tiedot) |> 
+  mutate(value = pttdatahaku::pc(value, 12, order_by = time)) |> 
+  ungroup() |> 
+  aplot_lines(
+    colour = tiedot,
+    title = "Maatalouden tuottajahinnat, tuotantopanosten ja elintarvikkeiden hinnat",
+    subtitle = "%, vuosimuutos",
+    source = "Tilastokeskus"
+  ) |> 
+   ptt_plot_create_widget()
+
+  
+
+
+```
+
+
+## Vehnän tuotanto ja vienti kansainvälisesti
+
+```{r}
+
+ pttrobo::ptt_data_robo_l("tidy/usda_psd") |> 
+    filter(commodity_description == "Wheat", 
+           attribute_description %in% c("Production","Exports", "Beginning Stocks", "FSI Consumption", "Feed Dom. Consumption")) |>
+    # mutate( attribute_description = case_when(attribute_description == "FSI Consumption" ~ "Consumption",
+    #                                           attribute_description == "Feed Dom. Consumption"  ~ "Consumption",
+    #                                           TRUE ~ as.character(attribute_description))
+    #         ) |>
+    group_by(attribute_description, market_year, commodity_description) |> 
+    summarise(value = sum(value, na.rm = T), .groups = "drop") |>
+    mutate(time = as.Date(paste(market_year, "7-1", sep = "-")),
+           attribute_description = case_when(
+             attribute_description == "Production" ~ "Tuotanto",
+             attribute_description == "Exports" ~ "Vienti",
+             attribute_description == "Beginning Stocks" ~ "Varasto",
+            # attribute_description == "FSI Consumption" ~ "Ihmiskäyttö",
+             #attribute_description == "Feed Dom. Consumption" ~ "Rehukäyttö",
+             )
+           ) |>  
+  drop_na() |> 
+    filter(time >= as.Date("2000-1-1")) |>  
+    group_by(attribute_description, commodity_description, time) |> 
+    summarise(value = sum(value, na.rm=T), .groups = "drop") |> 
+    ptt_plot(x = time, y = value,
+             grouping = attribute_description,
+             title = "Vehnän tuotanto ja vienti kansainvälisesti",
+             subtitle = "1000 tonnia", 
+             zeroline =T,rangeslider = F,
+             caption = "Lähde: USDA ja PTT") |> 
+   ptt_plot_create_widget()
+
+```
+
+
+
+## Viljan tuottajahinnat
+
+```{r}
+
+ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/07_Tuottajahinnat_Vilja_rypsi_rapsi_kk.px") |> 
+  filter_recode(
+    hinta = "Perushinta 1)",
+    laji = c(
+    "Vehnä" = "VEHNÄ YHTEENSÄ 2)", 
+    "Ohra" = "OHRA YHTEENSÄ 3)", 
+    "Kaura" = "KAURA YHTEENSÄ 5)")) |> 
+  filter(time >= start_time) |> 
+   aplot_lines(
+    colour = laji,
+    title = "Viljan tuottajahinnat",
+    subtitle = "€ / tn",
+    source = "Luke") |> 
+   ptt_plot_create_widget()
+
+```
+
+## Tuotantopanosten hinnat
+
+```{r}
+
+
+  ptt_data_robo_l("StatFin/ttohi/statfin_ttohi_pxt_11gv.px") |> 
+    filter_recode(maatalouden_tuotantovalineiden_ostohintaindeksin_luokitus = 
+             c("Energia" = "202000 ENERGIA, VOITELUAINEET",
+               "Lannoitteet" = "203000 LANNOITTEET JA MAANPARANNUSAINEET",
+              "Rehut" =  "206000 ELÄINTEN REHUT",
+              "Tuotantotarvikkeet yhteensä" = "200000 MAATALOUDEN TUOTANTOTARVIKKEET JA PALVELUT (Panos 1)"),
+           tiedot = "Maatalouden tuotantovälineiden ostohintaindeksin vuosimuutos (2015=100)") |> 
+  filter(time >= start_time) |> 
+  aplot_lines(
+    colour = maatalouden_tuotantovalineiden_ostohintaindeksin_luokitus,
+    title = "Maatalouden tuotantopanosten hinnat",
+    subtitle = "%, vuosimuutos",
+    source = "Tilastokeskus"
+  )  |> 
+   ptt_plot_create_widget()
+
+```
+
+## Maidon tuottajahinta
+
+```{r}
+
+milk_countries <-
+  c(
+    Suomi = "FI",
+    EU = "EU",
+    
+    Tanska = "DK",
+    Saksa = "DE"
+  )
+# TODO: Suomi jää muiden viivojen alle mutta factor-levelit kääntämällä Suomi tulee keltaisella viivalla mikä näkyy vähän huonosti. 
+ptt_data_robo_l("tidy/dg_agri") |>
+  filter(product_desc %in% "Raw Milk",
+         country %in% milk_countries) |>
+  filter(time >= start_time) |>
+  mutate(tiedot = factor(country, milk_countries, names(milk_countries))) |>
+  ptt_plot(
+  grouping = tiedot, 
+  title ="Maidon tuottajahinta",subtitle = "€ / 100kg",
+    caption  = "Lähde: DG Agri ja PTT",
+   rangeslider = FALSE,
+    zeroline = F,
+    hovertext =  list(rounding = 1, unit = "€ / 100kg", extra = "")
+  ) |> 
+   ptt_plot_create_widget()
+```
+
+## Lihan tuottajahinnat
+
+```{r}
+
+  ptt_data_robo("StatFin/mthi/statfin_mthi_pxt_11fp.px") |> 
+    filter_recode(
+      maatalouden_tuottajahintaindeksin_luokitus =
+             c("Nauta" = "111000 Nauta",
+               "Sika" = "112000 Siat",
+               "Siipikarja" = "115000 Siipikarja"),
+           tiedot = "Maatalouden tuottajahintaindeksi (2015=100)") |> 
+  group_by(across(where(is.factor))) |> 
+    mutate(value = pc(value, 12, order_by = time)) |>
+  ungroup() |> 
+  filter(time >= start_time) |> 
+  aplot_lines(
+    colour = maatalouden_tuottajahintaindeksin_luokitus,
+    title = "Tuottajahinnat",
+    subtitle = "%, muutos vuoden takaa",
+    source = "Tilastokeskus") |> 
+   ptt_plot_create_widget()
+
+```
+
+## Elintarvikkeiden hinnat
+
+
+```{r}
+ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |> 
+  filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
+  pivot_wider(names_from = indeksisarja, values_from =value, names_repair = "universal") |> 
+  group_by(hyodyke) |> 
+  mutate(across(where(is.numeric), ~100* (.x / lag(.x, n = 12, order_by = time) - 1))) |> 
+  ungroup() |> 
+  filter(time >= start_time) |> 
+  mutate(value = coalesce(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
+  select(!c(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
+  mutate(tiedot = str_to_sentence(hyodyke)) |> 
+  mutate(tiedot = fct_recode(tiedot, Kuluttajahinnat = "Kuluttajahintaindeksi")) |> 
+  aplot_lines(
+    title = "Elintarvikkeiden ja yleinen hintojen muutos Suomessa",
+    subtitle = "%, muutos vuoden takaa",
+    source = "Tilastokeskus"
+  ) |> 
+   ptt_plot_create_widget()
+
+```
+
+
+## Elintarvikkeiden hinnat - KV 
+
+```{r}
+us_food <- 
+  ptt_data_robo_l("fred/CPIUFDNS") |> 
+  select(time, value) |> 
+  mutate(geo = "USA")
+fi_food <- 
+  ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xd.px") |>  
+  filter(hyodyke %in% c("01.1 Elintarvikkeet"),
+         tiedot %in% c("Pisteluku")) |> 
+  select(time, value) |> 
+  mutate(geo = "Suomi")
+eu_food <- ptt_data_robo_c("eurostat/prc_hicp_midx") |> 
+  filter_recode(
+    coicop = "CP011",
+    unit = "I15",
+    geo = c(
+      "EU",
+      "Ruotsi" = "SE")) |>    
+  select(geo, time, value) 
+bind_rows(
+  us_food,
+  fi_food,
+  eu_food
+) |> 
+  mutate(geo = fct_relevel(geo, "Suomi")) |> 
+  group_by(geo) |> 
+  mutate(value = pc(value, 12, time)) |> 
+  ungroup() |> 
+  filter(time >= start_time) |>  
+  # aplot_lines(colour = geo)
+  aplot_lines(
+    colour = geo,
+    title = "Elintarvikkeiden hintojen muutos",
+    subtitle = "%, muutos vuoden takaa",
+    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT")  |> 
+   ptt_plot_create_widget()
+
+```
+
+```{r}
+
+ptt_data_robo("StatFin/khi/statfin_khi_pxt_11xd.px") |> 
+  filter_recode(hyodyke = 
+    c(
+    "Viljatuotteet ja leipä" = "01.1.1 Viljatuotteet ja leipä",
+    "Liha" = "01.1.2 Liha",
+    "Maitotuotteet, juusto ja kananmunat" = "01.1.4 Maitotuotteet, juusto ja kananmunat"
+    ),
+         tiedot = c("Vuosimuutos (%)")
+  ) |> 
+  filter(time >= start_time) |> 
+  aplot_lines(colour = hyodyke,
+    title = "Elintarvikkeiden hintojen muutos Suomessa",
+    subtitle = "%, muutos vuoden takaa",
+    source = "Tilastokeskus") |> 
+   ptt_plot_create_widget()
+
+
+```
+
+```{r, eval = params$upload_widgets}
+
+ptt_plot_upload_widgets(overwrite = params$overwrite_uploads)
+
+```

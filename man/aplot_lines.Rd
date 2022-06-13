@@ -79,7 +79,7 @@ dplyr::filter(
                 source = "Tilastokeskus")
 
 
-ptt_data_robo_l("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+ptt_data_robo_l("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
 dplyr::filter(
     taloustoimi \%in\% c("P7R Tavaroiden ja palvelujen tuonti, tulona",
     "P6K Tavaroiden ja palvelujen vienti, menona"),
