@@ -5,7 +5,7 @@ output:
     code_folding: "hide"
 params:
   upload_widgets: true ## Päivitä widgetit pilveen ajamalla `ptt_plot_upload_widgets()` viimeisessä chunkissa, ja eval = params$upload_widgets.
-  overwrite_uploads: false ## ptt_upload_widgets ei normaalisti yliaja cloud storagesta tiedostoja. aseta ptt_plot_upload_widgets(overwrite = params$overwrite_uploads)
+  overwrite_uploads: true ## ptt_upload_widgets ei normaalisti yliaja cloud storagesta tiedostoja. aseta ptt_plot_upload_widgets(overwrite = params$overwrite_uploads)
 ---
 
 ```{r, include = FALSE}
@@ -232,40 +232,41 @@ ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |>
 ## Elintarvikkeiden hinnat - KV 
 
 ```{r}
-us_food <- 
-  ptt_data_robo_l("fred/CPIUFDNS") |> 
+
+us_food_b <- 
+  ptt_data_robo("fred/CPIFABSL") |> 
   select(time, value) |> 
   mutate(geo = "USA")
-fi_food <- 
+fi_food_b <- 
   ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xd.px") |>  
-  filter(hyodyke %in% c("01.1 Elintarvikkeet"),
+  filter(hyodyke %in% c("01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT"),
          tiedot %in% c("Pisteluku")) |> 
   select(time, value) |> 
   mutate(geo = "Suomi")
-eu_food <- ptt_data_robo_c("eurostat/prc_hicp_midx") |> 
+eu_food_b <- ptt_data_robo_c("eurostat/prc_hicp_midx") |> 
   filter_recode(
-    coicop = "CP011",
+    coicop = "CP01",
     unit = "I15",
     geo = c(
       "EU",
       "Ruotsi" = "SE")) |>    
   select(geo, time, value) 
 bind_rows(
-  us_food,
-  fi_food,
-  eu_food
+  us_food_b,
+  fi_food_b,
+  eu_food_b
 ) |> 
   mutate(geo = fct_relevel(geo, "Suomi")) |> 
   group_by(geo) |> 
   mutate(value = pc(value, 12, time)) |> 
   ungroup() |> 
-  filter(time >= start_time) |>  
+  filter(time >= start_time) |>
   # aplot_lines(colour = geo)
   aplot_lines(
     colour = geo,
-    title = "Elintarvikkeiden hintojen muutos",
+    title = "Elintarvikkeet ja alkoholittomat juomat",
     subtitle = "%, muutos vuoden takaa",
-    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT")  |> 
+    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT") |> 
    ptt_plot_create_widget()
 
 ```
