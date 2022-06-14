@@ -33,6 +33,18 @@ start_time <- "2014-01-01"
 
 ```{r}
 
+s_inf <- 
+  ptt_data_robo("StatFin/khi/statfin_khi_pxt_11xq.px") |> 
+  filter(hyodyke %in% c("ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
+  pivot_wider(names_from = indeksisarja, values_from =value, names_repair = "universal") |> 
+  group_by(hyodyke) |> 
+  mutate(across(where(is.numeric), ~100* (.x / lag(.x, n = 12, order_by = time) - 1))) |> 
+  ungroup() |> 
+  # filter(time >= start_time) |> 
+  mutate(value = coalesce(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
+  select(!c(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
+  mutate(tiedot = "Elintarvikkeet ja alkoholittomat")
+
 bind_rows(
   ptt_data_robo_l("StatFin/ttohi/statfin_ttohi_pxt_11gv.px") |> 
     filter(maatalouden_tuotantovalineiden_ostohintaindeksin_luokitus == 
@@ -44,22 +56,25 @@ bind_rows(
     filter(maatalouden_tuottajahintaindeksin_luokitus == 
              "140000 MAATALOUDEN TUOTTAJAHINTAINDEKSI YHTEENSÄ (100000+130000), sis. hedelmät (060000) ja vihannekset (040000)",
            tiedot == "Maatalouden tuottajahintaindeksi (2015=100)") |> 
-    mutate(tiedot = "Tuottajahinnat"),
-  
-  ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |> 
-    filter(hyodyke %in% c("Elintarvikkeet"),
-           indeksisarja == "KHI 2015=100") |> 
-    mutate(tiedot = "Elintarvikkeet")
+    mutate(tiedot = "Tuottajahinnat")
+  # ,
+  # 
+  # ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |> 
+  #   filter(hyodyke %in% c("ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT"),
+  #          indeksisarja == "KHI 2015=100") |> 
+  #   mutate(tiedot = "Elintarvikkeet ja alkoholittomat")
 ) |> 
-  filter(time >= start_time) |>
+  # filter(time >= start_time) |>
   group_by(tiedot) |> 
   mutate(value = pttdatahaku::pc(value, 12, order_by = time)) |> 
   ungroup() |> 
+  bind_rows(s_inf) |> 
   aplot_lines(
     colour = tiedot,
     title = "Maatalouden tuottajahinnat, tuotantopanosten ja elintarvikkeiden hinnat",
     subtitle = "%, vuosimuutos",
-    source = "Tilastokeskus"
+    source = "Tilastokeskus",
+    rangeslider = start_time
   ) |> 
    ptt_plot_create_widget()
 
@@ -118,12 +133,13 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
     "Vehnä" = "VEHNÄ YHTEENSÄ 2)", 
     "Ohra" = "OHRA YHTEENSÄ 3)", 
     "Kaura" = "KAURA YHTEENSÄ 5)")) |> 
-  filter(time >= start_time) |> 
+  # filter(time >= start_time) |> 
    aplot_lines(
     colour = laji,
     title = "Viljan tuottajahinnat",
     subtitle = "€ / tn",
-    source = "Luke") |> 
+    source = "Luke",
+    rangeslider = start_time) |> 
    ptt_plot_create_widget()
 
 ```
@@ -140,7 +156,7 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
               "Rehut" =  "206000 ELÄINTEN REHUT",
               "Tuotantotarvikkeet yhteensä" = "200000 MAATALOUDEN TUOTANTOTARVIKKEET JA PALVELUT (Panos 1)"),
            tiedot = "Maatalouden tuotantovälineiden ostohintaindeksin vuosimuutos (2015=100)") |> 
-  filter(time >= start_time) |> 
+  filter(time >= start_time) |>
   aplot_lines(
     colour = maatalouden_tuotantovalineiden_ostohintaindeksin_luokitus,
     title = "Maatalouden tuotantopanosten hinnat",
@@ -167,13 +183,13 @@ milk_countries <-
 ptt_data_robo_l("tidy/dg_agri") |>
   filter(product_desc %in% "Raw Milk",
          country %in% milk_countries) |>
-  filter(time >= start_time) |>
+  filter(time >= "2005-01-01") |>
   mutate(tiedot = factor(country, milk_countries, names(milk_countries))) |>
   ptt_plot(
   grouping = tiedot, 
   title ="Maidon tuottajahinta",subtitle = "€ / 100kg",
     caption  = "Lähde: DG Agri ja PTT",
-   rangeslider = FALSE,
+   rangeslider = start_time,
     zeroline = F,
     hovertext =  list(rounding = 1, unit = "€ / 100kg", extra = "")
   ) |> 
@@ -194,12 +210,13 @@ ptt_data_robo_l("tidy/dg_agri") |>
   group_by(across(where(is.factor))) |> 
     mutate(value = pc(value, 12, order_by = time)) |>
   ungroup() |> 
-  filter(time >= start_time) |> 
+  # filter(time >= start_time) |> 
   aplot_lines(
     colour = maatalouden_tuottajahintaindeksin_luokitus,
     title = "Tuottajahinnat",
-    subtitle = "%, muutos vuoden takaa",
-    source = "Tilastokeskus") |> 
+    subtitle = "%, vuosimuutos",
+    source = "Tilastokeskus",
+   rangeslider = start_time) |> 
    ptt_plot_create_widget()
 
 ```
@@ -214,15 +231,16 @@ ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |>
   group_by(hyodyke) |> 
   mutate(across(where(is.numeric), ~100* (.x / lag(.x, n = 12, order_by = time) - 1))) |> 
   ungroup() |> 
-  filter(time >= start_time) |> 
+  # filter(time >= start_time) |> 
   mutate(value = coalesce(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
   select(!c(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
   mutate(tiedot = str_to_sentence(hyodyke)) |> 
   mutate(tiedot = fct_recode(tiedot, Kuluttajahinnat = "Kuluttajahintaindeksi")) |> 
   aplot_lines(
     title = "Elintarvikkeiden ja yleinen hintojen muutos Suomessa",
-    subtitle = "%, muutos vuoden takaa",
-    source = "Tilastokeskus"
+    subtitle = "%, vuosimuutos",
+    source = "Tilastokeskus",
+   rangeslider = start_time
   ) |> 
    ptt_plot_create_widget()
 
@@ -260,13 +278,14 @@ bind_rows(
   group_by(geo) |> 
   mutate(value = pc(value, 12, time)) |> 
   ungroup() |> 
-  filter(time >= start_time) |>
+  filter(time >= "2000-01-01") |>
   # aplot_lines(colour = geo)
   aplot_lines(
     colour = geo,
     title = "Elintarvikkeet ja alkoholittomat juomat",
-    subtitle = "%, muutos vuoden takaa",
-    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT") |> 
+    subtitle = "%, vuosimuutos",
+    caption = "Lähde: Tilastokeskus, Eurostat, BLS, PTT",
+   rangeslider = start_time) |> 
    ptt_plot_create_widget()
 
 ```
@@ -282,11 +301,12 @@ ptt_data_robo("StatFin/khi/statfin_khi_pxt_11xd.px") |>
     ),
          tiedot = c("Vuosimuutos (%)")
   ) |> 
-  filter(time >= start_time) |> 
+  # filter(time >= start_time) |> 
   aplot_lines(colour = hyodyke,
     title = "Elintarvikkeiden hintojen muutos Suomessa",
-    subtitle = "%, muutos vuoden takaa",
-    source = "Tilastokeskus") |> 
+    subtitle = "%, vuosimuutos",
+    source = "Tilastokeskus",
+   rangeslider = start_time) |> 
    ptt_plot_create_widget()
 
 
