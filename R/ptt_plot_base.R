@@ -51,7 +51,6 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
     split_title <- list(
       str_c("\\<span>\\<b>",p$title,"\\</b><span style='font-size: 75%'><br>",p$subtitle,"\\</span>\\</span>"),
       str_c("\\<span>\\<b>",str_replace(str_wrap(p$title, round((p$title %>% str_length())/2))%>% str_replace_all(c("\n" = " ")),"\n","\\<br>"),"\\</b>\\<span style='font-size: 75%'>\\<br>",p$subtitle,"\\</span>\\</span>"))
-    
     str_c('
           function(gd) {
           let oldlayout = JSON.parse(JSON.stringify(gd.layout))
@@ -106,12 +105,12 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
   
   dl_string <- (function() {
     row.data <- p$data |> drop_na() |> pmap(function(...) {
-      as.character(list(...)) |> str_c(collapse = ";")
+      as.character(list(...)) |> str_replace(";",",") |>str_c(collapse = ";")
     }) |> unlist() |> str_c(collapse = "\\n")
     col.names <- names(p$data) |> str_replace("csv\\.data\\.tiedot","tiedot") |> str_c(collapse = ";")
     str_c(col.names,"\\n",row.data)
   })()
-  
+
   data_dl_btn <- list(
     name = "Lataa tiedot",
     icon = dl_icon("file-csv"),
@@ -206,7 +205,7 @@ ptt_plot_set_ticks <- function(p, font, ticktypes) {
            showline = TRUE)
     } else if (ticktype == "double") {
       list(tickfont = font,
-           tickformat = ",.3~r",
+           tickformat = ",.3~f",
            ticksuffix = " ",
            mirror = TRUE,
            ticks = 'outside',
@@ -292,7 +291,7 @@ ptt_plot_config <- function(p,
                             axis_range = list(x = c(NA,NA), y = c(NA,NA)),
                             enable_rangeslider = list(rangeslider = F, max = as_date(today)),
                             ticktypes = list(x = "time", y = "double")) {
-  
+
   if(missing(title) | missing(caption)) {
     stop("Title and caption must be strings, or NA for no plot title or plot caption.", call. = F)
   }
@@ -321,12 +320,7 @@ ptt_plot_config <- function(p,
   title_font <- list(size = round(font_size*1.3), family = "sans-serif", color = font_color)
   caption_font <- list(size = round(font_size*1), family = "sans-serif", color = font_color)
   
-  rangeslider_size <- 0.1#round(1-((height/1000)^(1/2)),2)
-  
-  ht_constants <- 4 # 2 pikseliä korkeudesta häviää aina + 1*2 plotin reunat, tick pituus ei lasketa eli 0
-  tickfont_ht <- round((font_size+2)*1.4)#20#+max(0,ceiling(main_font$size-7)) #20+tickfontin korkeus mikä ylittää tämän: fontti 14 = 3 ei ole täysin johdonmukainen y-akselin yläreunan vuoksi. -Suunnilleen - +1.6 / piste yli fontti 12
-  rangeslider_ht <- ifelse(enable_rangeslider, round((height * rangeslider_size)+15-(margin$t*rangeslider_size)-(margin$b*rangeslider_size)),0)
-  legend_ht <- ifelse(legend_position %in% c("auto","bottom"), font_size, 0)
+  rangeslider_size <- 0.1
   
   png_attrs <- (function(small_ht = 500, large_ht = 720) {
     font_sizing_lg <- list(title = 31, main = 24, caption = 19)
@@ -338,7 +332,6 @@ ptt_plot_config <- function(p,
   p$enable_rangeslider <- list(enable = enable_rangeslider, size = rangeslider_size, range = slider_range)
   p$add_zeroline <- zeroline
   p$png_attrs <- png_attrs
-  
   p |>
     ptt_plot_attach_js(title, subtitle) |>
     ptt_plot_set_defaults(axis_range) |>
@@ -494,10 +487,15 @@ ptt_plot_attach_js <- function(p, title, subtitle) {
   # p$dependencies <- c(p$dependencies, list(dep))
   # if(!shiny::isRunning()) {
   js_file <- system.file("www", "js", "relayout.js", package = "pttrobo")
+  css_file <- system.file("www", "css", "style.css", package = "pttrobo")
   base_string <- base64Encode(readBin(js_file, "raw", file.info(js_file)[1, "size"]), "txt")
+  css_string <- base64Encode(readBin(css_file, "raw", file.info(css_file)[1, "size"]), "txt")
   p <- appendContent(
     p,
-    tags$script(src = str_c('data:application/javascript;base64', base_string, sep=',')))
+    tagList(
+      tags$script(src = str_c('data:application/javascript;base64', base_string, sep=',')),
+      tags$link(rel = "stylesheet", type = "text/css", href = str_c('data:text/css;base64', css_string, sep=',')))
+      )
   # }
   rangeslider_sums <- F
   if(p$plot_mode == "relative" && any(p$trace_types == "bar")) { rangeslider_sums = T }
@@ -862,7 +860,7 @@ ptt_plot_are_colors <- function(x) {
 #' @export
 #' @importFrom plotly plot_ly add_trace
 #' @importFrom rlang enquo as_name set_names
-#' @importFrom dplyr group_split
+#' @importFrom dplyr group_split coalesce
 #' @importFrom stringr str_length str_replace str_c
 
 
@@ -955,9 +953,17 @@ ptt_plot <- function(d,
   } else if (!all(unique_groups %in% names(line_width)) & !(".other" %in% names(line_width)) ) {
     stop(str_c("All variables in column \"",as_name(grouping),"\" must have a corresponding line width, or key \".other\" must be included!"), call. = F)
   } else {
+    missing_groups <- unique_groups %>% subset(!. %in% names(line_width))
+    if(length(missing_groups) > 0) {
+      detected_widths <- map2(unname(line_width), names(line_width), function(lw,nm) {
+        miss <- missing_groups %>% subset(str_detect(., str_c(nm, collapse = "|")))
+        rep(lw, length(miss)) %>% setNames(miss)
+      }) %>% compact() %>% unlist() 
+      line_width <- c(line_width, detected_widths)
+    }
     d <- mutate(d, line.width = line_width[as.character(!!grouping)] %>% dplyr::coalesce(line_width[".other"]))
   }
-  color_vector <- ptt_plot_get_color_vector(trace_color, unique_groups, highlight)
+  color_vector <- ptt_plot_get_color_vector(trace_color, unique_groups, highlight, d, grouping)
   
   if(!missing(facet_split)) {
     p <- ptt_plot_get_facet_plot(d, facet_split, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode, font_size, font_color, ticktypes, axis_limits)
@@ -965,8 +971,9 @@ ptt_plot <- function(d,
       p <- ptt_plot_get_plot(d, xaxis, yaxis, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode)
     }
     
-    p$data <- ptt_plot_transform_data_for_download(d, grouping, facet_split)
-    
+    # print(plot_mode)
+    p$data <- ptt_plot_transform_data_for_download(d, grouping, facet_split, plot_mode)
+
     p$elementId <- str_c("widget",runif(1)) |> str_replace("0\\.","-")
     p$color_vector <- color_vector
     p$hover_template <- hovertext
@@ -981,7 +988,6 @@ ptt_plot <- function(d,
     p$line_width <- line_width
     
     maxtime <- max(d$time)
-    
     p <- p |>
       ptt_plot_config(title = title, subtitle = subtitle, caption = caption,
                       font_color = font_color, font_size = font_size,
@@ -1078,6 +1084,7 @@ ptt_plot <- function(d,
     pred_series <- pred_series |> droplevels() |>
       arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> arrange(!!grouping) %>%
       mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
+    t1 <<- pred_series
     color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
     pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
     if(!all(pred_groups %in% names(color_vector))) {
@@ -1168,6 +1175,8 @@ ptt_plot <- function(d,
     function(p, secondary_data, relates_to, grouping,
              hovertext, showlegend = TRUE) {
       
+      if(showlegend == T) { message("Secondary trace showlegend == T does not currently perform as expected.") }
+      
       grouping <- enquo(grouping)
       
       if (missing(relates_to) | missing(secondary_data)) {
@@ -1191,7 +1200,6 @@ ptt_plot <- function(d,
       unique_groups <- d[[as_name(grouping)]] |> unique() |> sort()
       
       split_d <- group_split(d, !!grouping) |> rev()
-      
       for (g in split_d) {
         g.name <- unique(g[[as_name(grouping)]])
         g.level <- which(g.name == levels(g.name))
@@ -1299,13 +1307,17 @@ ptt_plot <- function(d,
   
   #' @importFrom dplyr group_split
   #' @importFrom plotly plot_ly add_trace layout subplot
-  #' @importFrom stringr str_replace_all
+  #' @importFrom stringr str_replace_all str_trunc
   #' @importFrom stats as.formula
   ptt_plot_get_plot <- function(d, xaxis, yaxis, height, grouping, plot_type, trace_color, highlight, color_vector, grid_color, hovertext, plot_mode) {
     
     # print(plot_mode)
     if(plot_mode == "horizontal") {
       d <- get_bar_widths(d, yaxis)
+      hovertemplate <- "%{text}<br>%{customdata} <br>%{x}<extra></extra>"
+    } else {
+      hovertemplate <- ptt_plot_hovertemplate(hovertext)
+      
     }
     
     p <- plot_ly(d, x = as.formula(str_c("~",xaxis)), height = height)
@@ -1314,8 +1326,14 @@ ptt_plot <- function(d,
     split_d <- if(any(plot_type == "scatter")) { rev(split_d) } else { split_d }
     
     for (g in split_d) {
+      g.text <- unique(g[[as_name(grouping)]])
+      if(plot_mode == "horizontal") { 
+        g.fullname <- g[[names(plot_mode)]]
+        g[[names(plot_mode)]] <- fct_relabel(g[[names(plot_mode)]], ~ str_trunc(.,40, ellipsis = "..")) 
+        } else { g.fullname <- NA}
       g.color <- unique(g[[as_name(grouping)]])
       g.name <- unique(g[[as_name(grouping)]])
+      g.text <- unique(g[[as_name(grouping)]])
       g.level <-  which(g.name == levels(g.name))
       g.type <- unique(g$plot.type)
       g.linewidth <- unique(g$line.width)
@@ -1324,20 +1342,23 @@ ptt_plot <- function(d,
       trace.color <- I(color_vector[as.character(g.color)])
       if(is.na(trace.color)) {trace.color <- I(grid_color)}
       p <- p |>
-        add_trace(data=g, y = as.formula(str_c("~",yaxis)), text = g.name,
+        add_trace(data=g, y = as.formula(str_c("~",yaxis)), 
+                  text = g.text,
+                  customdata = g.fullname,
                   texttemplate = NA,
-                  hovertemplate = ptt_plot_hovertemplate(hovertext),
+                  hovertemplate = hovertemplate,
                   line = if(g.type == "scatter") { list(width = g.linewidth) } else { NULL },
                   offsetgroup = if(g.type == "bar") { g.name } else { NULL },
                   legendgroup = g.name,
                   legendrank = legend.rank,
                   showlegend = show.legend,
-                  orientation = "h",
+                  orientation = ifelse(plot_mode == "horizontal","h","v"),
                   offset = if(plot_mode == "horizontal") { ~bar_offset } else { NULL },
                   width = if(plot_mode == "horizontal") { ~bar_width } else { NULL },
                   name = g.name,
                   color = trace.color,
-                  type = g.type, mode = if(g.type == "scatter") { "lines" } else { NULL }
+                  type = g.type, 
+                  mode = if(g.type == "scatter") { "lines" } else { NULL }
         )
     }
     
@@ -1355,7 +1376,7 @@ ptt_plot <- function(d,
   
   #' @importFrom rlang as_name
   #' @importFrom dplyr summarize filter pull
-  ptt_plot_get_color_vector <- function(trace_color, unique_groups, highlight) {
+  ptt_plot_get_color_vector <- function(trace_color, unique_groups, highlight, d, grouping) {
     if(!is.null(trace_color)) {
       
       if(!all(ptt_plot_are_colors(trace_color))) {
@@ -1366,6 +1387,14 @@ ptt_plot <- function(d,
         stop(str_c("Either trace color must be a single color string, or all variables in column \"",as_name(grouping),"\" must have a corresponding trace color, or key \".other\" must be included, or trace_color must be NULL!"), call. = F)
       } else {
         ug <- as.character(unique_groups)
+        missing_groups <- ug %>% subset(!. %in% names(trace_color))
+        if(length(missing_groups) > 0) {
+          detected_traces <- map2(unname(trace_color), names(trace_color), function(tc,nm) {
+            miss <- missing_groups %>% subset(str_detect(., str_c(nm, collapse = "|")))
+            rep(tc, length(miss)) %>% setNames(miss)
+          }) %>% compact() %>% unlist() 
+          trace_color <- c(trace_color, detected_traces)
+        }
         color_vector <- c(trace_color[ug[ug %in% names(trace_color)]],
                           ug[!ug %in% names(trace_color)] %>% length() %>% rep(trace_color[".other"], .) %>% 
                             set_names(ug[!ug %in% names(trace_color)]))
@@ -1400,9 +1429,10 @@ ptt_plot <- function(d,
   #' @importFrom tidyr unite
   #' @importFrom dplyr select mutate across everything rename
   #' @importFrom stringr str_replace
-  ptt_plot_transform_data_for_download <- function(d, grouping, facet_split) {
+  ptt_plot_transform_data_for_download <- function(d, grouping, facet_split, plot_mode) {
     d <- d |> rename(csv.data.tiedot = !! sym(quo_name(grouping)))
     if(!missing(facet_split)) { d <- unite(d, csv.data.tiedot, csv.data.tiedot, !!facet_split, sep = ", ")}
+    if(plot_mode == "horizontal") { d <- unite(d, csv.data.tiedot, csv.data.tiedot, sym(quo_name(names(plot_mode))))}
     d |> 
       select(csv.data.tiedot, time, value) |>
       mutate(

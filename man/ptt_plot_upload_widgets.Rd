@@ -12,5 +12,5 @@ ptt_plot_upload_widgets(files_path, upload_path, overwrite = FALSE)
 \item{upload_path}{The gcs folder where the artefacts will be uploaded to.}
 }
 \description{
-Uploads the html elements and dependencies to cloud storage.
+The cloud storage authentication file have to in working folder or in Tiedosto/Documents folder.
 }

@@ -89,14 +89,13 @@ aplot_trends <- function(dat, x = time, y = value,
     group_by({{colour}}) |>
     # see fix above
     mutate(value = do.call(statfitools::trend_series , args = purrr::discard(c(quote({{y}}), quote({{x}}), trend_lst), is.null))) |>
-    ungroup()
-
+    ungroup() |> 
+    drop_na(value)
   tiedot_name <- rlang::enquo(colour)
 
   p <- ptt_plot(dat, grouping = {{colour}},
                 title = title, subtitle = subtitle, caption = caption,
                 rangeslider = rangeslider)
-
   # print(names(p$color_vector))
 
   if (!trends_only) {
