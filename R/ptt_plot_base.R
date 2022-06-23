@@ -105,11 +105,13 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
   
   dl_string <- (function() {
     row.data <- p$data |> drop_na() |> pmap(function(...) {
-      as.character(list(...)) |> str_replace(";",",") |>str_c(collapse = ";")
+      as.character(list(...)) |> str_replace_all(c(";"=",","'"="’")) |> str_c(collapse = ";")
     }) |> unlist() |> str_c(collapse = "\\n")
     col.names <- names(p$data) |> str_replace("csv\\.data\\.tiedot","tiedot") |> str_c(collapse = ";")
     str_c(col.names,"\\n",row.data)
   })()
+  
+  print(dl_string)
 
   data_dl_btn <- list(
     name = "Lataa tiedot",
@@ -1080,11 +1082,9 @@ ptt_plot <- function(d,
     range.slider <- p$enable_rangeslider
     range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
     plot.mode <- p$plot_mode
-    test_series <<- pred_series
     pred_series <- pred_series |> droplevels() |>
       arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> arrange(!!grouping) %>%
       mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
-    t1 <<- pred_series
     color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
     pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
     if(!all(pred_groups %in% names(color_vector))) {
