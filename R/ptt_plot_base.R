@@ -614,6 +614,7 @@ ptt_plot_create_widget <- function(p, title, filepath, render = T, self_containe
   if(!missing(png_artefacts)) {
     if(missing(png_folder)) png_folder <- filepath
     p %>% ptt_plot_automate_png(png_artefacts, dl_path = png_folder)
+
   }
 
   if(render == T) {
