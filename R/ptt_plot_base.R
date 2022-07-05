@@ -568,6 +568,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @param render Logical. Is the plot rendered to viewer after saving the widget (default true). Returns the plot object nonetheless.
 #' @param self_contained Logical. Will the html artefact have self-contained dependencies, increasing size. Default false.
 #' @param png_artefacts Optional character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.
+#' @param png_folder A folder to save png-files.
 #' @examples
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
@@ -576,7 +577,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom googleCloudStorageR gcs_get_global_bucket
 #' @importFrom fs path
-ptt_plot_create_widget <- function(p, title, filepath, render = T, self_contained = F, png_artefacts) {
+ptt_plot_create_widget <- function(p, title, filepath, render = T, self_contained = F, png_artefacts, png_folder) {
   tofilename <- function(str) {
     str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
       str_c(collapse = "") |>
@@ -611,7 +612,8 @@ ptt_plot_create_widget <- function(p, title, filepath, render = T, self_containe
 
 
   if(!missing(png_artefacts)) {
-    p %>% ptt_plot_automate_png(png_artefacts, filepath)
+    if(missing(png_folder)) png_folder <- filepath
+    p %>% ptt_plot_automate_png(png_artefacts, dl_path = png_folder)
   }
 
   if(render == T) {
@@ -653,10 +655,10 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
               dlBtn.click();
             };
     }"),  data = artefacts) %>%
-    ptt_plot_create_widget(title = "pngdl", path = tempdir(), self_contained = T, render = F)
+    ptt_plot_create_widget(title = "pngdl", filepath = tempdir(), self_contained = T, render = F)
 
   b <- ChromoteSession$new()
-  b$Browser$setDownloadBehavior(behavior = "allow", downloadPath = dl_path)
+  b$Browser$setDownloadBehavior(behavior = "allow", downloadPath = normalizePath(dl_path))
   b$Page$navigate(str_c("file://",path(tempdir(),"pngdl.html")))
   Sys.sleep(2)
   b$close()
@@ -664,8 +666,10 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
   invisible(file.remove(path(tempdir(),"pngdl", ext = "html")))
 
   recent_files <- list.files(dl_path) %>% map(~ {
-    if (file.info(.x)$ctime %>% as_datetime(tz = "UTC") >= now(tz = "UTC") - seconds(5)) { .x }
-  }) %>% compact()
+    if (!is.na(file.info(.x)$ctime) && file.info(.x)$ctime %>% as_datetime(tz = "UTC") >= now(tzone = "UTC") - seconds(5)) { .x }
+  }) %>%
+    purrr::compact()
+
   recent_length <- length(recent_files)
   if(recent_length > 0) {
     message(str_c("\nThe file",ifelse(recent_length > 1, "s",""),"\n", combine_words(recent_files,sep = ",\n", and = ", and\n"),"\n",
@@ -959,7 +963,7 @@ ptt_plot <- function(d,
       detected_widths <- map2(unname(line_width), names(line_width), function(lw,nm) {
         miss <- missing_groups %>% subset(str_detect(., str_c(nm, collapse = "|")))
         rep(lw, length(miss)) %>% setNames(miss)
-      }) %>% compact() %>% unlist()
+      }) %>% purrr::compact() %>% unlist()
       line_width <- c(line_width, detected_widths)
     }
     d <- mutate(d, line.width = line_width[as.character(!!grouping)] %>% dplyr::coalesce(line_width[".other"]))
@@ -1391,7 +1395,7 @@ ptt_plot <- function(d,
           detected_traces <- map2(unname(trace_color), names(trace_color), function(tc,nm) {
             miss <- missing_groups %>% subset(str_detect(., str_c(nm, collapse = "|")))
             rep(tc, length(miss)) %>% setNames(miss)
-          }) %>% compact() %>% unlist()
+          }) %>% purrr::compact() %>% unlist()
           trace_color <- c(trace_color, detected_traces)
         }
         color_vector <- c(trace_color[ug[ug %in% names(trace_color)]],
