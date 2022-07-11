@@ -56,13 +56,13 @@ aplot_lines <- function(dat, x = time, y = value,
     caption <- paste0("L\u00e4hde: ", source, ", PTT")
   }
 
-  dat <-
+  dat1 <-
     dat |>
     droplevels() |>
     mutate(value = {{y}},
            time = {{x}})
 
-  p <- dat |>
+  p <- dat1 |>
     ptt_plot(grouping = {{colour}},
              title = title, subtitle = subtitle, caption = caption,
              rangeslider = rangeslider,
@@ -74,7 +74,7 @@ aplot_lines <- function(dat, x = time, y = value,
     tiedot_name <- rlang::enquo(colour)
 
 
-    dat <-
+    dat2 <-
       dat |>
       droplevels() |>
       mutate(value = {{y2}},
@@ -83,7 +83,7 @@ aplot_lines <- function(dat, x = time, y = value,
     for(var in unique(dat[[as_name(tiedot_name)]])) {
 
 
-      sec.dat <- dat %>%
+      sec.dat <- dat2 %>%
         filter(!!tiedot_name == var)
 
       rel <- unique(sec.dat[[as_name(tiedot_name)]]) %>%
