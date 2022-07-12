@@ -35,7 +35,7 @@
 #'   ungroup() |>
 #'   spread(tiedot, value) |>
 #'   filter(time >= "2018-01-01") |>
-#'   aplot_lines(colour = toimiala_tol_2008, y = trendi,y2 = indeksi,
+#'   aplot_lines(colour = toimiala_tol_2008, y = trendi, y2 = indeksi,
 #'             title = "Teollisuustuotannon volyymi",
 #'             subtitle = "%-muutos, trendi ja työpäiväkorjattu")
 #'
@@ -56,13 +56,17 @@ aplot_lines <- function(dat, x = time, y = value,
     caption <- paste0("L\u00e4hde: ", source, ", PTT")
   }
 
-  dat1 <-
-    dat |>
-    droplevels() |>
-    mutate(value = {{y}},
-           time = {{x}})
+  y <- enquo(y)
+  x <- enquo(x)
 
-  p <- dat1 |>
+  dat <-
+    dat |>
+    droplevels()
+
+  dat[["value"]] <- dat[[as_name(y)]]
+  dat[["time"]] <- dat[[as_name(x)]]
+
+  p <- dat |>
     ptt_plot(grouping = {{colour}},
              title = title, subtitle = subtitle, caption = caption,
              rangeslider = rangeslider,
@@ -71,29 +75,12 @@ aplot_lines <- function(dat, x = time, y = value,
 
   if (!missing(y2)) {
 
-    tiedot_name <- rlang::enquo(colour)
-
-
-    dat2 <-
-      dat |>
-      droplevels() |>
-      mutate(value = {{y2}},
-             grouping = {{colour}})
-
-    for(var in unique(dat[[as_name(tiedot_name)]])) {
-
-
-      sec.dat <- dat2 %>%
-        filter(!!tiedot_name == var)
-
-      rel <- unique(sec.dat[[as_name(tiedot_name)]]) %>%
-        as.character()
-
       p <- p|>
-        ptt_plot_add_secondary_traces(sec.dat, !!rel, grouping,
+        ptt_plot_add_secondary_traces2(dat, y = {{y2}}, grouping = {{colour}},
                                       showlegend = FALSE)
 
-    }}
+  # }
+  }
 
   p
 }
@@ -132,32 +119,47 @@ aplot_trends <- function(dat, x = time, y = value,
   lst <- list(...)
   trend_lst <- lst[c("x11")]
 
+
+
+  y <- rlang::enquo(y)
+  x <- rlang::enquo(x)
+  tiedot_name <- rlang::enquo(colour)
+
+  dat[["value"]] <- dat[[as_name(y)]]
+  dat[["time"]] <- dat[[as_name(x)]]
+
+
   dat <-
     dat |>
     droplevels() |>
-    mutate(alk = {{y}}) |>
     group_by({{colour}}) |>
     # see fix above
-    mutate(value = do.call(statfitools::trend_series , args = purrr::discard(c(quote({{y}}), quote({{x}}), trend_lst), is.null))) |>
+    mutate(trend = do.call(statfitools::trend_series , args = purrr::discard(c(quote(value), quote(time), trend_lst), is.null))) |>
     ungroup() |>
     drop_na(value)
-  tiedot_name <- rlang::enquo(colour)
+
+
 
   p <- ptt_plot(dat, grouping = {{colour}},
                 title = title, subtitle = subtitle, caption = caption,
                 rangeslider = rangeslider)
   # print(names(p$color_vector))
 
-  if (!trends_only) {
-    for(var in unique(dat[[as_name(tiedot_name)]])) {
-    # print(as_name(tiedot_name))
-    # print(var)
-    sec.dat <- dat %>% filter(!!tiedot_name == var) %>% mutate(value = alk) %>%
-      mutate(alk.sarja = "Alkuper\u00e4inen sarja")
-    rel <- unique(sec.dat[[as_name(tiedot_name)]]) %>% as.character()
-    p <- p|>
-      ptt_plot_add_secondary_traces(sec.dat, !!rel, alk.sarja,
-                                    showlegend = org_showlegend)
-  }}
+  if (trends_only) {
+    p <- dat |>
+      mutate(value = trend)|>
+      ptt_plot(grouping = {{colour}},
+                  title = title, subtitle = subtitle, caption = caption,
+                  rangeslider = rangeslider)
+  } else {
+    p <-
+      ptt_plot(dat, grouping = {{colour}},
+               title = title, subtitle = subtitle, caption = caption,
+               rangeslider = rangeslider,
+               line_width = 2) |>
+      ptt_plot_add_secondary_traces2(dat, y = trend, grouping = {{colour}},
+                                     showlegend = FALSE, line_width = 4)
+
+  }
   p
 }
