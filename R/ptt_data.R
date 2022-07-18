@@ -36,5 +36,16 @@ ptt_data_robo_c <- function(..., labels = FALSE){
   ptt_data_robo(..., labels = labels)
 }
 
+#' @describeIn ptt_data_robo Both labels and codes.
+#' @export
+#'
+ptt_data_robo_b <- function(...){
+  bind_cols(
+    ptt_data_robo_l(...),
+    rename_with(ptt_data_robo_c(...), ~paste0(.x, "_code"))
+  ) |>
+    select(-value_code, -time_code) |>
+    relocate(value, .after = last_col())
+}
 
 utils::globalVariables("where")
