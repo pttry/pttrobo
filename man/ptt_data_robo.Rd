@@ -4,6 +4,7 @@
 \alias{ptt_data_robo}
 \alias{ptt_data_robo_l}
 \alias{ptt_data_robo_c}
+\alias{ptt_data_robo_b}
 \title{Get Data with robonomistClient in PTT Format}
 \usage{
 ptt_data_robo(..., labels = TRUE)
@@ -11,6 +12,8 @@ ptt_data_robo(..., labels = TRUE)
 ptt_data_robo_l(..., labels = TRUE)
 
 ptt_data_robo_c(..., labels = FALSE)
+
+ptt_data_robo_b(...)
 }
 \arguments{
 \item{...}{Arguments to \code{\link[robonomistClient]{data_get}}.
@@ -22,7 +25,6 @@ see \code{\link[robonomistClient]{data}}}
 Uses \code{robonomistClient::data_get} to get data from robonomist,
 but with PTT formating:
 \itemize{
-\item codes instead of labels
 \item tidy_time = TRUE
 \item variables as factors
 }
@@ -32,6 +34,8 @@ but with PTT formating:
 \item \code{ptt_data_robo_l}: With labels TRUE.
 
 \item \code{ptt_data_robo_c}: With labels FALSE.
+
+\item \code{ptt_data_robo_b}: Both labels and codes.
 }}
 
 \examples{
