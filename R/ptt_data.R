@@ -2,7 +2,6 @@
 #'
 #' Uses \code{robonomistClient::data_get} to get data from robonomist,
 #' but with PTT formating:
-#'  - codes instead of labels
 #'  - tidy_time = TRUE
 #'  - variables as factors
 #'
