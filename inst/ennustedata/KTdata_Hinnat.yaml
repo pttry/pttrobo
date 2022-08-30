@@ -1,18 +1,18 @@
 KTdata_Hinnat:
   Hinnat_v:
-  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xc.px
+  - id: StatFin/khi/statfin_khi_pxt_11xc.px
     muunnos: alkuperäinen
     tiedot:
       Hyödyke:
       - 0 Kuluttajahintaindeksi
       Tiedot: Vuosimuutos (%)
-  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px
+  - id: StatFin/khi/statfin_khi_pxt_11xe.px
     muunnos: alkuperäinen
     tiedot:
       Hyödyke:
       - 0 KULUTTAJAHINTAINDEKSI
       Tiedot: Vuosimuutos (%)
-  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xk.px
+  - id: StatFin/khi/statfin_khi_pxt_11xk.px
     muunnos: alkuperäinen
     tiedot:
       Indeksisarja:
@@ -29,7 +29,7 @@ KTdata_Hinnat:
       geo:
       - Euro area (EA11-1999, EA12-2001, EA13-2007, EA15-2008, EA16-2009, EA17-2011, EA18-2014, EA19-2015)
   KHI_kk:
-  - id: StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px
+  - id: StatFin/khi/statfin_khi_pxt_11xq.px
     muunnos: alkuperäinen
     tiedot:
       Indeksisarja:
@@ -50,7 +50,7 @@ KTdata_Hinnat:
       - MUUT TAVARAT JA PALVELUT
       Tiedot: Pisteluku
   KHI_v:
-  - id: StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px
+  - id: StatFin/khi/statfin_khi_pxt_11xq.px
     muunnos: vuosikeskiarvo
     tiedot:
       Indeksisarja:

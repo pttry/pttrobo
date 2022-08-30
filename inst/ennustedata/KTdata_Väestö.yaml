@@ -1,6 +1,6 @@
 KTdata_Väestö:
   Väestöennuste:
-  - id: StatFin/vrm/vaenn/statfin_vaenn_pxt_128t.px
+  - id: StatFin/vaenn/statfin_vaenn_pxt_128t.px
     muunnos: alkuperäinen
     tiedot:
       Sukupuoli:

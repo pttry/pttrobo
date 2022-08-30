@@ -1,6 +1,6 @@
 KTdata_Tulot:
   Ansiotasoindeksi:
-  - id: StatFin/pal/ati/nj/statfin_ati_pxt_13dy.px
+  - id: StatFin/ati/statfin_ati_pxt_13dy.px
     muunnos: vuosikeskiarvo
     tiedot:
       Työnantajasektori:
