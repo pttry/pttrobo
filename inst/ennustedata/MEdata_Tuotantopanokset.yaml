@@ -1,6 +1,6 @@
 MEdata_Tuotantopanokset:
   Ostajahinta_v:
-  - id: StatFin/hin/ttohi/statfin_ttohi_pxt_11gv.px
+  - id: StatFin/ttohi/statfin_ttohi_pxt_11gv.px
     muunnos: vuosikeskiarvo
     tiedot:
       Maatalouden tuotantovälineiden ostohintaindeksin luokitus:
@@ -54,7 +54,7 @@ MEdata_Tuotantopanokset:
       Tiedot:
       - Maatalouden tuotantovälineiden ostohintaindeksi (2015=100)
   Ostajahinta_kk:
-  - id: StatFin/hin/ttohi/statfin_ttohi_pxt_11gv.px
+  - id: StatFin/ttohi/statfin_ttohi_pxt_11gv.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden tuotantovälineiden ostohintaindeksin luokitus:

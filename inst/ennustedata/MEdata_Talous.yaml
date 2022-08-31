@@ -1,6 +1,6 @@
 MEdata_Talous:
   taloustili_th_arvo:
-  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+  - id: StatFin/eaa/statfin_eaa_pxt_12d7.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden taloustili:
@@ -48,7 +48,7 @@ MEdata_Talous:
       Tiedot:
       - Tuottajahintaan, käyvin hinnoin,  miljoonaa euroa
   taloustili_ph_arvo:
-  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+  - id: StatFin/eaa/statfin_eaa_pxt_12d7.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden taloustili:
@@ -96,7 +96,7 @@ MEdata_Talous:
       Tiedot:
       - Perushintaan, käyvin hinnoin, miljoonaa euroa
   taloustili_th_vol:
-  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+  - id: StatFin/eaa/statfin_eaa_pxt_12d7.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden taloustili:
@@ -144,7 +144,7 @@ MEdata_Talous:
       Tiedot:
       - Tuottajahintaan, viitevuoden 2010 hinnoin,  miljoonaa euroa
   taloustili_ph_vol:
-  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+  - id: StatFin/eaa/statfin_eaa_pxt_12d7.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden taloustili:
@@ -192,7 +192,7 @@ MEdata_Talous:
       Tiedot:
       - Perushintaan, viitevuoden 2010 hinnoin, miljoonaa euroa
   taloustili_th_evh:
-  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+  - id: StatFin/eaa/statfin_eaa_pxt_12d7.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden taloustili:
@@ -240,7 +240,7 @@ MEdata_Talous:
       Tiedot:
       - Tuottajahintaan, edellisen vuoden hinnoin,  miljoonaa euroa
   taloustili_ph_evh:
-  - id: StatFin/maa/eaa/statfin_eaa_pxt_12d7.px
+  - id: StatFin/eaa/statfin_eaa_pxt_12d7.px
     muunnos: alkuperäinen
     tiedot:
       Maatalouden taloustili:

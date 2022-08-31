@@ -22,7 +22,7 @@ MEdata_Lihamarkkinat:
       - Broilerit
       - Siipikarjanliha keskimäärin 1)
   liha_kulutus:
-  - id: StatFin/vrm/vamuu/statfin_vamuu_pxt_11ll.px
+  - id: StatFin/vamuu/statfin_vamuu_pxt_11ll.px
     muunnos: vuosikeskiarvo
     tiedot:
       Tiedot:
