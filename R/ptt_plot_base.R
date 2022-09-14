@@ -569,6 +569,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @param self_contained Logical. Will the html artefact have self-contained dependencies, increasing size. Default false.
 #' @param png_artefacts Optional character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.
 #' @param png_folder A folder to save png-files.
+#' @param iframe_heigh A height of the iframe.
 #' @examples
 #' p |> ptt_plot_create_widget()
 #' @return The plotly object p.
@@ -577,7 +578,10 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom htmlwidgets saveWidget
 #' @importFrom googleCloudStorageR gcs_get_global_bucket
 #' @importFrom fs path
-ptt_plot_create_widget <- function(p, title, filepath, render = T, self_contained = F, png_artefacts, png_folder) {
+ptt_plot_create_widget <- function(p, title, filepath,
+                                   render = T, self_contained = F,
+                                   png_artefacts, png_folder,
+                                   iframe_height = "550px") {
   tofilename <- function(str) {
     str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
       str_c(collapse = "") |>
@@ -598,7 +602,10 @@ ptt_plot_create_widget <- function(p, title, filepath, render = T, self_containe
       cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
       #dir.create(cur_input,showWarnings = F)
       ###
-      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',cur_input,"/",title,'.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="480px"></iframe>\n'))
+      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',
+                cur_input,"/",title,
+                '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
+                iframe_height, '"></iframe>\n'))
       # }
 
       tempdir()
