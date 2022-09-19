@@ -9,7 +9,8 @@ data_get("eia/PET.RBRTE.M") |>
 data_get("eurostat/namq_10_gdp") |>
   data_to_yaml()
 
-
+data_get("oecd/EO") |>
+  data_to_yaml()
 
 # Kansantalouden tilinpito
 
@@ -69,6 +70,6 @@ data_get("StatFin/jul/jyev/statfin_jyev_pxt_12sy.px") |>
 data_get("StatFin/jul/jyev/statfin_jyev_pxt_11yv.px") |>
   data_to_yaml()
 
-ptt_update_ennustedata("KTdata_Q", start_year = 2013)
+ptt_update_ennustedata("KTdata_Se", start_year = 2013)
 ptt_copy_ennustedata("KT")
 

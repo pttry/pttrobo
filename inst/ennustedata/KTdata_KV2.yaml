@@ -1,0 +1,85 @@
+KTdata_KV2:
+  BKT:
+  - id: oecd/EO
+    muunnos: alkuperäinen
+    frequency: Annual
+    tiedot:
+      Country:
+      - Euro area (17 countries)
+      - Germany
+      - France
+      - Italy
+      - Spain
+      - United Kingdom
+      - Sweden
+      - United States
+      - Russia
+      - Japan
+      - China (People's Republic of)
+      - India
+      - Indonesia
+      - Dynamic Asian Economies
+      - Oil producers
+      - Argentina
+      - Brazil
+      - World
+      Variable:
+      - Gross domestic product, volume, growth
+      Frequency:
+      - Annual
+  Tuonti_vol_usd:
+  - id: oecd/EO
+    muunnos: alkuperäinen
+    frequency: Annual
+    tiedot:
+      Country:
+      - Euro area (17 countries)
+      - Germany
+      - France
+      - Italy
+      - Spain
+      - United Kingdom
+      - Sweden
+      - United States
+      - Russia
+      - Japan
+      - China (People's Republic of)
+      - India
+      - Indonesia
+      - Dynamic Asian Economies
+      - Oil producers
+      - Argentina
+      - Brazil
+      - World
+      Variable:
+      - Imports of goods and services, volume in USD (national accounts basis)
+      Frequency:
+      - Annual
+  BKT_PPP:
+  - id: oecd/EO
+    muunnos: alkuperäinen
+    frequency: Annual
+    tiedot:
+      Country:
+      - Euro area (17 countries)
+      - Germany
+      - France
+      - Italy
+      - Spain
+      - United Kingdom
+      - Sweden
+      - United States
+      - Russia
+      - Japan
+      - China (People's Republic of)
+      - India
+      - Indonesia
+      - Dynamic Asian Economies
+      - Oil producers
+      - Argentina
+      - Brazil
+      - World
+      Variable:
+      - Gross domestic product, volume in USD, at constant purchasing power parities
+      Frequency:
+      - Annual

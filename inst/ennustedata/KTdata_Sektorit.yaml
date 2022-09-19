@@ -178,7 +178,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -268,13 +268,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -480,7 +480,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -570,13 +570,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -782,7 +782,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -872,13 +872,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -1084,7 +1084,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -1174,13 +1174,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -1386,7 +1386,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -1476,13 +1476,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -1688,7 +1688,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -1778,13 +1778,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -1990,7 +1990,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -2080,13 +2080,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -2292,7 +2292,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -2382,13 +2382,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -2594,7 +2594,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -2684,13 +2684,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -2896,7 +2896,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -2986,13 +2986,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
@@ -3198,7 +3198,7 @@ KTdata_Sektorit:
       - D61K Maksetut sosiaaliturvamaksut
       - D611K Työnantajan todelliset sosiaaliturvamaksut, menona
       - D6111K Työnantajan todelliset eläkemaksut, menona
-      - D61111K Työnanatajan pakolliset todelliset eläkemaksut, menona
+      - D61111K Työnantajan pakolliset todelliset eläkemaksut, menona
       - D61112K Työnantajan vapaaehtoiset todelliset eläkemaksut, menona
       - D6112K Työnantajan todelliset muut maksut kuin eläkemaksut, menona
       - D61121K Työnantajan pakolliset todelliset muut maksut kuin eläkemaksut, menona
@@ -3288,13 +3288,13 @@ KTdata_Sektorit:
       - D99KS13141 Muut pääomansiirrot työeläkelaitoksille, menona
       - D99KS13149 Muut pääomansiirrot muille sosiaaliturvarahastoille, menona
       - B101 Säästöistä ja pääomansiirroista johtuvat nettovarallisuuden muutokset
-      - P51CR Kiinteän pääoman kuluminen, menona
+      - P51CR Kiinteän pääoman kuluminen, tulona
       - P5K  Pääoman bruttomuodostus, menona
       - P51K Kiinteän pääoman bruttomuodostus, menona
       - P52K Varaston muutos, menona
       - P53K Arvoesineiden nettohankinta, menona
       - NP Valmistamattomien muiden kuin rahoitusvarojen nettohankinta
-      - NP1Luonnonvarojen nettohankinta
+      - NP1 Luonnonvarojen nettohankinta
       - NP11 Luonnonvarojen osto
       - NP12 Luonnonvarojen myynnit
       - NP2 Muiden valmistamattomien varojen nettohankinta
