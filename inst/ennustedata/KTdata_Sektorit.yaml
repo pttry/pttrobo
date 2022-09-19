@@ -50,7 +50,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -352,7 +352,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -654,7 +654,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -956,7 +956,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -1258,7 +1258,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -1560,7 +1560,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -1862,7 +1862,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -2164,7 +2164,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -2466,7 +2466,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -2768,7 +2768,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
@@ -3070,7 +3070,7 @@ KTdata_Sektorit:
       - P622K Muu palvelujen vienti, menona
       - B11 Tavaroiden ja palveluiden tase
       - D1R Palkansaajakorvaukset, tulona
-      - D11R Saadut palkat ja palkkiot, menona
+      - D11R Saadut palkat ja palkkiot, tulona
       - D12R Työnantajan sosiaaliturvamaksut, tulona
       - D2R Tuotannon ja tuonnin verot, tulona
       - D21R  Tuoteverot, tulona
