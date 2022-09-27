@@ -99,5 +99,25 @@ KTdata_Hinnat:
       - Bensiini 95 E 10, 1 l
       - Bensiini 98 E 5, 1 l
       Tiedot: Keskihinta
-
+  khi_painot:
+  - id: StatFin/khi/statfin_khi_pxt_13a8.px
+    muunnos: alkuperäinen
+    tiedot:
+      Indeksisarja:
+      - KHI
+      Hyodyke:
+      - 0 Kuluttajahintaindeksi
+      - 01 ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT
+      - 02 ALKOHOLIJUOMAT, TUPAKKA
+      - 03 VAATETUS JA JALKINEET
+      - 04 ASUMINEN, VESI, SÄHKÖ, KAASU JA MUUT POLTTOAINEET
+      - 05 KALUSTEET, KOTITALOUSKONEET JA YLEINEN KODINHOITO
+      - 06 TERVEYS
+      - 07 LIIKENNE
+      - 08 VIESTINTÄ
+      - 09 KULTTUURI JA VAPAA-AIKA
+      - 10 KOULUTUS
+      - 11 RAVINTOLAT JA HOTELLIT
+      - 12 MUUT TAVARAT JA PALVELUT
+      Tiedot: Painopromille
 
