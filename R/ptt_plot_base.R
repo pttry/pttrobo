@@ -705,7 +705,7 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
 #' @importFrom purrr walk
 ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, release_time = TRUE) {
 
-  if ((is.logical(release_time) && release_time) || release_time  < Sys.time()) stop("Upload is past the release time. Set new relese_time or set it FALSE")
+  if ((is.logical(release_time) && release_time) || (release_time  < Sys.time() && !is.logical(release_time))) stop("Upload is past the release time. Set new relese_time or set it FALSE")
 
   if (length(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))) != 0){
     aut_file <- Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))
