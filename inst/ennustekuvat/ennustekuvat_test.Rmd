@@ -21,6 +21,8 @@ library(statfitools)
 library(lubridate)
 library(pttdatahaku)
 devtools::load_all()
+
+release_time <- "2022-10-06 10:00:00 EEST"
 start_time <- "2014-01-01"
 
 read_ennuste_data <- function(ennuste_data_file) {

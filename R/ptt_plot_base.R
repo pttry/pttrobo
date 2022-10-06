@@ -693,6 +693,9 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
 #'
 #' @param files_path The folder where the artefacts to be uploaded are located.
 #' @param upload_path The gcs folder where the artefacts will be uploaded to.
+#' @param release_time A release time in same format as \code{\link[base]{Sys.time}}.
+#'        Can be set also \code{FALSE}. If past the Sys.time() of code{TRUE} prevents upload.
+#'
 #' @export
 #' @importFrom knitr current_input
 #' @importFrom stringr str_remove str_replace_all str_c str_detect
