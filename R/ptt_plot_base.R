@@ -111,7 +111,7 @@ ptt_plot_set_modebar <- function(p, title, subtitle, png_layout, reset = F) {
     str_c(col.names,"\\n",row.data)
   })()
   
-  print(dl_string)
+  # print(dl_string)
 
   data_dl_btn <- list(
     name = "Lataa tiedot",
@@ -654,7 +654,7 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
               dlBtn.click();
             };
     }"),  data = artefacts) %>%
-    ptt_plot_create_widget(title = "pngdl", path = tempdir(), self_contained = T, render = F)
+    ptt_plot_create_widget(title = "pngdl", filepath = tempdir(), self_contained = T, render = F)
   
   b <- ChromoteSession$new()
   b$Browser$setDownloadBehavior(behavior = "allow", downloadPath = dl_path)
@@ -1065,13 +1065,19 @@ ptt_plot <- function(d,
         mutate(across(matches("[0-9]{4}"), ~ as.double(.x))) |>
         pivot_longer(cols = matches("[0-9]{4}"), names_to = "year") |>
         select(year, !!grouping, value) |> group_by(!!grouping) |> slice_tail(n = n_obs) |>
-        mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |> mutate(time = time + months(months_shift)) |>
+        mutate(count = 2) |> uncount(count) |> group_by(year) |> 
+        mutate(
+          time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date(),
+          year = lubridate::as_date(paste0(year, c("-01-01")))) |> mutate(time = time + months(months_shift)) |>
         ungroup() |>
         relocate(value, .after = time) |>
         mutate(value = value * value_multiplier)
     } else {
       pred_series <- pred_data |>
-        mutate(count = 2) |> uncount(count) |> group_by(year) |> mutate(time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date()) |> mutate(time = time + months(months_shift)) |>
+        mutate(count = 2) |> uncount(count) |> group_by(year) |> 
+        mutate(
+          time = paste0(year, c("-02-01","-11-01")) |> lubridate::as_date(),
+          year = lubridate::as_date(paste0(year, c("-01-01")))) |> mutate(time = time + months(months_shift)) |>
         ungroup() |>
         relocate(value, .after = time) |>
         mutate(value = value * value_multiplier)
@@ -1083,7 +1089,9 @@ ptt_plot <- function(d,
     range.slider$range[[2]] <- max(range.slider$range[[2]],pred_series$time)
     plot.mode <- p$plot_mode
     pred_series <- pred_series |> droplevels() |>
-      arrange(year) |> group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> arrange(!!grouping) %>%
+      arrange(year) |> 
+      # group_by(year, time) |> mutate(barmax = cumsum(value), barmin = replace_na(lag(barmax),0)) |> ungroup() |> 
+      arrange(!!grouping) %>%
       mutate(plot.type = str_replace_all(!!grouping, p$trace_types)) |> group_by(year, !!grouping) |> group_split()
     color_vector <- p$color_vector |> farver::decode_colour() |> farver::encode_colour(alpha = 0.5)
     pred_groups <- (pred_series |> reduce(bind_rows))[[as_name(grouping)]] |> unique()
@@ -1092,33 +1100,47 @@ ptt_plot <- function(d,
     }
     legend.items <- c()
     for (s in pred_series) {
-      s.name <- unique(s[[as_name(grouping)]])
+      s.name <- unique(s[[as_name(grouping)]]) %>% as.character()
       s.level <- p$legend_ranks[s.name]
       s.linewidth <- unique(s$line.width)
       show.legend <- ifelse(!s.name %in% legend.items, showlegend, F)
       legend.items <- c(legend.items, s.name) |> unique()
       legend.rank <- s.level * 1.1 + 1
       s.type <- unique(s$plot.type)
-      # print(s |> bind_rows(mutate(s, value = 0)) |> arrange(time, value))
       if(s.type == "bar") {
-        template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
-        s <- if(plot.mode == "relative") {
-          s |> mutate(time = time-days(165), count = 2) |> uncount(count) |>
-            mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax))
-        } else {
-          s |> mutate(count = 2) |> uncount(count) |> mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), 0, value))
-          
-        }
+        # s <- s %>% mutate(time = floor_date(time, "years")) %>% distinct()
+        s <- s %>% mutate(time = year) %>% select(-year) %>% distinct()
+        # template <- ptt_plot_hovertemplate(hovertext) |> str_replace_all("\\%\\{y\\:\\.1f\\}", str_c(round(max(s$value), digits = hovertext$rounding)))
+      #   s <- if(plot.mode == "relative") {
+      #     s |> mutate(time = time-days(165), count = 2) |> uncount(count) |>
+      #       mutate(valtext = value, value = ifelse(row_number() %in% c(1, last(row_number())), barmin, barmax))
+      #   } else {
+      #     s |> mutate(count = 2) |> uncount(count) %>% mutate(valtext = value, value = ifelse(row_number() %in% c(1, max(row_number())), barmin, barmax), time = time - weeks(24))
+      #     
+      #   }
+        template <- ptt_plot_hovertemplate(hovertext) %>% str_replace("\\{text\\}","\\{customdata\\}")
         p <- p |>
-          add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
-                    hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
+          add_trace(y = s$value , x = s$time, text = NA, type = "bar",
                     color = I(color_vector[s.name]),
-                    name = str_c(s.name, "<br>", str_c(round(max(s$valtext), digits = hovertext$rounding)),"<br>",unique(s$year),"<br>(ennuste)"),
+                    name = ifelse(with_labs == T, str_c(s.name,", ennuste"), "Ennuste"),
                     legendgroup = s.name,
-                    hoverinfo = text,
+                    hoverinfo = NA,
+                    texttemplate = NA,
+                    customdata = s.name,
+                    offsetgroup = s.name,
                     legendrank = legend.rank,
                     showlegend = show.legend,
                     hovertemplate = template)
+        # p <- p |>
+        #   add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "markers+lines",
+        #             hoveron = "points+fills", fill = "toself", marker = list(size = c(0,0,0,0)), fillcolor = I(color_vector[s.name]),
+        #             color = I(color_vector[s.name]),
+        #             name = str_c(s.name, "<br>", str_c(round(max(s$valtext), digits = hovertext$rounding)),"<br>",unique(s$year),"<br>(ennuste)"),
+        #             legendgroup = s.name,
+        #             hoverinfo = text,
+        #             legendrank = legend.rank,
+        #             showlegend = show.legend,
+        #             hovertemplate = template)
       } else {
         p <- p |>
           add_trace(y = s$value , x = s$time, text = s[[as_name(grouping)]], type = "scatter", mode = "lines",
@@ -1133,6 +1155,7 @@ ptt_plot <- function(d,
       }
     }
     pred_d <- pred_series |> map_dfr(~.x) |>
+      mutate(time = year) %>% select(-year) %>% distinct() %>% 
       rename(csv.data.tiedot = !! rlang::sym(rlang::quo_name(grouping))) |>
       select(csv.data.tiedot, time, value) |>
       distinct(csv.data.tiedot, time, value) |>
