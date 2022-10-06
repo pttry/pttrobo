@@ -1,13 +1,13 @@
 KTdata_Julkinen:
   EDP_velka:
-  - id: StatFin/jul/jyev/statfin_jyev_pxt_12sy.px
+  - id: StatFin/jyev/statfin_jyev_pxt_12sy.px
     muunnos: viimeinen
     tiedot:
       Tiedot:
       - EDP-velka, miljoonaa euroa
       - Julkisyhteisöjen EDP-velan BKT-suhde, %
   EDP_Velka_sektorit:
-  - id: StatFin/jul/jyev/statfin_jyev_pxt_11yv.px
+  - id: StatFin/jyev/statfin_jyev_pxt_11yv.px
     muunnos: viimeinen
     tiedot:
       Velallissektori:
@@ -18,3 +18,845 @@ KTdata_Julkinen:
       Vara:
       - F2-F4 Käteisraha, talletukset, velkapaperit ja lainat
       Tiedot: EDP-velka, miljoonaa euroa
+  Valtiontalous:
+  - id: tidy/valtiontalouden_rahavirtalaskelma
+    muunnos: vuosisumma
+    tiedot:
+      Taulukko:
+      - Valtiontalouden tasapaino
+      Aikasarja:
+      - Tulot ilman sijoituksia
+      - Menot ilman sijoituksia
+      - Tuloylijäämä/alijäämä
+      - Rahoitustarve
+      Tiedot:
+      - Kuukausitiedot
+  Valtiontalous_verot:
+  - id: tidy/valtiontalouden_rahavirtalaskelma
+    muunnos: vuosisumma
+    tiedot:
+      Taulukko:
+      - Verot ja veronluonteiset tulot
+      Aikasarja:
+      - Tulo- ja varallisuusverotulot
+      - Arvonlisäverotulot
+      - Muut verotulot
+      - Verot ja veronluonteiset tulot yhteensä
+      Tiedot:
+      - Kuukausitiedot
+  Verot_julkinen:
+  - id: StatFin/vermak/statfin_vermak_pxt_127f.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13 Julkisyhteisöt
+      Verolaji:
+      - Yhteensä
+      - 1000 Tulo- ja pääomaverot
+      - 1100 Kotitalouksien tulo- ja pääomaverot
+      - 110001 Korkotulojen lähdevero
+      - 110002 Kotitalouksien tulovero
+      - 110003 Merimiesvero
+      - 110004 Arpajaisvero (arpajaisvoitoista)
+      - 1200 Yhteisövero
+      - 120001 Yhteisöjen tulovero
+      - 120002 Yhteisöjen kirkollisvero
+      - 120003 Suhdannevaihteluiden tasoitusmaksu
+      - 2000 Pakolliset sosiaaliturvamaksut
+      - 2100 Vakuutettujen pakolliset sosiaaliturvamaksut
+      - 210001 Vakuutettujen työeläkemaksut
+      - 210002 Vakuutettujen muut sosiaaliturvamaksut
+      - 2200 Työnantajan pakolliset sosiaaliturvamaksut
+      - 220001 Työnantajan työeläkemaksut
+      - 220002 Työnantajan muut sosiaaliturvamaksut
+      - 3000 Verot palkkasummasta ja työvoimasta
+      - 300001 Verot palkkasummasta ja työvoimasta
+      - 4000 Omaisuusverot
+      - 4100 Toistuvat kiinteään omaisuuteen kohdistuvat verot
+      - 410001 Katumaksu/Kiinteistövero
+      - 4200 Toistuvat nettovarallisuuteen kohdistuvat verot
+      - 4210 Toistuvat kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 421001 Varallisuusvero, yksilö
+      - 4220 Toistuvat muiden kuin kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 422001 Varallisuusvero, yhteisö
+      - 4300 Perintö- ja lahjavero
+      - 430001 Perintö- ja lahjavero
+      - 4400 Pääomakaupan verot
+      - 440001 Varainsiirtovero
+      - 440002 Leimavero
+      - 440003 Luottovero
+      - 5000 Tavaroista ja palveluista maksetut verot
+      - 5100 Myynnistä, luovutuksesta tai vuokrauksesta maksetut verot
+      - 5110 Yleiset tavaroiden ja palveluiden myynnistä tai vuokrauksesta maksetut verot
+      - 5111 Arvonlisäverot
+      - 511101 Arvonlisäverot
+      - 5113 Liikevaihtovero ja muut yleiset kaupan verot
+      - 511301 Arpajaisvero (arpajaisten tuotosta)
+      - 511302 Vakuutusmaksuvero
+      - 511303 Tasausvero
+      - 511304 Televero
+      - 5120 Tiettyjen tuotteiden ja palveluiden verot
+      - 5121 Valmisteverot
+      - 512101 Alkoholijuomavero
+      - 512102 Energiaverot
+      - 512103 Auto- ( ja moottoripyörä- ) vero
+      - 512104 Virvoitusjuomavero (sis makeisten ja jäätelön valmisteveron 2011-2016)
+      - 512105 Tupakkavero
+      - 512106 Eräiden juomapakkausten valmistevero
+      - 512107 Öljysuojamaksu
+      - 512108 Öljyjätemaksu
+      - 512109 Apteekkimaksut
+      - 512110 Varmuusvarastointimaksu
+      - 512111 Elintarvikkeiden valmistevero
+      - 512112 Erikoiskasvien markkinoimismaksu
+      - 512113 Fosforilannoitevero
+      - 512114 Hinnanerokorvaus
+      - 512115 Lannoitevero
+      - 512116 Maataloustuotteiden markkinoimismaksu
+      - 512117 Maataloustuotteiden tasausmaksu
+      - 512118 Voin hinnanalennusmaksu
+      - 512119 Öljypohjaisten, väkevöityjen rehujen vero
+      - 512120 Maidon kiintiömaksu
+      - 512121 Makeisvero
+      - 512122 Olutvero
+      - 512123 Rasva- ja valkuaisvero
+      - 512124 Ravintorasvavero
+      - 512125 Ruokinta-ainevero
+      - 512126 Sokerivero
+      - 512127 Sähkövero
+      - 5122 Monopolitoiminnan tuottojen verot
+      - 512201 Alkon ylijäämä
+      - 5123 Tuontimaksut ja -tullit
+      - 512301 Kaupunkitullimaksut
+      - 512302 Tuontimaksut
+      - 512303 Tuontitulli
+      - 512304 Tuontimaksu hintavakausrahastoon
+      - 5126 Tiettyjen palveluiden verot
+      - 512601 Jätevero
+      - 512602 Palosuojamaksu
+      - 512603 Ydinenergiatutkimusmaksu
+      - 512604 Pankkivero
+      - 512605 Ratavero
+      - 512606 EU-Vakausmaksut
+      - 512607 Rahapelitoiminnan voittovarat
+      - 512608 Elokuvavero
+      - 512609 Veikkauksen ja raha-arpajaisten voittovarat
+      - 512610 Raha-automaattiyhdistyksen voittovarat
+      - 512611 Leimavero, viihteeseen
+      - 512612 Valtion osuus  hevoskilp vedonlyöntituloista
+      - 512613 Talletussuojamaksut
+      - 5127 Muut kansainvälisen kaupan verot
+      - 512701 Matkustajavero  (mom 1976 henkilöauton käyttömaksu)
+      - 5128 Muut tiettyjen tuotteiden ja palveluiden verot
+      - 512801 Sokerimaksut EU:lle
+      - 512802 EHTY-maksu
+      - 5200 Käyttölupamaksut
+      - 5210 Toistuvat käyttölupamaksut
+      - 521001 Ajoneuvovero
+      - 521002 Moottoriajoneuvovero
+      - 5213 Muut toistuvat verot
+      - 521301 Hirvilupamaksut
+      - 521302 Kalastuksenhoitomaksut
+      - 521303 Riistanhoitomaksut
+      - 521304 Tenojoen kalastuslupamaksut
+      - 521305 Lästimaksut
+      - 521306 Pilkintämaksut
+      - 521307 Saaristokuntien kalastuslupamaksut
+      - 521308 Metsästys- ja kalastuslupamaksut
+      - 521309 Koiravero
+      - 5220 Kertaluonteiset verot
+      - 522001 Ajoneuvojen rekisteröintimaksu
+      - 522002 Tulot päästöoikeuksien huutokaupasta
+      - 6000 Muut verot
+      - 600001 Tuoteverojen viivästysseuraamukset
+      - 600002 Takaisin maksetut verot (kaikki)
+      - 600003 Muut verotulot
+      - 600004 Muiden tuotantoverojen viivästysseuraamukset
+      - 600005 Takaisin maksetut verot
+      - 600006 Muiden välittömien verojen viivästysseuraamukset
+      - 600007 Verojen viivästysseuraamukset, VH:n osuus
+      - 600008 Kasvinjalostusmaksut
+      - 600009 Lisätulli sukkahousuista
+      - 600010 EU:lle tilitettävät tuonnin verot
+      Tiedot:
+      - Käyvin hinnoin, miljoonaa euroa
+  Verot_valtio:
+  - id: StatFin/vermak/statfin_vermak_pxt_127f.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S1311 Valtionhallinto
+      Verolaji:
+      - Yhteensä
+      - 1000 Tulo- ja pääomaverot
+      - 1100 Kotitalouksien tulo- ja pääomaverot
+      - 110001 Korkotulojen lähdevero
+      - 110002 Kotitalouksien tulovero
+      - 110003 Merimiesvero
+      - 110004 Arpajaisvero (arpajaisvoitoista)
+      - 1200 Yhteisövero
+      - 120001 Yhteisöjen tulovero
+      - 120002 Yhteisöjen kirkollisvero
+      - 120003 Suhdannevaihteluiden tasoitusmaksu
+      - 2000 Pakolliset sosiaaliturvamaksut
+      - 2100 Vakuutettujen pakolliset sosiaaliturvamaksut
+      - 210001 Vakuutettujen työeläkemaksut
+      - 210002 Vakuutettujen muut sosiaaliturvamaksut
+      - 2200 Työnantajan pakolliset sosiaaliturvamaksut
+      - 220001 Työnantajan työeläkemaksut
+      - 220002 Työnantajan muut sosiaaliturvamaksut
+      - 3000 Verot palkkasummasta ja työvoimasta
+      - 300001 Verot palkkasummasta ja työvoimasta
+      - 4000 Omaisuusverot
+      - 4100 Toistuvat kiinteään omaisuuteen kohdistuvat verot
+      - 410001 Katumaksu/Kiinteistövero
+      - 4200 Toistuvat nettovarallisuuteen kohdistuvat verot
+      - 4210 Toistuvat kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 421001 Varallisuusvero, yksilö
+      - 4220 Toistuvat muiden kuin kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 422001 Varallisuusvero, yhteisö
+      - 4300 Perintö- ja lahjavero
+      - 430001 Perintö- ja lahjavero
+      - 4400 Pääomakaupan verot
+      - 440001 Varainsiirtovero
+      - 440002 Leimavero
+      - 440003 Luottovero
+      - 5000 Tavaroista ja palveluista maksetut verot
+      - 5100 Myynnistä, luovutuksesta tai vuokrauksesta maksetut verot
+      - 5110 Yleiset tavaroiden ja palveluiden myynnistä tai vuokrauksesta maksetut verot
+      - 5111 Arvonlisäverot
+      - 511101 Arvonlisäverot
+      - 5113 Liikevaihtovero ja muut yleiset kaupan verot
+      - 511301 Arpajaisvero (arpajaisten tuotosta)
+      - 511302 Vakuutusmaksuvero
+      - 511303 Tasausvero
+      - 511304 Televero
+      - 5120 Tiettyjen tuotteiden ja palveluiden verot
+      - 5121 Valmisteverot
+      - 512101 Alkoholijuomavero
+      - 512102 Energiaverot
+      - 512103 Auto- ( ja moottoripyörä- ) vero
+      - 512104 Virvoitusjuomavero (sis makeisten ja jäätelön valmisteveron 2011-2016)
+      - 512105 Tupakkavero
+      - 512106 Eräiden juomapakkausten valmistevero
+      - 512107 Öljysuojamaksu
+      - 512108 Öljyjätemaksu
+      - 512109 Apteekkimaksut
+      - 512110 Varmuusvarastointimaksu
+      - 512111 Elintarvikkeiden valmistevero
+      - 512112 Erikoiskasvien markkinoimismaksu
+      - 512113 Fosforilannoitevero
+      - 512114 Hinnanerokorvaus
+      - 512115 Lannoitevero
+      - 512116 Maataloustuotteiden markkinoimismaksu
+      - 512117 Maataloustuotteiden tasausmaksu
+      - 512118 Voin hinnanalennusmaksu
+      - 512119 Öljypohjaisten, väkevöityjen rehujen vero
+      - 512120 Maidon kiintiömaksu
+      - 512121 Makeisvero
+      - 512122 Olutvero
+      - 512123 Rasva- ja valkuaisvero
+      - 512124 Ravintorasvavero
+      - 512125 Ruokinta-ainevero
+      - 512126 Sokerivero
+      - 512127 Sähkövero
+      - 5122 Monopolitoiminnan tuottojen verot
+      - 512201 Alkon ylijäämä
+      - 5123 Tuontimaksut ja -tullit
+      - 512301 Kaupunkitullimaksut
+      - 512302 Tuontimaksut
+      - 512303 Tuontitulli
+      - 512304 Tuontimaksu hintavakausrahastoon
+      - 5126 Tiettyjen palveluiden verot
+      - 512601 Jätevero
+      - 512602 Palosuojamaksu
+      - 512603 Ydinenergiatutkimusmaksu
+      - 512604 Pankkivero
+      - 512605 Ratavero
+      - 512606 EU-Vakausmaksut
+      - 512607 Rahapelitoiminnan voittovarat
+      - 512608 Elokuvavero
+      - 512609 Veikkauksen ja raha-arpajaisten voittovarat
+      - 512610 Raha-automaattiyhdistyksen voittovarat
+      - 512611 Leimavero, viihteeseen
+      - 512612 Valtion osuus  hevoskilp vedonlyöntituloista
+      - 512613 Talletussuojamaksut
+      - 5127 Muut kansainvälisen kaupan verot
+      - 512701 Matkustajavero  (mom 1976 henkilöauton käyttömaksu)
+      - 5128 Muut tiettyjen tuotteiden ja palveluiden verot
+      - 512801 Sokerimaksut EU:lle
+      - 512802 EHTY-maksu
+      - 5200 Käyttölupamaksut
+      - 5210 Toistuvat käyttölupamaksut
+      - 521001 Ajoneuvovero
+      - 521002 Moottoriajoneuvovero
+      - 5213 Muut toistuvat verot
+      - 521301 Hirvilupamaksut
+      - 521302 Kalastuksenhoitomaksut
+      - 521303 Riistanhoitomaksut
+      - 521304 Tenojoen kalastuslupamaksut
+      - 521305 Lästimaksut
+      - 521306 Pilkintämaksut
+      - 521307 Saaristokuntien kalastuslupamaksut
+      - 521308 Metsästys- ja kalastuslupamaksut
+      - 521309 Koiravero
+      - 5220 Kertaluonteiset verot
+      - 522001 Ajoneuvojen rekisteröintimaksu
+      - 522002 Tulot päästöoikeuksien huutokaupasta
+      - 6000 Muut verot
+      - 600001 Tuoteverojen viivästysseuraamukset
+      - 600002 Takaisin maksetut verot (kaikki)
+      - 600003 Muut verotulot
+      - 600004 Muiden tuotantoverojen viivästysseuraamukset
+      - 600005 Takaisin maksetut verot
+      - 600006 Muiden välittömien verojen viivästysseuraamukset
+      - 600007 Verojen viivästysseuraamukset, VH:n osuus
+      - 600008 Kasvinjalostusmaksut
+      - 600009 Lisätulli sukkahousuista
+      - 600010 EU:lle tilitettävät tuonnin verot
+      Tiedot:
+      - Käyvin hinnoin, miljoonaa euroa
+  Verot_paikallishallinto:
+  - id: StatFin/vermak/statfin_vermak_pxt_127f.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S1313 Paikallishallinto
+      Verolaji:
+      - Yhteensä
+      - 1000 Tulo- ja pääomaverot
+      - 1100 Kotitalouksien tulo- ja pääomaverot
+      - 110001 Korkotulojen lähdevero
+      - 110002 Kotitalouksien tulovero
+      - 110003 Merimiesvero
+      - 110004 Arpajaisvero (arpajaisvoitoista)
+      - 1200 Yhteisövero
+      - 120001 Yhteisöjen tulovero
+      - 120002 Yhteisöjen kirkollisvero
+      - 120003 Suhdannevaihteluiden tasoitusmaksu
+      - 2000 Pakolliset sosiaaliturvamaksut
+      - 2100 Vakuutettujen pakolliset sosiaaliturvamaksut
+      - 210001 Vakuutettujen työeläkemaksut
+      - 210002 Vakuutettujen muut sosiaaliturvamaksut
+      - 2200 Työnantajan pakolliset sosiaaliturvamaksut
+      - 220001 Työnantajan työeläkemaksut
+      - 220002 Työnantajan muut sosiaaliturvamaksut
+      - 3000 Verot palkkasummasta ja työvoimasta
+      - 300001 Verot palkkasummasta ja työvoimasta
+      - 4000 Omaisuusverot
+      - 4100 Toistuvat kiinteään omaisuuteen kohdistuvat verot
+      - 410001 Katumaksu/Kiinteistövero
+      - 4200 Toistuvat nettovarallisuuteen kohdistuvat verot
+      - 4210 Toistuvat kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 421001 Varallisuusvero, yksilö
+      - 4220 Toistuvat muiden kuin kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 422001 Varallisuusvero, yhteisö
+      - 4300 Perintö- ja lahjavero
+      - 430001 Perintö- ja lahjavero
+      - 4400 Pääomakaupan verot
+      - 440001 Varainsiirtovero
+      - 440002 Leimavero
+      - 440003 Luottovero
+      - 5000 Tavaroista ja palveluista maksetut verot
+      - 5100 Myynnistä, luovutuksesta tai vuokrauksesta maksetut verot
+      - 5110 Yleiset tavaroiden ja palveluiden myynnistä tai vuokrauksesta maksetut verot
+      - 5111 Arvonlisäverot
+      - 511101 Arvonlisäverot
+      - 5113 Liikevaihtovero ja muut yleiset kaupan verot
+      - 511301 Arpajaisvero (arpajaisten tuotosta)
+      - 511302 Vakuutusmaksuvero
+      - 511303 Tasausvero
+      - 511304 Televero
+      - 5120 Tiettyjen tuotteiden ja palveluiden verot
+      - 5121 Valmisteverot
+      - 512101 Alkoholijuomavero
+      - 512102 Energiaverot
+      - 512103 Auto- ( ja moottoripyörä- ) vero
+      - 512104 Virvoitusjuomavero (sis makeisten ja jäätelön valmisteveron 2011-2016)
+      - 512105 Tupakkavero
+      - 512106 Eräiden juomapakkausten valmistevero
+      - 512107 Öljysuojamaksu
+      - 512108 Öljyjätemaksu
+      - 512109 Apteekkimaksut
+      - 512110 Varmuusvarastointimaksu
+      - 512111 Elintarvikkeiden valmistevero
+      - 512112 Erikoiskasvien markkinoimismaksu
+      - 512113 Fosforilannoitevero
+      - 512114 Hinnanerokorvaus
+      - 512115 Lannoitevero
+      - 512116 Maataloustuotteiden markkinoimismaksu
+      - 512117 Maataloustuotteiden tasausmaksu
+      - 512118 Voin hinnanalennusmaksu
+      - 512119 Öljypohjaisten, väkevöityjen rehujen vero
+      - 512120 Maidon kiintiömaksu
+      - 512121 Makeisvero
+      - 512122 Olutvero
+      - 512123 Rasva- ja valkuaisvero
+      - 512124 Ravintorasvavero
+      - 512125 Ruokinta-ainevero
+      - 512126 Sokerivero
+      - 512127 Sähkövero
+      - 5122 Monopolitoiminnan tuottojen verot
+      - 512201 Alkon ylijäämä
+      - 5123 Tuontimaksut ja -tullit
+      - 512301 Kaupunkitullimaksut
+      - 512302 Tuontimaksut
+      - 512303 Tuontitulli
+      - 512304 Tuontimaksu hintavakausrahastoon
+      - 5126 Tiettyjen palveluiden verot
+      - 512601 Jätevero
+      - 512602 Palosuojamaksu
+      - 512603 Ydinenergiatutkimusmaksu
+      - 512604 Pankkivero
+      - 512605 Ratavero
+      - 512606 EU-Vakausmaksut
+      - 512607 Rahapelitoiminnan voittovarat
+      - 512608 Elokuvavero
+      - 512609 Veikkauksen ja raha-arpajaisten voittovarat
+      - 512610 Raha-automaattiyhdistyksen voittovarat
+      - 512611 Leimavero, viihteeseen
+      - 512612 Valtion osuus  hevoskilp vedonlyöntituloista
+      - 512613 Talletussuojamaksut
+      - 5127 Muut kansainvälisen kaupan verot
+      - 512701 Matkustajavero  (mom 1976 henkilöauton käyttömaksu)
+      - 5128 Muut tiettyjen tuotteiden ja palveluiden verot
+      - 512801 Sokerimaksut EU:lle
+      - 512802 EHTY-maksu
+      - 5200 Käyttölupamaksut
+      - 5210 Toistuvat käyttölupamaksut
+      - 521001 Ajoneuvovero
+      - 521002 Moottoriajoneuvovero
+      - 5213 Muut toistuvat verot
+      - 521301 Hirvilupamaksut
+      - 521302 Kalastuksenhoitomaksut
+      - 521303 Riistanhoitomaksut
+      - 521304 Tenojoen kalastuslupamaksut
+      - 521305 Lästimaksut
+      - 521306 Pilkintämaksut
+      - 521307 Saaristokuntien kalastuslupamaksut
+      - 521308 Metsästys- ja kalastuslupamaksut
+      - 521309 Koiravero
+      - 5220 Kertaluonteiset verot
+      - 522001 Ajoneuvojen rekisteröintimaksu
+      - 522002 Tulot päästöoikeuksien huutokaupasta
+      - 6000 Muut verot
+      - 600001 Tuoteverojen viivästysseuraamukset
+      - 600002 Takaisin maksetut verot (kaikki)
+      - 600003 Muut verotulot
+      - 600004 Muiden tuotantoverojen viivästysseuraamukset
+      - 600005 Takaisin maksetut verot
+      - 600006 Muiden välittömien verojen viivästysseuraamukset
+      - 600007 Verojen viivästysseuraamukset, VH:n osuus
+      - 600008 Kasvinjalostusmaksut
+      - 600009 Lisätulli sukkahousuista
+      - 600010 EU:lle tilitettävät tuonnin verot
+      Tiedot:
+      - Käyvin hinnoin, miljoonaa euroa
+  Verot_tyoelake:
+  - id: StatFin/vermak/statfin_vermak_pxt_127f.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13141 Työeläkelaitokset
+      Verolaji:
+      - Yhteensä
+      - 1000 Tulo- ja pääomaverot
+      - 1100 Kotitalouksien tulo- ja pääomaverot
+      - 110001 Korkotulojen lähdevero
+      - 110002 Kotitalouksien tulovero
+      - 110003 Merimiesvero
+      - 110004 Arpajaisvero (arpajaisvoitoista)
+      - 1200 Yhteisövero
+      - 120001 Yhteisöjen tulovero
+      - 120002 Yhteisöjen kirkollisvero
+      - 120003 Suhdannevaihteluiden tasoitusmaksu
+      - 2000 Pakolliset sosiaaliturvamaksut
+      - 2100 Vakuutettujen pakolliset sosiaaliturvamaksut
+      - 210001 Vakuutettujen työeläkemaksut
+      - 210002 Vakuutettujen muut sosiaaliturvamaksut
+      - 2200 Työnantajan pakolliset sosiaaliturvamaksut
+      - 220001 Työnantajan työeläkemaksut
+      - 220002 Työnantajan muut sosiaaliturvamaksut
+      - 3000 Verot palkkasummasta ja työvoimasta
+      - 300001 Verot palkkasummasta ja työvoimasta
+      - 4000 Omaisuusverot
+      - 4100 Toistuvat kiinteään omaisuuteen kohdistuvat verot
+      - 410001 Katumaksu/Kiinteistövero
+      - 4200 Toistuvat nettovarallisuuteen kohdistuvat verot
+      - 4210 Toistuvat kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 421001 Varallisuusvero, yksilö
+      - 4220 Toistuvat muiden kuin kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 422001 Varallisuusvero, yhteisö
+      - 4300 Perintö- ja lahjavero
+      - 430001 Perintö- ja lahjavero
+      - 4400 Pääomakaupan verot
+      - 440001 Varainsiirtovero
+      - 440002 Leimavero
+      - 440003 Luottovero
+      - 5000 Tavaroista ja palveluista maksetut verot
+      - 5100 Myynnistä, luovutuksesta tai vuokrauksesta maksetut verot
+      - 5110 Yleiset tavaroiden ja palveluiden myynnistä tai vuokrauksesta maksetut verot
+      - 5111 Arvonlisäverot
+      - 511101 Arvonlisäverot
+      - 5113 Liikevaihtovero ja muut yleiset kaupan verot
+      - 511301 Arpajaisvero (arpajaisten tuotosta)
+      - 511302 Vakuutusmaksuvero
+      - 511303 Tasausvero
+      - 511304 Televero
+      - 5120 Tiettyjen tuotteiden ja palveluiden verot
+      - 5121 Valmisteverot
+      - 512101 Alkoholijuomavero
+      - 512102 Energiaverot
+      - 512103 Auto- ( ja moottoripyörä- ) vero
+      - 512104 Virvoitusjuomavero (sis makeisten ja jäätelön valmisteveron 2011-2016)
+      - 512105 Tupakkavero
+      - 512106 Eräiden juomapakkausten valmistevero
+      - 512107 Öljysuojamaksu
+      - 512108 Öljyjätemaksu
+      - 512109 Apteekkimaksut
+      - 512110 Varmuusvarastointimaksu
+      - 512111 Elintarvikkeiden valmistevero
+      - 512112 Erikoiskasvien markkinoimismaksu
+      - 512113 Fosforilannoitevero
+      - 512114 Hinnanerokorvaus
+      - 512115 Lannoitevero
+      - 512116 Maataloustuotteiden markkinoimismaksu
+      - 512117 Maataloustuotteiden tasausmaksu
+      - 512118 Voin hinnanalennusmaksu
+      - 512119 Öljypohjaisten, väkevöityjen rehujen vero
+      - 512120 Maidon kiintiömaksu
+      - 512121 Makeisvero
+      - 512122 Olutvero
+      - 512123 Rasva- ja valkuaisvero
+      - 512124 Ravintorasvavero
+      - 512125 Ruokinta-ainevero
+      - 512126 Sokerivero
+      - 512127 Sähkövero
+      - 5122 Monopolitoiminnan tuottojen verot
+      - 512201 Alkon ylijäämä
+      - 5123 Tuontimaksut ja -tullit
+      - 512301 Kaupunkitullimaksut
+      - 512302 Tuontimaksut
+      - 512303 Tuontitulli
+      - 512304 Tuontimaksu hintavakausrahastoon
+      - 5126 Tiettyjen palveluiden verot
+      - 512601 Jätevero
+      - 512602 Palosuojamaksu
+      - 512603 Ydinenergiatutkimusmaksu
+      - 512604 Pankkivero
+      - 512605 Ratavero
+      - 512606 EU-Vakausmaksut
+      - 512607 Rahapelitoiminnan voittovarat
+      - 512608 Elokuvavero
+      - 512609 Veikkauksen ja raha-arpajaisten voittovarat
+      - 512610 Raha-automaattiyhdistyksen voittovarat
+      - 512611 Leimavero, viihteeseen
+      - 512612 Valtion osuus  hevoskilp vedonlyöntituloista
+      - 512613 Talletussuojamaksut
+      - 5127 Muut kansainvälisen kaupan verot
+      - 512701 Matkustajavero  (mom 1976 henkilöauton käyttömaksu)
+      - 5128 Muut tiettyjen tuotteiden ja palveluiden verot
+      - 512801 Sokerimaksut EU:lle
+      - 512802 EHTY-maksu
+      - 5200 Käyttölupamaksut
+      - 5210 Toistuvat käyttölupamaksut
+      - 521001 Ajoneuvovero
+      - 521002 Moottoriajoneuvovero
+      - 5213 Muut toistuvat verot
+      - 521301 Hirvilupamaksut
+      - 521302 Kalastuksenhoitomaksut
+      - 521303 Riistanhoitomaksut
+      - 521304 Tenojoen kalastuslupamaksut
+      - 521305 Lästimaksut
+      - 521306 Pilkintämaksut
+      - 521307 Saaristokuntien kalastuslupamaksut
+      - 521308 Metsästys- ja kalastuslupamaksut
+      - 521309 Koiravero
+      - 5220 Kertaluonteiset verot
+      - 522001 Ajoneuvojen rekisteröintimaksu
+      - 522002 Tulot päästöoikeuksien huutokaupasta
+      - 6000 Muut verot
+      - 600001 Tuoteverojen viivästysseuraamukset
+      - 600002 Takaisin maksetut verot (kaikki)
+      - 600003 Muut verotulot
+      - 600004 Muiden tuotantoverojen viivästysseuraamukset
+      - 600005 Takaisin maksetut verot
+      - 600006 Muiden välittömien verojen viivästysseuraamukset
+      - 600007 Verojen viivästysseuraamukset, VH:n osuus
+      - 600008 Kasvinjalostusmaksut
+      - 600009 Lisätulli sukkahousuista
+      - 600010 EU:lle tilitettävät tuonnin verot
+      Tiedot:
+      - Käyvin hinnoin, miljoonaa euroa
+  Verot_muut_sosiaaliturva:
+  - id: StatFin/vermak/statfin_vermak_pxt_127f.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13149 Muut sosiaaliturvarahastot
+      Verolaji:
+      - Yhteensä
+      - 1000 Tulo- ja pääomaverot
+      - 1100 Kotitalouksien tulo- ja pääomaverot
+      - 110001 Korkotulojen lähdevero
+      - 110002 Kotitalouksien tulovero
+      - 110003 Merimiesvero
+      - 110004 Arpajaisvero (arpajaisvoitoista)
+      - 1200 Yhteisövero
+      - 120001 Yhteisöjen tulovero
+      - 120002 Yhteisöjen kirkollisvero
+      - 120003 Suhdannevaihteluiden tasoitusmaksu
+      - 2000 Pakolliset sosiaaliturvamaksut
+      - 2100 Vakuutettujen pakolliset sosiaaliturvamaksut
+      - 210001 Vakuutettujen työeläkemaksut
+      - 210002 Vakuutettujen muut sosiaaliturvamaksut
+      - 2200 Työnantajan pakolliset sosiaaliturvamaksut
+      - 220001 Työnantajan työeläkemaksut
+      - 220002 Työnantajan muut sosiaaliturvamaksut
+      - 3000 Verot palkkasummasta ja työvoimasta
+      - 300001 Verot palkkasummasta ja työvoimasta
+      - 4000 Omaisuusverot
+      - 4100 Toistuvat kiinteään omaisuuteen kohdistuvat verot
+      - 410001 Katumaksu/Kiinteistövero
+      - 4200 Toistuvat nettovarallisuuteen kohdistuvat verot
+      - 4210 Toistuvat kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 421001 Varallisuusvero, yksilö
+      - 4220 Toistuvat muiden kuin kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 422001 Varallisuusvero, yhteisö
+      - 4300 Perintö- ja lahjavero
+      - 430001 Perintö- ja lahjavero
+      - 4400 Pääomakaupan verot
+      - 440001 Varainsiirtovero
+      - 440002 Leimavero
+      - 440003 Luottovero
+      - 5000 Tavaroista ja palveluista maksetut verot
+      - 5100 Myynnistä, luovutuksesta tai vuokrauksesta maksetut verot
+      - 5110 Yleiset tavaroiden ja palveluiden myynnistä tai vuokrauksesta maksetut verot
+      - 5111 Arvonlisäverot
+      - 511101 Arvonlisäverot
+      - 5113 Liikevaihtovero ja muut yleiset kaupan verot
+      - 511301 Arpajaisvero (arpajaisten tuotosta)
+      - 511302 Vakuutusmaksuvero
+      - 511303 Tasausvero
+      - 511304 Televero
+      - 5120 Tiettyjen tuotteiden ja palveluiden verot
+      - 5121 Valmisteverot
+      - 512101 Alkoholijuomavero
+      - 512102 Energiaverot
+      - 512103 Auto- ( ja moottoripyörä- ) vero
+      - 512104 Virvoitusjuomavero (sis makeisten ja jäätelön valmisteveron 2011-2016)
+      - 512105 Tupakkavero
+      - 512106 Eräiden juomapakkausten valmistevero
+      - 512107 Öljysuojamaksu
+      - 512108 Öljyjätemaksu
+      - 512109 Apteekkimaksut
+      - 512110 Varmuusvarastointimaksu
+      - 512111 Elintarvikkeiden valmistevero
+      - 512112 Erikoiskasvien markkinoimismaksu
+      - 512113 Fosforilannoitevero
+      - 512114 Hinnanerokorvaus
+      - 512115 Lannoitevero
+      - 512116 Maataloustuotteiden markkinoimismaksu
+      - 512117 Maataloustuotteiden tasausmaksu
+      - 512118 Voin hinnanalennusmaksu
+      - 512119 Öljypohjaisten, väkevöityjen rehujen vero
+      - 512120 Maidon kiintiömaksu
+      - 512121 Makeisvero
+      - 512122 Olutvero
+      - 512123 Rasva- ja valkuaisvero
+      - 512124 Ravintorasvavero
+      - 512125 Ruokinta-ainevero
+      - 512126 Sokerivero
+      - 512127 Sähkövero
+      - 5122 Monopolitoiminnan tuottojen verot
+      - 512201 Alkon ylijäämä
+      - 5123 Tuontimaksut ja -tullit
+      - 512301 Kaupunkitullimaksut
+      - 512302 Tuontimaksut
+      - 512303 Tuontitulli
+      - 512304 Tuontimaksu hintavakausrahastoon
+      - 5126 Tiettyjen palveluiden verot
+      - 512601 Jätevero
+      - 512602 Palosuojamaksu
+      - 512603 Ydinenergiatutkimusmaksu
+      - 512604 Pankkivero
+      - 512605 Ratavero
+      - 512606 EU-Vakausmaksut
+      - 512607 Rahapelitoiminnan voittovarat
+      - 512608 Elokuvavero
+      - 512609 Veikkauksen ja raha-arpajaisten voittovarat
+      - 512610 Raha-automaattiyhdistyksen voittovarat
+      - 512611 Leimavero, viihteeseen
+      - 512612 Valtion osuus  hevoskilp vedonlyöntituloista
+      - 512613 Talletussuojamaksut
+      - 5127 Muut kansainvälisen kaupan verot
+      - 512701 Matkustajavero  (mom 1976 henkilöauton käyttömaksu)
+      - 5128 Muut tiettyjen tuotteiden ja palveluiden verot
+      - 512801 Sokerimaksut EU:lle
+      - 512802 EHTY-maksu
+      - 5200 Käyttölupamaksut
+      - 5210 Toistuvat käyttölupamaksut
+      - 521001 Ajoneuvovero
+      - 521002 Moottoriajoneuvovero
+      - 5213 Muut toistuvat verot
+      - 521301 Hirvilupamaksut
+      - 521302 Kalastuksenhoitomaksut
+      - 521303 Riistanhoitomaksut
+      - 521304 Tenojoen kalastuslupamaksut
+      - 521305 Lästimaksut
+      - 521306 Pilkintämaksut
+      - 521307 Saaristokuntien kalastuslupamaksut
+      - 521308 Metsästys- ja kalastuslupamaksut
+      - 521309 Koiravero
+      - 5220 Kertaluonteiset verot
+      - 522001 Ajoneuvojen rekisteröintimaksu
+      - 522002 Tulot päästöoikeuksien huutokaupasta
+      - 6000 Muut verot
+      - 600001 Tuoteverojen viivästysseuraamukset
+      - 600002 Takaisin maksetut verot (kaikki)
+      - 600003 Muut verotulot
+      - 600004 Muiden tuotantoverojen viivästysseuraamukset
+      - 600005 Takaisin maksetut verot
+      - 600006 Muiden välittömien verojen viivästysseuraamukset
+      - 600007 Verojen viivästysseuraamukset, VH:n osuus
+      - 600008 Kasvinjalostusmaksut
+      - 600009 Lisätulli sukkahousuista
+      - 600010 EU:lle tilitettävät tuonnin verot
+      Tiedot:
+      - Käyvin hinnoin, miljoonaa euroa
+  Verot_julkinen_EU:
+  - id: StatFin/vermak/statfin_vermak_pxt_127f.px
+    muunnos: alkuperäinen
+    tiedot:
+      Sektori:
+      - S13, S212 Julkisyhteisöt ja Euroopan Unionin toimielimet
+      Verolaji:
+      - Yhteensä
+      - 1000 Tulo- ja pääomaverot
+      - 1100 Kotitalouksien tulo- ja pääomaverot
+      - 110001 Korkotulojen lähdevero
+      - 110002 Kotitalouksien tulovero
+      - 110003 Merimiesvero
+      - 110004 Arpajaisvero (arpajaisvoitoista)
+      - 1200 Yhteisövero
+      - 120001 Yhteisöjen tulovero
+      - 120002 Yhteisöjen kirkollisvero
+      - 120003 Suhdannevaihteluiden tasoitusmaksu
+      - 2000 Pakolliset sosiaaliturvamaksut
+      - 2100 Vakuutettujen pakolliset sosiaaliturvamaksut
+      - 210001 Vakuutettujen työeläkemaksut
+      - 210002 Vakuutettujen muut sosiaaliturvamaksut
+      - 2200 Työnantajan pakolliset sosiaaliturvamaksut
+      - 220001 Työnantajan työeläkemaksut
+      - 220002 Työnantajan muut sosiaaliturvamaksut
+      - 3000 Verot palkkasummasta ja työvoimasta
+      - 300001 Verot palkkasummasta ja työvoimasta
+      - 4000 Omaisuusverot
+      - 4100 Toistuvat kiinteään omaisuuteen kohdistuvat verot
+      - 410001 Katumaksu/Kiinteistövero
+      - 4200 Toistuvat nettovarallisuuteen kohdistuvat verot
+      - 4210 Toistuvat kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 421001 Varallisuusvero, yksilö
+      - 4220 Toistuvat muiden kuin kotitalouksien nettovarallisuuteen kohdistuvat verot
+      - 422001 Varallisuusvero, yhteisö
+      - 4300 Perintö- ja lahjavero
+      - 430001 Perintö- ja lahjavero
+      - 4400 Pääomakaupan verot
+      - 440001 Varainsiirtovero
+      - 440002 Leimavero
+      - 440003 Luottovero
+      - 5000 Tavaroista ja palveluista maksetut verot
+      - 5100 Myynnistä, luovutuksesta tai vuokrauksesta maksetut verot
+      - 5110 Yleiset tavaroiden ja palveluiden myynnistä tai vuokrauksesta maksetut verot
+      - 5111 Arvonlisäverot
+      - 511101 Arvonlisäverot
+      - 5113 Liikevaihtovero ja muut yleiset kaupan verot
+      - 511301 Arpajaisvero (arpajaisten tuotosta)
+      - 511302 Vakuutusmaksuvero
+      - 511303 Tasausvero
+      - 511304 Televero
+      - 5120 Tiettyjen tuotteiden ja palveluiden verot
+      - 5121 Valmisteverot
+      - 512101 Alkoholijuomavero
+      - 512102 Energiaverot
+      - 512103 Auto- ( ja moottoripyörä- ) vero
+      - 512104 Virvoitusjuomavero (sis makeisten ja jäätelön valmisteveron 2011-2016)
+      - 512105 Tupakkavero
+      - 512106 Eräiden juomapakkausten valmistevero
+      - 512107 Öljysuojamaksu
+      - 512108 Öljyjätemaksu
+      - 512109 Apteekkimaksut
+      - 512110 Varmuusvarastointimaksu
+      - 512111 Elintarvikkeiden valmistevero
+      - 512112 Erikoiskasvien markkinoimismaksu
+      - 512113 Fosforilannoitevero
+      - 512114 Hinnanerokorvaus
+      - 512115 Lannoitevero
+      - 512116 Maataloustuotteiden markkinoimismaksu
+      - 512117 Maataloustuotteiden tasausmaksu
+      - 512118 Voin hinnanalennusmaksu
+      - 512119 Öljypohjaisten, väkevöityjen rehujen vero
+      - 512120 Maidon kiintiömaksu
+      - 512121 Makeisvero
+      - 512122 Olutvero
+      - 512123 Rasva- ja valkuaisvero
+      - 512124 Ravintorasvavero
+      - 512125 Ruokinta-ainevero
+      - 512126 Sokerivero
+      - 512127 Sähkövero
+      - 5122 Monopolitoiminnan tuottojen verot
+      - 512201 Alkon ylijäämä
+      - 5123 Tuontimaksut ja -tullit
+      - 512301 Kaupunkitullimaksut
+      - 512302 Tuontimaksut
+      - 512303 Tuontitulli
+      - 512304 Tuontimaksu hintavakausrahastoon
+      - 5126 Tiettyjen palveluiden verot
+      - 512601 Jätevero
+      - 512602 Palosuojamaksu
+      - 512603 Ydinenergiatutkimusmaksu
+      - 512604 Pankkivero
+      - 512605 Ratavero
+      - 512606 EU-Vakausmaksut
+      - 512607 Rahapelitoiminnan voittovarat
+      - 512608 Elokuvavero
+      - 512609 Veikkauksen ja raha-arpajaisten voittovarat
+      - 512610 Raha-automaattiyhdistyksen voittovarat
+      - 512611 Leimavero, viihteeseen
+      - 512612 Valtion osuus  hevoskilp vedonlyöntituloista
+      - 512613 Talletussuojamaksut
+      - 5127 Muut kansainvälisen kaupan verot
+      - 512701 Matkustajavero  (mom 1976 henkilöauton käyttömaksu)
+      - 5128 Muut tiettyjen tuotteiden ja palveluiden verot
+      - 512801 Sokerimaksut EU:lle
+      - 512802 EHTY-maksu
+      - 5200 Käyttölupamaksut
+      - 5210 Toistuvat käyttölupamaksut
+      - 521001 Ajoneuvovero
+      - 521002 Moottoriajoneuvovero
+      - 5213 Muut toistuvat verot
+      - 521301 Hirvilupamaksut
+      - 521302 Kalastuksenhoitomaksut
+      - 521303 Riistanhoitomaksut
+      - 521304 Tenojoen kalastuslupamaksut
+      - 521305 Lästimaksut
+      - 521306 Pilkintämaksut
+      - 521307 Saaristokuntien kalastuslupamaksut
+      - 521308 Metsästys- ja kalastuslupamaksut
+      - 521309 Koiravero
+      - 5220 Kertaluonteiset verot
+      - 522001 Ajoneuvojen rekisteröintimaksu
+      - 522002 Tulot päästöoikeuksien huutokaupasta
+      - 6000 Muut verot
+      - 600001 Tuoteverojen viivästysseuraamukset
+      - 600002 Takaisin maksetut verot (kaikki)
+      - 600003 Muut verotulot
+      - 600004 Muiden tuotantoverojen viivästysseuraamukset
+      - 600005 Takaisin maksetut verot
+      - 600006 Muiden välittömien verojen viivästysseuraamukset
+      - 600007 Verojen viivästysseuraamukset, VH:n osuus
+      - 600008 Kasvinjalostusmaksut
+      - 600009 Lisätulli sukkahousuista
+      - 600010 EU:lle tilitettävät tuonnin verot
+      Tiedot:
+      - Käyvin hinnoin, miljoonaa euroa

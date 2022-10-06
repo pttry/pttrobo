@@ -2,7 +2,6 @@
 #'
 #' Uses \code{robonomistClient::data_get} to get data from robonomist,
 #' but with PTT formating:
-#'  - codes instead of labels
 #'  - tidy_time = TRUE
 #'  - variables as factors
 #'
@@ -37,5 +36,20 @@ ptt_data_robo_c <- function(..., labels = FALSE){
   ptt_data_robo(..., labels = labels)
 }
 
+#' @describeIn ptt_data_robo Both labels and codes.
+#' @export
+#'
+ptt_data_robo_b <- function(...){
+ y <- bind_cols(
+    ptt_data_robo_l(...),
+    rename_with(ptt_data_robo_c(...), ~paste0(.x, "_code"))
+  ) |>
+    select(-value_code) |>
+    relocate(value, .after = last_col())
+
+ y$time_code <- NULL
+ y
+
+}
 
 utils::globalVariables("where")

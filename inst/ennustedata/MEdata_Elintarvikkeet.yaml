@@ -1,6 +1,6 @@
 MEdata_Elintarvikkeet:
   khi_2015_v:
-  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xc.px
+  - id: StatFin/khi/statfin_khi_pxt_11xc.px
     muunnos: alkuperäinen
     tiedot:
       Hyödyke:
@@ -22,7 +22,7 @@ MEdata_Elintarvikkeet:
       Tiedot:
       - Indeksipisteluku
   khi_2010_v:
-  - id: StatFin/hin/khi/vv/statfin_khi_pxt_11xe.px
+  - id: StatFin/khi/statfin_khi_pxt_11xe.px
     muunnos: alkuperäinen
     tiedot:
       Hyödyke:
@@ -44,7 +44,7 @@ MEdata_Elintarvikkeet:
       Tiedot:
       - Pisteluku
   khi_2015_kk:
-  - id: StatFin/hin/khi/kk/statfin_khi_pxt_11xb.px
+  - id: StatFin/khi/statfin_khi_pxt_11xb.px
     muunnos: alkuperäinen
     tiedot:
       Hyödyke:
@@ -66,7 +66,7 @@ MEdata_Elintarvikkeet:
       Tiedot:
       - Indeksipisteluku
   khi_2010_kk:
-  - id: StatFin/hin/khi/kk/statfin_khi_pxt_11xd.px
+  - id: StatFin/khi/statfin_khi_pxt_11xd.px
     muunnos: alkuperäinen
     tiedot:
       Hyödyke:
@@ -88,7 +88,7 @@ MEdata_Elintarvikkeet:
       Tiedot:
       - Pisteluku
   khi_painot:
-  - id: StatFin/hin/khi/vv/statfin_khi_pxt_13a8.px
+  - id: StatFin/khi/statfin_khi_pxt_13a8.px
     muunnos: alkuperäinen
     tiedot:
       Hyodyke:

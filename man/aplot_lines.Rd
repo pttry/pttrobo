@@ -11,6 +11,7 @@ aplot_lines(
   y = value,
   colour = tiedot,
   size = NULL,
+  y2,
   title = "",
   subtitle = "",
   source = NULL,
@@ -38,9 +39,13 @@ aplot_trends(
 \arguments{
 \item{dat}{A data.frame to plot.}
 
+\item{x, }{y Variables for x- and y-axis.}
+
 \item{colour}{A variable for colours}
 
-\item{size}{A variable for size.}
+\item{size}{A variable for size. Not in use}
+
+\item{y2}{An optional y-variable for narrow line (forexample original in a trend plot).}
 
 \item{title}{A plot title}
 
@@ -68,7 +73,9 @@ Basic PTT line plot
 }}
 
 \examples{
-ptt_data_robo_l("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |>
+library(pttdatahaku)
+library(tidyverse)
+ptt_data_robo_l("StatFin/vtp/statfin_vtp_pxt_11sf.px") |>
 dplyr::filter(
     taloustoimi \%in\% c("P7R Tavaroiden ja palvelujen tuonti, tulona",
     "P6K Tavaroiden ja palvelujen vienti, menona"),
@@ -77,6 +84,18 @@ dplyr::filter(
                 title = "Vienti ja tuonti",
                 subtititle = "\%, volyymin muutos",
                 source = "Tilastokeskus")
+
+ptt_data_robo("StatFin/ttvi/statfin_ttvi_pxt_13bh.px") |>
+filter_recode(toimiala_tol_2008 = c("BCD Koko teollisuus", "19-22 Kemianteollisuus"),
+       tiedot = c(indeksi = "Työpäiväkorjattu indeksisarja", trendi = "Trendisarja")) |>
+  group_by(toimiala_tol_2008, tiedot) |>
+  mutate(value = 100 * (value / lag(value, 12) -1)) |>
+  ungroup() |>
+  spread(tiedot, value) |>
+  filter(time >= "2018-01-01") |>
+  aplot_lines(colour = toimiala_tol_2008, y = trendi, y2 = indeksi,
+            title = "Teollisuustuotannon volyymi",
+            subtitle = "\%-muutos, trendi ja työpäiväkorjattu")
 
 
 ptt_data_robo_l("StatFin/ntp/statfin_ntp_pxt_132h.px") |>

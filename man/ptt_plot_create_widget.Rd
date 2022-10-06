@@ -10,7 +10,8 @@ ptt_plot_create_widget(
   filepath,
   render = T,
   self_contained = F,
-  png_artefacts
+  png_artefacts,
+  png_folder
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ ptt_plot_create_widget(
 \item{self_contained}{Logical. Will the html artefact have self-contained dependencies, increasing size. Default false.}
 
 \item{png_artefacts}{Optional character vector of s(mall), n(arrow), and/or w(ide) corresponding to the expected .png sizes.}
+
+\item{png_folder}{A folder to save png-files.}
 
 \item{path}{The path of the saved file. When knitting and .Rmd file, the a folder is created matching the file name of the currently knit document and the path is set there.}
 }

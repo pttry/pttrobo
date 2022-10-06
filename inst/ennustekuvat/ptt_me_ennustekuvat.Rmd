@@ -1,6 +1,10 @@
 ---
 title: "ptt_me_ennustekuvat"
-output: html_document
+output:
+  rmarkdown::html_document:
+    code_folding: "hide"
+params:
+  upload_widgets: false ## Päivitä widgetit pilveen asettamalla `true` tai ajamalla `ptt_plot_upload_widgets()` renderöinnin jälkeen.
 ---
 
 ```{r setup, include=FALSE}
@@ -39,7 +43,7 @@ start_time <- "2014-01-01"
 
 cereals <- c("Wheat", "Corn", "Soybean")
 
-ptt_data_robo_l("tidy/usda_psd") |> 
+ptt_data_robo("tidy/usda_psd") |> 
   filter(commodity_description %in% cereals,
          attribute_description %in% c( "Production"),
          str_detect(country_name, pattern = "EU", negate =T)) |>
@@ -47,12 +51,11 @@ ptt_data_robo_l("tidy/usda_psd") |>
                                           "Vehnä" = "Wheat")) |> 
   group_by(attribute_description, market_year, commodity_description) |>
   summarise(value = sum(value, na.rm = T)/1000) |> 
-  ungroup() |> 
+  ungroup()  |> 
   mutate( 
     tiedot = "Vehnä", 
-    time = lubridate::ymd(paste(market_year+1, "7", "1", sep = "-"))    ) |> 
+    time = lubridate::ymd(paste(market_year+1, "7", "1", sep = "-"))) |> 
   filter(time >= start_time) |> 
-
   ptt_plot(
     title=  "Maailman viljantuotanto",
     grouping = tiedot,
@@ -73,9 +76,10 @@ ptt_data_robo_l("tidy/usda_psd") |>
 
 ```{r}
 # Viljan tuotanto Suomessa
-ptt_data_robo("StatFin/maa/satot/statfin_satot_pxt_001.px") |>
-  filter(viljelykasvi %in% c("Vehnä","Ruis","Ohra", "Kaura")) |>
-  mutate(tiedot = viljelykasvi) |>
+
+ptt_data_robo("luke/02_Maatalous/04_Tuotanto/14_Satotilasto/03_Vilja-_ja_perunasato_1920-.px") |>
+  filter(laji %in% c("Vehnä","Ruis","Ohra", "Kaura")) |>
+  mutate(tiedot = laji) |>
   filter(time >= start_time) |>
   mutate(time = time + months(6)) |> 
    ptt_plot(
@@ -114,7 +118,7 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
   ) |> 
   ptt_plot_add_prediction(pred_data = ennuste_data |> 
                             filter(luokka == "Viljan tuottajahinnat Suomessa"),
-                          satovuosi = T) |>
+                          satovuosi = F) |>
   ptt_plot_create_widget()
            
 ```
@@ -145,12 +149,21 @@ ptt_data_robo_l("luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinn
 #                             filter(luokka == "Maidon tuotanto")) |>
 #   ptt_plot_create_widget()
 
-ptt_data_robo_l("luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/04_Vuositilastot/04_Maidon_kokonaistuotanto.px") |> 
+s1 <- ptt_data_robo("luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/02_Kuukausitilastot/02_Meijerimaidon_tuotanto_kk.px") |>
+  filter_recode(
+  tieto = c("Vastaanotettu maitomäärä" = "VASTAANOTETTU MAITOMÄÄRÄ YHTEENSÄ (l) 2)")) |> 
+  filter(time >= start_time) |> 
+  mutate(value = 12 * statfitools::trend_series(value, time, x11 = "") / 1000000) |> 
+  mutate(tiedot = "Kuukausi")
+
+s2 <- ptt_data_robo_l("luke/02_Maatalous/04_Tuotanto/02_Maito-_ja_maitotuotetilasto/04_Vuositilastot/04_Maidon_kokonaistuotanto.px") |> 
   filter_recode(
   tuotanto_kaytto = c( "Maito yhteensä" = "MAITO YHTEENSÄ")) |> 
   mutate(tiedot = tuotanto_kaytto,
          time = time + months(6)) |> 
-  filter(time >= start_time)  |> 
+  filter(time >= start_time)
+
+bind_rows(s1, s2)|> 
   ptt_plot(
   grouping = tiedot, 
   title ="Maidon tuotanto Suomessa",subtitle = "milj. litraa",
@@ -388,13 +401,14 @@ taloustilit <- ptt_data_robo_l("StatFin/maa/eaa/statfin_eaa_pxt_12d7.px") |>
 
 # volyymi
 
-elintarvike_vol <- ptt_data_robo_l("StatFin/teo/ttvi/statfin_ttvi_pxt_111i.px") |>
+elintarvike_vol <- 
+  ptt_data_robo("StatFin/ttvi/statfin_ttvi_pxt_13bh.px") |>
   filter_recode(toimiala_tol_2008 =
                   c("Volyymi" = "10-11 Elintarviketeollisuus"  )) |>
   filter(tiedot == "Työpäiväkorjattu indeksisarja") |>
   mutate(tiedot = "Elintarviketeollisuus, tuotannon volyymi")
 
-elintarvike_lv <-ptt_data_robo_l("StatFin/teo/tlv/statfin_tlv_pxt_112c.px") |>
+elintarvike_lv <-ptt_data_robo("StatFin/tlv/statfin_tlv_pxt_112c.px") |>
   filter_recode(toimiala =c("Liikevaihto" = "10-11 Elintarviketeollisuus"  )) |>
   filter(tiedot == "Työpäiväkorjattu indeksisarja",
          muuttuja == "Liikevaihto") |>
@@ -408,7 +422,7 @@ bind_rows(elintarvike_vol, elintarvike_lv) |>
   ungroup() |> 
   ptt_plot( grouping = tiedot, 
   title = "Elintarviketeollisuus",
-  subtitle = "%, vuosimuutos",
+  subtitle = "%, vuosimuutos, trendi",
     caption  = "Lähde: Tilastokeskus ja PTT",
        hovertext =  list(rounding = 1, unit = "%", extra = "") )|> 
   ptt_plot_add_prediction(pred_data = ennuste_data ) |>
@@ -457,8 +471,10 @@ dat_me_sitc |>
 ## Ruuanhinta
 
 ```{r}
+
 # Elintarvikkeet
-ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |> 
+
+ptt_data_robo_l("StatFin/khi/statfin_khi_pxt_11xq.px") |> 
   filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
   pivot_wider(names_from = indeksisarja, values_from =value, names_repair = "universal") |> 
   group_by(hyodyke) |> 
@@ -481,20 +497,20 @@ ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |>
   ptt_plot_create_widget()
   
 
-ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |> 
-  filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
-  pivot_wider(names_from = indeksisarja, values_from =value, names_repair = "universal") |> 
-  group_by(hyodyke) |> 
-  mutate(across(where(is.numeric), ~100* (.x / lag(.x, n = 12, order_by = time) - 1))) |> 
-  ungroup() |> 
-  #filter(time >= start_time) |> 
-  mutate(value = coalesce(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
-  select(!c(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
-  mutate(tiedot = str_to_sentence(hyodyke)) |> 
-  mutate(tiedot = fct_recode(tiedot, Kuluttajahinnat = "Kuluttajahintaindeksi")) |>
-  mutate(year = lubridate::year(time)) |> 
-  group_by(year, hyodyke) |> 
-  summarise(value = mean(value, na.rm=T)) |> filter(hyodyke == "Elintarvikkeet") |>  view()
+# ptt_data_robo_l("StatFin/hin/khi/kk/statfin_khi_pxt_11xq.px") |> 
+#   filter(hyodyke %in% c("KULUTTAJAHINTAINDEKSI", "Elintarvikkeet", "ELINTARVIKKEET JA ALKOHOLITTOMAT JUOMAT")) |> 
+#   pivot_wider(names_from = indeksisarja, values_from =value, names_repair = "universal") |> 
+#   group_by(hyodyke) |> 
+#   mutate(across(where(is.numeric), ~100* (.x / lag(.x, n = 12, order_by = time) - 1))) |> 
+#   ungroup() |> 
+#   #filter(time >= start_time) |> 
+#   mutate(value = coalesce(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
+#   select(!c(KHI.2015.100, KHI.2010.100, KHI.2005.100, KHI.2000.100)) |> 
+#   mutate(tiedot = str_to_sentence(hyodyke)) |> 
+#   mutate(tiedot = fct_recode(tiedot, Kuluttajahinnat = "Kuluttajahintaindeksi")) |>
+#   mutate(year = lubridate::year(time)) |> 
+#   group_by(year, hyodyke) |> 
+#   summarise(value = mean(value, na.rm=T)) |> filter(hyodyke == "Elintarvikkeet") |>  view()
 ```
 
 # Elintarvikeryhmien hinnan muutos
@@ -551,7 +567,7 @@ ennuste_data |>
 ```
 
 ## Upload
-```{r}
+```{r, eval = params$upload_widgets}
 ptt_plot_upload_widgets()
 
 ```

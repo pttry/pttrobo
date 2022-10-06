@@ -42,3 +42,12 @@ KTdata_KV:
       - Romania
       - Sweden
       - United Kingdom
+  BKT_q_sa_vol_usa:
+  - id: fred/GDPC1
+    muunnos: alkuperäinen
+    tiedot:
+      series_id: GDPC1
+      Title: Real Gross Domestic Product
+      Frequency: Quarterly
+      Units: Billions of Chained 2012 Dollars
+      Seasonal adjustment: Seasonally Adjusted Annual Rate
