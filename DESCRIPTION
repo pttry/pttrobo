@@ -33,7 +33,8 @@ Imports:
     here,
     googleCloudStorageR,
     fontawesome,
-    chromote
+    chromote,
+    rstudioapi
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,

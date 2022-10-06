@@ -720,7 +720,8 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
       cur_input <- knitr::current_input()
       files_path <- tempdir()#cur_input |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
     } else {
-      stop("Give the path to the files you wish to upload. Careful! This will upload every .html, .css, .map, .scss, .txt and .js file in the given path!", call. = F)
+      files_path <- tempdir()
+      # stop("Give the path to the files you wish to upload. Careful! This will upload every .html, .css, .map, .scss, .txt and .js file in the given path!", call. = F)
     }
   } else {
     upl_files <-  list.files(path = files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$") |> str_c(collapse = ", ")
@@ -730,7 +731,8 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE) 
   }
 
   if (missing(upload_path) & !is_knitting) {
-    stop("Give the path to the folder in the upload bucket where you wish to upload the files to.", call. = F)
+    cur_input <- basename(rstudioapi::documentPath())
+    # stop("Give the path to the folder in the upload bucket where you wish to upload the files to.", call. = F)
   }
 
   artefact_files <- list.files(files_path, recursive = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
