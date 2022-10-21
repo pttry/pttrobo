@@ -37,14 +37,16 @@ yaml_to_excel <- function(file,
   for(i_file in seq_along(y)) {
     filename <- file.path(xlsx_path, paste0(names(y[i_file]), ".xlsx"))
     d <- koosta_tiedoston_datat(y[[i_file]], start_year = start_year)
-    if (transpose) {
-      d_t <- purrr::map(d, ~tibble::rownames_to_column(as.data.frame(t(tibble::column_to_rownames(select(.x, -id, -Muunnos), "Aikasarja"))), "time"))
-      openxlsx::write.xlsx(d_t, gsub("\\.xlsx","_trans.xlsx", filename), overwrite = TRUE, keepNA = TRUE)
-      }
     openxlsx::write.xlsx(d, filename, overwrite = TRUE, keepNA = TRUE)
+    if (transpose) {
+      filename <- c(filename, gsub("\\.xlsx","_trans.xlsx", filename))
+      d_t <- purrr::map(d, ~tibble::rownames_to_column(as.data.frame(t(tibble::column_to_rownames(select(.x, -id, -Muunnos), "Aikasarja"))), "time"))
+      openxlsx::write.xlsx(d_t, filename[2], overwrite = TRUE, keepNA = TRUE)
+      }
+
     cli_alert_success("Wrote {filename}")
   }
-  invisible(NULL)
+  invisible(filename)
 }
 
 koosta_tiedoston_datat <- function(x, start_year) {

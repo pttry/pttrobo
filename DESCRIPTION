@@ -1,7 +1,7 @@
 Package: pttrobo
 Type: Package
 Title: Automation of PTT data
-Version: 0.1.10
+Version: 0.1.20
 Authors@R: c(person("Janne", "Huovari", email = "janne.huovari@ptt.fi", role = c("aut", "cre")))
 Description: Automates data handling and processing in PTT.
 License: LGPL (>= 3)
@@ -34,7 +34,8 @@ Imports:
     googleCloudStorageR,
     fontawesome,
     chromote,
-    rstudioapi
+    rstudioapi,
+    Microsoft365R
 Remotes:
     github::robonomist/robonomistClient,
     github::pttry/statfitools,
