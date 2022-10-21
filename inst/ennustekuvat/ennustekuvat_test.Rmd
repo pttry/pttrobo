@@ -23,6 +23,7 @@ library(pttdatahaku)
 devtools::load_all()
 
 release_time <- "2022-10-06 10:00:00 EEST"
+# release_time <- FALSE
 start_time <- "2014-01-01"
 
 read_ennuste_data <- function(ennuste_data_file) {
@@ -33,11 +34,15 @@ ennuste_data <-
     here::here("inst", "ennustekuvat", "ptt_ennusteet_KT_2022_1.xlsx")
   )
 
+file_path <- path.expand(file.path("~/test"))
+
 ```
 
 ## BKT Suomi
 
 ```{r}
+
+
 
 ptt_data_robo("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
   filter(
@@ -58,7 +63,7 @@ ptt_data_robo("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
     hovertext =  list(rounding = 1, unit = "%", extra = "")
   ) |>
   ptt_plot_add_prediction(ennuste_data) |>
-  ptt_plot_create_widget()
+  ptt_plot_create_widget(filepath = file_path)
 
 ```
 
@@ -67,7 +72,9 @@ ptt_data_robo("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
 
 ```{r, eval = params$upload_widgets}
 
-ptt_plot_upload_widgets(overwrite = T)
+# print(tempdir())
+
+ptt_plot_upload_widgets(overwrite = T, release_time = release_time, files_path = file_path)
 
 # basename(rstudioapi::documentPath())
 

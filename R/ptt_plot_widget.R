@@ -47,7 +47,10 @@ ptt_plot_create_widget <- function(p, title, filepath,
       # }
 
       tempdir()
-    } else { getwd() }
+    } else {
+      tempdir()
+      # getwd()
+      }
   } else  { filepath }
 
   # print(path(filepath,title,ext = "html"))
@@ -158,6 +161,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
   suppressMessages(gcs_global_bucket("pttry"))
 
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
+  is_missing_upload_path <- missing(upload_path)
 
   if(missing(files_path)) {
     if(is_knitting == T) {
@@ -174,7 +178,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
     if (ans != "upload") { stop("Canceled", call. = F) }
   }
 
-  if (missing(upload_path) & !is_knitting) {
+  if (is_missing_upload_path & !is_knitting) {
     cur_input <- basename(rstudioapi::documentPath())
     # stop("Give the path to the folder in the upload bucket where you wish to upload the files to.", call. = F)
   }
@@ -182,7 +186,7 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
   artefact_files <- list.files(files_path, recursive = T) |> str_subset("\\.(css|js|map|scss|html|txt)$")
   if(overwrite == FALSE) { message("Overwrite is set to false, set overwrite = T in ptt_plot_upload_widgets if you want to overwrite existing uploads.") }
   walk(artefact_files, function(artefact_file) {
-    upload_file <- if(is_knitting) {
+    upload_file <- if(is_missing_upload_path) {
       prefix <- cur_input %>% str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
       path("ennustekuvat",prefix,artefact_file)
     } else {
@@ -207,7 +211,8 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
       if(is.na(upload_type)) { upload_type <- NULL}
       meta <- gcs_metadata_object(artefact_file, cacheControl = "public, max-age=600")
       meta[["name"]] <- str_replace_all(upload_file, c("\\%C3\\%B6" = "ö", "\\%C3\\%A4" = "ä", "\\%2F" = "/"))
-      gcs_upload(path(files_path,artefact_file), gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel")
+      upload_meta <- gcs_upload(path(files_path,artefact_file), gcs_get_global_bucket(), name = upload_file, type = upload_type, object_metadata = meta, predefinedAcl="bucketLevel")
+      # print(upload_meta)
     }
 
   })
