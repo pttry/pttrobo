@@ -69,9 +69,9 @@ Basic PTT line plot
 }
 \section{Functions}{
 \itemize{
-\item \code{aplot_trends}: Estimate and plot trend with original
-}}
+\item \code{aplot_trends()}: Estimate and plot trend with original
 
+}}
 \examples{
 library(pttdatahaku)
 library(tidyverse)

@@ -21,9 +21,9 @@ In ptt-format
 }
 \section{Functions}{
 \itemize{
-\item \code{pttrobo_print_filter_recode}: version for pttdatahaku::filter_recode()
-}}
+\item \code{pttrobo_print_filter_recode()}: version for pttdatahaku::filter_recode()
 
+}}
 \examples{
   pttrobo_print_filter(x = "luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px", conc = FALSE)
   pttrobo_print_filter_recode(x = "luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px", conc = FALSE)

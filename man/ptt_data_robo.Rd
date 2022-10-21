@@ -31,13 +31,13 @@ but with PTT formating:
 }
 \section{Functions}{
 \itemize{
-\item \code{ptt_data_robo_l}: With labels TRUE.
+\item \code{ptt_data_robo_l()}: With labels TRUE.
 
-\item \code{ptt_data_robo_c}: With labels FALSE.
+\item \code{ptt_data_robo_c()}: With labels FALSE.
 
-\item \code{ptt_data_robo_b}: Both labels and codes.
+\item \code{ptt_data_robo_b()}: Both labels and codes.
+
 }}
-
 \examples{
 \dontrun{
   ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
