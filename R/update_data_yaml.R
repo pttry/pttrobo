@@ -82,7 +82,7 @@ ptt_copy_ennustedata <- function(ennuste = c("ME", "KT", "MA", "POP"), path = NU
 #' @param start_year A first year of data
 #' @param transpose A logical to transpose data for excel.
 #'
-#' @import Microsoft356R dplyr
+#' @import Microsoft365R dplyr
 #' @export
 #' @examples
 #'   ptt_update_data_sharepoint(
