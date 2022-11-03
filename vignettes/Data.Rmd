@@ -1,0 +1,107 @@
+---
+title: "Datan haku"
+output: rmarkdown::html_document
+vignette: >
+  %\VignetteIndexEntry{Kuviot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+
+library(tidyverse)
+library(pttdatahaku)
+library(pttrobo)
+
+
+
+```
+
+Robonnomist id
+
+* [Robonomist eye]("https://eye.robonomist.app/")
+* `robonomistClient::data()`
+* statfi url pttrobo_print_code(url)
+
+
+```{r}
+
+robonomistClient::data("Väestö työmarkkina-aseman, sukupuolen ja suuralueen mukaan")
+
+pttrobo_print_code("StatFin/tyti/statfin_tyti_pxt_137i.px")
+
+pttrobo_print_code("https://pxweb2.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__tyti/statfin_tyti_pxt_137i.px/")
+
+
+```
+
+```{r}
+ptt_data_robo("StatFin/tyti/statfin_tyti_pxt_137i.px") |>
+  filter_recode(
+    sukupuoli = c("Yhteensä"),
+    suuralue_2012 = c(
+      "KOKO MAA"
+    ),
+    tiedot = c(
+     "Väestö" = "Väestö, 1000 henkilöä",
+     "Työvoima" = "Työvoima, 1000 henkilöä",
+     "Työlliset" = "Työlliset, 1000 henkilöä",
+     "Työttömät" = "Työttömät, 1000 henkilöä"
+    )
+  )
+```
+
+
+```{r}
+
+dat <- ptt_data_robo("StatFin/tyti/statfin_tyti_pxt_137i.px") |>
+  filter_recode(
+    sukupuoli = c("Yhteensä"),
+    suuralue_2012 = c(
+      "KOKO MAA"
+    ),
+    tiedot = c(
+     "Väestö" = "Väestö, 1000 henkilöä",
+     "Työvoima" = "Työvoima, 1000 henkilöä",
+     "Työlliset" = "Työlliset, 1000 henkilöä",
+     "Työttömät" = "Työttömät, 1000 henkilöä"
+    )
+  )
+
+str(dat)
+
+```
+
+```{r}
+
+dat2 <- 
+  ptt_data_robo("StatFin/tyti/statfin_tyti_pxt_137i.px") |>
+  filter_recode(
+    sukupuoli = c("Miehet", "Naiset"),
+    suuralue_2012 = c(
+      "KOKO MAA"
+    ),
+    tiedot = c(
+     "Väestö" = "Väestö, 1000 henkilöä",
+     "Työvoima" = "Työvoima, 1000 henkilöä",
+     "Työlliset" = "Työlliset, 1000 henkilöä",
+     "Työttömät" = "Työttömät, 1000 henkilöä"
+    )
+  ) |> 
+  group_by(sukupuoli, tiedot) |> 
+  mutate(value = pc(value, 4, order_by = time)) |> 
+  ungroup()
+
+```
+
+```{r}
+
+robonomistClient::datasources()
+
+```
+

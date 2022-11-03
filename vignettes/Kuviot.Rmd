@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 )
 
 
+
 library(tidyverse)
 library(pttdatahaku)
 library(pttrobo)
@@ -43,7 +44,7 @@ Muuttujat:
 
 ```{r, message=FALSE}
 
-ptt_data_robo("StatFin/kan/vtp/statfin_vtp_pxt_11sf.px") |> 
+ptt_data_robo("StatFin/vtp/statfin_vtp_pxt_11sf.px") |> 
   filter_recode(
      taloustoimi = c("Tuonti" = "P7R Tavaroiden ja palvelujen tuonti, tulona",
                      "Vienti" = "P6K Tavaroiden ja palvelujen vienti, menona"),
@@ -63,7 +64,7 @@ Sliderille voi antaa joko TRUE tai FALSE, tai antaa sille alkuarvon
 
 ```{r, message=FALSE}
 
-ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+ptt_data_robo("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
   filter_recode(
      taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan",
                      "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
@@ -86,7 +87,7 @@ Estimoi trendisarjan ja piirtää sen sekä alkuperäisen ohuemmalla viivalla.
 
 ```{r}
 
-ptt_data_robo("StatFin/kan/ntp/statfin_ntp_pxt_132h.px") |>
+ptt_data_robo("StatFin/ntp/statfin_ntp_pxt_132h.px") |>
   filter_recode(
      taloustoimi = c("BKT" = "B1GMH Bruttokansantuote markkinahintaan",
                      "Yksityinen kulutus" = "P3KS14_S15 Yksityiset kulutusmenot, menona"),
