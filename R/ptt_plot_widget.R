@@ -163,6 +163,12 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
   is_missing_upload_path <- missing(upload_path)
 
+  if (is_knitting == T){
+    cur_input <- knitr::current_input()
+  } else {
+    cur_input <- basename(rstudioapi::documentPath())
+  }
+
   if(missing(files_path)) {
     if(is_knitting == T) {
       cur_input <- knitr::current_input()
