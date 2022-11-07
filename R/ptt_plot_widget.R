@@ -173,9 +173,10 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
     }
   } else {
     upl_files <-  list.files(path = files_path, recursive = T, full.names = T) |> str_subset("\\.(css|js|map|scss|html|txt)$") |> str_c(collapse = ", ")
-    message(str_c("Give the path to the files you wish to upload. Careful! This will upload all of ",upl_files,"!\nType \"upload\" to continue:"))
-    ans <- readline(" ")
-    if (ans != "upload") { stop("Canceled", call. = F) }
+    if(is_knitting == F){
+      message(str_c("Give the path to the files you wish to upload. Careful! This will upload all of ",upl_files,"!\nType \"upload\" to continue:"))
+      ans <- readline(" ")
+      if (ans != "upload") { stop("Canceled", call. = F) }}
   }
 
   if (is_missing_upload_path & !is_knitting) {
