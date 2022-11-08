@@ -35,23 +35,28 @@ ptt_plot_create_widget <- function(p, title, filepath,
     title <- tofilename(title)
   }
 
-  filepath <- if(missing(filepath)) {
-    if(isTRUE(getOption('knitr.in.progress'))) {
-      cur_input <- knitr::current_input() |> str_remove("\\.Rmd$") |> str_replace_all("/","_") |> str_c("_artefacts")
-      #dir.create(cur_input,showWarnings = F)
-      ###
-      cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',
-                cur_input,"/",title,
-                '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
-                iframe_height, '"></iframe>\n'))
-      # }
+  filepath <- if(missing(filepath)) tempdir()
 
-      tempdir()
-    } else {
-      tempdir()
-      # getwd()
-      }
-  } else  { filepath }
+  if(isTRUE(getOption('knitr.in.progress'))) {
+    cur_input <- knitr::current_input()
+    #dir.create(cur_input,showWarnings = F)
+    ###
+
+    # }
+
+  } else {
+    cur_input <- basename(rstudioapi::documentPath())
+  }
+
+  cur_input <- cur_input |>
+    str_remove("\\.Rmd$") |>
+    str_replace_all("/","_") |>
+    str_c("_artefacts")
+
+  cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',
+            cur_input,"/",title,
+            '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
+            iframe_height, '"></iframe>\n'))
 
   # print(path(filepath,title,ext = "html"))
 
