@@ -58,10 +58,7 @@ ptt_plot_create_widget <- function(p, title, filepath,
     str_replace_all("/","_") |>
     str_c("_artefacts")
 
-  cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',
-            cur_input,"/",title,
-            '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
-            iframe_height, '"></iframe>\n'))
+
 
 
   p |>
@@ -75,6 +72,11 @@ ptt_plot_create_widget <- function(p, title, filepath,
   }
 
   if(render == T) {
+    cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',
+              cur_input,"/",title,
+              '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
+              iframe_height, '"></iframe>\n'))
+
     p
   } else { invisible(p) }
 }
