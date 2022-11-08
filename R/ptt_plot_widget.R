@@ -20,6 +20,9 @@ ptt_plot_create_widget <- function(p, title, filepath,
                                    render = T, self_contained = F,
                                    png_artefacts, png_folder,
                                    iframe_height = "550px") {
+
+
+
   tofilename <- function(str) {
     str_extract_all(str, "[a-zåäö,A-ZÅÄÖ,\\s,_,\\.,0-9]", simplify = T) |>
       str_c(collapse = "") |>
@@ -35,7 +38,9 @@ ptt_plot_create_widget <- function(p, title, filepath,
     title <- tofilename(title)
   }
 
-  filepath <- if(missing(filepath)) tempdir()
+
+
+  filepath <- if(missing(filepath)) tempdir() else filepath
 
   if(isTRUE(getOption('knitr.in.progress'))) {
     cur_input <- knitr::current_input()
@@ -58,10 +63,9 @@ ptt_plot_create_widget <- function(p, title, filepath,
             '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
             iframe_height, '"></iframe>\n'))
 
-  # print(path(filepath,title,ext = "html"))
 
   p |>
-    saveWidget(path(filepath,title,ext = "html"), selfcontained = self_contained, libdir = "plot_dependencies")
+    htmlwidgets::saveWidget(path(filepath,title,ext = "html"), selfcontained = self_contained, libdir = "plot_dependencies")
 
 
   if(!missing(png_artefacts)) {
