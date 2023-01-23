@@ -7,7 +7,7 @@ id_ulkomaank <- c(
 id_tuotanto <-
   c(
 
-    "luke/04_Metsa/08_Muut/Metsateollisuus/10.01_Sahatavaran_ja_puulevyjen_tuotanto_1955.px",
+    "luke/04_Metsa/08_Muut/Metsateollisuus/10.01_Sahatavaran_ja_puulevyjen_tuota.px",
     "luke/04_Metsa/08_Muut/Metsateollisuus/10.02_Puumassan_seka_paperin_ja_kartongin_tuota.px"
   )
 
