@@ -4,13 +4,6 @@ id_ulkomaank <- c(
   "luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px"
 )
 
-id_tuotanto <-
-  c(
-
-    "luke/04_Metsa/08_Muut/Metsateollisuus/10.01_Sahatavaran_ja_puulevyjen_tuota.px",
-    "luke/04_Metsa/08_Muut/Metsateollisuus/10.02_Puumassan_seka_paperin_ja_kartongin_tuota.px"
-  )
-
 id_puunkaytto <-
   c(
     "luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimialoittain.px",
