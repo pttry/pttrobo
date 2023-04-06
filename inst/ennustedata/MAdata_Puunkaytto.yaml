@@ -1,6 +1,6 @@
 MAdata_Puunkaytto:
   Toimialoittain:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimialoittain.px
+  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
@@ -23,7 +23,7 @@ MAdata_Puunkaytto:
       - Raakapuu yhteensä
       - Metsäteollisuuden sivutuotteet ja jätepuu (sahahake ja puru)
   Puutavaralajeittain:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimialoittain.px
+  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
@@ -43,7 +43,7 @@ MAdata_Puunkaytto:
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja jätepuu (sahahake ja puru)
   Puutuoteteollisuus:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimialoittain.px
+  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
@@ -65,7 +65,7 @@ MAdata_Puunkaytto:
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja jätepuu (sahahake ja puru)
   Massateollisuus:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimialoittain.px
+  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
@@ -87,9 +87,11 @@ MAdata_Puunkaytto:
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja jätepuu (sahahake ja puru)
   Käyttötarkoitus:
-  - id: luke/04_Metsa/04_Talous/14_Puun_kokonaiskaytto/02_Raakapuun_kaytto_kayttotark_1860.px
+  - id: luke/04_Metsa/04_Talous/14_Puun_kokonaiskaytto/02_Puun_kok_kaytto.px
     muunnos: alkuperäinen
     tiedot:
+      Maakunta: 
+      - KOKO MAA
       Käyttötarkoitus:
       - Metsäteollisuus
       - Energiantuotanto
