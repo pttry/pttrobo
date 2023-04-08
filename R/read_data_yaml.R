@@ -118,7 +118,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
                Ajanjakso = "Satovuosi") |>
         group_by(across(c(-time, -value))) |>
         add_tally() %>%
-        filter(n == freq) %>%
+        #filter(n == freq) %>%
         summarize(value = fun(value), .groups = "drop")
 
     } else {

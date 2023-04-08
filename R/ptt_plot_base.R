@@ -1,7 +1,7 @@
 #' @importFrom plotly layout
 ptt_plot_set_grid <- function(p, grid_color) {
   p |> layout(
-    xaxis = list(showgrid = TRUE, gridcolor = grid_color, size = 1.5),
+    xaxis = list(showgrid = T, gridcolor = "#fff", size =1.5),
     yaxis = list(showgrid = TRUE, gridcolor = grid_color, size = 1.5)
   )
 }
@@ -185,8 +185,8 @@ ptt_plot_set_ticks <- function(p, font, ticktypes) {
   set_ticks <- function(ticktype) {
     if (ticktype == "date") {
       list(tickfont = font,
-           mirror = TRUE,
-           ticks = 'outside',
+           mirror = F,
+           ticks = F,
            type = "date",
            tickformatstops = list(
              list(
@@ -208,7 +208,7 @@ ptt_plot_set_ticks <- function(p, font, ticktypes) {
       list(tickfont = font,
            tickformat = ",.3~f",
            ticksuffix = " ",
-           mirror = TRUE,
+           mirror = FALSE,
            ticks = 'outside',
            showline = TRUE)
     } else if (ticktype == "character") {
@@ -216,10 +216,10 @@ ptt_plot_set_ticks <- function(p, font, ticktypes) {
       list(tickfont = font,
            ticksuffix = " ",
            tickmode = "linear",
-           mirror = TRUE,
+           mirror = F,
            type = "category",
            ticks = 'outside',
-           showline = TRUE)
+           showline = F)
     }
 
   }
@@ -340,7 +340,7 @@ ptt_plot_config <- function(p,
     ptt_plot_set_modebar(title, p$subtitle, png_attrs) |>
     ptt_plot_set_ticks(main_font, ticktypes) |>
     ptt_plot_set_margin(margin) |>
-    ptt_plot_add_logo() |>
+    #ptt_plot_add_logo() |>
     ptt_plot_set_legend(legend_position, legend_orientation, main_font) |>
     ptt_plot_set_title(title, subtitle, title_font) |>
     ptt_plot_set_caption(caption, caption_font) |>
@@ -575,7 +575,7 @@ ptt_plot_hovertemplate <- function(specs) {
 #' @importFrom plotly plot_ly
 
 ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
-  ptt_vihrea <- "#5B8233"
+  ptt_vihrea <- "#009346"
   ptt_sininen <- "#2f7ab9"
   ptt_ruskea <- "#C36B0D"
   ptt_keltainen <- "#FFCC00"
@@ -583,6 +583,7 @@ ptt_plot_set_colors <- function(n_unique, color_vector, accessibility_params) {
   # ptt_dark_grey <- "#696969"
   # ptt_light_grey <- "#E8E8E8"
   ptt_cols <- c(ptt_vihrea, ptt_sininen, ptt_ruskea, ptt_keltainen)
+
   if(n_unique <= 4) {
     cols <- ptt_cols[1:n_unique]
   } else {
