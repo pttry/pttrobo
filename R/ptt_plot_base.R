@@ -1,7 +1,7 @@
 #' @importFrom plotly layout
 ptt_plot_set_grid <- function(p, grid_color) {
   p |> layout(
-    xaxis = list(showgrid = T, gridcolor = "#fff", size =1.5),
+    xaxis = list(showgrid = TRUE, gridcolor = grid_color, size =1.5),
     yaxis = list(showgrid = TRUE, gridcolor = grid_color, size = 1.5)
   )
 }
@@ -203,7 +203,8 @@ ptt_plot_set_ticks <- function(p, font, ticktypes) {
                value = "%Y"
              )
            ),
-           showline = TRUE)
+           showline = TRUE
+           )
     } else if (ticktype == "double") {
       list(tickfont = font,
            tickformat = ",.3~f",
