@@ -1,7 +1,8 @@
 #' @importFrom plotly layout
 ptt_plot_set_grid <- function(p, grid_color) {
   p |> layout(
-    xaxis = list(showgrid = TRUE, gridcolor = grid_color, size =1.5),
+    #xaxis = list(showgrid = TRUE, gridcolor = grid_color, size =1.5),
+    xaxis = list(showgrid = TRUE, gridcolor = "#FFFFFF", size =1.5),
     yaxis = list(showgrid = TRUE, gridcolor = grid_color, size = 1.5)
   )
 }

@@ -41,7 +41,7 @@ yaml_to_excel <- function(file,
     if (transpose) {
       filename <- c(filename, gsub("\\.xlsx","_trans.xlsx", filename))
       d_t <- purrr::map(d, ~tibble::rownames_to_column(as.data.frame(t(tibble::column_to_rownames(select(.x, -id, -Muunnos), "Aikasarja"))), "time"))
-      openxlsx::write.xlsx(d_t, filename[2], overwrite = TRUE, keepNA = TRUE)
+      openxlsx::write.xlsx(d_t, filename[2], overwrite = TRUE, keepNA = FALSE)
       }
 
     cli_alert_success("Wrote {filename}")
@@ -54,6 +54,7 @@ koosta_tiedoston_datat <- function(x, start_year) {
       dplyr::bind_rows() })
 }
 
+
 #' @importFrom rlang %||%
 #' @importFrom robonomistClient data_get
 #' @import dplyr
@@ -62,20 +63,23 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
   message(name)
 
   ## Hae ja suodata
+  message(name)
+
+  ## Hae ja suodata
   d <-
     if (stringr::str_starts(x$id, "tulli/")|stringr::str_starts(x$id, "ecb/")) {
       data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
         tidyr::replace_na(list(value = 0))
-  } else if (!is.null(x$tiedot)) {
-    data_get(x$id, tidy_time = TRUE) |>
-      filter(
-        !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x)))
-      )
-  } else {
-    data_get(x$id, tidy_time = TRUE)
-  }
+    } else if (!is.null(x$tiedot)) {
+      data_get(x$id, tidy_time = TRUE) |>
+        filter(
+          !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x)))
+        )
+    } else {
+      data_get(x$id, tidy_time = TRUE)
+    }
 
-  if (!is.null(x$poista_muut_tiedot)&&x$poista_muut_tiedot){
+  if (!is.null(x$poista_muut_tiedot)&& x$poista_muut_tiedot){
     d <- select(d, names(x$tiedot), time, value)
   }
 
@@ -96,6 +100,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
 
     d <-
       mutate(d, time = lubridate::year(time)) |>
+      drop_na() |>
       rename(Vuosi = time)
 
   } else if (x$muunnos == "alkuperäinen" && freq != 1) {
@@ -123,8 +128,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
 
     } else {
 
-      d <-
-        d |>
+      d <-d |>
         mutate(Vuosi = lubridate::year(time)) |>
         tidyr::drop_na(value) |>
         group_by(across(c(-time, -value))) |>
@@ -134,6 +138,7 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
 
     }
   }
+
 
   ## Määritä taulukon järjestys
   # Muuttujat <- setdiff(names(d), "value")
@@ -167,16 +172,19 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
       by = intersect(c(names(x$tiedot), "Vuosi"), names(d))
     )
 
+
   ## Pivotoi
   d |>
     tidyr::unite("Aikasarja", -Vuosi, -value, sep = "; ") |>
     tidyr::pivot_wider(names_from = Vuosi) |>
     mutate(id = x$id, Muunnos = x$muunnos) |>
     relocate(id, Muunnos, Aikasarja)
+
+
+
 }
 
 #' @export
-
 data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1",
                          sheet = "sheet1",
                          muunnos = c("alkuperäinen", "vuosisumma", "vuosikeskiarvo"),
