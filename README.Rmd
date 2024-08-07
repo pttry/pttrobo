@@ -30,6 +30,8 @@ devtools::install_github("pttry/pttrobo")
 
 ```
 
+Ohjeet Robonomistin kirjautumistietojen asettamiseen löytyvät PTT:n R-pakettien yleisistä ohjeista [https://github.com/pttry/ptt](https://github.com/pttry/ptt) kohdasta "Asennus ja asetukset".
+
 ## Tietojen haku ja käyttö Robonomist-tietokannasta
 
 Tietojen hakuun käytetään `ptt_data_ropo()` -funktiota ja robonomist id:tä.
