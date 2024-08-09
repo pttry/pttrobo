@@ -87,7 +87,7 @@ MAdata_Puunkaytto:
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Käyttötarkoitus:
-  - id: luke/04_Metsa/04_Talous/07_Puun_kaytto/01_Puun_kok_kaytto.px
+  - id: luke/04_Metsa/04_Talous/07_Puun_kaytto/00_Puun_kok_kaytto.px
     muunnos: alkuperäinen
     tiedot:
       Maakunta: 
