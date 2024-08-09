@@ -7,7 +7,7 @@ id_ulkomaank <- c(
 id_puunkaytto <-
   c(
     "luke/04_Metsa/04_Talous/07_Puun_kaytto/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px",
-    "luke/04_Metsa/04_Talous/07_Puun_kaytto/01_Puun_kok_kaytto.px"
+    "luke/04_Metsa/04_Talous/07_Puun_kaytto/00_Puun_kok_kaytto.px"
   )
 
 id_puukauppa <-
