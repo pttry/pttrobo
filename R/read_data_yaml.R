@@ -60,7 +60,6 @@ koosta_tiedoston_datat <- function(x, start_year) {
 #' @import dplyr
 muodosta_sarjat <- function(x, name = NULL, start_year) {
 
-  message(name)
 
   ## Hae ja suodata
   message(name)
@@ -68,8 +67,9 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
   ## Hae ja suodata
   d <-
     if (stringr::str_starts(x$id, "tulli/")|stringr::str_starts(x$id, "ecb/")) {
-      data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
+     data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
         tidyr::replace_na(list(value = 0))
+
     } else if (!is.null(x$tiedot)) {
       data_get(x$id, tidy_time = TRUE) |>
         filter(
@@ -79,11 +79,17 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
       data_get(x$id, tidy_time = TRUE)
     }
 
+  if(stringr::str_starts(x$id, "tulli/")) {
+    x$tiedot$Indikaattorit <- unique(pull(d, Indikaattorit))
+    }
+
+
   if (!is.null(x$poista_muut_tiedot)&& x$poista_muut_tiedot){
     d <- select(d, names(x$tiedot), time, value)
   }
 
   d <- filter(d, lubridate::year(time) >= start_year)
+
 
   x$muunnos <- x$muunnos %||% "alkuperäinen"
 
@@ -135,10 +141,8 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
         add_tally() %>%
         filter(n == freq) %>%
         summarize(value = fun(value), .groups = "drop")
-
     }
   }
-
 
   ## Määritä taulukon järjestys
   # Muuttujat <- setdiff(names(d), "value")
@@ -162,8 +166,6 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
     }) |>
     setNames(Muuttujat)
 
-
-
   ## Järjestä ja pakota kaikki vuodet taulukkoon
   d <-
     left_join(
@@ -179,7 +181,6 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
     tidyr::pivot_wider(names_from = Vuosi) |>
     mutate(id = x$id, Muunnos = x$muunnos) |>
     relocate(id, Muunnos, Aikasarja)
-
 
 
 }
