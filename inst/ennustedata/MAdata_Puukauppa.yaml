@@ -6,7 +6,7 @@ MAdata_Puukauppa:
       Hinta-alue:
       - KOKO MAA
       Hakkuutapa:
-      - Pystyhakkuut yhteensä
+      - Pystykauppa yhteensä
       Puutavaralaji:
       - Mäntytukki
       - Kuusitukki
@@ -23,7 +23,7 @@ MAdata_Puukauppa:
       Hinta-alue:
       - KOKO MAA
       Hakkuutapa:
-      - Pystyhakkuut yhteensä
+      - Pystykauppa yhteensä
       Puutavaralaji:
       - Mäntytukki
       - Kuusitukki
@@ -85,7 +85,7 @@ MAdata_Puukauppa:
       Hinta-alue:
       - KOKO MAA
       Hakkuutapa:
-      - Pystyhakkuut yhteensä
+      - Pystykauppa yhteensä
       Puutavaralaji:
       - Kaikkiaan
       - ..Mäntytukki
