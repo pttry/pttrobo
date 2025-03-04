@@ -1,4 +1,40 @@
 MAdata_Tulli:
+  Arvo_CN2_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN2:
+      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Määrä_CN2_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN2:
+      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Paljous
+  Arvo_CN2_v:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN2:
+      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Tilastoarvo (euro)
+  Määrä_CN2_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN2:
+      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      Maa: AA (2002--.) Kaikki maat yhteensä
+      Suunta: Vienti määrämaittain
+      Indikaattorit: Paljous
   Arvo_CN4_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
