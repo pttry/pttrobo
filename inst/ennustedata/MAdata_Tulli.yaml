@@ -19,7 +19,7 @@ MAdata_Tulli:
       Indikaattorit: Paljous
   Arvo_CN2_v:
   - id: tulli/uljas_cn
-    muunnos: alkuperäinen
+    muunnos: vuosisumma
     tiedot:
       Tavaraluokitus CN2:
       - "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
@@ -28,7 +28,7 @@ MAdata_Tulli:
       Indikaattorit: Tilastoarvo (euro)
   Määrä_CN2_v:
   - id: tulli/uljas_cn
-    muunnos: alkuperäinen
+    muunnos: vuosisumma
     tiedot:
       Tavaraluokitus CN2:
       - "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
