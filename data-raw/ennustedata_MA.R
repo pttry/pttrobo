@@ -31,9 +31,9 @@ purrr::map(id_puukauppa2, ~data_to_yaml(data_get(.x), file = "inst/ennustedata/M
 data_get("luke/04_Metsa/04_Talous/06_Metsateollisuuden_ulkomaankauppa/02_Tuonti_ja_vienti_kuukausittain.px") |>
   data_to_yaml()
 
-ma_tulli_cn2 <- c("47")
 ma_tulli_cn8 <- c("44071110", "44071120", "44071190", "44071210", "44071220", "44071290", "44123900", "44129985", "44123300")
 ma_tulli_cn4 <- c("4407", "4412")
+ma_tulli_cn2 <- c("47")
 
 # Tilastoarvo (euro) Paljous
 
