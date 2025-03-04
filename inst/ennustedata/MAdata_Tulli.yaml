@@ -4,7 +4,7 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN2:
-      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      - "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Tilastoarvo (euro)
@@ -13,7 +13,7 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN2:
-      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      - "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Paljous
@@ -22,7 +22,7 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN2:
-      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      - "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Tilastoarvo (euro)
@@ -31,7 +31,7 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN2:
-      "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
+      - "47 (2002--.) PUUSTA TAI MUUSTA KUITUISESTA SELLULOOSA-AINEESTA VALMISTETTU MASSA; KERÄYSPAPERI, -KARTONKI JA -PAHVI (-JÄTE)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Paljous
