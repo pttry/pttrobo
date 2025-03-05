@@ -385,7 +385,7 @@ MAdata_Tulli:
       - "44123300 (2017--2021) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
-      Indikaattorit: Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana.  
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.  
   
   Arvo_CN8_v:
   - id: tulli/uljas_cn
@@ -404,8 +404,8 @@ MAdata_Tulli:
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: 
-      - Tilastoarvo (euro);;Valitun ajanjakson tilastoarvo (kuukausi, neljännes, vuosi). Viennin tilastoarvoon (FOB-arvo) sisältyy tavaran toimittamisesta aiheutuneet kustannukset (rahti ja vakuutus) Suomen rajalla olevaan vientipaikkaan saakka. Tuonnin tilastoarvoon (CIF-arvo) sisältyy tavaran toimittamisesta aiheutuneet kustannukset (rahti ja vakuutus) Suomen rajalla olevaan ensimmäiseen rajanylityspaikkaan saakka.
-
+      - Tilastoarvo/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
+  
   Määrä_CN8_v:
   - id: tulli/uljas_cn
     muunnos: vuosisumma
@@ -422,4 +422,4 @@ MAdata_Tulli:
       - "44123300 (2017--2021) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
-      Indikaattorit: Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana.
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
