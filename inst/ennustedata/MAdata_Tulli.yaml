@@ -366,7 +366,7 @@ MAdata_Tulli:
       - "44123300 (2017--2021) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
-      Indikaattorit: Tilastoarvo/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
+      Indikaattorit: Tilastoarvo\/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
   Määrä_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -400,7 +400,7 @@ MAdata_Tulli:
       - "44123300 (2017--2021) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, jossa ainakin yksi pintaviiluista on lehtipuuta: leppää, saarnia, pyökkiä, koivua, kirsikkapuuta, kastanjaa, jalavaa, eukalyptuspuuta, hikkoria, hevoskastanja"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
-      Indikaattorit: Tilastoarvo/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
+      Indikaattorit: Tilastoarvo\/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
   Määrä_CN8_v:
   - id: tulli/uljas_cn
     muunnos: vuosisumma
