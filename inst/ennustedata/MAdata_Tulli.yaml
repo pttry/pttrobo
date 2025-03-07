@@ -369,7 +369,7 @@ MAdata_Tulli:
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: 
-      - Tilastoarvo/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
+      - Tilastoarvo (euro);;Valitun ajanjakson tilastoarvo (kuukausi, neljännes, vuosi). Viennin tilastoarvoon (FOB-arvo) sisältyy tavaran toimittamisesta aiheutuneet kustannukset (rahti ja vakuutus) Suomen rajalla olevaan vientipaikkaan saakka. Tuonnin tilastoarvoon (CIF-arvo) sisältyy tavaran toimittamisesta aiheutuneet kustannukset (rahti ja vakuutus) Suomen rajalla olevaan ensimmäiseen rajanylityspaikkaan saakka.
   
   Määrä_CN8_kk:
   - id: tulli/uljas_cn
@@ -410,7 +410,7 @@ MAdata_Tulli:
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: 
-      - Tilastoarvo/Lisäpaljous;;Tilastoarvo jaettuna lisäpaljoudella (tilastollinen yksikköarvo esim. eur/kpl).
+      - Tilastoarvo (euro);;Valitun ajanjakson tilastoarvo (kuukausi, neljännes, vuosi). Viennin tilastoarvoon (FOB-arvo) sisältyy tavaran toimittamisesta aiheutuneet kustannukset (rahti ja vakuutus) Suomen rajalla olevaan vientipaikkaan saakka. Tuonnin tilastoarvoon (CIF-arvo) sisältyy tavaran toimittamisesta aiheutuneet kustannukset (rahti ja vakuutus) Suomen rajalla olevaan ensimmäiseen rajanylityspaikkaan saakka.
   
   Määrä_CN8_v:
   - id: tulli/uljas_cn
