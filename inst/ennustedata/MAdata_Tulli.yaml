@@ -40,7 +40,7 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN4:
-      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4407 (2002--.) Puu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
       - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
@@ -50,7 +50,7 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN4:
-      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4407 (2002--.) Puu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
       - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
@@ -60,7 +60,7 @@ MAdata_Tulli:
     muunnos: vuosisumma
     tiedot:
       Tavaraluokitus CN4:
-      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4407 (2002--.) Puu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
       - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
@@ -70,7 +70,7 @@ MAdata_Tulli:
     muunnos: vuosisumma
     tiedot:
       Tavaraluokitus CN4:
-      - "4407 (2002--.) Puu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
+      - "4407 (2002--.) Puu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, myös höylätty, hiottu tai päistään jatkettu, paksuus > 6 mm"
       - "4412 (2002--.) Ristiinliimattu vaneri, vaneroidut puulevyt ja niiden kaltainen kerrostettu puu (paitsi tiivistettyä puuta olevat levyt, solulevyt, parkettilaatat, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
@@ -88,11 +88,11 @@ MAdata_Tulli:
       - "480451 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaisematon, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty,"
       - "480452 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm"
       - "480459 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/"
-      - "480511 (2002--.) Puolikemiallinen aallotuspaperi *fluting*, päällystämätön, rullina, joiden leveys on > 36 cm"
+      - "480511 (2002--.) Puolikemiallinen aallotuspaperi fluting, päällystämätön, rullina, joiden leveys on > 36 cm"
       - "480512 (2002--.) Oljesta tehty aallotuspaperi, rullina, joiden leveys on > 36 cm, paino >= 130 g/m²"
       - "480519 (2002--.) Aallotuspaperi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty (paitsi puolikemiallinen aallotus"
-      - "480524 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
-      - "480525 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480524 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480525 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
       - "480550 (2002--.) Huopapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480592 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino > 150 g/m² mut"
       - "480593 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/m², m"
@@ -124,7 +124,7 @@ MAdata_Tulli:
       - "480540 (2002--.) Suodatinpaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480591 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino <= 150 g/m², m"
       - "480610 (2002--.) Pergamenttipaperi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
-      - "480620 (2002--.) Rasvanpitävät paperit *voipaperit*, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
+      - "480620 (2002--.) Rasvanpitävät paperit voipaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480630 (2002--.) Kuultopaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480640 (2002--.) Glassiinipaperi sekä muut kiillotetut läpinäkyvät tai läpikuultavat paperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty ("
       - "480820 (2002--2011) Säkkipaperi, krepattu tai poimutettu, myös kohokuvioitu tai rei'itetty, rullina, joiden leveys on > 36 cm, tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevit"
@@ -136,7 +136,7 @@ MAdata_Tulli:
       - "481013 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481014 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481019 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
-      - "481022 (2002--.) Kevyesti päällystetty paperi *LWC-paperi* kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
+      - "481022 (2002--.) Kevyesti päällystetty paperi LWC-paperi kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
       - "481029 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaiskuitusisällöstä > 10 painoprosenttia mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältävä, yhde"
       - "481031 (2002--.) Voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, > 95 painoprosenttia kokonaiskuitusisällöstä kemiallisella menetelmällä saatuja puukuituja sisältävä, yhdeltä tai molemmilta puolilta päällystetty kaoli"
       - "481099 (2002--.) Paperi, kartonki ja pahvi, jotka on yhdeltä tai molemmilta puolilta sideainetta käyttäen tai ilman sitä päällystetty kaoliinilla tai muulla epäorgaanisella aineella, myös pintavärjätty, pintakoristeltu tai painettu, rullina tai su"
@@ -157,11 +157,11 @@ MAdata_Tulli:
       - "480451 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaisematon, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty,"
       - "480452 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm"
       - "480459 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/"
-      - "480511 (2002--.) Puolikemiallinen aallotuspaperi *fluting*, päällystämätön, rullina, joiden leveys on > 36 cm"
+      - "480511 (2002--.) Puolikemiallinen aallotuspaperi fluting, päällystämätön, rullina, joiden leveys on > 36 cm"
       - "480512 (2002--.) Oljesta tehty aallotuspaperi, rullina, joiden leveys on > 36 cm, paino >= 130 g/m²"
       - "480519 (2002--.) Aallotuspaperi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty (paitsi puolikemiallinen aallotus"
-      - "480524 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
-      - "480525 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480524 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480525 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
       - "480550 (2002--.) Huopapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480592 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino > 150 g/m² mut"
       - "480593 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/m², m"
@@ -193,7 +193,7 @@ MAdata_Tulli:
       - "480540 (2002--.) Suodatinpaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480591 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino <= 150 g/m², m"
       - "480610 (2002--.) Pergamenttipaperi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
-      - "480620 (2002--.) Rasvanpitävät paperit *voipaperit*, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
+      - "480620 (2002--.) Rasvanpitävät paperit voipaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480630 (2002--.) Kuultopaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480640 (2002--.) Glassiinipaperi sekä muut kiillotetut läpinäkyvät tai läpikuultavat paperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty ("
       - "480820 (2002--2011) Säkkipaperi, krepattu tai poimutettu, myös kohokuvioitu tai rei'itetty, rullina, joiden leveys on > 36 cm, tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevit"
@@ -205,7 +205,7 @@ MAdata_Tulli:
       - "481013 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481014 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481019 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
-      - "481022 (2002--.) Kevyesti päällystetty paperi *LWC-paperi* kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
+      - "481022 (2002--.) Kevyesti päällystetty paperi LWC-paperi kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
       - "481029 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaiskuitusisällöstä > 10 painoprosenttia mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältävä, yhde"
       - "481031 (2002--.) Voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, > 95 painoprosenttia kokonaiskuitusisällöstä kemiallisella menetelmällä saatuja puukuituja sisältävä, yhdeltä tai molemmilta puolilta päällystetty kaoli"
       - "481099 (2002--.) Paperi, kartonki ja pahvi, jotka on yhdeltä tai molemmilta puolilta sideainetta käyttäen tai ilman sitä päällystetty kaoliinilla tai muulla epäorgaanisella aineella, myös pintavärjätty, pintakoristeltu tai painettu, rullina tai su"
@@ -225,11 +225,11 @@ MAdata_Tulli:
       - "480451 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaisematon, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty,"
       - "480452 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm"
       - "480459 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/"
-      - "480511 (2002--.) Puolikemiallinen aallotuspaperi *fluting*, päällystämätön, rullina, joiden leveys on > 36 cm"
+      - "480511 (2002--.) Puolikemiallinen aallotuspaperi fluting, päällystämätön, rullina, joiden leveys on > 36 cm"
       - "480512 (2002--.) Oljesta tehty aallotuspaperi, rullina, joiden leveys on > 36 cm, paino >= 130 g/m²"
       - "480519 (2002--.) Aallotuspaperi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty (paitsi puolikemiallinen aallotus"
-      - "480524 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
-      - "480525 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480524 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480525 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
       - "480550 (2002--.) Huopapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480592 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino > 150 g/m² mut"
       - "480593 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/m², m"
@@ -261,7 +261,7 @@ MAdata_Tulli:
       - "480540 (2002--.) Suodatinpaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480591 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino <= 150 g/m², m"
       - "480610 (2002--.) Pergamenttipaperi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
-      - "480620 (2002--.) Rasvanpitävät paperit *voipaperit*, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
+      - "480620 (2002--.) Rasvanpitävät paperit voipaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480630 (2002--.) Kuultopaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480640 (2002--.) Glassiinipaperi sekä muut kiillotetut läpinäkyvät tai läpikuultavat paperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty ("
       - "480820 (2002--2011) Säkkipaperi, krepattu tai poimutettu, myös kohokuvioitu tai rei'itetty, rullina, joiden leveys on > 36 cm, tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevit"
@@ -273,7 +273,7 @@ MAdata_Tulli:
       - "481013 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481014 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481019 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
-      - "481022 (2002--.) Kevyesti päällystetty paperi *LWC-paperi* kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
+      - "481022 (2002--.) Kevyesti päällystetty paperi LWC-paperi kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
       - "481029 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaiskuitusisällöstä > 10 painoprosenttia mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältävä, yhde"
       - "481031 (2002--.) Voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, > 95 painoprosenttia kokonaiskuitusisällöstä kemiallisella menetelmällä saatuja puukuituja sisältävä, yhdeltä tai molemmilta puolilta päällystetty kaoli"
       - "481099 (2002--.) Paperi, kartonki ja pahvi, jotka on yhdeltä tai molemmilta puolilta sideainetta käyttäen tai ilman sitä päällystetty kaoliinilla tai muulla epäorgaanisella aineella, myös pintavärjätty, pintakoristeltu tai painettu, rullina tai su"
@@ -294,11 +294,11 @@ MAdata_Tulli:
       - "480451 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaisematon, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty,"
       - "480452 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm"
       - "480459 (2002--.) Päällystämätön voimapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/"
-      - "480511 (2002--.) Puolikemiallinen aallotuspaperi *fluting*, päällystämätön, rullina, joiden leveys on > 36 cm"
+      - "480511 (2002--.) Puolikemiallinen aallotuspaperi fluting, päällystämätön, rullina, joiden leveys on > 36 cm"
       - "480512 (2002--.) Oljesta tehty aallotuspaperi, rullina, joiden leveys on > 36 cm, paino >= 130 g/m²"
       - "480519 (2002--.) Aallotuspaperi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty (paitsi puolikemiallinen aallotus"
-      - "480524 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
-      - "480525 (2002--.) Testlaineri *kierrätetty lainerikartonki*, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480524 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
+      - "480525 (2002--.) Testlaineri kierrätetty lainerikartonki, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, pain"
       - "480550 (2002--.) Huopapaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480592 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino > 150 g/m² mut"
       - "480593 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino >= 225 g/m², m"
@@ -330,7 +330,7 @@ MAdata_Tulli:
       - "480540 (2002--.) Suodatinpaperi, -kartonki ja -pahvi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480591 (2002--.) Paperi, kartonki ja pahvi, päällystämätön, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty, paino <= 150 g/m², m"
       - "480610 (2002--.) Pergamenttipaperi, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
-      - "480620 (2002--.) Rasvanpitävät paperit *voipaperit*, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
+      - "480620 (2002--.) Rasvanpitävät paperit voipaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480630 (2002--.) Kuultopaperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty"
       - "480640 (2002--.) Glassiinipaperi sekä muut kiillotetut läpinäkyvät tai läpikuultavat paperit, rullina, joiden leveys on > 36 cm tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on > 36 cm ja toinen > 15 cm kun arkki on aukilevitetty ("
       - "480820 (2002--2011) Säkkipaperi, krepattu tai poimutettu, myös kohokuvioitu tai rei'itetty, rullina, joiden leveys on > 36 cm, tai suorakaiteen tai neliön muotoisina arkkeina, joiden yksi sivu on pituudeltaan > 36 cm ja toinen > 15 cm kun arkki on aukilevit"
@@ -342,7 +342,7 @@ MAdata_Tulli:
       - "481013 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481014 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
       - "481019 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään valonherkän, lämpöherkän tai sähköherkän paperin, kartongin tai pahvin pohjana, mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältämätön tai tällaisia kuituj"
-      - "481022 (2002--.) Kevyesti päällystetty paperi *LWC-paperi* kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
+      - "481022 (2002--.) Kevyesti päällystetty paperi LWC-paperi kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaispaino on <= 72 g/m² ja jossa <= 15 g/m² painava päällyste puolta kohti on pohjalla, kokonaiskuitusisällöstä >= 50 painopro"
       - "481029 (2002--.) Paperi, kartonki ja pahvi, jollaisia käytetään kirjoitus-, painatus- tai muuhun graafiseen tarkoitukseen, kokonaiskuitusisällöstä > 10 painoprosenttia mekaanisella tai kemimekaanisella menetelmällä saatuja kuituja sisältävä, yhde"
       - "481031 (2002--.) Voimapaperi, -kartonki ja -pahvi, valkaistu tasaisesti kauttaaltaan massana, > 95 painoprosenttia kokonaiskuitusisällöstä kemiallisella menetelmällä saatuja puukuituja sisältävä, yhdeltä tai molemmilta puolilta päällystetty kaoli"
       - "481099 (2002--.) Paperi, kartonki ja pahvi, jotka on yhdeltä tai molemmilta puolilta sideainetta käyttäen tai ilman sitä päällystetty kaoliinilla tai muulla epäorgaanisella aineella, myös pintavärjätty, pintakoristeltu tai painettu, rullina tai su"
@@ -355,17 +355,17 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
-      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071910 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-"
-      - "44071920 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-fir-puu, päistään jatkettu)"
-      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua *Betula spp.* (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
+      - "44071110 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071120 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071190 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071210 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
+      - "44071220 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071290 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071910 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-"
+      - "44071920 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-fir-puu, päistään jatkettu)"
+      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua Betula spp. (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
       - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
-      - "44124900 (2022--.) Laminoitu viilupuu *LVL*, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
+      - "44124900 (2022--.) Laminoitu viilupuu LVL, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: 
@@ -376,17 +376,17 @@ MAdata_Tulli:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
-      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071910 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-"
-      - "44071920 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-fir-puu, päistään jatkettu)"
-      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua *Betula spp.* (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
+      - "44071110 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071120 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071190 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071210 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
+      - "44071220 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071290 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071910 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-"
+      - "44071920 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-fir-puu, päistään jatkettu)"
+      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua Betula spp. (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
       - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
-      - "44124900 (2022--.) Laminoitu viilupuu *LVL*, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
+      - "44124900 (2022--.) Laminoitu viilupuu LVL, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.  
@@ -396,17 +396,17 @@ MAdata_Tulli:
     muunnos: vuosisumma
     tiedot:
       Tavaraluokitus CN8:
-      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
-      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071910 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-"
-      - "44071920 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-fir-puu, päistään jatkettu)"
-      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua *Betula spp.* (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
+      - "44071110 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071120 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071190 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071210 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
+      - "44071220 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071290 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071910 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-"
+      - "44071920 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-fir-puu, päistään jatkettu)"
+      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua Betula spp. (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
       - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
-      - "44124900 (2022--.) Laminoitu viilupuu *LVL*, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
+      - "44124900 (2022--.) Laminoitu viilupuu LVL, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: 
@@ -417,17 +417,17 @@ MAdata_Tulli:
     muunnos: vuosisumma
     tiedot:
       Tavaraluokitus CN8:
-      - "44071110 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071120 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071190 (2017--.) Mänty *Pinus spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
-      - "44071210 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
-      - "44071220 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071290 (2017--.) Kuusi *Abies spp.* ja *Picea spp.*, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
-      - "44071910 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-"
-      - "44071920 (2017--.) Havupuu, sahattu tai veistetty *chipped* pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty *Pinus spp.*, kuusi *Abies spp.* ja *Picea spp.*, SPF-puu ja Hem-fir-puu, päistään jatkettu)"
-      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua *Betula spp.* (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
+      - "44071110 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071120 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071190 (2017--.) Mänty Pinus spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä (Pinus spp.)"
+      - "44071210 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi SPF-puuta (kuusta (Picea spp. ja Abies spp"
+      - "44071220 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, höylätty (paitsi päistään jatkettu ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071290 (2017--.) Kuusi Abies spp. ja Picea spp., sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm (paitsi päistään jatkettu, höylätty ja SPF-puuta (kuusta (Picea spp. ja Abies spp.) ja mäntyä"
+      - "44071910 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, päistään jatkettu, myös höylätty tai hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-"
+      - "44071920 (2017--.) Havupuu, sahattu tai veistetty chipped pituussuunnassa, tasoleikattu tai viiluksi sorvattu, paksuus > 6 mm, hiottu (paitsi mänty Pinus spp., kuusi Abies spp. ja Picea spp., SPF-puu ja Hem-fir-puu, päistään jatkettu)"
+      - "44123310 (2022--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, joissa ainakin yksi pintaviiluista on koivua Betula spp. (paitsi bambua, joissa pintaviilu on trooppista puulajia, ja tiivistettyä puuta olevat levyt, solulevy"
       - "44123900 (2007--.) Ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, molemmat pintaviilut havupuuta (paitsi bambua, tiivistettyä puuta olevat levyt, solulevyt, upotekoristeinen puu ja huonekalujen osiksi tunnistettavat levyt)"
-      - "44124900 (2022--.) Laminoitu viilupuu *LVL*, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
+      - "44124900 (2022--.) Laminoitu viilupuu LVL, jossa molemmat pintaviiluista ovat havupuuta (paitsi bambua, joissa yksi pintaviiluista trooppista puuta tai lehtipuuta, ristiinliimattu vaneri, yksinomaan <= 6 mm paksuisista puuviiluista koostuva, tiivistettyä p"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Vienti määrämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
