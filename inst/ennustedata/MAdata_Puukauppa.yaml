@@ -1,123 +1,143 @@
 MAdata_Puukauppa:
   Kantohinta_kk:
-  - id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/02_Kuukausitilastot/01a_Kantohinnat_kk.px
+  - id: luke/met/teokau/kk/0100_teokau.px
     muunnos: alkuperäinen
     tiedot:
-      Hinta-alue:
+      Tieto:
+      - Hinta (euroa/m3)
+      Hinta-alue (8 aluetta):
       - KOKO MAA
-      Hakkuutapa:
-      - Pystykauppa yhteensä
+      Kauppatapa:
+      - Pystykauppa
       Puutavaralaji:
-      - Mäntytukki
-      - Kuusitukki
-      - Koivutukki
-      - Mäntykuitupuu
-      - Kuusikuitupuu
-      - Koivukuitupuu
-      - Mäntypikkutukki
-      - Kuusipikkutukki
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
+      - .Mäntypikkutukki
+      - .Kuusipikkutukki
   Kantohinta_v:
-  - id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/04_Vuositilastot/01b_Kantohinnat_v.px
+  - id: luke/met/teokau/v/0400_teokau.px
     muunnos: alkuperäinen
     tiedot:
-      Hinta-alue:
+      Tieto:
+      - Hinta (euroa/m3)
+      Hinta-alue (8 aluetta):
       - KOKO MAA
-      Hakkuutapa:
-      - Pystykauppa yhteensä
+      Kauppatapa:
+      - Pystykauppa
       Puutavaralaji:
-      - Mäntytukki
-      - Kuusitukki
-      - Koivutukki
-      - Mäntykuitupuu
-      - Kuusikuitupuu
-      - Koivukuitupuu
-      - Mäntypikkutukki
-      - Kuusipikkutukki
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
+      - .Mäntypikkutukki
+      - .Kuusipikkutukki
   Hankintahinta_kk:
-  - id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/02_Kuukausitilastot/03a_Hankintahinnat_kk.px
+  - id: luke/met/teokau/kk/0100_teokau.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Hinta (euroa/m3)
       Hinta-alue:
       - KOKO MAA
+      Kauppatapa:
+      - Hankintakauppa
       Puutavaralaji:
-      - Mäntytukki
-      - Kuusitukki
-      - Koivutukki
-      - Mäntykuitupuu
-      - Kuusikuitupuu
-      - Koivukuitupuu
-      - Mäntypikkutukki
-      - Kuusipikkutukki
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
+      - .Mäntypikkutukki
+      - .Kuusipikkutukki
   Hankintahinnat_v:
-  - id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/04_Vuositilastot/03b_Hankintahinnat_v.px
+  - id: luke/met/teokau/v/0400_teokau.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Hinta (euroa/m3)
       Hinta-alue:
       - KOKO MAA
+      Kauppatapa:
+      - Hankintakauppa
       Puutavaralaji:
-      - Mäntytukki
-      - Kuusitukki
-      - Koivutukki
-      - Mäntykuitupuu
-      - Kuusikuitupuu
-      - Koivukuitupuu
-      - Mäntypikkutukki
-      - Kuusipikkutukki
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
+      - .Mäntypikkutukki
+      - .Kuusipikkutukki
   Kantorahat:
-  - id: luke/04_Metsa/04_Talous/16_Kantorahatulot/01a_Bruttokantorahat_v_omistajaryhma_mk.px
+  - id: luke/met/kanrah/0100_kanrah.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Bruttokantorahatulot (1000 euroa)
       Maakunta:
       - KOKO MAA
       Omistajaryhmä:
-      - Kaikki yhteensä
-      - .Yksityismetsät, yhteensä
-      - ..Yksityismetsät, pystykaupat
-      - ..Yksityismetsät, hankintakaupat
-      - ..Yksityismetsät, kotitarvepuu
-      - .Metsäteollisuus ja valtio
+      - YHTEENSÄ (omistajaryhmät)
+      - Yksityismetsät
+      - .Pystykaupat
+      - .Hankintakaupat
+      - .Kotitarvepuu
+      - Metsäteollisuus ja valtio
       Puutavaralaji:
-      - Kaikkiaan
+      - YHTEENSÄ (puutavaralajit)
   pystykaupat:
-  - id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/02_Kuukausitilastot/07a_Puukauppamaarat_kk_pystykaupat.px
+  - id: luke/met/teokau/kk/0100_teokau.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Määrä (1000 m3)
       Hinta-alue:
       - KOKO MAA
-      Hakkuutapa:
-      - Pystykauppa yhteensä
+      Kauppatapa:
+      - Pystykauppa
       Puutavaralaji:
-      - Kaikkiaan
+      - YHTEENSÄ (puutavaralajit)
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Koivutukki
-      - .Tukkipuu yhteensä
+      - .Tukkipuu
       - ..Mäntykuitupuu
       - ..Kuusikuitupuu
       - ..Koivukuitupuu
-      - .Kuitupuu yhteensä
+      - .Kuitupuu
       - .Mäntypikkutukki
       - .Kuusipikkutukki
   hankintakaupat:
-  - id: luke/04_Metsa/04_Talous/02_Teollisuuspuun_kauppa/02_Kuukausitilastot/09a_Puukauppamaarat_kk_hankintakaupat.px
+  - id: luke/met/teokau/kk/0100_teokau.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Määrä (1000 m3)
       Hinta-alue:
       - KOKO MAA
+      Kauppatapa:
+      - Hankintakauppa
       Puutavaralaji:
       - Kaikkiaan
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Koivutukki
-      - .Tukkipuu yhteensä
+      - .Tukkipuu
       - ..Mäntykuitupuu
       - ..Kuusikuitupuu
       - ..Koivukuitupuu
-      - .Kuitupuu yhteensä
+      - .Kuitupuu
       - .Mäntypikkutukki
       - .Kuusipikkutukki
   Teollisuuspuun_hakkuut_kk:
-  - id: luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/02_Kuukausitilastot/01_Teollisuuspuun_hakkuut_kk.px
+  - id: luke/met/marhak/kk/0100_marhak.px
     muunnos: alkuperäinen
     tiedot:
       Omistajaryhmä:
@@ -141,7 +161,7 @@ MAdata_Puukauppa:
       - Energiapuu
       - Kaikki puutavaralajit yhteensä
   Teollisuuspuun_hakkuut_v:
-  - id: luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/04_Vuositilastot/03_Teollisuuspuun_hakkuut_v_koko_maa.px
+  - id: luke/met/marhak/v/0400_marhak.px
     muunnos: alkuperäinen
     tiedot:
       Omistajaryhmä:
@@ -149,16 +169,16 @@ MAdata_Puukauppa:
       - Yksityismetsät
       - Yhtiöiden ja valtion metsät
   Teollisuuspuun_hakkuut2_v:
-  - id: luke/04_Metsa/02_Rakenne_ja_tuotanto/06_Puun_markkinahakkuut/04_Vuositilastot/01a_Teollisuuspuun_hakkuut_maak_v.px
+  - id: luke/met/marhak/v/0300_marhak.px
     muunnos: alkuperäinen
     tiedot:
       Maakunta:
       - KOKO MAA
       Omistajaryhmä:
-      - KAIKKI YHTEENSÄ
-      - .Yksityismetsät, yhteensä
-      - ..Yksityismetsät, pystykaupat
-      - ..Yksityismetsät, hankintakaupat
-      - .Metsäteollisuus ja valtio
+      - YHTEENSÄ (omistajaryhmät)
+      - Yksityismetsät
+      - .Pystykaupat
+      - Hankintakaupat
+      - Metsäteollisuus ja valtio
       Puutavaralaji:
-      - KAIKKI PUUTAVARALAJIT YHTEENSÄ
+      - YHTEENSÄ (puutavaralajit)
