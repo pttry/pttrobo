@@ -164,7 +164,7 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/v/0400_marhak.px
     muunnos: alkuperäinen
     tiedot:
-      Omistajaryhma:
+      Omistajaryhmä:
       - Hakkuut yhteensä
       - Yksityismetsät
       - Yhtiöiden ja valtion metsät
