@@ -5,7 +5,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Hinta (euroa/m3)
-      Hinta-alue__8_aluetta_:
+      Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
       - Pystykauppa
