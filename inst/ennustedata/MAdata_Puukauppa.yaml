@@ -5,7 +5,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Hinta (euroa/m3)
-      Hinta-alue (8 aluetta):
+      Hinta-alue__8_aluetta_:
       - KOKO MAA
       Kauppatapa:
       - Pystykauppa
@@ -24,7 +24,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Hinta (euroa/m3)
-      Hinta-alue (8 aluetta):
+      Hinta-alue__8_aluetta_:
       - KOKO MAA
       Kauppatapa:
       - Pystykauppa
@@ -43,7 +43,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Hinta (euroa/m3)
-      Hinta-alue:
+      Hinta-alue__8_aluetta_:
       - KOKO MAA
       Kauppatapa:
       - Hankintakauppa
@@ -83,7 +83,7 @@ MAdata_Puukauppa:
       - Bruttokantorahatulot (1000 euroa)
       Maakunta:
       - KOKO MAA
-      Omistajaryhmä:
+      Omistajaryhma:
       - YHTEENSÄ (omistajaryhmät)
       - Yksityismetsät
       - .Pystykaupat
@@ -98,7 +98,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Määrä (1000 m3)
-      Hinta-alue:
+      Hinta-alue__8_aluetta_:
       - KOKO MAA
       Kauppatapa:
       - Pystykauppa
@@ -120,7 +120,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Määrä (1000 m3)
-      Hinta-alue:
+      Hinta-alue__8_aluetta_:
       - KOKO MAA
       Kauppatapa:
       - Hankintakauppa
@@ -140,7 +140,7 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/kk/0100_marhak.px
     muunnos: alkuperäinen
     tiedot:
-      Omistajaryhmä:
+      Omistajaryhma:
       - Kaikki yhteensä
       - .Yksityismetsät, yhteensä
       - ..Yksityismetsät, pystykaupat
@@ -164,7 +164,7 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/v/0400_marhak.px
     muunnos: alkuperäinen
     tiedot:
-      Omistajaryhmä:
+      Omistajaryhma:
       - Hakkuut yhteensä
       - Yksityismetsät
       - Yhtiöiden ja valtion metsät
@@ -174,7 +174,7 @@ MAdata_Puukauppa:
     tiedot:
       Maakunta:
       - KOKO MAA
-      Omistajaryhmä:
+      Omistajaryhma:
       - YHTEENSÄ (omistajaryhmät)
       - Yksityismetsät
       - .Pystykaupat
