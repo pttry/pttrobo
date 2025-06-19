@@ -24,7 +24,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Hinta (euroa/m3)
-      Hinta-alue__8_aluetta_:
+      Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
       - Pystykauppa
@@ -43,7 +43,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Hinta (euroa/m3)
-      Hinta-alue__8_aluetta_:
+      Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
       - Hankintakauppa
@@ -98,7 +98,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Määrä (1000 m3)
-      Hinta-alue__8_aluetta_:
+      Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
       - Pystykauppa
@@ -120,7 +120,7 @@ MAdata_Puukauppa:
     tiedot:
       Tieto:
       - Määrä (1000 m3)
-      Hinta-alue__8_aluetta_:
+      Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
       - Hankintakauppa
