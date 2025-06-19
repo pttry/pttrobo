@@ -1,7 +1,6 @@
 MAdata_Puunkaytto:
   Toimialoittain:
   - id: luke/met/puukay/mt/0300_puukay.px"
-    muunnos: alkuperäinen
     tiedot:
       Alkuperä:
       - YHTEENSÄ (alkuperät)
@@ -24,7 +23,6 @@ MAdata_Puunkaytto:
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Puutavaralajeittain:
   - id: luke/met/puukay/mt/0300_puukay.px
-    muunnos: alkuperäinen
     tiedot:
       Alkuperä:
       - YHTEENSÄ (alkuperät)
@@ -44,7 +42,6 @@ MAdata_Puunkaytto:
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Puutuoteteollisuus:
   - id: luke/met/puukay/mt/0300_puukay.px
-    muunnos: alkuperäinen
     tiedot:
       Alkuperä:
       - YHTEENSÄ (alkuperät)
@@ -66,7 +63,6 @@ MAdata_Puunkaytto:
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Massateollisuus:
   - id: luke/met/puukay/mt/0300_puukay.px
-    muunnos: alkuperäinen
     tiedot:
       Alkuperä:
       - YHTEENSÄ (alkuperät)
@@ -88,7 +84,6 @@ MAdata_Puunkaytto:
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Käyttötarkoitus:
   - id: luke/met/puukay/0100_puukay.px
-    muunnos: alkuperäinen
     tiedot:
       Maakunta: 
       - KOKO MAA
