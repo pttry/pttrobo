@@ -1,93 +1,93 @@
 MAdata_Puunkaytto:
   Toimialoittain:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
+  - id: luke/met/puukay/mt/0300_puukay.px"
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
-      - YHTEENSÄ
+      - YHTEENSÄ (alkuperät)
       Toimiala:
-      - Kaikki toimialat yhteensä
-      - .Puutuoteteollisuus yhteensä
-      - ..Sahateollisuus yhteensä
+      - YHTEENSÄ (kaikki toimialat)
+      - .Puutuoteteollisuus
+      - ..Sahateollisuus
       - '...Suuret ja keskisuuret sahat'
       - '...Piensahat'
       - ..Vaneriteollisuus
       - ..Lastulevyteollisuus
       - ..Kuitulevyteollisuus
       - ..Muu
-      - .Massateollisuus yhteensä
+      - .Massateollisuus
       - ..Mekaaninen massateollisuus
       - ..Puolikemiallinen massateollisuus
       - ..Selluteollisuus
       Puutavaralaji:
-      - Raakapuu yhteensä
+      - YHTEENSÄ (raakapuu)
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Puutavaralajeittain:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
+  - id: luke/met/puukay/mt/0300_puukay.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
-      - YHTEENSÄ
+      - YHTEENSÄ (alkuperät)
       Toimiala:
-      - Kaikki toimialat yhteensä
+      - YHTEENSÄ (kaikki toimialat)
       Puutavaralaji:
-      - Raakapuu yhteensä
-      - .Tukkipuu yhteensä
+      - YHTEENSÄ (raakapuu)
+      - .Tukkipuu
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Lehtitukki
-      - .Kuitupuu yhteensä
+      - .Kuitupuu
       - ..Mäntykuitupuu
       - ..Kuusikuitupuu
       - ..Lehtikuitupuu
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Puutuoteteollisuus:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
+  - id: luke/met/puukay/mt/0300_puukay.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
-      - YHTEENSÄ
+      - YHTEENSÄ (alkuperät)
       - Kotimainen puu
       - Tuontipuu
       Toimiala:
-      - .Puutuoteteollisuus yhteensä
+      - .Puutuoteteollisuus
       Puutavaralaji:
-      - Raakapuu yhteensä
-      - .Tukkipuu yhteensä
+      - YHTEENSÄ (raakapuu)
+      - .Tukkipuu
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Lehtitukki
-      - .Kuitupuu yhteensä
+      - .Kuitupuu
       - ..Mäntykuitupuu
       - ..Kuusikuitupuu
       - ..Lehtikuitupuu
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Massateollisuus:
-  - id: luke/04_Metsa/04_Talous/08_Metsateollisuuden_puunkaytto/02_metsateol_puunk_toimiala.px
+  - id: luke/met/puukay/mt/0300_puukay.px
     muunnos: alkuperäinen
     tiedot:
       Alkuperä:
-      - YHTEENSÄ
+      - YHTEENSÄ (alkuperät)
       - Kotimainen puu
       - Tuontipuu
       Toimiala:
-      - .Massateollisuus yhteensä
+      - .Massateollisuus
       Puutavaralaji:
-      - Raakapuu yhteensä
-      - .Tukkipuu yhteensä
+      - YHTEENSÄ (raakapuu)
+      - .Tukkipuu
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Lehtitukki
-      - .Kuitupuu yhteensä
+      - .Kuitupuu
       - ..Mäntykuitupuu
       - ..Kuusikuitupuu
       - ..Lehtikuitupuu
       - .Tuontihake ja -puru
       - Metsäteollisuuden sivutuotteet ja tähdepuu (sahahake ja puru)
   Käyttötarkoitus:
-  - id: luke/04_Metsa/04_Talous/07_Puun_kaytto/00_Puun_kok_kaytto.px
+  - id: luke/met/puukay/0100_puukay.px
     muunnos: alkuperäinen
     tiedot:
       Maakunta: 
