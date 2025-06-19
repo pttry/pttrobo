@@ -83,7 +83,7 @@ MAdata_Puukauppa:
       - Bruttokantorahatulot (1000 euroa)
       Maakunta:
       - KOKO MAA
-      Omistajaryhma:
+      Omistajaryhmä:
       - YHTEENSÄ (omistajaryhmät)
       - Yksityismetsät
       - .Pystykaupat
@@ -140,7 +140,7 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/kk/0100_marhak.px
     muunnos: alkuperäinen
     tiedot:
-      Omistajaryhma:
+      Omistajaryhmä:
       - Kaikki yhteensä
       - .Yksityismetsät, yhteensä
       - ..Yksityismetsät, pystykaupat
@@ -174,7 +174,7 @@ MAdata_Puukauppa:
     tiedot:
       Maakunta:
       - KOKO MAA
-      Omistajaryhma:
+      Omistajaryhmä:
       - YHTEENSÄ (omistajaryhmät)
       - Yksityismetsät
       - .Pystykaupat
