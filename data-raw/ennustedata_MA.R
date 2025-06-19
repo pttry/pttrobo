@@ -8,7 +8,7 @@ id_puunkaytto <-
 
 id_puukauppa <-
   c(
-    "luke/met/teokau/kk/0100_teokau",
+    "luke/met/teokau/kk/0100_teokau.px",
     "luke/met/teokau/v/0400_teokau.px,
     "luke/met/kanrah/0100_kanrah.px")
 id_puukauppa2 <- c(
