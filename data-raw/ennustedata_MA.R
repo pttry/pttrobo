@@ -12,7 +12,7 @@ id_puukauppa <-
     "luke/met/teokau/v/0400_teokau.px,
     "luke/met/kanrah/0100_kanrah.px")
 id_puukauppa2 <- c(
-    "luke/met/teokau/kk/0100_teokau",
+    "luke/met/teokau/kk/0100_teokau.px",
     "luke/met/teokau/v/0400_teokau.px",
     "luke/met/marhak/kk/0100_marhak.px",
     "luke/met/marhak/v/0300_marhak.px"
