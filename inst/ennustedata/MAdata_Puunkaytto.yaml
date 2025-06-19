@@ -2,6 +2,8 @@ MAdata_Puunkaytto:
   Toimialoittain:
   - id: luke/met/puukay/mt/0300_puukay.px"
     tiedot:
+      Tieto:
+      - Määrä (1000 m3)
       Alkuperä:
       - YHTEENSÄ (alkuperät)
       Toimiala:
