@@ -151,18 +151,17 @@ MAdata_Puukauppa:
       - .Metsäteollisuus
       - .Valtio
       Puutavaralaji:
+      - YHTEENSÄ (puutavaralajit)
+      - .Tukkipuu
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Lehtitukki
-      - .Tukkipuu
-      - ..Mäntykuitu
-      - ..Kuusikuitu
-      - ..Lehtikuitu
-      - ..Muu kuitupuu
       - .Kuitupuu
-      - Teollisuuspuu
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Lehtikuitupuu
+      - ..Muu kuitupuu
       - Energiapuu
-      - YHTEENSÄ (puutavaralajit)
   Teollisuuspuun_hakkuut_v:
   - id: luke/met/marhak/v/0400_marhak.px
     muunnos: alkuperäinen
