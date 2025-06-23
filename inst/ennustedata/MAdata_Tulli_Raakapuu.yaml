@@ -14,9 +14,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44032190 (2017--.) Raakapuu, mäntyä *Pinus spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; rata- tai raitiopölkyiksi muotoiltu puu; lankuiks"
-      - "44032200 (2017--.) Raakapuu, mäntyä *Pinus spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen"
-      - "44032039 (2002--2016) Mänty *Pinus sylvestris L.*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten val"
+      - "44032190"
+      - "44032200"
+      - "44032039"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -25,8 +25,8 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44032310 (2017--.) Sahatukit, kuusta *Abies spp.* ja *Picea spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
-      - "44032011 (2002--2016) Sahatukit, kuusta *Picea abies Karst.* tai saksanjalokuusta *Abies alba Mill.*, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
+      - "44032310"
+      - "44032011"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -35,9 +35,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44032390 (2017--.) Raakapuu, kuusta *Abies spp.* ja *Picea spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; rata- tai raitiopölkyiksi muotoilt"
-      - "44032400 (2017--.) Raakapuu, kuusta *Abies spp.* ja *Picea spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi Karkeasti muotoiltu puu kävelykeppien, sateenvarjojen,"
-      - "44032019 (2002--2016) Kuusi *Picea abies Karst.* tai saksanjalokuusi *Abies alba Mill.*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalu"
+      - "44032390"
+      - "44032400"
+      - "44032019"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -46,8 +46,8 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44032510 (2017--.) Sahatukit, havupuuta, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi mänty ja kuusi; rata- tai raitiopölkyiksi muotoiltu puu; lankuiksi, pa"
-      - "44032091 (2002--2016) Sahatukit, havupuuta, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi kuusi *Picea abies Karst.*, saksanjalokuusi *Abies alba Mill.* ja mänty *Pinus sylvestris L.*)"
+      - "44032510"
+      - "44032091"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -56,9 +56,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44032590 (2017--.) Raakapuu, havupuuta, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi mänty ja kuusi; sahatukit; rata- tai raitiopölkyiksi muotoiltu puu; lan"
-      - "44032600 (2017--.) Raakapuu, havupuuta, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi mänty ja kuusi; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalu"
-      - "44032099 (2002--2016) Havupuu, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai"
+      - "44032590"
+      - "44032600"
+      - "44032099"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -67,8 +67,8 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44039510 (2017--.) Sahatukit, koivua *Betula spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
-      - "44039951 (2002--2016) Sahatukit, koivua, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
+      - "44039510"
+      - "44039951"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -77,9 +77,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44039590 (2017--.) Raakapuu, koivua *Betula spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit, rata- ja raitiotiepölkyiksi muotoiltu puu; lankui"
-      - "44039600 (2017--.) Raakapuu, koivua *Betula spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen var"
-      - "44039959 (2002--2016) Koivu, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi,"
+      - "44039590"
+      - "44039600"
+      - "44039959"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -88,27 +88,27 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44039800 (2017--.) Raakapuu, eukalyptuspuuta *Eucalyptus spp.*, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistuksee"
-      - "44034100 (2002--.) Dark red meranti, light red meranti ja meranti bakau raakapuuna, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden ka"
-      - "44034200 (2022--.) Raakapuu, teak, myös jos siitä on poistettu kuori tai pintapuu tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jne. s"
-      - "44034910 (2002--.) Sapelli, acajou d'Afrique ja iroko raakapuuna, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistuk"
-      - "44034920 (2002--2008) Okoumé, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi j"
-      - "44034935 (2009--.) Okoumé ja sipo, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, pa"
-      - "44034940 (2002--2008) Sipo raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jne."
-      - "44034985 (2017--.) Raakapuu, trooppista puulajia, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi teak, dark red meranti, light red meranti, meranti bakau, acajou d'Afrique, iroko, sapelli, okoumé ja sipo; karkeasti muot"
-      - "44034995 (2002--2016) Abura, afrormosia, ako, alan, andiroba, aningré, avodiré, azobé, balau, balsa, bossé clair, bossé foncé, cativo, cedro, dabema, dibétou, doussié, framiré, freijo, fromager, fuma, geronggang, ilomba, imbuia, ipé, jaboty, jelutong,"
-      - "44039100 (2017--.) Raakapuu, tammea *Quercus spp.*, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- ja"
-      - "44039110 (2002--2016) Sahatukit, tammea *Quercus-suvun lajit*, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
-      - "44039190 (2002--2016) Tammi *Quercus-suvun lajit*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten val"
-      - "44039210 (2002--2016) Sahatukit, pyökkiä *Fagus-suvun lajit*, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
-      - "44039290 (2002--2016) Pyökki *Fagus-suvun lajit* raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmi"
-      - "44039300 (2017--.) Raakapuu, pyökkiä *Fagus spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi rata- ja raitiotiepölkyiksi muotoiltu puu; lankuiksi, parr"
-      - "44039400 (2017--.) Raakapuu, pyökkiä *Fagus spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen"
-      - "44039700 (2017--.) Raakapuu, poppelia ja haapaa, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, p"
-      - "44039900 (2017--.) Raakapuu, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jne. sahatt"
-      - "44039910 (2002--2016) Poppeli raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jn"
-      - "44039930 (2002--2016) Eukalyptuspuu raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parru"
-      - "44039995 (2002--2016) Raakapuu, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jne. sahatt"
+      - "44039800"
+      - "44034100"
+      - "44034200"
+      - "44034910"
+      - "44034920"
+      - "44034935"
+      - "44034940"
+      - "44034985"
+      - "44034995"
+      - "44039100"
+      - "44039110"
+      - "44039190"
+      - "44039210"
+      - "44039290"
+      - "44039300"
+      - "44039400"
+      - "44039700"
+      - "44039900"
+      - "44039910"
+      - "44039930"
+      - "44039995"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -117,9 +117,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44011000 (2002--2016) Polttopuu, rankoina, pölkkyinä, halkoina, oksina, risukimppuina tai niiden kaltaisissa muodoissa"
-      - "44011100 (2017--.) Polttopuu, rankoina, pölkkyinä, halkoina, oksina, risukimppuina tai niiden kaltaisissa muodoissa, havupuuta"
-      - "44011200 (2017--.) Polttopuu, rankoina, pölkkyinä, halkoina, oksina, risukimppuina tai niiden kaltaisissa muodoissa, lehtipuuta"
+      - "44011000"
+      - "44011100"
+      - "44011200"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
@@ -128,7 +128,7 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44012100 (2002--.) Havupuu lastuina tai hakkeena (paitsi pääasiassa värjäykseen tai parkitukseen käytettävät)"
+      - "44012100"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
@@ -137,9 +137,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44012200 (2002--2020) Lehtipuu lastuina tai hakkeena (paitsi pääasiassa värjäykseen tai parkitukseen käytettävät)"
-      - "44012210 (2021--.) Lehtipuu lastuina tai hakkeena, eukalyptuspuuta (Eucalyptus spp.)"
-      - "44012290 (2021--.) Lehtipuu lastuina tai hakkeena, muuta kuin eukalyptuspuuta (paitsi pääasiassa värjäykseen tai parkitukseen käytettävät)"
+      - "44012200"
+      - "44012210"
+      - "44012290"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
@@ -148,9 +148,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44031000 (2002--2016) Raakapuu, maalilla, petsillä, kreosootilla tai muilla suoja-aineilla käsitelty (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai raitiopölkyiksi muotoiltu pu"
-      - "44031100 (2017--.) Raakapuu, maalilla, petsillä, kreosootilla tai muilla suoja-aineilla käsitelty, havupuuta (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai raitiopölkyiksi m"
-      - "44031200 (2017--.) Raakapuu, maalilla, petsillä, kreosootilla tai muilla suoja-aineilla käsitelty, lehtipuuta (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai raitiopölkyiksi"
+      - "44031000"
+      - "44031100"
+      - "44031200"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -159,9 +159,9 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44013100 (2012--.) Puupelletit"
-      - "44013200 (2022--.) Puubriketit"
-      - "44013900 (2017--.) Sahanpuru ja puujäte, myös pölkyiksi, briketeiksi tai niiden kaltaiseen muotoon yhteenpuristettu (paitsi pelletit)"
+      - "44013100"
+      - "44013200"
+      - "44013900"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
@@ -170,8 +170,8 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44014010 (2017--2021) Sahanpuru, ei yhteenpuristettu"
-      - "44014100 (2022--.) Sahanpuru, ei yhteenpuristettu"
+      - "44014010"
+      - "44014100"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
@@ -180,8 +180,8 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - "44014090 (2017--2021) Puun jäte ja kappaleet, ei yhteenpuristettu (paitsi sahanpuru)"
-      - "44014900 (2022--.) Puun jäte ja kappaleet, ei yhteenpuristettu (paitsi sahanpuru)"
+      - "44014090"
+      - "44014900"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
