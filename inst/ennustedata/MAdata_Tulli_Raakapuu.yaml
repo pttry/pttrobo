@@ -1,5 +1,5 @@
 MAdata_Tulli_Raakapuu:
-Määrä_matu_CN8_kk:
+  Määrä_matu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -7,15 +7,14 @@ Määrä_matu_CN8_kk:
       - "44032110 (2017--.) Sahatukit, mäntyä *Pinus spp*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       - "44032031 (2002--2016) Sahatukit, mäntyä *Pinus sylvestris L.*, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-      
-Määrä_maku_CN8_kk:
+  Määrä_maku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -24,26 +23,29 @@ Määrä_maku_CN8_kk:
       - "44032200 (2017--.) Raakapuu, mäntyä *Pinus spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen"
       - "44032039 (2002--2016) Mänty *Pinus sylvestris L.*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten val"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_kutu_CN8_kk:
+  Määrä_kutu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
       - "44032310 (2017--.) Sahatukit, kuusta *Abies spp.* ja *Picea spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       - "44032011 (2002--2016) Sahatukit, kuusta *Picea abies Karst.* tai saksanjalokuusta *Abies alba Mill.*, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
-      Maa: AA (2002--.) Kaikki maat yhteensä
+      Maa: 
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_kuku_CN8_kk:
+  Määrä_kuku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -52,15 +54,14 @@ Määrä_kuku_CN8_kk:
       - "44032400 (2017--.) Raakapuu, kuusta *Abies spp.* ja *Picea spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi Karkeasti muotoiltu puu kävelykeppien, sateenvarjojen,"
       - "44032019 (2002--2016) Kuusi *Picea abies Karst.* tai saksanjalokuusi *Abies alba Mill.*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalu"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_muuhatu_CN8_kk:
+  Määrä_muuhatu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -68,15 +69,14 @@ Määrä_muuhatu_CN8_kk:
       - "44032510 (2017--.) Sahatukit, havupuuta, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi mänty ja kuusi; rata- tai raitiopölkyiksi muotoiltu puu; lankuiksi, pa"
       - "44032091 (2002--2016) Sahatukit, havupuuta, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi kuusi *Picea abies Karst.*, saksanjalokuusi *Abies alba Mill.* ja mänty *Pinus sylvestris L.*)"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_muuhaku_CN8_kk:
+  Määrä_muuhaku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -85,15 +85,14 @@ Määrä_muuhaku_CN8_kk:
       - "44032600 (2017--.) Raakapuu, havupuuta, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi mänty ja kuusi; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalu"
       - "44032099 (2002--2016) Havupuu, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_kotu_CN8_kk:
+  Määrä_kotu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -101,15 +100,14 @@ Määrä_kotu_CN8_kk:
       - "44039510 (2017--.) Sahatukit, koivua *Betula spp.*, jonka poikkileikkaus on kaikilta kohdin vähintään 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       - "44039951 (2002--2016) Sahatukit, koivua, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_koku_CN8_kk:
+  Määrä_koku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -118,15 +116,14 @@ Määrä_koku_CN8_kk:
       - "44039600 (2017--.) Raakapuu, koivua *Betula spp.*, jonka poikkileikkaus on kaikilta kohdin alle 15 cm, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen var"
       - "44039959 (2002--2016) Koivu, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi,"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_muulehti_CN8_kk:
+  Määrä_muulehti_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -153,15 +150,14 @@ Määrä_muulehti_CN8_kk:
       - "44039930 (2002--2016) Eukalyptuspuu raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parru"
       - "44039995 (2002--2016) Raakapuu, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jne. sahatt"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_polttopuu_CN8_kk:
+  Määrä_polttopuu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -170,33 +166,44 @@ Määrä_polttopuu_CN8_kk:
       - "44011100 (2017--.) Polttopuu, rankoina, pölkkyinä, halkoina, oksina, risukimppuina tai niiden kaltaisissa muodoissa, havupuuta"
       - "44011200 (2017--.) Polttopuu, rankoina, pölkkyinä, halkoina, oksina, risukimppuina tai niiden kaltaisissa muodoissa, lehtipuuta"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
-
-Määrä_hake_CN8_kk:
+  Määrä_havuhake_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
       - "44012100 (2002--.) Havupuu lastuina tai hakkeena (paitsi pääasiassa värjäykseen tai parkitukseen käytettävät)"
+      Maa: 
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
+      Suunta: Tuonti alkuperämaittain
+      Indikaattorit: Paljous
+  Määrä_lehtihake_CN8_kk:
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
       - "44012200 (2002--2020) Lehtipuu lastuina tai hakkeena (paitsi pääasiassa värjäykseen tai parkitukseen käytettävät)"
       - "44012210 (2021--.) Lehtipuu lastuina tai hakkeena, eukalyptuspuuta (Eucalyptus spp.)"
       - "44012290 (2021--.) Lehtipuu lastuina tai hakkeena, muuta kuin eukalyptuspuuta (paitsi pääasiassa värjäykseen tai parkitukseen käytettävät)"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
-
-Määrä_kylpuu_CN8_kk:
+  Määrä_kylpuu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -205,15 +212,14 @@ Määrä_kylpuu_CN8_kk:
       - "44031100 (2017--.) Raakapuu, maalilla, petsillä, kreosootilla tai muilla suoja-aineilla käsitelty, havupuuta (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai raitiopölkyiksi m"
       - "44031200 (2017--.) Raakapuu, maalilla, petsillä, kreosootilla tai muilla suoja-aineilla käsitelty, lehtipuuta (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai raitiopölkyiksi"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Lisäpaljous
-
-Määrä_pelbrik_CN8_kk:
+  Määrä_pelbrik_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -222,15 +228,14 @@ Määrä_pelbrik_CN8_kk:
       - "44013200 (2022--.) Puubriketit"
       - "44013900 (2017--.) Sahanpuru ja puujäte, myös pölkyiksi, briketeiksi tai niiden kaltaiseen muotoon yhteenpuristettu (paitsi pelletit)"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
-
-Määrä_puru_CN8_kk:
+  Määrä_puru_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -238,15 +243,14 @@ Määrä_puru_CN8_kk:
       - "44014010 (2017--2021) Sahanpuru, ei yhteenpuristettu"
       - "44014100 (2022--.) Sahanpuru, ei yhteenpuristettu"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
-
-Määrä_jatepuu_CN8_kk:
+  Määrä_jatepuu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
     tiedot:
@@ -254,10 +258,10 @@ Määrä_jatepuu_CN8_kk:
       - "44014090 (2017--2021) Puun jäte ja kappaleet, ei yhteenpuristettu (paitsi sahanpuru)"
       - "44014900 (2022--.) Puun jäte ja kappaleet, ei yhteenpuristettu (paitsi sahanpuru)"
       Maa: 
-      - "AA (2002--.) Kaikki maat yhteensä"
-      - "SE (2002--.) Ruotsi"
-      - "EE (2002--.) Viro"
-      - "LV (2002--.) Latvia"
-      - "LT (2002--.) Liettua"
+      - AA (2002--.) Kaikki maat yhteensä
+      - SE (2002--.) Ruotsi
+      - EE (2002--.) Viro
+      - LV (2002--.) Latvia
+      - LT (2002--.) Liettua
       Suunta: Tuonti alkuperämaittain
       Indikaattorit: Paljous
