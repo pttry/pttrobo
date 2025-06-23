@@ -3,7 +3,7 @@ MAdata_Puunkaytto:
   - id: luke/met/puukay/mt/0300_puukay.px
     tiedot:
       Tieto:
-      - Määrä (1000 m3)
+      - Määrä (1000 m³)
       Alkuperä:
       - YHTEENSÄ (alkuperät)
       Toimiala:
@@ -26,6 +26,8 @@ MAdata_Puunkaytto:
   Puutavaralajeittain:
   - id: luke/met/puukay/mt/0300_puukay.px
     tiedot:
+      Tieto:
+      - Määrä (1000 m³)
       Alkuperä:
       - YHTEENSÄ (alkuperät)
       Toimiala:
@@ -45,6 +47,8 @@ MAdata_Puunkaytto:
   Puutuoteteollisuus:
   - id: luke/met/puukay/mt/0300_puukay.px
     tiedot:
+      Tieto:
+      - Määrä (1000 m³)
       Alkuperä:
       - YHTEENSÄ (alkuperät)
       - Kotimainen puu
@@ -66,6 +70,8 @@ MAdata_Puunkaytto:
   Massateollisuus:
   - id: luke/met/puukay/mt/0300_puukay.px
     tiedot:
+      Tieto:
+      - Määrä (1000 m³)
       Alkuperä:
       - YHTEENSÄ (alkuperät)
       - Kotimainen puu
@@ -87,9 +93,11 @@ MAdata_Puunkaytto:
   Käyttötarkoitus:
   - id: luke/met/puukay/0100_puukay.px
     tiedot:
+      Tieto:
+      - Määrä (1000 m³)
       Maakunta: 
       - KOKO MAA
       Käyttötarkoitus:
+      - Raakapuu yhteensä
       - Raakapuu - Metsäteollisuus
       - Raakapuu - Energiantuotanto
-      - Raakapuu yhteensä
