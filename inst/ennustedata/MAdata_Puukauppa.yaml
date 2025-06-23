@@ -126,7 +126,7 @@ MAdata_Puukauppa:
       Kauppatapa:
       - Hankintakauppa
       Puutavaralaji:
-      - Kaikkiaan
+      - YHTEENSÄ (puutavaralajit)
       - ..Mäntytukki
       - ..Kuusitukki
       - ..Koivutukki
