@@ -167,6 +167,8 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/v/0400_marhak.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Määrä (1000 m3)
       Omistajaryhmä:
       - YHTEENSÄ (omistajaryhmät)
       - Yksityismetsät
