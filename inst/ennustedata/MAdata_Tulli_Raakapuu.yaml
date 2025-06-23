@@ -1,189 +1,187 @@
 MAdata_Tulli_Raakapuu:
   Määrä_matu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44032110"
-          - "44032031"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44032110"
+      - "44032031"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_maku_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44032190"
-          - "44032200"
-          - "44032039"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44032190"
+      - "44032200"
+      - "44032039"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_kutu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44032310"
-          - "44032011"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44032310"
+      - "44032011"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_kuku_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44032390"
-          - "44032400"
-          - "44032019"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44032390"
+      - "44032400"
+      - "44032019"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_muuhatu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44032510"
-          - "44032091"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44032510"
+      - "44032091"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_muuhaku_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44032590"
-          - "44032600"
-          - "44032099"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44032590"
+      - "44032600"
+      - "44032099"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_kotu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44039510"
-          - "44039951"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44039510"
+      - "44039951"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_koku_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44039590"
-          - "44039600"
-          - "44039959"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44039590"
+      - "44039600"
+      - "44039959"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_muulehti_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44039800"
-          - "44034100"
-          - "44034200"
-          - "44034910"
-          - "44034920"
-          - "44034935"
-          - "44034940"
-          - "44034985"
-          - "44034995"
-          - "44039100"
-          - "44039110"
-          - "44039190"
-          - "44039210"
-          - "44039290"
-          - "44039300"
-          - "44039400"
-          - "44039700"
-          - "44039900"
-          - "44039910"
-          - "44039930"
-          - "44039995"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44039800"
+      - "44034100"
+      - "44034200"
+      - "44034910"
+      - "44034920"
+      - "44034935"
+      - "44034940"
+      - "44034985"
+      - "44034995"
+      - "44039100"
+      - "44039110"
+      - "44039190"
+      - "44039210"
+      - "44039290"
+      - "44039300"
+      - "44039400"
+      - "44039700"
+      - "44039900"
+      - "44039910"
+      - "44039930"
+      - "44039995"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_polttopuu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44011000"
-          - "44011100"
-          - "44011200"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44011000"
+      - "44011100"
+      - "44011200"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
   Määrä_havuhake_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44012100"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44012100"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
   Määrä_lehtihake_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44012200"
-          - "44012210"
-          - "44012290"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44012200"
+      - "44012210"
+      - "44012290"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
   Määrä_kylpuu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44031000"
-          - "44031100"
-          - "44031200"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44031000"
+      - "44031100"
+      - "44031200"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_pelbrik_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44013100"
-          - "44013200"
-          - "44013900"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44013100"
+      - "44013200"
+      - "44013900"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Määrä_puru_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44014010"
-          - "44014100"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44014010"
+      - "44014100"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
   Määrä_jatepuu_CN8_kk:
-    - id: tulli/uljas_cn
-      muunnos: alkuperäinen
-      tiedot:
-        Tavaraluokitus CN8:
-          - "44014090"
-          - "44014900"
-        Maa: "AA (2002--.) Kaikki maat yhteensä"
-        Suunta: "Tuonti alkuperämaittain"
-        Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
-        Suunta: Tuonti alkuperämaittain
-        Indikaattorit: Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana.
+  - id: tulli/uljas_cn
+    muunnos: alkuperäinen
+    tiedot:
+      Tavaraluokitus CN8:
+      - "44014090"
+      - "44014900"
+      Maa: "AA (2002--.) Kaikki maat yhteensä"
+      Suunta: "Tuonti alkuperämaittain"
+      Indikaattorit: "Paljous;;Tavaran määrän nettopaljous. Useimmiten kilogrammoina, jos saatavana."
