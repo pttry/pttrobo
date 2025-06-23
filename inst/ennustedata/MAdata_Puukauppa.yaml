@@ -5,7 +5,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Hinta (euroa/m3)
+      - Hinta (euroa/m³)
       Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
@@ -24,7 +24,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Hinta (euroa/m3)
+      - Hinta (euroa/m³)
       Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
@@ -43,7 +43,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Hinta (euroa/m3)
+      - Hinta (euroa/m³)
       Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
@@ -62,7 +62,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Hinta (euroa/m3)
+      - Hinta (euroa/m³)
       Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
@@ -98,7 +98,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Määrä (1000 m3)
+      - Määrä (1000 m³)
       Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
@@ -120,7 +120,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Määrä (1000 m3)
+      - Määrä (1000 m³)
       Hinta-alue (8 aluetta):
       - KOKO MAA
       Kauppatapa:
@@ -168,7 +168,7 @@ MAdata_Puukauppa:
     muunnos: alkuperäinen
     tiedot:
       Tieto:
-      - Määrä (1000 m3)
+      - Määrä (1000 m³)
       Omistajaryhmä:
       - YHTEENSÄ (omistajaryhmät)
       - Yksityismetsät
@@ -177,6 +177,8 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/v/0300_marhak.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Määrä (1000 m³)
       Maakunta:
       - KOKO MAA
       Omistajaryhmä:
