@@ -1,3 +1,4 @@
+
 MAdata_Puukauppa:
   Kantohinta_kk:
   - id: luke/met/teokau/kk/0100_teokau.px
@@ -140,6 +141,8 @@ MAdata_Puukauppa:
   - id: luke/met/marhak/kk/0100_marhak.px
     muunnos: alkuperäinen
     tiedot:
+      Tieto:
+      - Määrä (1000 m3)
       Omistajaryhmä:
       - Kaikki yhteensä
       - .Yksityismetsät, yhteensä
