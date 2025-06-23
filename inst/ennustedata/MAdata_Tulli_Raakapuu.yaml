@@ -19,7 +19,7 @@ MAdata_Tulli_Raakapuu:
       - "44032039 (2002--2016) Mänty *Pinus sylvestris L.*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten val"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_kutu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -29,7 +29,7 @@ MAdata_Tulli_Raakapuu:
       - "44032011 (2002--2016) Sahatukit, kuusta *Picea abies Karst.* tai saksanjalokuusta *Abies alba Mill.*, myös jos niistä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_kuku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -40,7 +40,7 @@ MAdata_Tulli_Raakapuu:
       - "44032019 (2002--2016) Kuusi *Picea abies Karst.* tai saksanjalokuusi *Abies alba Mill.*, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalu"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_muuhatu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -50,7 +50,7 @@ MAdata_Tulli_Raakapuu:
       - "44032091 (2002--2016) Sahatukit, havupuuta, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi kuusi *Picea abies Karst.*, saksanjalokuusi *Abies alba Mill.* ja mänty *Pinus sylvestris L.*)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_muuhaku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -61,7 +61,7 @@ MAdata_Tulli_Raakapuu:
       - "44032099 (2002--2016) Havupuu, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_kotu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -71,7 +71,7 @@ MAdata_Tulli_Raakapuu:
       - "44039951 (2002--2016) Sahatukit, koivua, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_koku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -82,7 +82,7 @@ MAdata_Tulli_Raakapuu:
       - "44039959 (2002--2016) Koivu, raakapuuna, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi sahatukit; karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi,"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_muulehti_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -111,7 +111,7 @@ MAdata_Tulli_Raakapuu:
       - "44039995 (2002--2016) Raakapuu, myös jos siitä on poistettu kuori tai pintapuu, tai karkeasti syrjätty puu (paitsi karkeasti muotoiltu puu kävelykeppien, sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; lankuiksi, parruksi jne. sahatt"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_polttopuu_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -153,7 +153,7 @@ MAdata_Tulli_Raakapuu:
       - "44031200 (2017--.) Raakapuu, maalilla, petsillä, kreosootilla tai muilla suoja-aineilla käsitelty, lehtipuuta (paitsi karkeasti muotoiltu puu kävelykeppien sateenvarjojen, työkalujen varsien tai niiden kaltaisten valmistukseen; rata- tai raitiopölkyiksi"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_pelbrik_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -164,7 +164,7 @@ MAdata_Tulli_Raakapuu:
       - "44013900 (2017--.) Sahanpuru ja puujäte, myös pölkyiksi, briketeiksi tai niiden kaltaiseen muotoon yhteenpuristettu (paitsi pelletit)"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Paljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_puru_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
