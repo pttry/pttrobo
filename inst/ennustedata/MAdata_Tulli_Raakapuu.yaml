@@ -8,7 +8,7 @@ MAdata_Tulli_Raakapuu:
       - "44032031"
       Maa: AA (2002--.) Kaikki maat yhteensä
       Suunta: Tuonti alkuperämaittain
-      Indikaattorit: Lisäpaljous
+      Indikaattorit: Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne.
   Määrä_maku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
