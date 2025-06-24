@@ -1,0 +1,54 @@
+MAdata_Puukauppa_Alueellinen:
+  Alueellinen_kantohinta_kk:
+  - id: luke/met/teokau/kk/0100_teokau.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tieto:
+      - Hinta (euroa/m³)
+      Hinta-alue (8 aluetta):
+      - KOKO MAA
+      - Etelä-Suomi
+      - Keski-Suomi
+      - Savo-Karjala
+      - Kymi-Savo
+      - Etelä-Pohjanmaa
+      - Pohjois-Pohjanmaa
+      - Kainuu-Koillismaa
+      - Lappi
+      Kauppatapa:
+      - Pystykauppa
+      - Hankintakauppa
+      Puutavaralaji:
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
+  Alueellinen_pystykauppa_kk:
+  - id: luke/met/teokau/kk/0100_teokau.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tieto:
+      - Määrä (1000 m³)
+      Hinta-alue (8 aluetta):
+      - KOKO MAA
+      - Etelä-Suomi
+      - Keski-Suomi
+      - Savo-Karjala
+      - Kymi-Savo
+      - Etelä-Pohjanmaa
+      - Pohjois-Pohjanmaa
+      - Kainuu-Koillismaa
+      - Lappi
+      Kauppatapa:
+      - Pystykauppa
+      - Hankintakauppa
+      Puutavaralaji:
+      - YHTEENSÄ (puutavaralajit)
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
