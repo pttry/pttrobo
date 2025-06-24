@@ -1,0 +1,40 @@
+MAdata_Puukauppa_Kauppatapa:
+  Kauppatapa_kantohinta_kk:
+  - id: luke/met/teokau/kk/0100_teokau.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tieto:
+      - Hinta (euroa/m³)
+      Hinta-alue (8 aluetta):
+      - KOKO MAA
+      Kauppatapa:
+      - .Uudistushakkuu
+      - .Harvennushakkuu
+      - .Ensiharvennus
+      Puutavaralaji:
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
+  Kauppatapa_pystykauppa_kk:
+  - id: luke/met/teokau/kk/0100_teokau.px
+    muunnos: alkuperäinen
+    tiedot:
+      Tieto:
+      - Määrä (1000 m³)
+      Hinta-alue (8 aluetta):
+      - KOKO MAA
+      Kauppatapa:
+      - .Uudistushakkuu
+      - .Harvennushakkuu
+      - .Ensiharvennus
+      Puutavaralaji:
+      - YHTEENSÄ (puutavaralajit)
+      - ..Mäntytukki
+      - ..Kuusitukki
+      - ..Koivutukki
+      - ..Mäntykuitupuu
+      - ..Kuusikuitupuu
+      - ..Koivukuitupuu
