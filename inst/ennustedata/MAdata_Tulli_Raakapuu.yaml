@@ -15,7 +15,7 @@ MAdata_Tulli_Raakapuu:
       Suunta:
       - "Tuonti alkuperämaittain"
       Indikaattorit:
-      - "Lisäpaljous"
+      - "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
   Maara_maku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
