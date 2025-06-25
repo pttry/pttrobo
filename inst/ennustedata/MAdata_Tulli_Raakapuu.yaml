@@ -15,7 +15,7 @@ MAdata_Tulli_Raakapuu:
       Suunta:
       - "Tuonti alkuperämaittain"
       Indikaattorit:
-      - "Lisäpaljous;;Osalla tavaroista on käytössä myös toinen määrän paljousyksikkö kuten kappale, pari, neliömetri jne."
+      - "Lisäpaljous"
   Maara_maku_CN8_kk:
   - id: tulli/uljas_cn
     muunnos: alkuperäinen
@@ -268,8 +268,8 @@ MAdata_Tulli_Raakapuu:
     muunnos: alkuperäinen
     tiedot:
       Tavaraluokitus CN8:
-      - 44014010 (2017--2021) Sahanpuru, ei yhteenpuristettu
-      - 44014100 (2022--.) Sahanpuru, ei yhteenpuristettu
+      - "44014010 (2017--2021) Sahanpuru, ei yhteenpuristettu"
+      - "44014100 (2022--.) Sahanpuru, ei yhteenpuristettu"
       Maa:
       - "AA (2002--.) Kaikki maat yhteensä"
       - "SE (2002--.) Ruotsi"
