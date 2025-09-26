@@ -3,6 +3,7 @@
 \name{ptt_data_robo}
 \alias{ptt_data_robo}
 \alias{ptt_data_robo_l}
+\alias{ptt_data_robo_h}
 \alias{ptt_data_robo_c}
 \alias{ptt_data_robo_b}
 \title{Get Data with robonomistClient in PTT Format}
@@ -10,6 +11,8 @@
 ptt_data_robo(..., labels = TRUE)
 
 ptt_data_robo_l(..., labels = TRUE)
+
+ptt_data_robo_h(..., hash = Sys.time())
 
 ptt_data_robo_c(..., labels = FALSE)
 
@@ -32,6 +35,8 @@ but with PTT formating:
 \section{Functions}{
 \itemize{
 \item \code{ptt_data_robo_l()}: With labels TRUE.
+
+\item \code{ptt_data_robo_h()}: With hash set to current time.
 
 \item \code{ptt_data_robo_c()}: With labels FALSE.
 

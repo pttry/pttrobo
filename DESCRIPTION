@@ -42,7 +42,7 @@ Remotes:
     github::pttry/pttdatahaku,
     github::pttry/ggptt,
     github::pttry/ptt
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 Suggests: 
     rmarkdown,
     knitr,

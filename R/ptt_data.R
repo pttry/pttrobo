@@ -29,6 +29,14 @@ ptt_data_robo_l <- function(..., labels = TRUE){
   ptt_data_robo(..., labels = labels)
 }
 
+
+#' @describeIn ptt_data_robo With hash set to current time.
+#' @export
+#'
+ptt_data_robo_h <- function(...){
+  ptt_data_robo(..., hash  = Sys.time())
+}
+
 #' @describeIn ptt_data_robo With labels FALSE.
 #' @export
 #'
