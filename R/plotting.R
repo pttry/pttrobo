@@ -142,7 +142,7 @@ aplot_trends <- function(dat, x = time, y = value,
 
   p <- ptt_plot(dat, grouping = {{colour}},
                 title = title, subtitle = subtitle, caption = caption,
-                rangeslider = rangeslider)
+                rangeslider = rangeslider, ...)
   # print(names(p$color_vector))
 
   if (trends_only) {
@@ -150,7 +150,7 @@ aplot_trends <- function(dat, x = time, y = value,
       mutate(value = trend)|>
       ptt_plot(grouping = {{colour}},
                   title = title, subtitle = subtitle, caption = caption,
-                  rangeslider = rangeslider)
+                  rangeslider = rangeslider,...)
   } else {
     p <-
       ptt_plot(dat, grouping = {{colour}},
