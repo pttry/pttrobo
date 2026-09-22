@@ -156,7 +156,7 @@ aplot_trends <- function(dat, x = time, y = value,
       ptt_plot(dat, grouping = {{colour}},
                title = title, subtitle = subtitle, caption = caption,
                rangeslider = rangeslider,
-               line_width = 2) |>
+               line_width = 2, ...) |>
       ptt_plot_add_secondary_traces2(dat, y = trend, grouping = {{colour}},
                                      showlegend = FALSE, line_width = 4)
 
