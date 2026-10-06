@@ -14,8 +14,8 @@
 #' \dontrun{
 #'   ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
 #' }
-ptt_data_robo <- function(..., labels = TRUE){
-  robonomistClient::data_get(..., labels = labels, tidy_time = TRUE) |>
+ptt_data_robo <- function(...){
+  tosi::tosi(...) |>
     statfitools::clean_names() |>
     dplyr::mutate(dplyr::across(where(is.character), forcats::as_factor)) |>
     droplevels()
