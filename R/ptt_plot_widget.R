@@ -72,7 +72,7 @@ ptt_plot_create_widget <- function(p, title, filepath,
   }
 
   if(render == T) {
-    cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry/ennustekuvat/',
+    cat(str_c('\n<iframe src="https://storage.googleapis.com/pttry-assets/ennustekuvat/',
               cur_input,"/",title,
               '.html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="',
               iframe_height, '"></iframe>\n'))
@@ -141,7 +141,10 @@ ptt_plot_automate_png <- function(p, artefacts, dl_path = getwd()) {
 
 #' Uploads the html elements and dependencies to cloud storage.
 #'
-#' The cloud storage authentication file have to in working folder or in Tiedosto/Documents folder.
+#' Place one service-account key named `ptt-assets-*.json` in the working
+#' directory (the pttrobo root when working below it), or in your home directory
+#' as a fallback. Multiple matches at the selected location prevent upload.
+#' Keep the key private and out of version control. Uploads use `pttry-assets`.
 #'
 #' @param files_path The folder where the artefacts to be uploaded are located.
 #' @param upload_path The gcs folder where the artefacts will be uploaded to.
@@ -159,17 +162,23 @@ ptt_plot_upload_widgets <- function(files_path, upload_path, overwrite = FALSE, 
 
   if ((is.logical(release_time) && release_time) || (release_time  < Sys.time() && !is.logical(release_time))) stop("Upload is past the release time. Set new relese_time or set it FALSE")
 
-  if (length(Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))) != 0){
-    aut_file <- Sys.glob(file.path(getwd() |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))
-  } else {
-    aut_file <- Sys.glob(file.path("~" |> str_remove("(?<=pttrobo).{1,}"),"robottiperhe-*.json"))
+  aut_file <- Sys.glob(file.path(
+    getwd() |> str_remove("(?<=pttrobo).{1,}"), "ptt-assets-*.json"
+  ))
+  if (length(aut_file) == 0L) {
+    aut_file <- Sys.glob(file.path("~", "ptt-assets-*.json"))
+  }
+  if (length(aut_file) == 0L) {
+    stop("No ptt-assets-*.json key found in the working directory (pttrobo root) or home directory.", call. = FALSE)
+  }
+  if (length(aut_file) > 1L) {
+    stop("Multiple ptt-assets-*.json keys found at the selected location. Keep exactly one key there.", call. = FALSE)
   }
 
   tryCatch(gcs_auth(aut_file), error = function(e) {
-    str <- paste0("Do you have the proper authorisation file in the directory?\n")
-    stop(str, call. = F)
+    stop("Cloud storage authentication failed. Check the selected ptt-assets-*.json key.", call. = FALSE)
   })
-  suppressMessages(gcs_global_bucket("pttry"))
+  suppressMessages(gcs_global_bucket("pttry-assets"))
 
   is_knitting <- isTRUE(getOption('knitr.in.progress'))
   is_missing_upload_path <- missing(upload_path)

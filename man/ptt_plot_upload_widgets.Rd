@@ -20,5 +20,8 @@ ptt_plot_upload_widgets(
 Can be set also \code{FALSE}. If past the Sys.time() of code{TRUE} prevents upload.}
 }
 \description{
-The cloud storage authentication file have to in working folder or in Tiedosto/Documents folder.
+Place one service-account key named \verb{ptt-assets-*.json} in the working
+directory (the pttrobo root when working below it), or in your home directory
+as a fallback. Multiple matches at the selected location prevent upload.
+Keep the key private and out of version control. Uploads use \code{pttry-assets}.
 }

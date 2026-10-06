@@ -10,3 +10,5 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+^records(/|$)
+(^|/)ptt-assets-[^/]*\.json$
