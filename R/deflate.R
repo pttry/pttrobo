@@ -33,11 +33,12 @@
 #' @param baseyear A base year to rebase.
 #'
 #' @import dplyr
+#' @importFrom pttdatahaku filter_recode rebase
 #' @return A numeric vector
 #' @export
 #'
 #' @examples
-#' pttrobo::ptt_data_robo("StatFin/ati/statfin_ati_pxt_11zt.px") |>
+#' pttrobo::ptt_data_robo("statfin/ati/11zt.px") |>
 #'   filter_recode(
 #'     tiedot = c("Ansiotaso" = "Ansiotasoindeksi 1964=100")
 #'   ) |>
@@ -46,7 +47,7 @@
 #'
 #'  pttrobo::ptt_data_robo(
 #'    "tulli/uljas_sitc",
-#'    dl_filter = list(
+#'    source_filter = list(
 #'      "Tavaraluokitus SITC2" = c("01 (2002--.) Liha ja lihatuotteet"),
 #'      "Maa" = "AA",
 #'      "Suunta" = c("Tuonti alkuperämaittain"),
@@ -62,12 +63,12 @@ deflate <- function(x, time, deflator = "eki", index = NULL, class = NULL,
 
   series <- list(
     eki = function(index, class) {
-      pttrobo::ptt_data_robo("StatFin/khi/statfin_khi_pxt_11xl.px") |>
+      pttrobo::ptt_data_robo("statfin/khi/11xl.px") |>
         filter_recode(tiedot = c("Pisteluku")) |>
         select(time, p_ind = value)
     },
     thi = function(index, class) {
-      pttrobo::ptt_data_robo("StatFin/thi/statfin_thi_pxt_118g.px") |>
+      pttrobo::ptt_data_robo("statfin/thi/118g.px") |>
         filter_recode(
           tuotteet_toimialoittain_cpa_2015_mig = class,
           indeksisarja = c(index),

@@ -31,7 +31,8 @@ to demonstrate the structure of the yaml file:
 top-level list defines file names and the 2nd level defines sheet names.
 Under each sheet there's a list of data objects that describe what data is
 retrieved to populate the sheets. Each data object should at least contain an
-\emph{id} to identify a data table in Robonomist Database. Additionally the data
+\emph{id} to identify a Tosi observation table. Existing YAML structure is retained;
+stored legacy IDs are not guaranteed to resolve. Additionally the data
 object can contain the following items: * \strong{muunnos} This can take value
 "alkuperäinen", "vuosikeskiarvo", or "vuosisumma" * \strong{ajanjakso} This can be
 set to "satovuosi" to aggregate annualy to intervals from July to June. *

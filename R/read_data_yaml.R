@@ -8,7 +8,8 @@
 #' top-level list defines file names and the 2nd level defines sheet names.
 #' Under each sheet there's a list of data objects that describe what data is
 #' retrieved to populate the sheets. Each data object should at least contain an
-#' *id* to identify a data table in Robonomist Database. Additionally the data
+#' *id* to identify a Tosi observation table. Existing YAML structure is retained;
+#' stored legacy IDs are not guaranteed to resolve. Additionally the data
 #' object can contain the following items: * **muunnos** This can take value
 #' "alkuperäinen", "vuosikeskiarvo", or "vuosisumma" * **ajanjakso** This can be
 #' set to "satovuosi" to aggregate annualy to intervals from July to June. *
@@ -56,7 +57,6 @@ koosta_tiedoston_datat <- function(x, start_year) {
 
 
 #' @importFrom rlang %||%
-#' @importFrom robonomistClient data_get
 #' @import dplyr
 muodosta_sarjat <- function(x, name = NULL, start_year) {
 
@@ -67,16 +67,16 @@ muodosta_sarjat <- function(x, name = NULL, start_year) {
   ## Hae ja suodata
   d <-
     if (stringr::str_starts(x$id, "tulli/")|stringr::str_starts(x$id, "ecb/")) {
-     data_get(x$id, dl_filter = x$tiedot, tidy_time = TRUE) |>
+     ptt_tosi_data(x$id, source_filter = x$tiedot) |>
         tidyr::replace_na(list(value = 0))
 
     } else if (!is.null(x$tiedot)) {
-      data_get(x$id, tidy_time = TRUE) |>
+      ptt_tosi_data(x$id) |>
         filter(
           !!!unname(purrr::imap(x$tiedot, ~expr(!!sym(.y) %in% !!.x)))
         )
     } else {
-      data_get(x$id, tidy_time = TRUE)
+      ptt_tosi_data(x$id)
     }
 
   if(stringr::str_starts(x$id, "tulli/")) {
@@ -194,7 +194,7 @@ data_to_yaml <- function(d, file = NULL, xlsx_tiedosto = "file1",
     setNames(list(
       setNames(list(
         list(list(
-          id = attr(d, "robonomist_id"),
+          id = attr(d, "tosi_id"),
           muunnos = match.arg(muunnos),
           tiedot = d |>
             select(!any_of(c("time", "value", "Vuosi", "Vuosineljännes", "Kuukausi"))) |>

@@ -2,20 +2,20 @@
 % Please edit documentation in R/data_utils.R
 \name{pttrobo_print_code}
 \alias{pttrobo_print_code}
-\title{Print get code and full filtering for Robonomist id or url}
+\title{Print retrieval code and full filtering for a Tosi table or URL}
 \usage{
 pttrobo_print_code(x, conc = TRUE)
 }
 \arguments{
-\item{x}{robonomist id or url that robonomist undestands (statfi).}
+\item{x}{Tosi table identifier or supported source-table URL.}
 
 \item{conc}{A locigal to copy to clipboard.}
 }
 \description{
-Print get code and full filtering for Robonomist id or url
+Print retrieval code and full filtering for a Tosi table or URL
 }
 \examples{
   pttrobo_print_code("https://pxweb2.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__vaerak/statfin_vaerak_pxt_11ra.px/", conc = FALSE)
-  pttrobo_print_code("StatFin/vaerak/statfin_vaerak_pxt_11ra.px", conc = FALSE)
+  pttrobo_print_code("statfin/vaerak/11ra.px", conc = FALSE)
 
 }

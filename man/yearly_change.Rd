@@ -17,8 +17,8 @@ Transforms absolute values to yearly change
 }
 \examples{
 \dontrun{
-yearly_change(data = robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) \%>\%
-                     filter(str_detect(Taloustoimi, "B1GMH")) \%>\%
-                     filter(Tiedot \%in\% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
+yearly_change(data = ptt_data_robo("statfin/ntp/132h.px") \%>\%
+                     filter(str_detect(taloustoimi, "B1GMH")) \%>\%
+                     filter(tiedot \%in\% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
 }
 }

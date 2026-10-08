@@ -6,37 +6,37 @@
 \alias{ptt_data_robo_h}
 \alias{ptt_data_robo_c}
 \alias{ptt_data_robo_b}
-\title{Get Data with robonomistClient in PTT Format}
+\title{Get Tosi data in PTT format}
 \usage{
 ptt_data_robo(..., labels = TRUE)
 
 ptt_data_robo_l(..., labels = TRUE)
 
-ptt_data_robo_h(..., hash = Sys.time())
+ptt_data_robo_h(...)
 
 ptt_data_robo_c(..., labels = FALSE)
 
 ptt_data_robo_b(...)
 }
 \arguments{
-\item{...}{Arguments to \code{\link[robonomistClient]{data_get}}.
-see \code{\link[robonomistClient]{data}}}
+\item{...}{Arguments to \code{\link[tosi:tosi_data]{tosi::tosi_data()}}, including \code{source_filter}.
+Legacy \code{dl_filter}, \code{hash} and \code{tidy_time} arguments are not supported.}
 
-\item{labels}{A logical whether to get labels or codes.}
+\item{labels}{Whether to retrieve labels. FALSE requests \code{lang = "codes"};
+\code{col_mode} controls column names, not values. TRUE uses Tosi's language
+preference unless \code{lang} is supplied.}
 }
 \description{
-Uses \code{robonomistClient::data_get} to get data from robonomist,
-but with PTT formating:
-\itemize{
-\item tidy_time = TRUE
-\item variables as factors
-}
+Retrieves an observation table with native time columns, cleans column names,
+and converts character columns to factors. Supplies a plotting frequency when
+available and a canonical \code{tosi_id} attribute for YAML output. Notifies the
+optional \code{vakka.tosi.collect} schema collector before conversion.
 }
 \section{Functions}{
 \itemize{
 \item \code{ptt_data_robo_l()}: With labels TRUE.
 
-\item \code{ptt_data_robo_h()}: With hash set to current time.
+\item \code{ptt_data_robo_h()}: Ordinary retrieval alias; there is no legacy cache to bypass.
 
 \item \code{ptt_data_robo_c()}: With labels FALSE.
 
@@ -45,6 +45,6 @@ but with PTT formating:
 }}
 \examples{
 \dontrun{
-  ptt_data_robo("StatFin/asu/asvu/statfin_asvu_pxt_11x4.px") |> head()
+ptt_data_robo("statfin/asvu/11x4.px") |> head()
 }
 }

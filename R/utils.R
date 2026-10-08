@@ -18,10 +18,10 @@ yaml_to_plotly_data <- function(file, kuvion_nimi) {
   get_data <- function(y, sarja_nro){
     d_specs <- y$sarjat[[sarja_nro]]$robonomist_data
 
-    d <- robonomistClient::data_get(d_specs$id, tidy_time=TRUE)
+    d <- ptt_tosi_data(d_specs$id)
     for(name in names(d_specs$tiedot)){
       d <- d |>
-        filter(d[name] == d_specs$tiedot[name][[1]])
+        filter(.data[[name]] == d_specs$tiedot[[name]])
     }
     d
   }
@@ -122,9 +122,9 @@ ennuste_time_serie_from_excel <- function(excel_path, serie_name){
 #' @return tibble
 #' @examples
 #' \dontrun{
-#'yearly_change(data = robonomistClient::data("StatFin/kan/ntp/statfin_ntp_pxt_132h.px", tidy_time = TRUE) %>%
-#'                      filter(str_detect(Taloustoimi, "B1GMH")) %>%
-#'                      filter(Tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
+#'yearly_change(data = ptt_data_robo("statfin/ntp/132h.px") %>%
+#'                      filter(str_detect(taloustoimi, "B1GMH")) %>%
+#'                      filter(tiedot %in% c("Kausitasoitettu ja työpäiväkorjattu sarja, viitevuosi 2015, miljoonaa euroa")))
 #'}
 #' @export
 #' @import dplyr

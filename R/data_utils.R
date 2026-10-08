@@ -1,35 +1,29 @@
-#' Print get code and full filtering for Robonomist id or url
+#' Print retrieval code and full filtering for a Tosi table or URL
 #'
-#' @param x robonomist id or url that robonomist undestands (statfi).
+#' @param x Tosi table identifier or supported source-table URL.
 #' @param conc A locigal to copy to clipboard.
 #'
 #' @export
 #'
 #' @examples
 #'   pttrobo_print_code("https://pxweb2.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__vaerak/statfin_vaerak_pxt_11ra.px/", conc = FALSE)
-#'   pttrobo_print_code("StatFin/vaerak/statfin_vaerak_pxt_11ra.px", conc = FALSE)
+#'   pttrobo_print_code("statfin/vaerak/11ra.px", conc = FALSE)
 #'
 pttrobo_print_code <-
   function(x, conc = TRUE){
 
-    check_url <- httr::parse_url(x)
-
-    if (!is.null(check_url$scheme) && check_url$scheme %in% c("http", "https")){
-      id <- robonomistClient::data_search(x)$id
-
-      if (length(id) == 0) stop("Url: ", x, " not found in Robonomist data.")
-      if (length(id) != 1) {
-        message("Several ids found. First will be used\n", id)
-        id <- id[1]
-      }
-
+    if (grepl("^https?://", x)) {
+      data <- tosi::tosi_url(x)
+      if (!tosi::is_tosi_table(data)) stop("URL must identify a Tosi observation table.")
+      data <- statfitools::clean_names(ptt_tosi_table(data))
     } else {
-      id <- x
+      data <- ptt_data_robo_l(x)
     }
+    id <- attr(data, "tosi_id")
 
     out <- paste0(
       "ptt_data_robo(\"", id, "\") |>\n  ",
-      pttrobo_print_filter_recode(id, conc = FALSE, print = FALSE)
+      pttrobo_print_filter_recode(data, conc = FALSE, print = FALSE)
 
     )
     cat(out)
@@ -38,11 +32,11 @@ pttrobo_print_code <-
   }
 
 
-#' Print full filtering for Robonomist id or data
+#' Print full filtering for a Tosi table identifier or dataframe
 #'
 #' In ptt-format
 #'
-#' @param x A Robonomist id or robonomist_data
+#' @param x A Tosi table identifier or dataframe.
 #' @param conc A locigal whether to copy in clipboard
 #' @param print A locigal whether to print output (to only return invisibly)
 #' @export
@@ -51,7 +45,7 @@ pttrobo_print_code <-
 #'   pttrobo_print_filter_recode(x = "luke/02_Maatalous/06_Talous/02_Maataloustuotteiden_tuottajahinnat/08_Tuottajahinnat_Vilja_rypsi_rapsi_v.px", conc = FALSE)
 
 pttrobo_print_filter <- function(x, conc = TRUE, print = TRUE){
-  if (!inherits(x, "robonomist_data")){
+  if (!is.data.frame(x)){
     x <- ptt_data_robo_l(x)
   }
 
@@ -81,7 +75,7 @@ pttrobo_print_filter <- function(x, conc = TRUE, print = TRUE){
 #' @describeIn pttrobo_print_filter version for pttdatahaku::filter_recode()
 #' @export
 pttrobo_print_filter_recode <- function(x, conc = TRUE, print = TRUE){
-  if (!inherits(x, "robonomist_data")){
+  if (!is.data.frame(x)){
     x <- ptt_data_robo_l(x)
   }
 

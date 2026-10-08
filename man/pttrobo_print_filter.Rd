@@ -3,14 +3,14 @@
 \name{pttrobo_print_filter}
 \alias{pttrobo_print_filter}
 \alias{pttrobo_print_filter_recode}
-\title{Print full filtering for Robonomist id or data}
+\title{Print full filtering for a Tosi table identifier or dataframe}
 \usage{
 pttrobo_print_filter(x, conc = TRUE, print = TRUE)
 
 pttrobo_print_filter_recode(x, conc = TRUE, print = TRUE)
 }
 \arguments{
-\item{x}{A Robonomist id or robonomist_data}
+\item{x}{A Tosi table identifier or dataframe.}
 
 \item{conc}{A locigal whether to copy in clipboard}
 

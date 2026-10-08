@@ -60,7 +60,7 @@ index, one of: "Teollisuuden tuottajahintaindeksi",
 class one of Tuotteet toimialoittain (CPA 2015, MIG) classification
 }
 \examples{
-pttrobo::ptt_data_robo("StatFin/ati/statfin_ati_pxt_11zt.px") |>
+pttrobo::ptt_data_robo("statfin/ati/11zt.px") |>
   filter_recode(
     tiedot = c("Ansiotaso" = "Ansiotasoindeksi 1964=100")
   ) |>
@@ -69,7 +69,7 @@ pttrobo::ptt_data_robo("StatFin/ati/statfin_ati_pxt_11zt.px") |>
 
  pttrobo::ptt_data_robo(
    "tulli/uljas_sitc",
-   dl_filter = list(
+   source_filter = list(
      "Tavaraluokitus SITC2" = c("01 (2002--.) Liha ja lihatuotteet"),
      "Maa" = "AA",
      "Suunta" = c("Tuonti alkuperämaittain"),
