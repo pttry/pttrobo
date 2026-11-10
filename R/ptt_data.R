@@ -50,7 +50,7 @@ ptt_data_tosi <- function(table_id, lang = NULL, col_mode = "ids",
 # Shared PTT cleaning; raw-name YAML retrievals do not pass through this step.
 ptt_tosi_clean <- function(x) {
   x_names <- colnames(x)
-  if("Time" %in% x_names & "time" %in% x_names ) x |> rename(time2 = Time)
+  if(("Time" %in% x_names) & ("time" %in% x_names )) x <-x |> rename(time2 = Time)
   x |>
     statfitools::clean_names() |>
     dplyr::mutate(dplyr::across(where(is.character), forcats::as_factor)) |>
